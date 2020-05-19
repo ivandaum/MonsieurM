@@ -1,0 +1,54 @@
+.is-inline {
+    display: inline;
+}
+
+.is-relative {
+    position: relative;
+}
+
+.is-absolute {
+    position: absolute;
+}
+
+.is-inline-flex {
+    display: inline-flex;
+}
+
+.is-fixed {
+    position: fixed;
+}
+
+.is-flex {
+    display: flex;
+
+    &.is-direction-column {
+        flex-direction: column;
+    }
+
+    &-desktop {
+        @include desktop {
+            display: flex;
+        }
+    }
+}
+
+.is-sticky {
+    position: sticky;
+    top: 0;
+}
+
+.is-block {
+    display: block;
+}
+
+.is-hidden-desktop {
+    @include desktop {
+        display: none !important;
+    }
+}
+
+.is-hidden-touch {
+    @include touch {
+        display: none !important;
+    }
+}

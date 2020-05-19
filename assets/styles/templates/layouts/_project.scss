@@ -1,0 +1,34 @@
+.Project {
+    font-size: 1.4rem;
+    line-height: 1.4em;
+
+    &__header {
+        padding-top: calc(50vh + #{$padding-large});
+        min-height: 100vh;
+    }
+
+    &__introduction {
+        padding-bottom: 20rem;
+
+        h2 {
+            padding-bottom: 0.8rem;
+        }
+
+        p {
+            opacity: 0.8;
+        }
+    }
+
+    &__content {
+        &--image.is-centered {
+            padding: $padding-large;
+        }
+
+        &--columns {
+        }
+
+        &--text {
+            padding: 20rem $padding-large;
+        }
+    }
+}

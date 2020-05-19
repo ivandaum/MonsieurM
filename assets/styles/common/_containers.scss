@@ -1,0 +1,33 @@
+html {
+    line-height: 1;
+    -webkit-text-size-adjust: none;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-size: 1.6rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+    position: relative;
+    @include font-text;
+}
+
+body main {
+    position: relative;
+}
+
+body.locked {
+    overflow: hidden;
+    height: calc(100vh);
+}
+
+.container {
+    width: 100%;
+    position: relative;
+    display: block;
+    z-index: map-get($zindex, section);
+    margin: 0 auto;
+    padding: $padding-large;
+}

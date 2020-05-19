@@ -1,0 +1,66 @@
+.is-justified {
+    align-items: space-between;
+    justify-content: space-between;
+
+    &-x {
+        justify-content: space-between;
+    }
+}
+
+.is-center {
+    align-items: center;
+    justify-content: center;
+
+    &-y {
+        align-items: center;
+    }
+}
+
+.is-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &-x {
+        justify-content: flex-start;
+    }
+}
+
+.is-baseline {
+    align-items: baseline;
+}
+
+.no-shrink {
+    flex-shrink: 0;
+}
+
+.is-wrap {
+    flex-wrap: wrap;
+}
+
+.is-column {
+    @for $i from 1 through 12 {
+        &.is-#{$i} {
+            @include desktop {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-tablet {
+            @include tablet-only {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-phone {
+            @include phone-only {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-touch {
+            @include touch {
+                width: $i / 12 * 100%;
+            }
+        }
+    }
+}

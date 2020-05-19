@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Maison Neue';
+    src: url('MaisonNeue-Medium.woff2') format('woff2'),
+        url('MaisonNeue-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Maison Neue';
+    src: url('MaisonNeue-Book.woff2') format('woff2'),
+        url('MaisonNeue-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Maison Neue';
+    src: url('MaisonNeue-Light.woff2') format('woff2'),
+        url('MaisonNeue-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Maison Neue';
+    src: url('MaisonNeue-Demi.woff2') format('woff2'),
+        url('MaisonNeue-Demi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Canela';
+    src: url('Canela-Thin.woff2') format('woff2'),
+        url('Canela-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Maison Neue';
+    src: url('MaisonNeue-Bold.woff2') format('woff2'),
+        url('MaisonNeue-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Adieu';
+    src: url('Adieu-Light.woff2') format('woff2'),
+        url('Adieu-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Adieu';
+    src: url('Adieu-Bold.woff2') format('woff2'),
+        url('Adieu-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+

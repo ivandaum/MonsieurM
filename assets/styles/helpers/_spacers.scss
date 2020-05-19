@@ -1,0 +1,34 @@
+$directions: (top, left, bottom, right);
+$properties: (margin, padding);
+
+@include desktop {
+    @for $i from 1 through 12 {
+        @each $prop in $properties {
+            @each $direction in $directions {
+                .is-#{$prop}-#{$direction}-#{$i} {
+                    #{$prop}-#{$direction}: #{$i}rem;
+                }
+            }
+
+            .is-#{$prop}-#{$i} {
+                #{$prop}: #{$i}rem;
+            }
+        }
+    }
+}
+
+@include touch {
+    @for $i from 1 through 12 {
+        @each $prop in $properties {
+            @each $direction in $directions {
+                .is-#{$prop}-#{$direction}-#{$i}-touch {
+                    #{$prop}-#{$direction}: #{$i}rem;
+                }
+            }
+
+            .is-#{$prop}-#{$i}-touch {
+                #{$prop}: #{$i}rem;
+            }
+        }
+    }
+}

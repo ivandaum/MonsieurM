@@ -1,0 +1,51 @@
+/*
+* SPECIFIC BREAKPOINTS
+*/
+
+@mixin widescreen-only {
+    @media all and (min-width: map-get($breakpoints, desktop)) and (max-width: map-get($breakpoints, widescreen) - 1px) {
+        @content;
+    }
+}
+
+// from 1000px to 768px
+@mixin tablet-only {
+    @media all and (max-width: map-get($breakpoints, desktop)) and (min-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
+@mixin not-phone {
+    @media all and (min-width: map-get($breakpoints, phone) + 1px) {
+        @content;
+    }
+}
+
+@mixin phone-only {
+    @media all and (max-width: map-get($breakpoints, phone)) {
+        @content;
+    }
+}
+
+@mixin phone-s {
+    @media all and (max-width: map-get($breakpoints, phone-xs)) {
+        @content;
+    }
+}
+/*
+* DEVICE BREAKPOINTS
+*/
+
+// from 999px down (tablet & phone)
+@mixin touch {
+    @media all and (max-width: map-get($breakpoints , desktop) - 1px) {
+        @content;
+    }
+}
+
+// from 1000 up (computers)
+@mixin desktop {
+    @media all and (min-width: map-get($breakpoints, desktop)) {
+        @content;
+    }
+}

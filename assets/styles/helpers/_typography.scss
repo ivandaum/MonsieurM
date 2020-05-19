@@ -1,0 +1,47 @@
+.is-capitalize::first-letter {
+    text-transform: capitalize !important;
+}
+
+.is-lowercase {
+    text-transform: lowercase;
+}
+
+.is-uppercase {
+    text-transform: uppercase;
+}
+
+.has-text-bold {
+    font-weight: map-get($fontweight, bold);
+}
+
+.has-text-center {
+    text-align: center;
+}
+
+.has-text-left {
+    text-align: left;
+}
+
+.has-font-serif {
+    @include font-serif;
+}
+
+.has-font-text {
+    @include font-text;
+}
+
+.has-font-title {
+    @include font-title;
+}
+
+.has-wp-content {
+    font-size: 1.4rem;
+    line-height: 2rem;
+
+    strong {
+        @include font-title;
+        margin-top: 3.2rem;
+        margin-bottom: 0.8rem;
+        display: block;
+    }
+}
