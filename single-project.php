@@ -25,24 +25,35 @@
     </div>
 
     <div class="Project__content">
-        <?php foreach($project->content as $content): ?>
-
-            <?php if($content['layout'] === 'image'): ?>
-                <div class="Project__content--image <?php if($content['centered']): ?>is-centered<?php endif; ?>" style="background-color: <?= $content['color'] ?>">
-                    <?= Image::create($content['image']) ?>
+        <?php foreach($project->content as $row): ?>
+            <?php if($row['layout'] === 'image'): ?>
+                <div 
+                    class="Project__content--media Project__content--image <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                    style="background-color: <?= $row['color'] ?>">
+                    <?= Image::create($row['image']) ?>
                 </div>
             <?php endif; ?>
 
-            <?php if($content['layout'] === 'columns'): ?>
-                <div class="Project__content--columns">
-                    
+            <?php if($row['layout'] === 'columns'): ?>
+                <div class="Project__content--columns is-flex is-wrap container" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
+                    <div class="is-column is-6">
+                        <h2 class="has-font-title"><?= $row['title'] ?></h2>
+                    </div>
+                    <div class="is-column is-6 is-flex is-wrap">
+                        <?php foreach($row['content'] as $column): ?>
+                            <div class="is-column is-4 is-padding-bottom-3">
+                                <p class="has-text-bold"><?= $column['title'] ?></p>
+                                <p><?= $column['content'] ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             <?php endif; ?>
 
-            <?php if($content['layout'] === 'text'): ?>
-                <div class="Project__content--text is-flex is-wrap container" style="background-color: <?= $content['background'] ?>; color: <?= $content['color'] ?>">
+            <?php if($row['layout'] === 'text'): ?>
+                <div class="Project__content--text is-flex is-wrap container" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
                     <div class="is-column is-6"></div>
-                    <div class="is-column is-4 has-wp-content"><?= Text::cleanWpEditor(apply_filters('the_content', $content['text'])) ?></div>
+                    <div class="is-column is-4 has-wp-content"><?= Text::cleanWpEditor(apply_filters('the_content', $row['content'])) ?></div>
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>

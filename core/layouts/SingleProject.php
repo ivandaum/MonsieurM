@@ -16,36 +16,38 @@ class SingleProject {
 
     public function formatContent($content) {
         $r = array();
+
         foreach($content as $entry) {
             $layout = $entry['acf_fc_layout'];
             $row = array();
 
-            if ($layout === 'media') {
+            if ($layout === 'image' || $layout === 'video') {
 
                 $row = array(
-                    'layout' => 'image',
+                    'layout' => $layout,
                     'image' => $entry['source'],
-                    'centered' => $entry['is-centered'],
-                    'color' => $this->getIfExists($entry, 'color')
+                    'color' => $this->getIfExists($entry['settings']['color'], 'background'),
+                    'margin' => $this->getMargin($entry['settings'], 'margin'),
+                    'padding' => $this->getMargin($entry['settings'], 'padding'),
                 );
             }
 
             else if ($layout === 'text') {
                 $row = array(
                     'layout' => $layout,
-                    'text' => $entry['source'],
-                    'background' => $this->getIfExists($entry, 'background'),
-                    'color' => $this->getIfExists($entry, 'color')
+                    'content' => $entry['source'],
+                    'background' => $this->getIfExists($entry['color'], 'background'),
+                    'color' => $this->getIfExists($entry['color'], 'text')
                 );
             }
 
             else if ($layout === 'columns') {
                 $row = array(
                     'layout' => $layout,
-                    'title' => $entry['details']['title'],
                     'content' => $entry['content'],
-                    'background' => $this->getIfExists($entry['details'], 'background'),
-                    'color' => $this->getIfExists($entry['details'], 'color')
+                    'title' => $entry['settings']['title'],
+                    'background' => $this->getIfExists($entry['settings']['color'], 'background'),
+                    'color' => $this->getIfExists($entry['settings']['color'], 'text')
                 );
             }
 
@@ -53,6 +55,20 @@ class SingleProject {
         }
 
         return $r;
+    }
+
+    public function getMargin($arr, $attrName) {
+        $m = array();
+        $className = '';
+        foreach($arr[$attrName] as $name => $value) {
+            $m[$name] = $value;
+            if($value) {
+                $className .= 'has-'. $attrName . '-' . $name . ' ';
+            }
+        }
+
+        $m['className'] = $className;
+        return $m;
     }
 
     public function getIfExists($array, $name) {

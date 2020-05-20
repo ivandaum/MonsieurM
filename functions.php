@@ -21,14 +21,15 @@ register_nav_menus([
     'footer' => 'Footer',
 ]);
 
+
+remove_image_size('1536x1536');
+remove_image_size('2048x2048');
 add_image_size( '1x1', 1, 1 );
-add_image_size( 'phone-xs', 360, 0 );
-add_image_size( 'phone-s', 500, 0 );
-add_image_size( 'phone', 768, 0 );
-add_image_size( 'desktop', 1000, 0 );
-add_image_size( 'widescreen', 1280, 0 );
-add_image_size( 'large', 1600, 0 );
-add_image_size( 'max', 1920, 0 );
+add_image_size( 'phone', 360, 0 );
+add_image_size( 'tablet', 768, 0 );
+add_image_size( 'desktop', 1024, 0 );
+add_image_size( 'widescreen', 1600, 0 );
+add_image_size( 'max', 2048, 0 );
 
 add_action( 'after_wp_tiny_mce', function() {
     printf( '<script type="text/javascript" src="%s"></script>',  get_theme_file_uri('/assets/admin/textarea.js'));
@@ -69,23 +70,13 @@ function remove_admin_login_header() {
 
 add_action( 'admin_menu', function() {
     remove_menu_page( 'index.php' );                 //Dashboard
-
-    // remove_menu_page( 'edit.php' );                   //Posts
-
+    remove_menu_page( 'edit.php' );                   //Posts
     // remove_menu_page( 'upload.php' );                 //Media
-
     // remove_menu_page( 'edit.php?post_type=page' );   //Pages
-
     remove_menu_page( 'edit-comments.php' );         //Comments
-
-    // remove_menu_page( 'themes.php' );                 //Appearance
-
+    remove_menu_page( 'themes.php' );                 //Appearance
     // remove_menu_page( 'plugins.php' );               //Plugins
-
     remove_menu_page( 'users.php' );                 //Users
-
     remove_menu_page( 'tools.php' );                 //Tools
-
     // remove_menu_page( 'options-general.php' );       //Settings
-
 } );

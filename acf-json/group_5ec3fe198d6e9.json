@@ -236,10 +236,245 @@
             "layouts": {
                 "5ec4054ce0294": {
                     "key": "5ec4054ce0294",
-                    "name": "media",
-                    "label": "Média",
+                    "name": "image",
+                    "label": "Image",
                     "display": "table",
                     "sub_fields": [
+                        {
+                            "key": "field_5ec5032ae0bba",
+                            "label": "Paramètres",
+                            "name": "settings",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5ec50339e0bbb",
+                                    "label": "Couleurs",
+                                    "name": "color",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec50339e0bbd",
+                                            "label": "Couleur du fond",
+                                            "name": "background",
+                                            "type": "color_picker",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_5ec5167bc67fd",
+                                    "label": "Marges extérieurs (margin)",
+                                    "name": "margin",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec5168ec67fe",
+                                            "label": "Top",
+                                            "name": "top",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec516ca55584",
+                                            "label": "Bottom",
+                                            "name": "bottom",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec516d255585",
+                                            "label": "Left",
+                                            "name": "left",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec516d755586",
+                                            "label": "Right",
+                                            "name": "right",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_5ec517e74cb3f",
+                                    "label": "Marges intérieurs (padding)",
+                                    "name": "padding",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec517e74cb40",
+                                            "label": "Top",
+                                            "name": "top",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec517e74cb41",
+                                            "label": "Bottom",
+                                            "name": "bottom",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec517e74cb42",
+                                            "label": "Left",
+                                            "name": "left",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec517e74cb43",
+                                            "label": "Right",
+                                            "name": "right",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
                         {
                             "key": "field_5ec4055be6c88",
                             "label": "Source",
@@ -263,40 +498,270 @@
                             "max_height": "",
                             "max_size": "",
                             "mime_types": ""
-                        },
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_5ec5677cb93c1": {
+                    "key": "layout_5ec5677cb93c1",
+                    "name": "video",
+                    "label": "Vidéo",
+                    "display": "table",
+                    "sub_fields": [
                         {
-                            "key": "field_5ec405c2e6c89",
-                            "label": "Couleur du fond",
-                            "name": "color",
-                            "type": "color_picker",
+                            "key": "field_5ec5677cb93c2",
+                            "label": "Paramètres",
+                            "name": "settings",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "30",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "#ffffff"
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5ec5677cb93c3",
+                                    "label": "Couleurs",
+                                    "name": "color",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec5677cb93c4",
+                                            "label": "Couleur du fond",
+                                            "name": "background",
+                                            "type": "color_picker",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": ""
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_5ec5677cb93c5",
+                                    "label": "Marges extérieurs (margin)",
+                                    "name": "margin",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec5677cb93c6",
+                                            "label": "Top",
+                                            "name": "top",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec5677cb93c7",
+                                            "label": "Bottom",
+                                            "name": "bottom",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec5677cb93c8",
+                                            "label": "Left",
+                                            "name": "left",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec5677cb93c9",
+                                            "label": "Right",
+                                            "name": "right",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_5ec5677cb93ca",
+                                    "label": "Marges intérieurs (padding)",
+                                    "name": "padding",
+                                    "type": "group",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "layout": "table",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec5677cb93cb",
+                                            "label": "Top",
+                                            "name": "top",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec5677cb93cc",
+                                            "label": "Bottom",
+                                            "name": "bottom",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec5677cb93cd",
+                                            "label": "Left",
+                                            "name": "left",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        },
+                                        {
+                                            "key": "field_5ec5677cb93ce",
+                                            "label": "Right",
+                                            "name": "right",
+                                            "type": "true_false",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "message": "",
+                                            "default_value": 0,
+                                            "ui": 1,
+                                            "ui_on_text": "✓",
+                                            "ui_off_text": "-"
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
-                            "key": "field_5ec405dbe6c8a",
-                            "label": "Est centré?",
-                            "name": "is-centered",
-                            "type": "true_false",
-                            "instructions": "Si actif, le média sera centré au milieu. Sinon, il prendra toute la largeur disponible",
+                            "key": "field_5ec5677cb93cf",
+                            "label": "Source",
+                            "name": "source",
+                            "type": "file",
+                            "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "10",
+                                "width": "60",
                                 "class": "",
                                 "id": ""
                             },
-                            "message": "",
-                            "default_value": 1,
-                            "ui": 1,
-                            "ui_on_text": "",
-                            "ui_off_text": ""
+                            "return_format": "array",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "mp4"
                         }
                     ],
                     "min": "",
@@ -309,34 +774,51 @@
                     "display": "table",
                     "sub_fields": [
                         {
-                            "key": "field_5ec42496c579a",
-                            "label": "Couleur du texte",
+                            "key": "field_5ec502a5e082c",
+                            "label": "Couleurs",
                             "name": "color",
-                            "type": "color_picker",
+                            "type": "group",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "30",
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "#000"
-                        },
-                        {
-                            "key": "field_5ec4249dc579b",
-                            "label": "Couleur du fond",
-                            "name": "background",
-                            "type": "color_picker",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": ""
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_5ec42496c579a",
+                                    "label": "Couleur du texte",
+                                    "name": "text",
+                                    "type": "color_picker",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "#000"
+                                },
+                                {
+                                    "key": "field_5ec4249dc579b",
+                                    "label": "Couleur du fond",
+                                    "name": "background",
+                                    "type": "color_picker",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": ""
+                                }
+                            ]
                         },
                         {
                             "key": "field_5ec40cef6ef4d",
@@ -369,8 +851,8 @@
                     "sub_fields": [
                         {
                             "key": "field_5ec42517ff018",
-                            "label": "Informations",
-                            "name": "details",
+                            "label": "Paramètres",
+                            "name": "settings",
                             "type": "group",
                             "instructions": "",
                             "required": 0,
@@ -402,10 +884,10 @@
                                     "maxlength": ""
                                 },
                                 {
-                                    "key": "field_5ec424c7c579c",
-                                    "label": "Couleur du texte",
+                                    "key": "field_5ec502eae082d",
+                                    "label": "Couleurs",
                                     "name": "color",
-                                    "type": "color_picker",
+                                    "type": "group",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -414,22 +896,39 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "default_value": "#000"
-                                },
-                                {
-                                    "key": "field_5ec424dbc579d",
-                                    "label": "Couleur du fond",
-                                    "name": "background",
-                                    "type": "color_picker",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": ""
+                                    "layout": "block",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_5ec502eae082e",
+                                            "label": "Couleur du texte",
+                                            "name": "text",
+                                            "type": "color_picker",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": "#000"
+                                        },
+                                        {
+                                            "key": "field_5ec502eae082f",
+                                            "label": "Couleur du fond",
+                                            "name": "background",
+                                            "type": "color_picker",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "",
+                                                "class": "",
+                                                "id": ""
+                                            },
+                                            "default_value": ""
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -533,5 +1032,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1589914497
+    "modified": 1589995519
 }
