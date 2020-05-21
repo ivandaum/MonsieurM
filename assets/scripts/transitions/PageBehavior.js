@@ -1,14 +1,19 @@
+import Lazyloading from '../vendor/Lazyloading'
 import { isFunction } from '../functions/object'
 
 const PageBehavior = {
     show({ from, done }) {
-        // window.scrollTo(0, 0)
-
         if (from) {
             from.remove()
         }
 
         document.body.classList.remove('loading')
+
+        this.Lazyloading = new Lazyloading({
+            load_delay: 0,
+            elements_selector: 'img',
+            use_native: false,
+        })
 
         if (done && isFunction(done)) {
             done()

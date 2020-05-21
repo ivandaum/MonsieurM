@@ -2,6 +2,7 @@
     use MonsieurM\Core\Layouts\SingleProject;
     use MonsieurM\Core\Utils\Text;
     use MonsieurM\Core\Utils\Image;
+    use MonsieurM\Core\Utils\Video;
 
     $project = new SingleProject();
 
@@ -28,9 +29,17 @@
         <?php foreach($project->content as $row): ?>
             <?php if($row['layout'] === 'image'): ?>
                 <div 
-                    class="Project__content--media Project__content--image <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                    class="Project__content--media is-flex Project__content--image <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
                     style="background-color: <?= $row['color'] ?>">
                     <?= Image::create($row['image']) ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if($row['layout'] === 'video'): ?>
+                <div 
+                    class="Project__content--media is-flex Project__content--video <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                    style="background-color: <?= $row['color'] ?>">
+                    <?= Video::create($row['video']); ?>
                 </div>
             <?php endif; ?>
 

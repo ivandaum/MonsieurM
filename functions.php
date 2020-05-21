@@ -80,3 +80,14 @@ add_action( 'admin_menu', function() {
     remove_menu_page( 'tools.php' );                 //Tools
     // remove_menu_page( 'options-general.php' );       //Settings
 } );
+
+
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page(array(
+        'page_title'    => __('Informations complémentaire'),
+        'menu_title'    => __('Informations'),
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+}

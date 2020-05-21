@@ -25,11 +25,13 @@ class SingleProject {
 
                 $row = array(
                     'layout' => $layout,
-                    'image' => $entry['source'],
                     'color' => $this->getIfExists($entry['settings']['color'], 'background'),
                     'margin' => $this->getMargin($entry['settings'], 'margin'),
                     'padding' => $this->getMargin($entry['settings'], 'padding'),
                 );
+
+                $row[$layout] = $entry['source'];
+
             }
 
             else if ($layout === 'text') {
@@ -58,6 +60,8 @@ class SingleProject {
     }
 
     public function getMargin($arr, $attrName) {
+        if (!isset($arr[$attrName])) return '';
+        
         $m = array();
         $className = '';
         foreach($arr[$attrName] as $name => $value) {

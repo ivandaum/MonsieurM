@@ -288,7 +288,7 @@
                                     ]
                                 },
                                 {
-                                    "key": "field_5ec5167bc67fd",
+                                    "key": "field_5ec645c3976d8",
                                     "label": "Marges extérieurs (margin)",
                                     "name": "margin",
                                     "type": "group",
@@ -303,8 +303,8 @@
                                     "layout": "table",
                                     "sub_fields": [
                                         {
-                                            "key": "field_5ec5168ec67fe",
-                                            "label": "Top",
+                                            "key": "field_5ec6c96548e8d",
+                                            "label": "Haut",
                                             "name": "top",
                                             "type": "true_false",
                                             "instructions": "",
@@ -316,14 +316,14 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec516ca55584",
-                                            "label": "Bottom",
+                                            "key": "field_5ec6c98a48e8e",
+                                            "label": "Bas",
                                             "name": "bottom",
                                             "type": "true_false",
                                             "instructions": "",
@@ -335,15 +335,15 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec516d255585",
-                                            "label": "Left",
-                                            "name": "left",
+                                            "key": "field_5ec6c99448e8f",
+                                            "label": "Centrer",
+                                            "name": "center",
                                             "type": "true_false",
                                             "instructions": "",
                                             "required": 0,
@@ -354,26 +354,7 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
-                                            "ui": 1,
-                                            "ui_on_text": "✓",
-                                            "ui_off_text": "-"
-                                        },
-                                        {
-                                            "key": "field_5ec516d755586",
-                                            "label": "Right",
-                                            "name": "right",
-                                            "type": "true_false",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
@@ -381,8 +362,8 @@
                                     ]
                                 },
                                 {
-                                    "key": "field_5ec517e74cb3f",
-                                    "label": "Marges intérieurs (padding)",
+                                    "key": "field_5ec6c9a548e90",
+                                    "label": "Marges intérieures (padding)",
                                     "name": "padding",
                                     "type": "group",
                                     "instructions": "",
@@ -396,8 +377,8 @@
                                     "layout": "table",
                                     "sub_fields": [
                                         {
-                                            "key": "field_5ec517e74cb40",
-                                            "label": "Top",
+                                            "key": "field_5ec6c9a648e91",
+                                            "label": "Haut",
                                             "name": "top",
                                             "type": "true_false",
                                             "instructions": "",
@@ -409,14 +390,14 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec517e74cb41",
-                                            "label": "Bottom",
+                                            "key": "field_5ec6c9a648e92",
+                                            "label": "Bas",
                                             "name": "bottom",
                                             "type": "true_false",
                                             "instructions": "",
@@ -428,15 +409,15 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec517e74cb42",
-                                            "label": "Left",
-                                            "name": "left",
+                                            "key": "field_5ec6c9a648e93",
+                                            "label": "Centrer",
+                                            "name": "center",
                                             "type": "true_false",
                                             "instructions": "",
                                             "required": 0,
@@ -447,26 +428,7 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
-                                            "ui": 1,
-                                            "ui_on_text": "✓",
-                                            "ui_off_text": "-"
-                                        },
-                                        {
-                                            "key": "field_5ec517e74cb43",
-                                            "label": "Right",
-                                            "name": "right",
-                                            "type": "true_false",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
@@ -510,7 +472,7 @@
                     "display": "table",
                     "sub_fields": [
                         {
-                            "key": "field_5ec5677cb93c2",
+                            "key": "field_5ec6ca0647e51",
                             "label": "Paramètres",
                             "name": "settings",
                             "type": "group",
@@ -525,7 +487,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_5ec5677cb93c3",
+                                    "key": "field_5ec6ca0647e52",
                                     "label": "Couleurs",
                                     "name": "color",
                                     "type": "group",
@@ -540,7 +502,7 @@
                                     "layout": "block",
                                     "sub_fields": [
                                         {
-                                            "key": "field_5ec5677cb93c4",
+                                            "key": "field_5ec6ca0647e53",
                                             "label": "Couleur du fond",
                                             "name": "background",
                                             "type": "color_picker",
@@ -557,7 +519,7 @@
                                     ]
                                 },
                                 {
-                                    "key": "field_5ec5677cb93c5",
+                                    "key": "field_5ec6ca0647e54",
                                     "label": "Marges extérieurs (margin)",
                                     "name": "margin",
                                     "type": "group",
@@ -572,8 +534,8 @@
                                     "layout": "table",
                                     "sub_fields": [
                                         {
-                                            "key": "field_5ec5677cb93c6",
-                                            "label": "Top",
+                                            "key": "field_5ec6ca0647e55",
+                                            "label": "Haut",
                                             "name": "top",
                                             "type": "true_false",
                                             "instructions": "",
@@ -585,14 +547,14 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec5677cb93c7",
-                                            "label": "Bottom",
+                                            "key": "field_5ec6ca0647e56",
+                                            "label": "Bas",
                                             "name": "bottom",
                                             "type": "true_false",
                                             "instructions": "",
@@ -604,15 +566,15 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec5677cb93c8",
-                                            "label": "Left",
-                                            "name": "left",
+                                            "key": "field_5ec6ca0647e57",
+                                            "label": "Centrer",
+                                            "name": "center",
                                             "type": "true_false",
                                             "instructions": "",
                                             "required": 0,
@@ -623,26 +585,7 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
-                                            "ui": 1,
-                                            "ui_on_text": "✓",
-                                            "ui_off_text": "-"
-                                        },
-                                        {
-                                            "key": "field_5ec5677cb93c9",
-                                            "label": "Right",
-                                            "name": "right",
-                                            "type": "true_false",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
@@ -650,8 +593,8 @@
                                     ]
                                 },
                                 {
-                                    "key": "field_5ec5677cb93ca",
-                                    "label": "Marges intérieurs (padding)",
+                                    "key": "field_5ec6ca0647e58",
+                                    "label": "Marges intérieures (padding)",
                                     "name": "padding",
                                     "type": "group",
                                     "instructions": "",
@@ -665,8 +608,8 @@
                                     "layout": "table",
                                     "sub_fields": [
                                         {
-                                            "key": "field_5ec5677cb93cb",
-                                            "label": "Top",
+                                            "key": "field_5ec6ca0647e59",
+                                            "label": "Haut",
                                             "name": "top",
                                             "type": "true_false",
                                             "instructions": "",
@@ -678,14 +621,14 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec5677cb93cc",
-                                            "label": "Bottom",
+                                            "key": "field_5ec6ca0647e5a",
+                                            "label": "Bas",
                                             "name": "bottom",
                                             "type": "true_false",
                                             "instructions": "",
@@ -697,15 +640,15 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
                                         },
                                         {
-                                            "key": "field_5ec5677cb93cd",
-                                            "label": "Left",
-                                            "name": "left",
+                                            "key": "field_5ec6ca0647e5b",
+                                            "label": "Centrer",
+                                            "name": "center",
                                             "type": "true_false",
                                             "instructions": "",
                                             "required": 0,
@@ -716,26 +659,7 @@
                                                 "id": ""
                                             },
                                             "message": "",
-                                            "default_value": 0,
-                                            "ui": 1,
-                                            "ui_on_text": "✓",
-                                            "ui_off_text": "-"
-                                        },
-                                        {
-                                            "key": "field_5ec5677cb93ce",
-                                            "label": "Right",
-                                            "name": "right",
-                                            "type": "true_false",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "message": "",
-                                            "default_value": 0,
+                                            "default_value": 1,
                                             "ui": 1,
                                             "ui_on_text": "✓",
                                             "ui_off_text": "-"
@@ -761,7 +685,7 @@
                             "library": "all",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": "mp4"
+                            "mime_types": "mp4, webm"
                         }
                     ],
                     "min": "",
@@ -1032,5 +956,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1589995519
+    "modified": 1590086165
 }
