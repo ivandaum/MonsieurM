@@ -17,6 +17,10 @@ class SingleProject {
     public function formatContent($content) {
         $r = array();
 
+        if(!$content) {
+            return $r;
+        }
+
         foreach($content as $entry) {
             $layout = $entry['acf_fc_layout'];
             $row = array();
