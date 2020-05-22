@@ -21,40 +21,46 @@ class SingleProject {
             return $r;
         }
 
-        foreach($content as $entry) {
+        $isFirstImage = false;
+        foreach($content as $k => $entry) {
             $layout = $entry['acf_fc_layout'];
-            $row = array();
+            $row = array(
+                'className' => ''
+            );
 
             if ($layout === 'image' || $layout === 'video') {
 
-                $row = array(
+                $row = array_merge($row, array(
                     'layout' => $layout,
                     'color' => $this->getIfExists($entry['settings']['color'], 'background'),
                     'margin' => $this->getMargin($entry['settings'], 'margin'),
                     'padding' => $this->getMargin($entry['settings'], 'padding'),
-                );
-
+                ));
                 $row[$layout] = $entry['source'];
-
             }
 
             else if ($layout === 'text') {
-                $row = array(
+                $row = array_merge($row, array(
                     'layout' => $layout,
                     'content' => $entry['source'],
                     'background' => $this->getIfExists($entry['color'], 'background'),
                     'color' => $this->getIfExists($entry['color'], 'text')
-                );
+                ));
             }
 
             else if ($layout === 'columns') {
-                $row = array(
+                $row = array_merge($row, array(
                     'layout' => $layout,
                     'content' => $entry['content'],
                     'title' => $entry['settings']['title'],
                     'background' => $this->getIfExists($entry['settings']['color'], 'background'),
                     'color' => $this->getIfExists($entry['settings']['color'], 'text')
-                );
+                ));
+            }
+
+            if($layout === 'image' && !$isFirstImage) {
+                $row['className'] .= 'first-image';
+                $isFirstImage = true;
             }
 
             $r[] = $row;

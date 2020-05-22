@@ -1,0 +1,32 @@
+:root {
+    --padding-large: 9rem;
+    --padding: 5rem;
+
+    --color-black: #000;
+    --color-white: #fff;
+
+    --easing: cubic-bezier(0.59, 0.01, 0.4, 0.98);
+    --speed: 0.5s;
+
+    --font-serif: 'Canela', 'Times new Roman', Times, serif;
+    --font-text: 'Maison Neue', Helvetica, Arial, sans-serif;
+    --font-title: 'Adieu', Helvetica, Arial, sans-serif;
+}
+
+@include tablet-only {
+    :root {
+        --padding-large: 6rem;
+    }
+}
+
+@include phone-only {
+    :root {
+        --padding-large: 3.5rem;
+    }
+}
+
+@include phone-s-only {
+    :root {
+        --padding-large: 3.5rem;
+    }
+}

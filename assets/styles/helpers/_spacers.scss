@@ -34,38 +34,38 @@ $properties: (margin, padding);
 }
 
 .has-padding-top {
-    padding-top: $padding-large;
+    padding-top: var(--padding-large);
 }
 
 .has-padding-bottom {
-    padding-bottom: $padding-large;
+    padding-bottom: var(--padding-large);
 }
 
 .has-padding-left {
-    padding-left: $padding-large;
+    padding-left: var(--padding-large);
 }
 
 .has-padding-right {
-    padding-right: $padding-large;
+    padding-right: var(--padding-large);
 }
 
 .has-margin-top {
-    margin-top: $padding-large;
+    margin-top: var(--padding-large);
 }
 
 .has-margin-bottom {
-    margin-bottom: $padding-large;
+    margin-bottom: var(--padding-large);
 }
 
 .has-margin-left {
-    margin-left: $padding-large;
+    margin-left: var(--padding-large);
 }
 
 .has-margin-right {
-    margin-right: $padding-large;
+    margin-right: var(--padding-large);
 }
 
 .has-margin-center {
-    margin-right: $padding-large;
-    margin-left: $padding-large;
+    margin-right: var(--padding-large);
+    margin-left: var(--padding-large);
 }

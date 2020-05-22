@@ -3,7 +3,7 @@
     line-height: 1.4em;
 
     &__header {
-        padding-top: calc(50vh + #{$padding-large});
+        padding-top: calc(50vh + #{var(--padding-large)});
         min-height: 100vh;
     }
 
@@ -19,9 +19,10 @@
         }
     }
 
-    &__content {
+    &__row {
+        background: var(--color-white);
         &--columns {
-            padding: 12rem $padding-large 15rem $padding-large;
+            padding: 12rem var(--padding-large) 15rem var(--padding-large);
 
             p:first-of-type {
                 padding-bottom: 0.8rem;
@@ -29,12 +30,37 @@
         }
 
         &--text {
-            padding: 20rem $padding-large;
+            padding: 20rem var(--padding-large);
+
+            @include touch {
+                padding-top: var(--padding);
+                padding-bottom: var(--padding);
+            }
         }
 
-        .has-padding-center &--media {
-            width: calc(100vw - #{$padding-large * 4});
+        .has-padding-center &--video,
+        .has-padding-center &--image {
+            width: calc(100vw - (var(--padding-large) * 4));
             margin: 0 auto;
+        }
+    }
+
+    &__row--media.first-image {
+        height: 100vh;
+
+        picture {
+            height: 100%;
+            width: 100%;
+            padding-top: 0 !important;
+        }
+
+        img {
+            position: fixed;
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
         }
     }
 }

@@ -39,8 +39,14 @@
 
 .is-column {
     @for $i from 1 through 12 {
-        &.is-#{$i} {
-            @include desktop {
+        &.is-#{$i}-widescreen {
+            @include widescreen-only {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-desktop {
+            @include desktop-only {
                 width: $i / 12 * 100%;
             }
         }
@@ -53,6 +59,12 @@
 
         &.is-#{$i}-phone {
             @include phone-only {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i} {
+            @include desktop {
                 width: $i / 12 * 100%;
             }
         }

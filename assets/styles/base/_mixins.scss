@@ -38,17 +38,17 @@
 }
 
 @mixin font-title {
-    font-family: $font-title;
-    font-weight: map-get($fontweight, bold);
+    font-family: var(--font-title);
+    font-weight: map-get($fontWeight, bold);
     text-transform: uppercase;
 }
 
 @mixin font-text {
-    font-family: $font-text;
-    font-weight: map-get($fontweight, light);
+    font-family: var(--font-text);
+    font-weight: map-get($fontWeight, light);
 }
 
 @mixin font-serif {
-    font-family: $font-serif;
-    font-weight: map-get($fontweight, thin);
+    font-family: var(--font-serif);
+    font-weight: map-get($fontWeight, light);
 }

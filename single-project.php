@@ -26,49 +26,52 @@
     </div>
 
     <div class="Project__content">
-        <?php foreach($project->content as $row): ?>
-            <?php if($row['layout'] === 'image'): ?>
-                <div 
-                    class="is-flex <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
-                    style="background-color: <?= $row['color'] ?>">
-                        <div class="Project__content--media is-relative is-block has-width-100">
-                            <?= Image::create($row['image']) ?>
-                        </div>
-                </div>
-            <?php endif; ?>
+        <?php foreach($project->content as $k => $row): ?>
+            <div class="Project__row is-flex is-center is-relative">
 
-            <?php if($row['layout'] === 'video'): ?>
-                <div 
-                    class="is-flex Project__content--video <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
-                    style="background-color: <?= $row['color'] ?>">
-                    <div class="Project__content--media is-relative is-block  has-width-100">
-                            <?= Video::create($row['video']); ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-            <?php if($row['layout'] === 'columns'): ?>
-                <div class="Project__content--columns is-flex is-wrap container" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
-                    <div class="is-column is-6">
-                        <h2 class="has-font-title"><?= $row['title'] ?></h2>
-                    </div>
-                    <div class="is-column is-6 is-flex is-wrap">
-                        <?php foreach($row['content'] as $column): ?>
-                            <div class="is-column is-4 is-padding-bottom-3">
-                                <p class="has-text-bold"><?= $column['title'] ?></p>
-                                <p><?= $column['content'] ?></p>
+                <?php if($row['layout'] === 'image'): ?>
+                    <div
+                        class="Project__row--media has-width-100 is-relative <?= $row['className'] ?>  <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                        style="background-color: <?= $row['color'] ?>">
+                            <div class="Project__row--image is-relative is-block has-width-100">
+                                <?= Image::create($row['image']) ?>
                             </div>
-                        <?php endforeach; ?>
                     </div>
-                </div>
-            <?php endif; ?>
+                <?php endif; ?>
 
-            <?php if($row['layout'] === 'text'): ?>
-                <div class="Project__content--text is-flex is-wrap container" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
-                    <div class="is-column is-6"></div>
-                    <div class="is-column is-4 has-wp-content"><?= Text::cleanWpEditor(apply_filters('the_content', $row['content'])) ?></div>
-                </div>
-            <?php endif; ?>
+                <?php if($row['layout'] === 'video'): ?>
+                    <div 
+                        class="Project__row--media has-width-100 is-relative <?= $row['className'] ?> <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                        style="background-color: <?= $row['color'] ?>">
+                        <div class="Project__row--video is-relative is-block  has-width-100">
+                                <?= Video::create($row['video']); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($row['layout'] === 'columns'): ?>
+                    <div class="Project__row--columns has-width-100 is-flex is-wrap container is-relative <?= $row['className'] ?>" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
+                        <div class="is-column is-6 is-4-tablet">
+                            <h2 class="has-font-title"><?= $row['title'] ?></h2>
+                        </div>
+                        <div class="is-column is-6 is-flex is-wrap">
+                            <?php foreach($row['content'] as $column): ?>
+                                <div class="is-column is-4 is-4 is-6-tablet is-padding-bottom-3">
+                                    <p class="has-text-bold"><?= $column['title'] ?></p>
+                                    <p><?= $column['content'] ?></p>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if($row['layout'] === 'text'): ?>
+                    <div class="Project__row--text has-width-100 is-flex is-wrap container is-relative <?= $row['className'] ?>" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
+                        <div class="is-column is-6 is-4-tablet"></div>
+                        <div class="is-column is-4 is-6-tablet has-wp-content"><?= Text::cleanWpEditor(apply_filters('the_content', $row['content'])) ?></div>
+                    </div>
+                <?php endif; ?>
+            </div>
         <?php endforeach; ?>
     </div>
 </article>

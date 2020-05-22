@@ -1,10 +1,4 @@
-$color-black: #000;
-$color-white: #fff;
-$color-grey: #f2f2f2;
-
-$bezier: cubic-bezier(0.59, 0.01, 0.4, 0.98);
-$easing: $bezier;
-$speed: 0.5s;
+$fontPath: '/wp-content/themes/monsieurm-2020/assets/fonts/';
 
 $zindex: (
     above-all: 99,
@@ -17,28 +11,20 @@ $zindex: (
     base: 1,
 );
 
-$fontweight: (
-    thin: 300,
+$fontWeight: (
+    thin: 100,
     light: 300,
     normal: normal,
     medium: 500,
-    bold: bold,
+    bold: 500,
 );
 
 $breakpoints: (
+    max: 2000px,
+    large: 1600px,
     widescreen: 1280px,
-    desktop: 1000px,
+    desktop: 1024px,
     tablet: 768px,
-    phone: 767px,
-    phone-s: 500px,
-    phone-xs: 360px,
+    phone: 545px,
+    phone-s: 360px,
 );
-
-$font-path: '/wp-content/themes/monsieurm-2020/assets/fonts/';
-
-$font-serif: 'Canela', 'Times new Roman', Times, serif;
-$font-text: 'Maison Neue', Helvetica, Arial, sans-serif;
-$font-title: 'Adieu', Helvetica, Arial, sans-serif;
-
-$padding-large: 9rem;
-$padding: 5rem;
