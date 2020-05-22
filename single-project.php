@@ -29,17 +29,21 @@
         <?php foreach($project->content as $row): ?>
             <?php if($row['layout'] === 'image'): ?>
                 <div 
-                    class="Project__content--media is-flex Project__content--image <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                    class="is-flex <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
                     style="background-color: <?= $row['color'] ?>">
-                    <?= Image::create($row['image']) ?>
+                        <div class="Project__content--media is-relative is-block has-width-100">
+                            <?= Image::create($row['image']) ?>
+                        </div>
                 </div>
             <?php endif; ?>
 
             <?php if($row['layout'] === 'video'): ?>
                 <div 
-                    class="Project__content--media is-flex Project__content--video <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
+                    class="is-flex Project__content--video <?= $row['margin']['className'] ?> <?= $row['padding']['className'] ?>" 
                     style="background-color: <?= $row['color'] ?>">
-                    <?= Video::create($row['video']); ?>
+                    <div class="Project__content--media is-relative is-block  has-width-100">
+                            <?= Video::create($row['video']); ?>
+                    </div>
                 </div>
             <?php endif; ?>
 

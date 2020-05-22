@@ -28,20 +28,12 @@
             }
         }
 
-        &--media picture,
-        &--media video {
-            width: 100%;
-            height: auto;
-            margin: 0;
-        }
-
         &--text {
             padding: 20rem $padding-large;
         }
 
-        .has-padding-center picture,
-        .has-padding-center video {
-            max-width: calc(100vw - #{$padding-large * 4});
+        .has-padding-center &--media {
+            width: calc(100vw - #{$padding-large * 4});
             margin: 0 auto;
         }
     }
