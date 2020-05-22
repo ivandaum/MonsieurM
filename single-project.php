@@ -14,7 +14,7 @@
         <p class="is-h1 has-font-serif " style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
     </div>
 
-    <div class="Project__introduction container is-flex is-wrap" style="background-color: <?= $project->color_secondary ?>; color: <?= $project->color_intro ?>">
+    <div class="Project__introduction container is-flex is-wrap" style="background-color: <?= $project->color_secondary ?>; color: <?= $project->color_details ?>">
         <?php if($project->details): ?>
             <?php foreach($project->details as $title => $content): ?>
             <div class="is-column is-3">

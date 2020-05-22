@@ -100,8 +100,23 @@
         },
         {
             "key": "field_5ec40bf251634",
-            "label": "Couleur du texte d'introduction",
+            "label": "Couleur de la phrase d'introduction",
             "name": "project__color-intro",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#FFF"
+        },
+        {
+            "key": "field_5ec7e8a91f23a",
+            "label": "Couleur des détails du projet (agence, role, ...)",
+            "name": "project__color-details",
             "type": "color_picker",
             "instructions": "",
             "required": 0,
@@ -956,5 +971,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1590086165
+    "modified": 1590160334
 }
