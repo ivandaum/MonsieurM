@@ -58,7 +58,7 @@
         }
 
         &.is-#{$i}-phone {
-            @include phone-only {
+            @include phone {
                 width: $i / 12 * 100%;
             }
         }

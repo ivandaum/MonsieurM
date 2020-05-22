@@ -51,13 +51,13 @@
 
                 <?php if($row['layout'] === 'columns'): ?>
                     <div class="Project__row--columns has-width-100 is-flex is-wrap container is-relative <?= $row['className'] ?>" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
-                        <div class="is-column is-6 is-4-tablet">
+                        <div class="is-column is-6 is-4-tablet is-12-phone">
                             <h2 class="has-font-title"><?= $row['title'] ?></h2>
                         </div>
-                        <div class="is-column is-6 is-flex is-wrap">
+                        <div class="is-column is-6 is-flex is-12-phone is-wrap">
                             <?php foreach($row['content'] as $column): ?>
-                                <div class="is-column is-4 is-4 is-6-tablet is-padding-bottom-3">
-                                    <p class="has-text-bold"><?= $column['title'] ?></p>
+                                <div class="is-column is-4 is-4 is-6-tablet is-12-phone is-padding-bottom-3">
+                                    <p class="has-text-bold is-padding-top-2-touch"><?= $column['title'] ?></p>
                                     <p><?= $column['content'] ?></p>
                                 </div>
                             <?php endforeach; ?>
