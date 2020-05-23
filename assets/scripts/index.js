@@ -4,7 +4,9 @@ import Highway from '@dogstudio/highway'
 import store from './utils/store'
 
 import DefaultRenderer from './renderer/DefaultRenderer'
+import WorkRenderer from './renderer/WorkRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
+import WorkToProjectTransition from './transitions/WorkToProjectTransition'
 import Nav from './animations/Nav'
 
 store.setGlobalVars()
@@ -14,10 +16,13 @@ const core = new Highway.Core({
     renderers: {
         home: DefaultRenderer,
         project: DefaultRenderer,
-        work: DefaultRenderer,
+        work: WorkRenderer,
     },
     transitions: {
         default: DefaultTransition,
+        contextual: {
+            workToProject: WorkToProjectTransition,
+        },
     },
 })
 

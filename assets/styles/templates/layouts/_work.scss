@@ -1,12 +1,34 @@
+.js-fade-item,
+.Work__project--cover {
+    transition: opacity var(--speed) var(--easing);
+}
+
 .Work {
     &__project {
-        transition: color var(--speed) ease-in-out;
         color: var(--color-grey);
-        z-index: map-get($zindex, section);
+        transition: color var(--speed) var(--easing);
 
-        &:hover {
-            color: var(--color-black);
-            z-index: map-get($zindex, under-header);
+        &--title {
+            white-space: nowrap;
+            width: 100%;
+            z-index: map-get($zindex, section);
+        }
+
+        &--cover {
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            z-index: map-get($zindex, base);
+        }
+    }
+
+    &__project:hover,
+    &__project.is-active {
+        color: var(--color-black);
+
+        .Work__project--cover {
+            opacity: 1;
         }
     }
 }

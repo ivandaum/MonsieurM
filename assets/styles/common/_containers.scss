@@ -21,7 +21,7 @@ body main {
 
 body.locked {
     overflow: hidden;
-    height: calc(100vh);
+    height: 100vh;
 }
 
 .container {
@@ -30,10 +30,10 @@ body.locked {
     display: block;
     z-index: map-get($zindex, section);
     margin: 0 auto;
-    padding: var(--padding-large);
+    padding: 0 var(--padding-large);
 }
 
-.container-top {
-    padding-top: calc(50vh + #{var(--padding-large)});
+.section-top {
+    padding-top: 50vh;
     min-height: 100vh;
 }

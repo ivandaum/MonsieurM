@@ -22,6 +22,10 @@
     text-align: center;
 }
 
+.has-text-right {
+    text-align: right;
+}
+
 .has-text-left {
     text-align: left;
 }
@@ -72,11 +76,11 @@
 }
 
 .is-h3 {
-    font-size: 3.1rem;
+    font-size: 3.8rem;
     line-height: 1em;
 
     @include desktop-only {
-        font-size: 3.8rem;
+        font-size: 3.1rem;
     }
 
     @include tablet-only {

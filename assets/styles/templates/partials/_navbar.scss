@@ -1,8 +1,13 @@
 .Navbar {
     z-index: map-get($zindex, header);
+    padding: var(--padding-large);
 
     a.is-active {
         opacity: 0.2;
         pointer-events: none;
     }
+}
+
+body.single .Navbar {
+    color: var(--color-grey);
 }

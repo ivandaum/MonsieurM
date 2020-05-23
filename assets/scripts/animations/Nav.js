@@ -7,7 +7,6 @@ class Nav {
 
     bindActiveLink() {
         this.$items.forEach((item) => {
-            console.log(item.href, window.location.href)
             if (item.href === window.location.href) {
                 item.classList.add('is-active')
             } else {

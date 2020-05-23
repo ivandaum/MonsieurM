@@ -9,7 +9,7 @@
     get_header();
 ?>
 <article class="Project" data-router-view="project">
-    <div class="container-top container" style="background-color: <?= $project->color_secondary ?>">
+    <div class="section-top container" style="background-color: <?= $project->color_secondary ?>">
         <h1 class="is-h1 has-font-serif" style="color: <?= $project->color ?>"><?= $project->title ?></h1>
         <p class="is-h1 has-font-serif" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
     </div>

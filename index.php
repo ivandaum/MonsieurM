@@ -8,8 +8,8 @@
 
     get_header();
 ?>
-<article class="Home container-fluid is-flex" data-router-view="home">
-    <div class="container container-top is-padding-center">
+<article class="Home section-top container-fluid is-flex" data-router-view="home">
+    <div class="container is-padding-center">
         <h1 class="is-h3 has-font-title is-flex is-padding-bottom-2 is-padding-bottom-2-touch"><?= get_the_title() ?></h1>
         <p class="Home__intro is-h1 has-font-serif"><?= $home->intro ?></p>
     </div>
