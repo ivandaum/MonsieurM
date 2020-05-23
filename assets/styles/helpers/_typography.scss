@@ -70,3 +70,24 @@
         font-size: 4.2rem;
     }
 }
+
+.is-h3 {
+    font-size: 3.1rem;
+    line-height: 1em;
+
+    @include desktop-only {
+        font-size: 3.8rem;
+    }
+
+    @include tablet-only {
+        font-size: 2.8rem;
+    }
+
+    @include phone-only {
+        font-size: 2.4rem;
+    }
+
+    @include phone-s-only {
+        font-size: 1.8rem;
+    }
+}

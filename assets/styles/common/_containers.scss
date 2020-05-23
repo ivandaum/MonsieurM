@@ -32,3 +32,8 @@ body.locked {
     margin: 0 auto;
     padding: var(--padding-large);
 }
+
+.container-top {
+    padding-top: calc(50vh + #{var(--padding-large)});
+    min-height: 100vh;
+}

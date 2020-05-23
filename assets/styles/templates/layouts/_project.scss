@@ -2,10 +2,6 @@
     font-size: 1.4rem;
     line-height: 1.4em;
 }
-.Project__header {
-    padding-top: calc(50vh + #{var(--padding-large)});
-    min-height: 100vh;
-}
 
 .Project__introduction {
     padding-bottom: 5rem;

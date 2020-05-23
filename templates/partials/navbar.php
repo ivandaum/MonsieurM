@@ -2,9 +2,13 @@
     use MonsieurM\Core\Utils\Menu;
 
     $menu = Menu::get('header');
+
 ?>
-<!-- <nav class="Navbar js-navbar has-width-100 is-h3 is-sticky is-flex is-center is-uppercase has-border-bottom">
-    <div class="container is-flex is-center-y is-justified-x">
-        
-    </div>
-</nav> -->
+
+<nav class="Navbar is-absolute has-width-100">
+    <ul class="container is-flex is-justified-x has-padding-center">
+        <?php foreach($menu as $item): ?>
+            <li class="has-font-title"><a href="<?= $item->url ?>"><?= $item->title ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+</nav>

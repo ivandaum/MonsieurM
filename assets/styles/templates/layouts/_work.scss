@@ -1,9 +1,10 @@
 .Work {
-    h1 {
-        font-size: 3.8rem;
-    }
-
     &__project {
+        transition: color var(--speed) var(--easing);
         color: var(--color-grey);
+
+        &:hover {
+            color: var(--color-black);
+        }
     }
 }
