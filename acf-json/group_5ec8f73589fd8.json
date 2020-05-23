@@ -45,12 +45,11 @@
         "slug",
         "author",
         "format",
-        "page_attributes",
         "categories",
         "tags",
         "send-trackbacks"
     ],
     "active": 1,
     "description": "",
-    "modified": 1590229482
+    "modified": 1590234253
 }
