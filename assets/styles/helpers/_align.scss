@@ -53,7 +53,13 @@
 .is-column {
     @for $i from 1 through 12 {
         &.is-#{$i}-widescreen {
-            @include widescreen-only {
+            @include widescreen {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-desktop {
+            @include desktop-only {
                 width: $i / 12 * 100%;
             }
         }

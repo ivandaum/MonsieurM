@@ -1,3 +1,8 @@
 .Navbar {
     z-index: map-get($zindex, header);
+
+    li.is-active {
+        opacity: 0.2;
+        pointer-events: none;
+    }
 }

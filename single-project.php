@@ -61,10 +61,11 @@
 
                 <?php if($row['layout'] === 'columns'): ?>
                     <div class="Project__row--columns has-width-100 is-flex is-wrap container is-relative <?= $row['className'] ?>" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
-                        <div class="is-column is-6-widescreen is-4 is-4-tablet is-12-phone is-padding-bottom-3-touch">
+                        <div class="is-column is-6-widescreen is-4-desktop is-4-tablet is-12-phone is-padding-bottom-3-touch">
                             <h2 class="has-font-title"><?= $row['title'] ?></h2>
                         </div>
-                        <div class="is-column is-flex is-6-widescreen is-8 is-8-tablet is-12-phone is-wrap">
+
+                        <div class="is-column is-flex is-6-widescreen is-8-desktop is-8-tablet is-12-phone is-wrap">
                             <?php foreach($row['content'] as $column): ?>
                                 <div class="is-column is-4 is-6-tablet is-12-phone is-padding-bottom-3 is-padding-bottom-2-touch">
                                     <p class="has-text-light"><?= $column['title'] ?></p>

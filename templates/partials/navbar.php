@@ -1,5 +1,6 @@
 <?php
     use MonsieurM\Core\Utils\Menu;
+    use MonsieurM\Core\Utils\Url;
 
     $menu = Menu::get('header');
 
@@ -8,7 +9,7 @@
 <nav class="Navbar is-absolute has-width-100">
     <ul class="container is-flex is-justified-x has-padding-center">
         <?php foreach($menu as $item): ?>
-            <li class="has-font-title"><a href="<?= $item->url ?>"><?= $item->title ?></a></li>
+            <li class="has-font-title <?php if(Url::getCurrent() === $item->url): ?>is-active <?php endif; ?>"><a href="<?= $item->url ?>"><?= $item->title ?></a></li>
         <?php endforeach; ?>
     </ul>
 </nav>
