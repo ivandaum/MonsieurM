@@ -1,6 +1,7 @@
 $directions: (top, left, bottom, right);
 $properties: (margin, padding);
 
+// is-padding-top-1 --> add 1rem on padding top
 @include desktop {
     @for $i from 1 through 12 {
         @each $prop in $properties {
@@ -33,39 +34,29 @@ $properties: (margin, padding);
     }
 }
 
-.has-padding-top {
-    padding-top: var(--padding-large);
+// is-padding-top --> add var(--padding-large)
+@each $prop in $properties {
+    @each $direction in $directions {
+        .is-#{$prop}-#{$direction} {
+            #{$prop}-#{$direction}: var(--padding-large);
+        }
+    }
 }
 
-.has-padding-bottom {
-    padding-bottom: var(--padding-large);
+.is-padding-center > div {
+    width: calc(100vw - (var(--padding-large) * 4));
+    margin: 0 auto;
 }
 
-.has-padding-left {
-    padding-left: var(--padding-large);
-}
-
-.has-padding-right {
-    padding-right: var(--padding-large);
-}
-
-.has-margin-top {
-    margin-top: var(--padding-large);
-}
-
-.has-margin-bottom {
-    margin-bottom: var(--padding-large);
-}
-
-.has-margin-left {
-    margin-left: var(--padding-large);
-}
-
-.has-margin-right {
-    margin-right: var(--padding-large);
-}
-
-.has-margin-center {
+.is-margin-center {
     margin-right: var(--padding-large);
     margin-left: var(--padding-large);
+}
+
+.has-width-100 {
+    width: 100%;
+}
+
+.has-height-100 {
+    height: 100%;
 }

@@ -14,6 +14,10 @@
     font-weight: map-get($fontWeight, medium);
 }
 
+.has-text-light {
+    font-weight: map-get($fontWeight, light);
+}
+
 .has-text-center {
     text-align: center;
 }
@@ -43,5 +47,26 @@
         margin-top: 3.2rem;
         margin-bottom: 0.8rem;
         display: block;
+    }
+}
+
+.is-h1 {
+    font-size: 12rem;
+    line-height: 1em;
+
+    @include desktop-only {
+        font-size: 9.4rem;
+    }
+
+    @include tablet-only {
+        font-size: 8rem;
+    }
+
+    @include phone-only {
+        font-size: 6rem;
+    }
+
+    @include phone-s-only {
+        font-size: 4.2rem;
     }
 }

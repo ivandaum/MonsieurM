@@ -21,12 +21,10 @@ class SingleProject {
             return $r;
         }
 
-        $isFirstImage = false;
         foreach($content as $k => $entry) {
             $layout = $entry['acf_fc_layout'];
-            $row = array(
-                'className' => ''
-            );
+
+            $row = array('className' => '');
 
             if ($layout === 'image' || $layout === 'video') {
 
@@ -58,11 +56,6 @@ class SingleProject {
                 ));
             }
 
-            if($layout === 'image' && !$isFirstImage) {
-                $row['className'] .= 'first-image';
-                $isFirstImage = true;
-            }
-
             $r[] = $row;
         }
 
@@ -77,7 +70,7 @@ class SingleProject {
         foreach($arr[$attrName] as $name => $value) {
             $m[$name] = $value;
             if($value) {
-                $className .= 'has-'. $attrName . '-' . $name . ' ';
+                $className .= 'is-'. $attrName . '-' . $name . ' ';
             }
         }
 

@@ -62,7 +62,7 @@
 
 // from 999px down (tablet & phone)
 @mixin phone {
-    @media all and (max-width: map-get($breakpoints, phone) - 1px) {
+    @media all and (max-width: map-get($breakpoints, tablet) - 1px) {
         @content;
     }
 }

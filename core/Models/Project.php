@@ -15,6 +15,7 @@ class Project {
         'color_secondary' => 'project__color-secondary',
         'color_intro' => 'project__color-intro',
         'color_details' => 'project__color-details',
+        'cover' => 'project__cover',
         'catchline' => 'project__catchline',
         'agency' => 'project__agency',
         'project' => 'project__project',

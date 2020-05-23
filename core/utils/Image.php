@@ -6,7 +6,16 @@ class Image {
     public static $mimeType;
     public static $title;
 
-    public static function createThumbnail($image, $relations = array('769' => 'tablet', '359' => 'phone',)) {
+    public static function createHD($image, $relations = array(
+        '1999' => 'full',
+        '1599' => 'max',
+        '359' => 'widescreen',
+        '1' => '1x1',
+    )) {
+        return self::create($image, $relations);
+    }
+
+    public static function createThumbnail($image, $relations = array('359' => 'tablet', '160' => 'phone', '1' => '1x1')) {
         return self::create($image, $relations);
     }
 
@@ -26,7 +35,9 @@ class Image {
                 '1279' => 'widescreen',
                 '999' => 'desktop',
                 '769' => 'tablet',
-                '359' => 'phone',
+                '360' => 'tablet',
+                '319' => 'phone',
+                '160' => 'phone',
                 '1' => '1x1',
             );
         }
@@ -54,12 +65,9 @@ class Image {
         $ref = array_slice($sources, 0, 1)[0];
         $last = array_slice($sources, -1, 2)[0];
 
-        // debug($ref);
         $html = '<picture style="padding-top:'. ($ref['height'] / $ref['width'] * 100) . '%;">';
         
         foreach($sources as $size => $image) {
-
-            ob_start();
             $html .= '<source type="image/webp" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '.webp"></source>';
             $html .= '<source type="' . self::$mimeType . '" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '"></source>';
         }

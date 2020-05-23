@@ -4,6 +4,7 @@
 
     --color-black: #000;
     --color-white: #fff;
+    --color-grey: #c9c9c9;
 
     --easing: cubic-bezier(0.59, 0.01, 0.4, 0.98);
     --speed: 0.5s;
@@ -27,6 +28,6 @@
 
 @include phone-s-only {
     :root {
-        --padding-large: 3.5rem;
+        --padding-large: 2rem;
     }
 }

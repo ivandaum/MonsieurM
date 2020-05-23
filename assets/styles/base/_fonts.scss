@@ -18,7 +18,7 @@
     font-family: 'Maison Neue';
     src: url($fontPath + 'MaisonNeue-Light.woff2') format('woff2'),
         url($fontPath + 'MaisonNeue-Light.woff') format('woff');
-    font-weight: map-get($fontWeight, light);
+    font-weight: map-get($fontWeight, thin);
     font-style: normal;
 }
 
@@ -26,7 +26,7 @@
     font-family: 'Maison Neue';
     src: url($fontPath + 'MaisonNeue-Demi.woff2') format('woff2'),
         url($fontPath + 'MaisonNeue-Demi.woff') format('woff');
-    font-weight: map-get($fontWeight, normal);
+    font-weight: map-get($fontWeight, light);
     font-style: normal;
 }
 
