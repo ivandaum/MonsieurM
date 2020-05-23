@@ -5,6 +5,7 @@ import store from './utils/store'
 
 import DefaultRenderer from './renderer/DefaultRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
+import Nav from './animations/Nav'
 
 store.setGlobalVars()
 window.addEventListener('resize', () => store.setGlobalVars())
@@ -32,16 +33,7 @@ core.on('NAVIGATE_END', () => {
 core.on('NAVIGATE_IN', ({ to }) => {
     to.page.body.classList.add('loading')
     document.body.classList = to.page.body.classList
-
-    // for (let i = 0; i < NavbarAnimation.$items.length; i += 1) {
-    //     const $item = NavbarAnimation.$items[i]
-
-    //     $item.classList.remove('is-active')
-
-    //     if ($item.href === location.href) {
-    //         $item.classList.add('is-active')
-    //     }
-    // }
+    Nav.bindActiveLink()
 })
 
 core.on('NAVIGATE_ERROR', ({ location }) => {
