@@ -1,6 +1,6 @@
 import anime from 'animejs'
-import breakpoints from '../utils/breakpoints'
-import store from '../utils/store'
+// import breakpoints from '../utils/breakpoints'
+// import store from '../utils/store'
 
 export const getScrollTop = () =>
     document.body.scrollTop ||
@@ -18,16 +18,11 @@ export const getOffsetTop = ($element) => {
 /**
  * NOTE : function is using animejs
  */
-export const scrollTo = ({ container, from, y, dur, complete, update }) => {
+export const scrollTo = ({ y, complete }) => {
     const easing = 'easeInOutExpo'
-    const duration = dur || 1000
-    const targets = { y: from || getScrollTop() }
-
-    if (store.windowWidth >= breakpoints.desktop) {
-        container = container || document.body
-    } else {
-        container = window
-    }
+    const duration = 2000
+    const targets = { y: getScrollTop() }
+    const container = window
 
     anime({
         targets,
@@ -36,9 +31,6 @@ export const scrollTo = ({ container, from, y, dur, complete, update }) => {
         easing,
         update: () => {
             container.scrollTo(0, targets.y)
-            if (update) {
-                update(targets.y)
-            }
         },
         complete,
     })

@@ -6,4 +6,12 @@ export default {
         this.windowHeight = window.innerHeight
         this.windowWidth = window.innerWidth
     },
+
+    lockDOM() {
+        document.querySelector('main').classList.add('locked')
+    },
+
+    unlockDOM() {
+        document.querySelector('main').classList.remove('locked')
+    },
 }

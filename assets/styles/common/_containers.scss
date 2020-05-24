@@ -13,13 +13,14 @@ body {
     position: relative;
     color: var(--color-black);
     @include font-text;
+    overflow-y: scroll;
 }
 
 body main {
     position: relative;
 }
 
-body.locked {
+.locked {
     overflow: hidden;
     height: 100vh;
 }

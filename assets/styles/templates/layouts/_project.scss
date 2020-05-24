@@ -1,6 +1,23 @@
 .Project {
     font-size: 1.4rem;
     line-height: 1.4em;
+
+    h1 {
+        white-space: nowrap;
+    }
+
+    &.appear-in {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: map-get($zindex, above-section);
+    }
+}
+
+.Project__background {
+    top: 0;
+    left: 0;
+    will-change: height;
 }
 
 .Project__introduction {
@@ -60,6 +77,13 @@
         @include touch {
             padding-top: var(--padding);
             padding-bottom: var(--padding);
+        }
+
+        strong {
+            @include font-title;
+            margin-top: 3.2rem;
+            margin-bottom: 0.8rem;
+            display: block;
         }
     }
 }

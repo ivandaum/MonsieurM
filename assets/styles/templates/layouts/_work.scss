@@ -31,4 +31,14 @@
             opacity: 1;
         }
     }
+
+    &__other {
+        height: 100vh;
+        font-size: 2rem;
+        line-height: 2.8rem;
+
+        p {
+            max-width: 58rem;
+        }
+    }
 }

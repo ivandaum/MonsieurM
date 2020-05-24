@@ -46,11 +46,28 @@
     font-size: 1.4rem;
     line-height: 2rem;
 
+    b,
     strong {
-        @include font-title;
-        margin-top: 3.2rem;
-        margin-bottom: 0.8rem;
-        display: block;
+        font-weight: map-get($fontWeight, light);
+    }
+
+    a {
+        position: relative;
+
+        &::before {
+            position: absolute;
+            content: '';
+            right: 0;
+            height: 0.1rem;
+            background: var(--color-black);
+            bottom: 0;
+            width: 100%;
+            transition: width var(--speed) var(--easing);
+        }
+
+        &:hover::before {
+            width: 0;
+        }
     }
 }
 

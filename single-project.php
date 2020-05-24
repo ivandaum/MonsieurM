@@ -8,25 +8,31 @@
 
     get_header();
 ?>
-<article class="Project" data-router-view="project">
-    <div class="section-top container" style="background-color: <?= $project->color_secondary ?>">
-        <h1 class="is-h1 has-font-serif" style="color: <?= $project->color ?>"><?= $project->title ?></h1>
-        <p class="is-h1 has-font-serif" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
-    </div>
+<article class="Project" data-router-view="project" data-color="<?= $project->color ?>">
+    <div class="is-relative">
+        <div class="section-top container js-project is-padding-bottom">
+            <h1 class="is-h1 has-font-serif js-project-title" style="color: <?= $project->color ?>"><?= $project->title ?></h1>
+            <p class="is-h1 has-font-serif js-project-intro" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
+        </div>
+    
+        <div class="Project__introduction container is-flex is-wrap is-padding-top" style="color: <?= $project->color_details ?>">
+            <?php if($project->details): ?>
+                <?php foreach($project->details as $title => $content): ?>
+                    <?php if($content): ?>
+                    <div class="is-column is-3 is-12-tablet is-12-phone is-padding-bottom-3-touch">
+                        <h2 class="has-font-title"><?= $title ?></h2>
+                        <p class="has-font-text"><?= $content ?></p>
+                    </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
 
-    <div class="Project__introduction container is-flex is-wrap" style="background-color: <?= $project->color_secondary ?>; color: <?= $project->color_details ?>">
-        <?php if($project->details): ?>
-            <?php foreach($project->details as $title => $content): ?>
-            <div class="is-column is-3 is-12-tablet is-12-phone is-padding-bottom-3-touch">
-                <h2 class="has-font-title"><?= $title ?></h2>
-                <p class="has-font-text"><?= $content ?></p>
-            </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <div class="Project__background js-project-background is-absolute has-height-100 has-width-100" style="background-color: <?= $project->color_secondary ?>"></div>
     </div>
 
     <div class="Project__content">
-        <?php if(isset($project->cover)): ?>
+        <?php if(isset($project->cover['image']['url'])): ?>
         <div class="Project__cover is-flex is-center is-relative" style="background-color: <?= $project->cover['color'] ?>">
             <div class="Project__row--media has-width-100 is-relative">
                 <div class="Project__row--image is-relative is-block has-width-100">
