@@ -2,12 +2,16 @@
     z-index: map-get($zindex, header);
     padding: var(--padding-large);
 
+    a {
+        transition: color var(--speed) var(--easing);
+    }
+
     a.is-active {
-        opacity: 0.2;
         pointer-events: none;
+        color: var(--color-grey);
     }
 }
 
-body.single .Navbar {
+body.single .Navbar a {
     color: var(--color-grey);
 }
