@@ -7,6 +7,7 @@
     &__project {
         color: var(--color-grey);
         transition: color var(--speed) var(--easing);
+        max-width: 80%;
 
         &--title {
             // white-space: nowrap;
