@@ -27,8 +27,8 @@ class WorkRenderer extends Highway.Renderer {
 
         this.$links.forEach((btn) => {
             const id = parseInt(btn.dataset.project)
-            btn.addEventListener('mouseenter', () => this.hideAllBut(id))
             btn.addEventListener('click', () => this.disablePageBut(id))
+            btn.addEventListener('mouseenter', () => this.hideAllBut(id))
             btn.addEventListener('mouseleave', () => this.showAll())
         })
     }
@@ -50,9 +50,9 @@ class WorkRenderer extends Highway.Renderer {
     }
 
     disablePageBut(id) {
+        this.hideAllBut(id)
         this.hasClick = true
         this.wrap.style.pointerEvents = 'none'
-        this.hideAllBut(id)
     }
 }
 

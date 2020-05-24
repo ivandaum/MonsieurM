@@ -9,7 +9,12 @@ class Image {
     public static function createHD($image, $relations = array(
         '1999' => 'full',
         '1599' => 'max',
-        '359' => 'widescreen',
+        '1279' => 'widescreen',
+        '999' => 'widescreen',
+        '769' => 'widescreen',
+        '360' => 'widescreen',
+        '319' => 'desktop',
+        '160' => 'tablet',
         '1' => '1x1',
     )) {
         return self::create($image, $relations);

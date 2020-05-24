@@ -9,7 +9,7 @@
         transition: color var(--speed) var(--easing);
 
         &--title {
-            white-space: nowrap;
+            // white-space: nowrap;
             width: 100%;
             z-index: map-get($zindex, section);
         }

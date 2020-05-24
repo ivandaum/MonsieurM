@@ -3,7 +3,7 @@
     line-height: 1.4em;
 
     h1 {
-        white-space: nowrap;
+        // white-space: nowrap;
     }
 
     &.appear-in {
@@ -17,6 +17,7 @@
 .Project__background {
     top: 0;
     left: 0;
+    z-index: map-get($zindex, under-section);
     will-change: height;
 }
 
@@ -38,6 +39,7 @@
 
 .Project__cover {
     height: 100vh;
+    z-index: map-get($zindex, base);
 
     picture {
         height: 100%;
@@ -57,6 +59,7 @@
 
 .Project__row {
     background: var(--color-white);
+    z-index: map-get($zindex, section);
 
     &--columns {
         padding: calc(var(--padding-large) * 2) var(--padding-large) calc(var(--padding-large) * 3) var(--padding-large);
