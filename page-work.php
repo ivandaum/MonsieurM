@@ -25,7 +25,7 @@
                     </div>
                     <a data-project="<?= $project->id ?>" data-transition="workToProject" class="Work__project js-project-link is-relative" href="<?= $project->link ?>">
                         <div data-project="<?= $project->id ?>" class="Work__project--title is-relative js-fade-item"><?= Text::wrapWord($project->title, 'span') ?></div>
-                        <div data-project="<?= $project->id ?>" class="Work__project--cover is-fixed has-width-100 has-height-100 is-flex is-center" style="background-color: <?= $project->color ?>;">
+                        <div data-project="<?= $project->id ?>" class="Work__project--cover is-fixed has-width-100 has-height-100 is-flex is-center">
                             <?php if($project->video): ?>
                             <?= Image::createHD($project->video) ?>
                             <?php endif; ?>

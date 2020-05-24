@@ -1,10 +1,7 @@
 import Highway from '@dogstudio/highway'
-// import { isFunction } from '../functions/object'
 import anime from 'animejs'
 import store from '../utils/store'
 import { getScrollTop } from '../functions/dom'
-
-// import PageBehavior from './PageBehavior'
 
 const easing = 'easeInOutExpo'
 const duration = 1500
@@ -20,13 +17,14 @@ class WorkToProjectTransition extends Highway.Transition {
         const timeline = anime.timeline({
             complete: () => {
                 store.unlockDOM()
-                from.remove()
+                if (from) from.remove()
                 to.classList.remove('appear-in')
-                done()
+                if (done) done()
             },
         })
 
-        const top = this.hitbox.top - store.windowHeight * 0.5
+        const offset = this.hitbox ? this.hitbox.top : store.windowHeight * 0.55
+        const top = offset - store.windowHeight * 0.5
         timeline
             .add({
                 targets: title,
@@ -34,6 +32,9 @@ class WorkToProjectTransition extends Highway.Transition {
                 easing,
                 translateY: [top, '0'],
                 color: ['rgb(0,0,0)', color],
+                opacity: () => {
+                    return [from ? 1 : 0, 1]
+                },
             })
             .add(
                 {
@@ -43,7 +44,7 @@ class WorkToProjectTransition extends Highway.Transition {
                     translateY: [top + 100, 0],
                     opacity: {
                         value: [0, 1],
-                        delay: 150,
+                        // delay: 150,
                     },
                 },
                 0,
@@ -60,6 +61,10 @@ class WorkToProjectTransition extends Highway.Transition {
     }
 
     out({ from, trigger, done }) {
+        if (from.dataset.routerView === 'project') {
+            return done()
+        }
+
         trigger.classList.add('is-active')
         this.hitbox = trigger.getBoundingClientRect()
 

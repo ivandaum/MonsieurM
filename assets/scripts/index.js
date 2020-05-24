@@ -20,6 +20,7 @@ const core = new Highway.Core({
     },
     transitions: {
         default: DefaultTransition,
+        project: WorkToProjectTransition,
         contextual: {
             workToProject: WorkToProjectTransition,
         },
@@ -38,12 +39,13 @@ core.on('NAVIGATE_END', () => {
 core.on('NAVIGATE_IN', ({ to }) => {
     to.page.body.classList.add('loading')
     document.body.classList = to.page.body.classList
-    Nav.bindActiveLink()
+    Nav.bindActiveLink({ color: to.view.dataset.color })
 })
 
 core.on('NAVIGATE_ERROR', ({ location }) => {
     window.location.href = location.href
 })
 
+const to = document.querySelector('[data-router-view]:last-of-type')
 const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
-trans.prototype.in({ to: document.querySelector('[data-router-view]:last-of-type') })
+trans.prototype.in({ to })

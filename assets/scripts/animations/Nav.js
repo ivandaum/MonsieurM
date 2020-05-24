@@ -5,14 +5,19 @@ class Nav {
         this.$items = this.$container.querySelectorAll('.js-navbar-item')
     }
 
-    bindActiveLink() {
+    bindActiveLink({ color }) {
         this.$items.forEach((item) => {
+            item.style.color = ''
             if (item.href === window.location.href) {
                 item.classList.add('is-active')
             } else {
                 item.classList.remove('is-active')
             }
         })
+
+        if (color) {
+            this.$items[this.$items.length - 1].style.color = color
+        }
     }
 }
 
