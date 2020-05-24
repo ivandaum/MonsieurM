@@ -43,20 +43,10 @@
 .Project__cover {
     height: 100vh;
     z-index: map-get($zindex, base);
-
-    picture {
-        height: 100%;
-        width: 100%;
-        padding-top: 0 !important;
-    }
+    @include picture-cover;
 
     img {
         position: fixed;
-        object-fit: cover;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
     }
 }
 

@@ -1,5 +1,6 @@
 .js-fade-item,
-.Work__project--cover {
+.Work__project--cover,
+.Work__project--galery {
     transition: opacity var(--speed) var(--easing);
 }
 
@@ -13,7 +14,6 @@
         }
 
         &--title {
-            // white-space: nowrap;
             width: 100%;
             z-index: map-get($zindex, section);
         }
@@ -24,6 +24,21 @@
             opacity: 0;
             pointer-events: none;
             z-index: map-get($zindex, base);
+            background-color: var(--color-white);
+
+            @include picture-cover;
+        }
+
+        &--galery {
+            width: 20%;
+            left: 0;
+            opacity: 0;
+            z-index: map-get($zindex, section);
+
+            picture {
+                position: absolute;
+                transition: opacity var(--speed) var(--easing);
+            }
         }
     }
 

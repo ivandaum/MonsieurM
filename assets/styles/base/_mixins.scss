@@ -13,6 +13,23 @@
     justify-content: center;
 }
 
+@mixin picture-cover {
+    picture {
+        height: 100%;
+        width: 100%;
+        padding-top: 0 !important;
+    }
+
+    img {
+        position: absolute;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
+
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
     $responsive-unitless: $responsive / ($responsive - $responsive + 1);
     $dimension: if(unit($responsive) == 'vh', 'height', 'width');

@@ -38,6 +38,14 @@
     }
 }
 
+.is-stretch {
+    justify-content: stretch;
+    align-items: stretch;
+    &-y {
+        align-items: stretch;
+    }
+}
+
 .is-baseline {
     align-items: baseline;
 }

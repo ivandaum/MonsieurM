@@ -63,7 +63,6 @@ class WorkToProjectTransition extends Highway.Transition {
         const scroll = { y: getScrollTop() }
         const parentHitbox = trigger.parentNode.getBoundingClientRect()
         const margin = parentHitbox.left
-        // const y = scroll.y + hitbox.top - store.windowHeight * 0.3
 
         const words = trigger.querySelectorAll('.js-fade-item span')
         const translatesX = []
@@ -71,7 +70,6 @@ class WorkToProjectTransition extends Highway.Transition {
         let offset = [0, 0]
         words.forEach((word, i) => {
             const r = word.getBoundingClientRect()
-            console.log(word.innerHTML)
 
             if (offset[1] !== r.y) {
                 offset = [0, r.y]
@@ -89,33 +87,18 @@ class WorkToProjectTransition extends Highway.Transition {
         from.classList.add('locked')
         from.scrollTo(0, scroll.y)
 
-        const timeline = anime.timeline({
+        anime({
+            targets: words,
+            translateX: (el, i) => {
+                return translatesX[i]
+            },
+            duration,
+            easing,
             complete: () => {
                 done()
                 words.forEach((word) => (word.style.opacity = 0))
             },
         })
-        timeline
-            // .add({
-            //     targets: scroll,
-            //     y,
-            //     update: () => {
-            //         from.scrollTo(0, scroll.y)
-            //     },
-            //     duration,
-            //     easing,
-            // })
-            .add(
-                {
-                    targets: words,
-                    translateX: (el, i) => {
-                        return translatesX[i]
-                    },
-                    duration,
-                    easing,
-                },
-                0,
-            )
     }
 }
 
