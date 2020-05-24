@@ -11,7 +11,7 @@ import Lazyloading from '../vendor/Lazyloading'
 class ProjectRenderer extends Highway.Renderer {
     onLeaveCompleted() {}
 
-    onEnter() {
+    onEnterCompleted() {
         // const $view = this.wrap
         this.Lazyloading = new Lazyloading({
             load_delay: 0,

@@ -35,10 +35,26 @@
     &__other {
         height: 100vh;
         font-size: 2rem;
-        line-height: 2.8rem;
+        line-height: 1.4em;
+
+        @include tablet-only {
+            font-size: 1.8rem;
+        }
+
+        @include phone-only {
+            font-size: 1.6rem;
+        }
+
+        @include phone-s-only {
+            font-size: 1.4rem;
+        }
 
         p {
             max-width: 58rem;
+
+            @include phone {
+                // padding-left: 10%;
+            }
         }
     }
 }

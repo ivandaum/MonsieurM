@@ -56,39 +56,59 @@ class WorkToProjectTransition extends Highway.Transition {
     }
 
     out({ from, trigger, done }) {
-        const word = trigger.querySelector('.js-fade-item')
+        trigger.classList.add('is-active')
+
         const scroll = { y: getScrollTop() }
         const hitbox = trigger.getBoundingClientRect()
         const parentHitbox = trigger.parentNode.getBoundingClientRect()
-
+        const margin = parentHitbox.left
         const y = scroll.y + hitbox.top - store.windowHeight * 0.3
-        const x = hitbox.left - parentHitbox.left
 
-        trigger.classList.add('is-active')
-        from.classList.add('locked')
+        const words = trigger.querySelectorAll('.js-fade-item span')
+        const translatesX = []
+
+        let offset = [0, 0]
+        words.forEach((word, i) => {
+            const r = word.getBoundingClientRect()
+            console.log(word.innerHTML)
+
+            if (offset[1] !== r.y) {
+                offset = [0, r.y]
+            } else if (i > 0) {
+                const prevWord = words[i - 1].getBoundingClientRect()
+                const spaceBetweenWords = r.left - prevWord.left - prevWord.width
+                offset[0] += spaceBetweenWords + prevWord.width
+            }
+
+            const x = r.left - margin - offset[0]
+            translatesX.push(-x)
+        })
+
         store.lockDOM()
+        from.classList.add('locked')
         from.scrollTo(0, scroll.y)
 
         const timeline = anime.timeline({
             complete: () => {
                 done()
-                word.style.opacity = 0
+                words.forEach((word) => (word.style.opacity = 0))
             },
         })
-
         timeline
             .add({
-                targets: word,
-                translateX: -x,
+                targets: scroll,
+                y,
+                update: () => {
+                    from.scrollTo(0, scroll.y)
+                },
                 duration,
                 easing,
             })
             .add(
                 {
-                    targets: scroll,
-                    y,
-                    update: () => {
-                        from.scrollTo(0, scroll.y)
+                    targets: words,
+                    translateX: (el, i) => {
+                        return translatesX[i]
                     },
                     duration,
                     easing,
