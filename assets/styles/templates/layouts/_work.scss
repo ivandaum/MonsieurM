@@ -8,6 +8,9 @@
         color: var(--color-grey);
         transition: color var(--speed) var(--easing);
         max-width: 80%;
+        @include touch {
+            max-width: 100%;
+        }
 
         &--title {
             // white-space: nowrap;
@@ -50,12 +53,12 @@
             font-size: 1.4rem;
         }
 
+        @include phone-xs-only {
+            font-size: 1.4rem;
+        }
+
         p {
             max-width: 58rem;
-
-            @include phone {
-                // padding-left: 10%;
-            }
         }
     }
 }

@@ -4,6 +4,9 @@
 
     h1 {
         max-width: 80%;
+        @include touch {
+            max-width: 100%;
+        }
     }
 
     &.appear-in {

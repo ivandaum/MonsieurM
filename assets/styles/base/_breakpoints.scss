@@ -32,10 +32,18 @@
 
 // max to 544px
 @mixin phone-s-only {
-    @media all and (max-width: map-get($breakpoints, phone) - 1px) {
+    @media all and (min-width: map-get($breakpoints, phone-s)) and (max-width: map-get($breakpoints, phone) - 1px) {
         @content;
     }
 }
+
+// max to 544px
+@mixin phone-xs-only {
+    @media all and (max-width: map-get($breakpoints, phone-s) - 1px) {
+        @content;
+    }
+}
+
 /*
 * DEVICE BREAKPOINTS
 */

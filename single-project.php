@@ -11,7 +11,7 @@
 <article class="Project" data-router-view="project" data-color="<?= $project->color ?>">
     <div class="is-relative">
         <div class="section-top container js-project is-padding-bottom">
-            <h1 class="is-h1 has-font-serif js-project-title" style="color: <?= $project->color ?>"><?= $project->title ?></h1>
+            <h1 class="is-h1 has-font-serif js-project-title" style="color: <?= $project->color ?>"><?= Text::wrapWord($project->title, 'span') ?></h1>
             <p class="is-h1 has-font-serif js-project-intro" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
         </div>
     

@@ -94,6 +94,10 @@
     @include phone-s-only {
         font-size: 4.2rem;
     }
+
+    @include phone-xs-only {
+        font-size: 3.6rem;
+    }
 }
 
 .is-h3 {
@@ -114,5 +118,9 @@
 
     @include phone-s-only {
         font-size: 1.8rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 1.4rem;
     }
 }

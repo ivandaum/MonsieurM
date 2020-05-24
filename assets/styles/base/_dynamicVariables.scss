@@ -31,3 +31,9 @@
         --padding-large: 2rem;
     }
 }
+
+@include phone-xs-only {
+    :root {
+        --padding-large: 2rem;
+    }
+}

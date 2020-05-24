@@ -26,12 +26,13 @@ class WorkToProjectTransition extends Highway.Transition {
             },
         })
 
+        const top = this.hitbox.top - store.windowHeight * 0.5
         timeline
             .add({
                 targets: title,
                 duration,
                 easing,
-                translateY: ['-20vh', '0'],
+                translateY: [top, '0'],
                 color: ['rgb(0,0,0)', color],
             })
             .add(
@@ -57,12 +58,12 @@ class WorkToProjectTransition extends Highway.Transition {
 
     out({ from, trigger, done }) {
         trigger.classList.add('is-active')
+        this.hitbox = trigger.getBoundingClientRect()
 
         const scroll = { y: getScrollTop() }
-        const hitbox = trigger.getBoundingClientRect()
         const parentHitbox = trigger.parentNode.getBoundingClientRect()
         const margin = parentHitbox.left
-        const y = scroll.y + hitbox.top - store.windowHeight * 0.3
+        // const y = scroll.y + hitbox.top - store.windowHeight * 0.3
 
         const words = trigger.querySelectorAll('.js-fade-item span')
         const translatesX = []
@@ -95,15 +96,15 @@ class WorkToProjectTransition extends Highway.Transition {
             },
         })
         timeline
-            .add({
-                targets: scroll,
-                y,
-                update: () => {
-                    from.scrollTo(0, scroll.y)
-                },
-                duration,
-                easing,
-            })
+            // .add({
+            //     targets: scroll,
+            //     y,
+            //     update: () => {
+            //         from.scrollTo(0, scroll.y)
+            //     },
+            //     duration,
+            //     easing,
+            // })
             .add(
                 {
                     targets: words,
