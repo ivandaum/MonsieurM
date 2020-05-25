@@ -43,6 +43,10 @@
 .Project__cover {
     height: 100vh;
     @include picture-cover;
+
+    picture {
+        height: 110vh;
+    }
 }
 
 .Project__row {

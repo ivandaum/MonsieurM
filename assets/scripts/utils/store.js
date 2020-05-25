@@ -7,6 +7,8 @@ export default {
 
         window.addEventListener('scroll', this.onScroll.bind(this))
         window.addEventListener('resize', this.onResize.bind(this))
+
+        this.funcOnResize = []
     },
 
     onScroll() {
@@ -15,6 +17,7 @@ export default {
 
     onResize() {
         this.setGlobalVars()
+        this.funcOnResize.forEach((func) => func())
     },
 
     setGlobalVars() {
@@ -29,5 +32,19 @@ export default {
 
     unlockDOM() {
         document.querySelector('main').classList.remove('locked')
+    },
+
+    addOnResize(func) {
+        this.funcOnResize.push(func)
+        return this.funcOnResize.length - 1
+    },
+
+    removeOnResize(index) {
+        if (this.funcOnResize[index]) {
+            this.funcOnResize.splice(index, 1)
+            return true
+        }
+
+        return false
     },
 }
