@@ -44,7 +44,6 @@ class WorkToProjectTransition extends Highway.Transition {
                     translateY: [top + 100, 0],
                     opacity: {
                         value: [0, 1],
-                        // delay: 150,
                     },
                 },
                 0,
@@ -54,7 +53,7 @@ class WorkToProjectTransition extends Highway.Transition {
                     targets: background,
                     duration,
                     easing,
-                    height: [0, '100%'],
+                    scaleY: [0, 1],
                 },
                 0,
             )

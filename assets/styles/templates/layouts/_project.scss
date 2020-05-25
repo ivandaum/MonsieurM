@@ -21,7 +21,7 @@
     top: 0;
     left: 0;
     z-index: map-get($zindex, under-section);
-    will-change: height;
+    transform-origin: top center;
 }
 
 .Project__introduction {
@@ -42,7 +42,6 @@
 
 .Project__cover {
     height: 100vh;
-    // z-index: map-get($zindex, base);
     @include picture-cover;
 }
 

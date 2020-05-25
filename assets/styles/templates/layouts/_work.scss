@@ -11,6 +11,7 @@
         color: var(--color-grey);
         transition: color var(--speed) var(--easing);
         max-width: 80%;
+
         @include touch {
             max-width: 100%;
         }
@@ -33,12 +34,32 @@
 
         &--galery {
             width: 20%;
+            height: 1em;
             left: 0;
             opacity: 0;
             z-index: map-get($zindex, section);
 
+            @include touch {
+                display: none;
+            }
+
             picture {
                 position: absolute;
+                padding-top: 0 !important;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                opacity: 0;
+            }
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: auto;
+            }
+
+            .background {
+                display: none;
             }
         }
     }

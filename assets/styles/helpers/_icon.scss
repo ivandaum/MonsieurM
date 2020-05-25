@@ -11,10 +11,30 @@
     align-items: center;
     justify-content: center;
     font-style: normal;
-    @include font-text;
+    @include font-title;
+    font-weight: map-get($fontWeight, light);
 
     &::before {
         content: 'New';
         text-transform: uppercase;
+    }
+
+    @include tablet-only {
+        font-size: 1.4rem;
+    }
+
+    @include phone-only {
+        font-size: 1rem;
+        border-width: 0.1rem;
+    }
+
+    @include phone-s-only {
+        font-size: 0.8rem;
+        border-width: 0.1rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 0.7rem;
+        border-width: 0.1rem;
     }
 }

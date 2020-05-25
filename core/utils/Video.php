@@ -11,8 +11,8 @@ class Video {
         $url = $source['url'];
 
         $html = '';
-        $html .= '<video loop muted playsinline class="js-video" data-ratio="' . $ratio . '">';
-        $html .= '<source src="' . $url . '" type="' . $mimeType. '">';
+        $html .= '<video preload="metadata" loop muted playsinline class="js-video" data-ratio="' . $ratio . '">';
+        $html .= '<source src="' . $url . '#t=0.1" type="' . $mimeType. '">';
         $html .= 'Your browser does not support the video tag.</video> ';
 
         return $html;

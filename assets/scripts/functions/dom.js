@@ -1,4 +1,7 @@
 import anime from 'animejs'
+import { range } from './object'
+import store from '../utils/store'
+
 // import breakpoints from '../utils/breakpoints'
 // import store from '../utils/store'
 
@@ -21,7 +24,7 @@ export const getOffsetTop = ($element) => {
 export const scrollTo = ({ y, complete }) => {
     const easing = 'easeInOutExpo'
     const duration = 2000
-    const targets = { y: getScrollTop() }
+    const targets = { y: store.scroll }
     const container = window
 
     anime({
@@ -34,4 +37,39 @@ export const scrollTo = ({ y, complete }) => {
         },
         complete,
     })
+}
+
+export const scrolledInViewport = ($target, callback) => {
+    const observer = new IntersectionObserver(
+        (changes) => {
+            const [{ isIntersecting, boundingClientRect }] = changes
+            const bottom = boundingClientRect.height
+            const top = boundingClientRect.top
+            const progress = range(top, store.windowHeight, -bottom) * 0.01
+
+            callback({
+                isIntersecting,
+                progress,
+            })
+        },
+        {
+            threshold: Array.from(Array(101), (x, index) => Number(((1 / 100) * index).toFixed(2))),
+        },
+    )
+    observer.observe($target)
+}
+
+export const observeVisibility = ($target, callback) => {
+    const observer = new IntersectionObserver(
+        (changes) => {
+            const [{ intersectionRatio }] = changes
+            const ratio = $target.offsetHeight / window.innerHeight
+            const percent = ratio * intersectionRatio
+            callback(percent)
+        },
+        {
+            threshold: Array.from(Array(101), (x, index) => Number(((1 / 100) * index).toFixed(2))),
+        },
+    )
+    observer.observe($target)
 }

@@ -404,11 +404,10 @@ video {
         position: absolute;
         left: 0;
         top: 0;
-        // filter: blur(1rem);
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: auto 100%;
-        transition: opacity var(--speed) calc(var(--speed) * 2) var(--easing);
+        background-size: cover;
+        transition: opacity var(--speed) var(--speed) linear;
     }
 
     &.loaded .background {
@@ -417,6 +416,7 @@ video {
 
     img.loaded {
         opacity: 1;
+        animation: fade-in var(--speed) linear;
     }
 }
 

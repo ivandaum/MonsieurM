@@ -1,6 +1,6 @@
 import Highway from '@dogstudio/highway'
 import Videos from '../binders/Videos'
-import Images from '../binders/Videos'
+import Images from '../binders/Images'
 
 // import anime from 'animejs'
 // import { scrollTo } from '../functions/dom'

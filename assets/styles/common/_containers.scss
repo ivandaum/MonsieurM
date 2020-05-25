@@ -20,6 +20,11 @@ body main {
     position: relative;
 }
 
+body.loading,
+body.loading * {
+    cursor: wait !important;
+}
+
 .locked {
     overflow: hidden;
     height: 100vh;

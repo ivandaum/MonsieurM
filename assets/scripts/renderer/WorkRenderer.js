@@ -2,6 +2,7 @@ import Highway from '@dogstudio/highway'
 import store from '../utils/store'
 import Videos from '../binders/Videos'
 import Images from '../binders/Images'
+import breakpoints from '../utils/breakpoints'
 
 class WorkRenderer extends Highway.Renderer {
     onLeaveCompleted() {}
@@ -80,7 +81,7 @@ class WorkRenderer extends Highway.Renderer {
             item.galery.style.opacity = isActive ? 1 : 0
         })
 
-        if (this.$items[id].video) {
+        if (this.$items[id].video && store.windowWidth >= breakpoints.desktop) {
             this.$items[id].video.play()
         }
     }

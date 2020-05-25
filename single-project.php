@@ -33,7 +33,7 @@
 
     <div class="Project__content">
         <?php if(isset($project->cover['image']['url'])): ?>
-        <div class="Project__cover is-flex is-center is-relative" style="background-color: <?= $project->cover['color'] ?>">
+        <div class="Project__cover js-cover is-flex is-center is-relative" style="background-color: <?= $project->cover['color'] ?>">
             <?= Image::createHD($project->cover['image']) ?>
         </div>
         <?php endif; ?>

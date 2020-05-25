@@ -12,8 +12,7 @@ import WorkToProjectTransition from './transitions/WorkToProjectTransition'
 
 import Nav from './animations/Nav'
 
-store.setGlobalVars()
-window.addEventListener('resize', () => store.setGlobalVars())
+store.init()
 
 const core = new Highway.Core({
     renderers: {
@@ -37,6 +36,7 @@ core.on('NAVIGATE_OUT', () => {
 core.detach(document.querySelectorAll('.js-detach-from-core'))
 core.on('NAVIGATE_END', () => {
     core.detach(document.querySelectorAll('.js-detach-from-core'))
+    document.body.classList.remove('loading')
 })
 
 core.on('NAVIGATE_IN', ({ to }) => {

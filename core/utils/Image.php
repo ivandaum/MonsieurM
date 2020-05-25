@@ -15,13 +15,13 @@ class Image {
         '360' => 'widescreen',
         '319' => 'desktop',
         '160' => 'tablet',
-        '10' => 'phone',
+        '10' => 'phone-s',
         '1' => '1x1',
     )) {
         return self::create($image, $relations);
     }
 
-    public static function createThumbnail($image, $relations = array('359' => 'tablet', '160' => 'phone', '10' => 'phone', '1' => '1x1')) {
+    public static function createThumbnail($image, $relations = array('359' => 'tablet', '160' => 'phone', '10' => 'phone-s', '1' => '1x1')) {
         return self::create($image, $relations);
     }
 
@@ -44,7 +44,7 @@ class Image {
                 '360' => 'tablet',
                 '319' => 'phone',
                 '160' => 'phone',
-                '10' => 'phone',
+                '10' => 'phone-s',
                 '1' => '1x1',
             );
         }
@@ -79,7 +79,7 @@ class Image {
             $html .= '<source type="' . self::$mimeType . '" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '"></source>';
         }
 
-        $html .= '<img src="' . $sources['10']['src'] . '" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
+        $html .= '<img src="" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
         $html .= '<div class="background" style="background-image: url('. $sources['10']['src'] .')"></div>';
         $html .= '</picture>';
         return $html;

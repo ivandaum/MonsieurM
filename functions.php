@@ -25,6 +25,7 @@ register_nav_menus([
 remove_image_size('1536x1536');
 remove_image_size('2048x2048');
 add_image_size( '1x1', 1, 1 );
+add_image_size( 'phone-s', 150, 0 );
 add_image_size( 'phone', 360, 0 );
 add_image_size( 'tablet', 768, 0 );
 add_image_size( 'desktop', 1024, 0 );
@@ -77,7 +78,7 @@ add_action( 'admin_menu', function() {
     // remove_menu_page( 'themes.php' );                 //Appearance
     // remove_menu_page( 'plugins.php' );               //Plugins
     remove_menu_page( 'users.php' );                 //Users
-    remove_menu_page( 'tools.php' );                 //Tools
+    // remove_menu_page( 'tools.php' );                 //Tools
     // remove_menu_page( 'options-general.php' );       //Settings
 } );
 
