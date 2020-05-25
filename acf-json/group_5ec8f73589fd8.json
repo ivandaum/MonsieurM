@@ -3,6 +3,68 @@
     "title": "Work",
     "fields": [
         {
+            "key": "field_5ecb8412f4cd4",
+            "label": "Projets",
+            "name": "work__projects",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Ajouter un projet",
+            "sub_fields": [
+                {
+                    "key": "field_5ecb863cf4cd5",
+                    "label": "Projet",
+                    "name": "id",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "project"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "id",
+                    "ui": 1
+                },
+                {
+                    "key": "field_5ecb8661f4cd6",
+                    "label": "Pastille \"new\"",
+                    "name": "ribbon",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "✓",
+                    "ui_off_text": "-"
+                }
+            ]
+        },
+        {
             "key": "field_5ec8f9d5fc003",
             "label": "Texte de bas de page",
             "name": "work__text",
@@ -51,5 +113,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1590234253
+    "modified": 1590396944
 }

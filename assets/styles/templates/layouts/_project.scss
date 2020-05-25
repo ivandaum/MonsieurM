@@ -42,12 +42,8 @@
 
 .Project__cover {
     height: 100vh;
-    z-index: map-get($zindex, base);
+    // z-index: map-get($zindex, base);
     @include picture-cover;
-
-    img {
-        position: fixed;
-    }
 }
 
 .Project__row {

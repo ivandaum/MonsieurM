@@ -1,6 +1,8 @@
 .js-fade-item,
 .Work__project--cover,
-.Work__project--galery {
+.Work__project--galery,
+.Work__project--galery picture,
+.Work .icon-new {
     transition: opacity var(--speed) var(--easing);
 }
 
@@ -37,9 +39,15 @@
 
             picture {
                 position: absolute;
-                transition: opacity var(--speed) var(--easing);
             }
         }
+    }
+
+    .icon-new {
+        left: -6em;
+        top: -0.8em;
+        bottom: 0;
+        margin: auto;
     }
 
     &__project:hover,

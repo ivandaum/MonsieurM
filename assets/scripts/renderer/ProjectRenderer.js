@@ -1,6 +1,8 @@
 import Highway from '@dogstudio/highway'
+import Images from '../binders/Images'
+import Videos from '../binders/Videos'
+
 // import anime from 'animejs'
-import Lazyloading from '../vendor/Lazyloading'
 // import { scrollTo } from '../functions/dom'
 // import breakpoints from '../utils/breakpoints'
 // import store from '../utils/store'
@@ -12,12 +14,13 @@ class ProjectRenderer extends Highway.Renderer {
     onLeaveCompleted() {}
 
     onEnterCompleted() {
-        // const $view = this.wrap
-        this.Lazyloading = new Lazyloading({
-            load_delay: 0,
-            elements_selector: 'img',
-            use_native: false,
-        })
+        const $view = this.wrap
+        const videos = $view.querySelectorAll('.js-video')
+
+        Videos.bindAll(videos)
+        Videos.resizeAll(videos)
+
+        Images.lazyload()
     }
 }
 

@@ -5,8 +5,11 @@ import store from './utils/store'
 
 import DefaultRenderer from './renderer/DefaultRenderer'
 import WorkRenderer from './renderer/WorkRenderer'
+import ProjectRenderer from './renderer/ProjectRenderer'
+
 import DefaultTransition from './transitions/DefaultTransition'
 import WorkToProjectTransition from './transitions/WorkToProjectTransition'
+
 import Nav from './animations/Nav'
 
 store.setGlobalVars()
@@ -15,7 +18,7 @@ window.addEventListener('resize', () => store.setGlobalVars())
 const core = new Highway.Core({
     renderers: {
         home: DefaultRenderer,
-        project: DefaultRenderer,
+        project: ProjectRenderer,
         work: WorkRenderer,
     },
     transitions: {

@@ -66,6 +66,7 @@ class WorkToProjectTransition extends Highway.Transition {
         }
 
         trigger.classList.add('is-active')
+
         this.hitbox = trigger.getBoundingClientRect()
 
         const scroll = { y: getScrollTop() }
@@ -73,6 +74,7 @@ class WorkToProjectTransition extends Highway.Transition {
         const margin = parentHitbox.left
 
         const words = trigger.querySelectorAll('.js-fade-item span')
+
         const translatesX = []
 
         let offset = [0, 0]

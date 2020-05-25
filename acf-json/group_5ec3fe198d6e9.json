@@ -20,9 +20,9 @@
         },
         {
             "key": "field_5ec3ffafb0043",
-            "label": "Gif animé \/ Image pleine page au survol",
+            "label": "Gif animé \/ Vidéo pleine page au survol",
             "name": "project__video",
-            "type": "image",
+            "type": "file",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -32,13 +32,8 @@
                 "id": ""
             },
             "return_format": "array",
-            "preview_size": "thumbnail",
             "library": "all",
-            "min_width": "",
-            "min_height": "",
             "min_size": "",
-            "max_width": "",
-            "max_height": "",
             "max_size": "",
             "mime_types": ""
         },
@@ -1027,5 +1022,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1590223657
+    "modified": 1590400417
 }

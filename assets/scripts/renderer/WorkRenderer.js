@@ -1,26 +1,47 @@
 import Highway from '@dogstudio/highway'
-import Lazyloading from '../vendor/Lazyloading'
 import store from '../utils/store'
+import Videos from '../binders/Videos'
+import Images from '../binders/Images'
 
 class WorkRenderer extends Highway.Renderer {
     onLeaveCompleted() {}
 
     onEnterCompleted() {
         store.unlockDOM()
-        const $view = this.wrap
-        this.Lazyloading = new Lazyloading({
-            load_delay: 0,
-            elements_selector: 'img',
-            use_native: false,
-        })
 
-        this.wrap.style.pointerEvents = 'auto'
-        this.$links = $view.querySelectorAll('.js-project-link')
-        this.$fades = $view.querySelectorAll('.js-fade-item')
-        this.$galeries = $view.querySelectorAll('.js-project-galery')
-
+        this.$items = []
+        this.activeProject = null
         this.galeryIndex = 0
         this.galery = []
+        this.stopVideoTimeout = null
+
+        this.bindDom()
+        Images.lazyload()
+    }
+
+    bindDom() {
+        const $view = this.wrap
+
+        this.wrap.style.pointerEvents = 'auto'
+
+        this.$fades = $view.querySelectorAll('.js-fade-item')
+        this.$links = $view.querySelectorAll('.js-project-link')
+
+        this.$links.forEach((link) => {
+            const id = parseInt(link.dataset.project)
+            const galery = `.js-project-galery[data-project='${id}']`
+
+            this.$items[id] = {
+                galery: $view.querySelector(galery),
+                video: link.querySelector('.js-video'),
+                pictures: $view.querySelectorAll(`${galery} picture`),
+                ribbon: link.querySelector('.js-ribbon'),
+            }
+
+            if (this.$items[id].video) {
+                Videos.resizeVideo(this.$items[id].video)
+            }
+        })
 
         this.$links.forEach((btn) => {
             const id = parseInt(btn.dataset.project)
@@ -34,7 +55,7 @@ class WorkRenderer extends Highway.Renderer {
     browseGalery() {
         if (!this.galery.length) return false
 
-        this.galeryIndex += 0.03
+        this.galeryIndex += 0.025
         if (this.galeryIndex >= this.galery.length) this.galeryIndex = 0
 
         this.galery.forEach((img, i) => {
@@ -45,20 +66,23 @@ class WorkRenderer extends Highway.Renderer {
     hideAllBut(id) {
         if (this.hasClick) return false
 
+        this.activeProject = id
+
         this.$fades.forEach((item) => {
             item.style.opacity = parseInt(item.dataset.project) === id ? 1 : 0
         })
 
         this.galeryIndex = 0
-        this.$galeries.forEach((galery) => {
-            const isActive = parseInt(galery.dataset.project) === id
+        this.galery = this.$items[id].pictures
 
-            if (isActive) {
-                this.galery = galery.querySelectorAll('picture')
-            }
-
-            galery.style.opacity = isActive ? 1 : 0
+        this.$items.map((item, pId) => {
+            const isActive = parseInt(pId) === id
+            item.galery.style.opacity = isActive ? 1 : 0
         })
+
+        if (this.$items[id].video) {
+            this.$items[id].video.play()
+        }
     }
 
     showAll() {
@@ -68,16 +92,31 @@ class WorkRenderer extends Highway.Renderer {
             item.style.opacity = 1
         })
 
-        this.$galeries.forEach((galery) => {
-            galery.style.opacity = 0
-        })
+        this.$items.map((item) => (item.galery.style.opacity = 0))
+        const activeProject = this.activeProject
+
+        setTimeout(() => {
+            const video = this.$items[activeProject].video
+
+            if (video && this.activeProject !== activeProject) {
+                video.pause()
+            }
+        }, 300)
+
+        this.activeProject = null
     }
 
     disablePageBut(id) {
         this.hideAllBut(id)
-        this.$galeries.forEach((galery) => {
-            galery.style.opacity = 0
+
+        this.$items.map((item) => {
+            item.galery.style.opacity = 0
         })
+
+        const ribbon = this.$items[id].ribbon
+        if (ribbon) {
+            ribbon.style.opacity = 0
+        }
 
         this.hasClick = true
         this.wrap.style.pointerEvents = 'none'

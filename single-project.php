@@ -34,11 +34,7 @@
     <div class="Project__content">
         <?php if(isset($project->cover['image']['url'])): ?>
         <div class="Project__cover is-flex is-center is-relative" style="background-color: <?= $project->cover['color'] ?>">
-            <div class="Project__row--media has-width-100 is-relative">
-                <div class="Project__row--image is-relative is-block has-width-100">
-                    <?= Image::createHD($project->cover['image']) ?>
-                </div>
-            </div>
+            <?= Image::createHD($project->cover['image']) ?>
         </div>
         <?php endif; ?>
 

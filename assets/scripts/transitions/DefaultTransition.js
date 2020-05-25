@@ -1,24 +1,21 @@
 import Highway from '@dogstudio/highway'
 import { isFunction } from '../functions/object'
 
-import PageBehavior from './PageBehavior'
-
 class DefaultTransition extends Highway.Transition {
-    in({ from, to, done }) {
-        PageBehavior.show({
-            to,
-            from,
-            done: () => {
-                if (done && isFunction(done)) {
-                    done()
-                }
-            },
-        })
+    in({ from, done }) {
+        if (from) {
+            from.remove()
+        }
+
+        if (isFunction(done)) {
+            done()
+        }
     }
 
-    out({ from, done }) {
-        PageBehavior.hide({ from })
-        done()
+    out({ done }) {
+        if (isFunction(done)) {
+            done()
+        }
     }
 }
 

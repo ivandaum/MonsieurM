@@ -27,6 +27,13 @@ const Videos = {
         video.width = width + 'px'
         video.height = width * r + 'px'
     },
+
+    fitCover: (video) => {
+        const height = video.parentNode.offsetHeight
+        const r = parseFloat(video.dataset.ratio) || RATIO
+        video.height = height + 'px'
+        video.width = height * (2 - r) + 'px'
+    },
 }
 
 export default Videos
