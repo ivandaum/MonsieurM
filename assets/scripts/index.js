@@ -48,3 +48,4 @@ const core = new Highway.Core({ renderers, transitions })
 
 const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
 trans.prototype.in({ to: view })
+Nav.bindActiveLink({ color: view.dataset.color })
