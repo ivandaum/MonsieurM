@@ -13,4 +13,4 @@
 </head>
 <body <?= body_class() ?>>
 <?php MonsieurM\Core\Utils\Template::partial('navbar') ?>
-<main data-router-wrapper>
+<main data-router-wrapper class="has-width-100 is-relative">

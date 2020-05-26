@@ -24,8 +24,8 @@ const Videos = {
     resizeVideo: (video) => {
         const width = video.parentNode.offsetWidth
         const r = parseFloat(video.dataset.ratio) || RATIO
-        video.width = width + 'px'
-        video.height = width * r + 'px'
+        video.width = width
+        video.height = width * r
     },
 
     fitCover: (video) => {

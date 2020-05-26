@@ -2,19 +2,15 @@ import Highway from '@dogstudio/highway'
 import store from '../utils/store'
 import Videos from '../binders/Videos'
 import Images from '../binders/Images'
-import breakpoints from '../utils/breakpoints'
+import breakpoints from '../constants/breakpoints'
 
 class WorkRenderer extends Highway.Renderer {
     onLeaveCompleted() {}
 
     onEnterCompleted() {
-        store.unlockDOM()
-
         this.$items = []
-        this.activeProject = null
         this.galeryIndex = 0
         this.galery = []
-        this.stopVideoTimeout = null
 
         this.bindDom()
         Images.lazyload()
@@ -23,104 +19,92 @@ class WorkRenderer extends Highway.Renderer {
     bindDom() {
         const $view = this.wrap
 
-        this.wrap.style.pointerEvents = 'auto'
-
         this.$fades = $view.querySelectorAll('.js-fade-item')
         this.$links = $view.querySelectorAll('.js-project-link')
+        this.$cover = $view.querySelector('.js-cover')
 
         this.$links.forEach((link) => {
             const id = parseInt(link.dataset.project)
-            const galery = `.js-project-galery[data-project='${id}']`
+            const dataName = `[data-project='${id}']`
 
             this.$items[id] = {
-                galery: $view.querySelector(galery),
-                video: link.querySelector('.js-video'),
-                pictures: $view.querySelectorAll(`${galery} picture`),
+                galery: $view.querySelector(`.js-project-galery${dataName}`),
+                video: $view.querySelector(`.js-project-video${dataName} .js-video`),
+                pictures: $view.querySelectorAll(`.js-project-galery${dataName} picture`),
                 ribbon: link.querySelector('.js-ribbon'),
             }
 
             if (this.$items[id].video) {
                 Videos.resizeVideo(this.$items[id].video)
             }
+
+            link.addEventListener('click', () => this.onClick(id))
+            link.addEventListener('mouseenter', () => this.onMouseEnter(id))
+            link.addEventListener('mouseleave', () => this.onMouseLeave(id))
+            link.addEventListener('mousemove', () => this.browseGalery())
+        })
+    }
+
+    onClick(id) {
+        this.isNavigating = true
+
+        const item = this.$items[id]
+
+        if (item.ribbon) item.ribbon.style.opacity = 0
+        if (item.galery) item.galery.style.opacity = 0
+    }
+
+    onMouseEnter(id) {
+        this.$fades.forEach((item) => {
+            item.style.opacity = parseInt(item.dataset.project) === id ? 1 : 0
         })
 
-        this.$links.forEach((btn) => {
-            const id = parseInt(btn.dataset.project)
-            btn.addEventListener('click', () => this.disablePageBut(id))
-            btn.addEventListener('mouseenter', () => this.hideAllBut(id))
-            btn.addEventListener('mouseleave', () => this.showAll())
-            btn.addEventListener('mousemove', (e) => this.browseGalery(e))
+        const item = this.$items[id]
+
+        this.galeryIndex = 0
+
+        if (item.galery && item.pictures.length) {
+            item.galery.style.opacity = 1
+            this.galery = item.pictures
+        }
+
+        if (item.video && store.windowWidth >= breakpoints.desktop) {
+            this.$cover.style.opacity = 1
+            item.video.style.opacity = 1
+            item.video.play()
+        }
+    }
+
+    onMouseLeave(id) {
+        if (this.isNavigating) return false
+
+        this.galery = []
+        this.$fades.forEach((item) => {
+            item.style.opacity = 1
         })
+
+        const item = this.$items[id]
+        this.$cover.style.opacity = 0
+
+        if (item.galery && item.pictures.length) {
+            item.galery.style.opacity = 0
+        }
+
+        if (item.video) {
+            item.video.style.opacity = 0
+            item.video.pause()
+        }
     }
 
     browseGalery() {
         if (!this.galery.length) return false
 
-        this.galeryIndex += 0.025
+        this.galeryIndex += 0.05
         if (this.galeryIndex >= this.galery.length) this.galeryIndex = 0
 
         this.galery.forEach((img, i) => {
             img.style.opacity = i === Math.floor(this.galeryIndex) ? 1 : 0
         })
-    }
-
-    hideAllBut(id) {
-        if (this.hasClick) return false
-
-        this.activeProject = id
-
-        this.$fades.forEach((item) => {
-            item.style.opacity = parseInt(item.dataset.project) === id ? 1 : 0
-        })
-
-        this.galeryIndex = 0
-        this.galery = this.$items[id].pictures
-
-        this.$items.map((item, pId) => {
-            const isActive = parseInt(pId) === id
-            item.galery.style.opacity = isActive ? 1 : 0
-        })
-
-        if (this.$items[id].video && store.windowWidth >= breakpoints.desktop) {
-            this.$items[id].video.play()
-        }
-    }
-
-    showAll() {
-        if (this.hasClick) return false
-
-        this.$fades.forEach((item) => {
-            item.style.opacity = 1
-        })
-
-        this.$items.map((item) => (item.galery.style.opacity = 0))
-        const activeProject = this.activeProject
-
-        setTimeout(() => {
-            const video = this.$items[activeProject].video
-
-            if (video && this.activeProject !== activeProject) {
-                video.pause()
-            }
-        }, 300)
-
-        this.activeProject = null
-    }
-
-    disablePageBut(id) {
-        this.hideAllBut(id)
-
-        this.$items.map((item) => {
-            item.galery.style.opacity = 0
-        })
-
-        const ribbon = this.$items[id].ribbon
-        if (ribbon) {
-            ribbon.style.opacity = 0
-        }
-
-        this.hasClick = true
-        this.wrap.style.pointerEvents = 'none'
     }
 }
 

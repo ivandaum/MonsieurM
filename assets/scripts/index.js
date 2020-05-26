@@ -1,6 +1,7 @@
 import '../styles/index.scss'
 
 import Highway from '@dogstudio/highway'
+import ScrollManager from './utils/ScrollManager'
 import store from './utils/store'
 
 import DefaultRenderer from './renderer/DefaultRenderer'
@@ -8,47 +9,42 @@ import WorkRenderer from './renderer/WorkRenderer'
 import ProjectRenderer from './renderer/ProjectRenderer'
 
 import DefaultTransition from './transitions/DefaultTransition'
-import WorkToProjectTransition from './transitions/WorkToProjectTransition'
+import ProjectTransition from './transitions/ProjectTransition'
 
 import Nav from './animations/Nav'
 
 store.init()
 
-const core = new Highway.Core({
-    renderers: {
-        home: DefaultRenderer,
-        project: ProjectRenderer,
-        work: WorkRenderer,
+const view = document.querySelector('[data-router-view]:last-of-type')
+ScrollManager.init({ view })
+
+const renderers = {
+    home: DefaultRenderer,
+    project: ProjectRenderer,
+    work: WorkRenderer,
+}
+const transitions = {
+    default: DefaultTransition,
+    project: ProjectTransition,
+    contextual: {
+        workToProject: ProjectTransition,
     },
-    transitions: {
-        default: DefaultTransition,
-        project: WorkToProjectTransition,
-        contextual: {
-            workToProject: WorkToProjectTransition,
-        },
-    },
-})
+}
 
-core.on('NAVIGATE_OUT', () => {
-    document.body.classList.add('loading')
-})
+const core = new Highway.Core({ renderers, transitions })
+    .on('NAVIGATE_OUT', () => {
+        document.body.classList.add('loading')
+    })
+    .on('NAVIGATE_END', ({ to }) => {
+        document.body.classList = to.page.body.classList
+        ScrollManager.update({ view: to.view })
+    })
+    .on('NAVIGATE_IN', ({ to }) => {
+        Nav.bindActiveLink({ color: to.view.dataset.color })
+    })
+    .on('NAVIGATE_ERROR', ({ location }) => {
+        window.location.href = location.href
+    })
 
-core.detach(document.querySelectorAll('.js-detach-from-core'))
-core.on('NAVIGATE_END', () => {
-    core.detach(document.querySelectorAll('.js-detach-from-core'))
-    document.body.classList.remove('loading')
-})
-
-core.on('NAVIGATE_IN', ({ to }) => {
-    to.page.body.classList.add('loading')
-    document.body.classList = to.page.body.classList
-    Nav.bindActiveLink({ color: to.view.dataset.color })
-})
-
-core.on('NAVIGATE_ERROR', ({ location }) => {
-    window.location.href = location.href
-})
-
-const to = document.querySelector('[data-router-view]:last-of-type')
 const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
-trans.prototype.in({ to })
+trans.prototype.in({ to: view })

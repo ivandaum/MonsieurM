@@ -1,8 +1,14 @@
 import { isFunction } from '../functions/object'
 
+const MAX_FPS = 60
+const FPS_INTERVAL = 1000 / MAX_FPS
+
 const RafManager = {
     callbacks: [],
     raf: [],
+    lastDate: Date.now(),
+    dt: 0,
+    now: 0,
 
     addQueue(func) {
         this.callbacks.push(func)
@@ -21,12 +27,18 @@ const RafManager = {
     render(delta) {
         this.raf = window.requestAnimationFrame(this.render.bind(this))
 
-        this.callbacks.map((callback) => {
-            if (isFunction(callback)) {
-                callback(delta)
-            }
-            return true
-        })
+        this.now = Date.now()
+        this.dt = this.now - this.lastDate
+        if (this.dt > FPS_INTERVAL) {
+            this.lastDate = this.now - (this.dt % FPS_INTERVAL)
+
+            this.callbacks.map((callback) => {
+                if (isFunction(callback)) {
+                    callback(delta)
+                }
+                return true
+            })
+        }
     },
 
     stop() {

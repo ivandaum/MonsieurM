@@ -1,62 +1,66 @@
 import Highway from '@dogstudio/highway'
 import anime from 'animejs'
+
 import store from '../utils/store'
-import { getScrollTop } from '../functions/dom'
+import ScrollManager from '../utils/ScrollManager'
 
 const easing = 'easeInOutExpo'
 const duration = 1500
 
-class WorkToProjectTransition extends Highway.Transition {
+class ProjectTransition extends Highway.Transition {
     in({ from, to, done }) {
         to.classList.add('appear-in')
+
         const title = to.querySelector('.js-project-title')
         const intro = to.querySelector('.js-project-intro')
         const background = to.querySelector('.js-project-background')
+
         const color = title.style.color
+        const offset = this.hitbox ? this.hitbox.top : store.windowHeight * 0.55
+        const top = offset - store.windowHeight * 0.5
 
         const timeline = anime.timeline({
             complete: () => {
-                store.unlockDOM()
-                if (from) from.remove()
                 to.classList.remove('appear-in')
+
+                if (from) from.remove()
                 if (done) done()
+
+                ScrollManager.unlockBody()
             },
         })
 
-        const offset = this.hitbox ? this.hitbox.top : store.windowHeight * 0.55
-        const top = offset - store.windowHeight * 0.5
-        timeline
-            .add({
+        ScrollManager.lockBody()
+
+        const animations = [
+            {
                 targets: title,
                 duration,
                 easing,
                 translateY: [top, '0'],
-                color: ['rgb(0,0,0)', color],
+                color: ['#000', color],
                 opacity: () => {
                     return [from ? 1 : 0, 1]
                 },
-            })
-            .add(
-                {
-                    targets: intro,
-                    duration,
-                    easing,
-                    translateY: [top + 100, 0],
-                    opacity: {
-                        value: [0, 1],
-                    },
+            },
+            {
+                targets: intro,
+                duration,
+                easing,
+                translateY: [top + 100, 0],
+                opacity: {
+                    value: [0, 1],
                 },
-                0,
-            )
-            .add(
-                {
-                    targets: background,
-                    duration,
-                    easing,
-                    scaleY: [0, 1],
-                },
-                0,
-            )
+            },
+            {
+                targets: background,
+                duration,
+                easing,
+                scaleY: [0, 1],
+            },
+        ]
+
+        animations.map((anime) => timeline.add(anime, 0))
     }
 
     out({ from, trigger, done }) {
@@ -65,15 +69,10 @@ class WorkToProjectTransition extends Highway.Transition {
         }
 
         trigger.classList.add('is-active')
-
         this.hitbox = trigger.getBoundingClientRect()
 
-        const scroll = { y: getScrollTop() }
-        const parentHitbox = trigger.parentNode.getBoundingClientRect()
-        const margin = parentHitbox.left
-
+        const margin = trigger.parentNode.getBoundingClientRect().left
         const words = trigger.querySelectorAll('.js-fade-item span')
-
         const translatesX = []
 
         let offset = [0, 0]
@@ -92,9 +91,7 @@ class WorkToProjectTransition extends Highway.Transition {
             translatesX.push(-x)
         })
 
-        store.lockDOM()
-        from.classList.add('locked')
-        from.scrollTo(0, scroll.y)
+        ScrollManager.lockBody()
 
         anime({
             targets: words,
@@ -104,11 +101,11 @@ class WorkToProjectTransition extends Highway.Transition {
             duration,
             easing,
             complete: () => {
+                words.forEach((word) => word.remove())
                 done()
-                words.forEach((word) => (word.style.opacity = 0))
             },
         })
     }
 }
 
-export default WorkToProjectTransition
+export default ProjectTransition

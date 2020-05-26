@@ -11,8 +11,9 @@
 
     get_header();
 ?>
-<article class="Work js-work section-top is-padding-bottom" data-router-view="work">
-    <div class="container">
+
+<article class="Work js-work has-width-100" data-router-view="work">
+    <div class="container js-scrollable section-top is-padding-bottom">
         <h1 class="is-h3 has-font-title js-fade-item is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch"><sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup><?= get_the_title() ?></h1>
         <?php foreach($work->projects as $k => $project): ?>
             <div class="is-block">
@@ -31,11 +32,6 @@
                             <?php endif; ?>
                             <?= Text::wrapWord($project->title, 'span') ?>
                         </div>
-                        <div data-project="<?= $project->id ?>" class="Work__project--cover is-fixed has-width-100 has-height-100 is-flex is-center">
-                            <?php if($project->video): ?>
-                            <?= Video::create($project->video) ?>
-                            <?php endif; ?>
-                        </div>
                     </a>
                 </h3>
             </div>
@@ -44,6 +40,16 @@
         <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content">
             <div><?= $work->text ?></div>
         </div>
+    </div>
+
+    <div class="Work__project--cover js-cover is-fixed has-width-100 is-flex is-center">
+        <?php foreach($work->projects as $k => $project): ?>
+        <?php if($project->video): ?>
+            <div data-project="<?= $project->id ?>" class="js-project-video is-absolute has-width-100 has-height-100">
+                <?= Video::create($project->video) ?>
+            </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 </article>
 <?php get_footer() ?>

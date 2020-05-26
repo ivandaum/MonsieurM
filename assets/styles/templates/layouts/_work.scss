@@ -1,15 +1,18 @@
 .js-fade-item,
-.Work__project--cover,
-.Work__project--galery,
-.Work__project--galery picture,
-.Work .icon-new {
+.Work .icon-new,
+.Work__project--galery picture {
     transition: opacity var(--speed) var(--easing);
+}
+
+.Work__project--galery,
+.Work__project--cover {
+    transition: opacity var(--coverSpeed) var(--easing);
 }
 
 .Work {
     &__project {
         color: var(--color-grey);
-        transition: color var(--speed) var(--easing);
+        transition: color var(--coverSpeed) var(--easing);
         max-width: 80%;
 
         @include touch {
@@ -28,8 +31,13 @@
             pointer-events: none;
             z-index: map-get($zindex, base);
             background-color: var(--color-white);
-
+            height: 100vh;
             @include picture-cover;
+
+            video {
+                transition: opacity calc(var(--coverSpeed) * 0.5) var(--easing);
+                opacity: 0;
+            }
         }
 
         &--galery {
@@ -74,10 +82,6 @@
     &__project:hover,
     &__project.is-active {
         color: var(--color-black);
-
-        .Work__project--cover {
-            opacity: 1;
-        }
     }
 
     &__other {

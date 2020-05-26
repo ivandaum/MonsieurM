@@ -14,6 +14,10 @@
         top: 0;
         left: 0;
         z-index: map-get($zindex, above-section);
+
+        .Project__content {
+            display: none;
+        }
     }
 }
 

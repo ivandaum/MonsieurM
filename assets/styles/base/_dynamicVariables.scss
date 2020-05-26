@@ -7,8 +7,10 @@
     --color-white: #fff;
     --color-grey: #c9c9c9;
 
-    --easing: cubic-bezier(0.59, 0.01, 0.4, 0.98);
+    --bezier: cubic-bezier(0.59, 0.01, 0.4, 0.98);
+    --easing: ease-in-out;
     --speed: 250ms;
+    --coverSpeed: 100ms;
 
     --font-serif: 'Canela', 'Times new Roman', Times, serif;
     --font-text: 'Maison Neue', Helvetica, Arial, sans-serif;
