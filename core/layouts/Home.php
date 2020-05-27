@@ -11,8 +11,24 @@ class Home {
         $this->about = get_field('home__about', $post->ID);
         $this->skills = get_field('home__skills', $post->ID);
         $this->list = get_field('home__list', $post->ID);
-        $this->last = get_field('home__last', $post->ID);
+        $this->last = $this->getLastProject();
         $this->selected = get_field('home__selected', $post->ID);
         $this->showreel = get_field('home__showreel', $post->ID);
+    }
+
+
+    public function getLastProject() {
+        global $post;
+        $last = get_field('home__last', $post->ID);
+
+        if ($last['project']) {
+            $last['project'] = Project::findOne($last['project']);
+        }
+        
+        if (!$last['catchline'] && $last['project']->id) {
+            $last['catchline'] = $last['project']->catchline;
+        }
+
+        return $last;
     }
 }

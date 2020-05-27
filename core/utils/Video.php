@@ -6,6 +6,8 @@ class Video {
 
     public static function create($source) {
 
+        if(!$source) return "";
+
         $ratio = $source['height'] / $source['width'];
         $mimeType = $source['mime_type'];
         $url = $source['url'];

@@ -40,6 +40,10 @@
 
 .has-font-title {
     @include font-title;
+
+    &.with-spacing {
+        letter-spacing: 0.5rem;
+    }
 }
 
 .has-color-white {
@@ -155,6 +159,31 @@
 }
 
 .is-h4 {
+    font-size: 3.6rem;
+    line-height: 1.33em;
+
+    @include desktop-only {
+        font-size: 3.2rem;
+    }
+
+    @include tablet-only {
+        font-size: 3rem;
+    }
+
+    @include phone-only {
+        font-size: 2.8rem;
+    }
+
+    @include phone-s-only {
+        font-size: 2.5rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 2.2rem;
+    }
+}
+
+.is-h6 {
     font-size: 1.6rem;
     line-height: 1em;
 
