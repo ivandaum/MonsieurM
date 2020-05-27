@@ -30,4 +30,19 @@ class Text {
 
         return "{}";
     }
+
+    public static function addBeforeLastWord($w, $char) {
+        $words = explode(' ', $w);
+        $html = '';
+
+        foreach($words as $k => $word) {
+            if($k >= count($words) - 1) {
+                $html .= '<br />' . $char . ' ';
+            }
+
+            $html .= $word . ' ';
+        }
+
+        return substr($html, 0, -1);
+    }
 }

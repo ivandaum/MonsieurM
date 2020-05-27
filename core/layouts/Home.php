@@ -24,7 +24,7 @@ class Home {
         if ($last['project']) {
             $last['project'] = Project::findOne($last['project']);
         }
-        
+
         if (!$last['catchline'] && $last['project']->id) {
             $last['catchline'] = $last['project']->catchline;
         }

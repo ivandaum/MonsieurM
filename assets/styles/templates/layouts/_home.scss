@@ -5,7 +5,7 @@
         font-size: 2rem;
         line-height: 1.65em;
 
-        &--right .is-column:last-child {
+        &--right {
             padding-bottom: 30rem;
 
             @include phone {
@@ -29,12 +29,18 @@
 
         @include phone {
             font-size: 3.2rem;
+            padding-bottom: 0;
         }
     }
 
     &__last {
         background: var(--color-white);
         padding-top: 30rem;
+
+        @include phone {
+            padding-bottom: 8rem;
+            padding-top: 8rem;
+        }
 
         &--catchline {
             max-width: 45rem;
@@ -44,6 +50,11 @@
             padding-top: 115%;
             background: var(--color-grey);
             font-size: 10rem;
+            line-height: 1em;
+
+            @include phone {
+                font-size: 5.8rem;
+            }
 
             video,
             picture {
@@ -66,6 +77,24 @@
         &--project {
             bottom: 0;
             z-index: map-get($zindex, above-section);
+        }
+    }
+
+    &__links {
+        font-size: 2rem;
+        line-height: 1.65em;
+        background-color: var(--color-white);
+        min-height: 100vh;
+
+        &--title {
+            font-size: 10rem;
+            line-height: 1em;
+            font-weight: map-get($fontWeight, light);
+        }
+
+        a,
+        button {
+            cursor: pointer;
         }
     }
 }
