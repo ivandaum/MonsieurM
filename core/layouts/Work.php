@@ -16,6 +16,7 @@ class Work {
             $p->has_ribbon = $project['ribbon'];
             $this->projects[] = $p;
         }
+
         $this->currentYear = date('Y');
         $this->text = get_field('work__text', $post->ID);
     }

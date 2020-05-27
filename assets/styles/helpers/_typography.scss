@@ -42,6 +42,10 @@
     @include font-title;
 }
 
+.has-color-white {
+    color: var(--color-white);
+}
+
 .has-wp-content {
     font-size: 1.4rem;
     line-height: 2rem;
@@ -100,6 +104,31 @@
     }
 }
 
+.is-h2 {
+    font-size: 4.1rem;
+    line-height: 1.19em;
+
+    @include desktop-only {
+        font-size: 3.8rem;
+    }
+
+    @include tablet-only {
+        font-size: 3.6rem;
+    }
+
+    @include phone-only {
+        font-size: 3.6rem;
+    }
+
+    @include phone-s-only {
+        font-size: 3.4rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 3rem;
+    }
+}
+
 .is-h3 {
     font-size: 3.8rem;
     line-height: 1em;
@@ -122,5 +151,30 @@
 
     @include phone-xs-only {
         font-size: 1.4rem;
+    }
+}
+
+.is-h4 {
+    font-size: 1.6rem;
+    line-height: 1em;
+
+    @include desktop-only {
+        font-size: 1.6rem;
+    }
+
+    @include tablet-only {
+        font-size: 1.4rem;
+    }
+
+    @include phone-only {
+        font-size: 1.4rem;
+    }
+
+    @include phone-s-only {
+        font-size: 1.2rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 1rem;
     }
 }

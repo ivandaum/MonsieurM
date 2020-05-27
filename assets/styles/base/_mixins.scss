@@ -59,6 +59,7 @@
     font-family: var(--font-title);
     font-weight: map-get($fontWeight, bold);
     text-transform: uppercase;
+    letter-spacing: 0.5rem;
 }
 
 @mixin font-text {
