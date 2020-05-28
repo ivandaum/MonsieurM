@@ -11,6 +11,10 @@ class SingleProject {
             $this->{$name} = $value;
         }
 
+        if ($this->nextProject) {
+            $this->nextProject = Project::findOne($this->nextProject);
+        }
+
         $this->content = $this->formatContent($this->content);
     }
 

@@ -49,6 +49,26 @@ class Project {
         return self::format($query->posts, false);
     }
 
+    public static function getNextPost(int $id) {
+        $query = new \WP_Query(array(
+            'post_type' => self::slug,
+            'posts_per_page' => -1,
+            'status' => 'publish',
+            'fields' => 'ids',
+        ));
+
+        $next = null;
+        foreach($query->posts as $k => $pId) {
+            if ($pId === $id && isset($query->posts[$k + 1])) {
+                return $query->posts[$k + 1];
+            } else if ($pId === $id) {
+                return  $query->posts[0];
+            }
+        }
+
+        return null;
+    }
+
     public static function findOne(int $id) {
         return self::format(array($id))[0];
     }
@@ -78,6 +98,8 @@ class Project {
             $temp->link = get_permalink($id);
             $temp->date = get_the_date('d/m/Y', $id);
             $temp->timestamp = strtotime(str_replace('/', '-', $temp->date));
+
+            $temp->nextProject = self::getNextPost($id);
 
             $temp->related = array();
             if ($withRelated) {
