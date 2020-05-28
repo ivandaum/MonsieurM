@@ -1,5 +1,6 @@
 .Home {
     background-color: var(--color-grey);
+
     &__picture,
     &__introduction {
         z-index: map-get($zindex, section);
@@ -7,6 +8,7 @@
     }
 
     &__about {
+        z-index: map-get($zindex, under-section);
         font-size: 2rem;
         line-height: 1.65em;
 

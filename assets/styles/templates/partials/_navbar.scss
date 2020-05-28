@@ -1,6 +1,5 @@
 .Navbar {
-    z-index: map-get($zindex, header);
-    padding: var(--padding-large);
+    padding: var(--padding-large) 0;
     font-size: 1.6rem;
 
     @include tablet-only {
@@ -22,6 +21,18 @@
     a.is-active {
         pointer-events: none;
         color: var(--color-blackFaded);
+    }
+
+    li {
+        z-index: map-get($zindex, header);
+    }
+
+    li:first-child {
+        left: var(--padding-large);
+    }
+
+    li:last-child {
+        right: var(--padding-large);
     }
 }
 

@@ -20,8 +20,13 @@
 
     <section class="Home__picture is-relative has-width-100"><?= Image::create($home->picture) ?></section>
 
-    <section class="Home__about container is-flex">
-        <div class="is-column is-<?= 12 - $rightColumn ?> is-3-tablet"></div>
+    <section class="Home__about container is-flex has-width-100">
+        <div class="is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
+            <div class="Home__scrollingCircle is-fixed is-flex is-center">
+                <div class="Home__scrollingCircle--rotate js-circle-rotate is-absolute has-height-100 has-width-100"></div>
+                <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.gif') ?>" alt="">
+            </div>
+        </div>
         <div class="Home__about--right is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12 is-flex is-wrap">
             <div class="is-padding-bottom2x is-padding-top2x is-column is-8-widescreen is-9-desktop">
                 <h2 class="has-font-title with-spacing has-color-white is-h6"><?= $home->about['title'] ?></h2>
@@ -89,11 +94,6 @@
         </div>
     </section>
     <?php Template::partial('footer'); ?>
-
-    <div class="Home__scrollingCircle is-fixed is-flex is-center">
-        <div class="Home__scrollingCircle--rotate js-circle-rotate is-absolute has-height-100 has-width-100"></div>
-        <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.gif') ?>" alt="">
-    </div>
 </article>
 
 <?php get_footer() ?>
