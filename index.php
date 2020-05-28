@@ -12,13 +12,13 @@
 
     get_header();
 ?>
-<article class="Home section-top container-fluid has-width-100" data-router-view="home">
-    <section class="Home__introduction container is-padding-center">
+<article class="Home has-width-100" data-router-view="home">
+    <section class="Home__introduction section-top container is-padding-center">
         <h1 class="is-h3 has-font-title is-flex is-padding-bottom-2 is-padding-bottom-2-touch"><?= get_the_title() ?></h1>
         <p class="has-color-white is-h1 has-font-serif is-padding-bottom2x"><?= $home->intro ?></p>
     </section>
 
-    <section class="Home__picture has-width-100"><?= Image::create($home->picture) ?></section>
+    <section class="Home__picture is-relative has-width-100"><?= Image::create($home->picture) ?></section>
 
     <section class="Home__about container is-flex">
         <div class="is-column is-<?= 12 - $rightColumn ?> is-3-tablet"></div>
@@ -89,6 +89,11 @@
         </div>
     </section>
     <?php Template::partial('footer'); ?>
+
+    <div class="Home__scrollingCircle is-fixed is-flex is-center">
+        <div class="Home__scrollingCircle--rotate js-circle-rotate is-absolute has-height-100 has-width-100"></div>
+        <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.gif') ?>" alt="">
+    </div>
 </article>
 
 <?php get_footer() ?>

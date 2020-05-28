@@ -11,9 +11,12 @@ import ScrollManager from '../utils/ScrollManager'
 const PARALLAX = [-35, 35]
 
 class ProjectRenderer extends Highway.Renderer {
-    onLeaveCompleted() {}
+    onLeaveCompleted() {
+        this.raf.map((raf) => RafManager.removeQueue(raf))
+    }
 
     onEnterCompleted() {
+        this.raf = []
         this.$header = this.wrap.querySelector('.js-project-header')
         this.$cover = this.wrap.querySelector('.js-project-cover')
 
@@ -23,7 +26,7 @@ class ProjectRenderer extends Highway.Renderer {
         Videos.resizeAll(videos)
         Images.lazyload()
 
-        this.raf = RafManager.addQueue(this.onRender.bind(this))
+        this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
 
         FontLoader.load('Canela').then(() => {
             // if (this.$cover) {
@@ -52,7 +55,7 @@ class ProjectRenderer extends Highway.Renderer {
         observer.observe(this.$cover)
     }
 
-    onRender() {
+    renderCover() {
         if (this.coverIsVisible) {
             const progress = range(ScrollManager.scroll, this.coverBox.top, this.coverBox.bottom) * 0.01
             const y = lerp(PARALLAX[0], PARALLAX[1], progress)

@@ -4,7 +4,7 @@ import Highway from '@dogstudio/highway'
 import ScrollManager from './utils/ScrollManager'
 import store from './utils/store'
 
-import DefaultRenderer from './renderer/DefaultRenderer'
+import HomeRenderer from './renderer/HomeRenderer'
 import WorkRenderer from './renderer/WorkRenderer'
 import ProjectRenderer from './renderer/ProjectRenderer'
 
@@ -19,7 +19,7 @@ const view = document.querySelector('[data-router-view]:last-of-type')
 ScrollManager.init({ view })
 
 const renderers = {
-    home: DefaultRenderer,
+    home: HomeRenderer,
     project: ProjectRenderer,
     work: WorkRenderer,
 }

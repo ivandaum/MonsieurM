@@ -1,9 +1,18 @@
 .Home {
     background-color: var(--color-grey);
+    &__picture,
+    &__introduction {
+        z-index: map-get($zindex, section);
+        background-color: var(--color-grey);
+    }
 
     &__about {
         font-size: 2rem;
         line-height: 1.65em;
+
+        @include touch {
+            font-size: 1.8rem;
+        }
 
         &--right {
             padding-bottom: 30rem;
@@ -17,9 +26,28 @@
         &--right .is-column:first-child {
             max-width: 45rem;
         }
+    }
 
-        @include touch {
-            font-size: 1.8rem;
+    &__scrollingCircle {
+        font-size: 1rem;
+        height: 18em;
+        width: 18em;
+        z-index: map-get($zindex, base);
+        bottom: var(--padding-large);
+        left: var(--padding-large);
+        padding: 1.6em;
+
+        @include tablet-only {
+            font-size: 0.6rem;
+        }
+
+        @include phone {
+            display: none !important;
+        }
+
+        &--rotate {
+            background: url(../../assets/images/worldwide.png) center center no-repeat;
+            background-size: cover;
         }
     }
 

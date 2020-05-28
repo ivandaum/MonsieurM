@@ -4,6 +4,8 @@ import RafManager from '../utils/RafManager'
 
 export default {
     scroll: 0,
+    oldScroll: 0,
+    spinY: 0,
     bodyLocked: false,
     canScroll: true,
     init({ view }) {
@@ -48,7 +50,11 @@ export default {
             return false
         }
 
+        this.oldScroll = this.scroll
         this.scroll = this.getScrollTop()
+
+        this.spinY = this.scroll - this.oldScroll
+
         // this.$view.style.transform = `translateY(${-this.scroll}px)`
     },
 
