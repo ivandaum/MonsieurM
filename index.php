@@ -5,6 +5,7 @@
     use MonsieurM\Core\Utils\Image;
     use MonsieurM\Core\Utils\Video;
     use MonsieurM\Core\Utils\Text;
+    use MonsieurM\Core\Utils\Template;
 
     $rightColumn = 7;
     $home = new Home();
@@ -74,7 +75,7 @@
     <section class="Home__links container is-flex is-center">
         <div class="has-width-100">
             <div class="is-flex is-right-x">
-                <a href="/work" class="is-margin-bottom-10 is-block has-text-right">
+                <a href="<?= $home->selected['page'] ?>" class="is-margin-bottom-10 is-block has-text-right">
                     <span class="is-block"><?= $home->selected['wording'] ?></span>
                     <span class="Home__links--title has-font-title"><?= Text::addBeforeLastWord($home->selected['title'], '→') ?></span>
                 </a>
@@ -87,5 +88,7 @@
             </div>
         </div>
     </section>
+    <?php Template::partial('footer'); ?>
 </article>
+
 <?php get_footer() ?>

@@ -51,5 +51,7 @@
         <?php endif; ?>
         <?php endforeach; ?>
     </div>
+    <?php Template::partial('footer'); ?>
 </article>
+
 <?php get_footer() ?>

@@ -1,2 +1,14 @@
 .Footer {
+    background-color: var(--color-white);
+    padding: var(--padding-large);
+    color: var(--color-grey);
+
+    a {
+        font-size: 2.2rem;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
 }
