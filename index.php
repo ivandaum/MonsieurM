@@ -72,18 +72,18 @@
                 </a>
     </section>
 
-    <section class="Home__links container is-flex is-center">
+    <section class="Home__links container is-flex is-center is-h5">
         <div class="has-width-100">
             <div class="is-flex is-right-x">
-                <a href="<?= $home->selected['page'] ?>" class="is-margin-bottom-10 is-block has-text-right">
+                <a href="<?= $home->selected['page'] ?>" class="is-margin-bottom-10 is-margin-bottom-5-touch is-block has-text-right">
                     <span class="is-block"><?= $home->selected['wording'] ?></span>
-                    <span class="Home__links--title has-font-title"><?= Text::addBeforeLastWord($home->selected['title'], '→') ?></span>
+                    <span class="Home__links--title has-font-title is-padding-top-1-touch"><?= Text::addBeforeLastWord($home->selected['title'], '→') ?></span>
                 </a>
             </div>
             <div class="is-flex is-right-x">
-                <button class="js-showreel is-margin-bottom-10 is-block has-text-right">
+                <button class="js-showreel is-margin-bottom-10 is-margin-bottom-5-touch is-block has-text-right">
                     <span class="is-block"><?= $home->showreel['wording'] ?></span>
-                    <span class="Home__links--title has-font-title"><?= Text::addBeforeLastWord($home->showreel['title'], '→') ?></span>
+                    <span class="Home__links--title has-font-title is-padding-top-1-touch"><?= Text::addBeforeLastWord($home->showreel['title'], '→') ?></span>
                 </button>
             </div>
         </div>

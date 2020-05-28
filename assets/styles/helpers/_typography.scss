@@ -183,6 +183,26 @@
     }
 }
 
+.is-h5 {
+    font-size: 2.2rem;
+    line-height: 1em;
+
+    @include tablet-only {
+        font-size: 1.8rem;
+    }
+
+    @include phone-only {
+        font-size: 1.6rem;
+    }
+
+    @include phone-s-only {
+        font-size: 1.4rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 1.4rem;
+    }
+}
 .is-h6 {
     font-size: 1.6rem;
     line-height: 1em;

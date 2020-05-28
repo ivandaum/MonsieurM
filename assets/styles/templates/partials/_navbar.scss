@@ -1,6 +1,19 @@
 .Navbar {
     z-index: map-get($zindex, header);
     padding: var(--padding-large);
+    font-size: 1.6rem;
+
+    @include tablet-only {
+        font-size: 1.5rem;
+    }
+
+    @include tablet-only {
+        font-size: 1.4rem;
+    }
+
+    @include phone {
+        font-size: 1.2rem;
+    }
 
     a {
         transition: color var(--speed) var(--easing);

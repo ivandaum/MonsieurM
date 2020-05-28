@@ -81,7 +81,6 @@
     }
 
     &__links {
-        font-size: 2rem;
         line-height: 1.65em;
         background-color: var(--color-white);
         min-height: 100vh;
@@ -90,6 +89,22 @@
             font-size: 10rem;
             line-height: 1em;
             font-weight: map-get($fontWeight, light);
+
+            @include tablet-only {
+                font-size: 7rem;
+            }
+
+            @include phone-only {
+                font-size: 5rem;
+            }
+
+            @include phone-s-only {
+                font-size: 3.5rem;
+            }
+
+            @include phone-xs-only {
+                font-size: 3rem;
+            }
         }
 
         a,
