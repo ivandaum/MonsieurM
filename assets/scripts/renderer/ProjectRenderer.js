@@ -29,9 +29,9 @@ class ProjectRenderer extends Highway.Renderer {
         this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
 
         FontLoader.load('Canela').then(() => {
-            // if (this.$cover) {
-            //     this.bindCover()
-            // }
+            if (this.$cover) {
+                this.bindCover()
+            }
         })
     }
 

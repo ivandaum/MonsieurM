@@ -5,7 +5,14 @@ import Images from '../binders/Images'
 import breakpoints from '../constants/breakpoints'
 
 class WorkRenderer extends Highway.Renderer {
-    onLeaveCompleted() {}
+    onLeaveCompleted() {
+        this.$links.forEach((link) => {
+            link.removeEventListener('click', this.onClick)
+            link.removeEventListener('mouseenter', this.onMouseEnter)
+            link.removeEventListener('mouseleave', this.onMouseLeave)
+            link.removeEventListener('mousemove', this.browseGalery)
+        })
+    }
 
     onEnterCompleted() {
         this.$items = []

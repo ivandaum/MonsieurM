@@ -54,18 +54,10 @@ export default {
         this.scroll = this.getScrollTop()
 
         this.spinY = this.scroll - this.oldScroll
-
-        // this.$view.style.transform = `translateY(${-this.scroll}px)`
     },
 
     getScrollTop() {
-        return (
-            document.body.scrollTop ||
-            window.scrollY ||
-            window.scrollTop ||
-            window.pageYOffset ||
-            document.getElementsByTagName('html')[0].scrollTop
-        )
+        return window.pageYOffset || document.documentElement.scrollTop
     },
 
     onResize() {},

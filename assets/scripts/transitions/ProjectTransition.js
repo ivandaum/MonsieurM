@@ -40,7 +40,8 @@ class ProjectTransition extends Highway.Transition {
                 translateY: [top, '0'],
                 color: ['#000', color],
                 opacity: () => {
-                    return [from.dataset.routerView === 'work' ? 1 : 0, 1]
+                    const opacity = from && from.dataset.routerView === 'work' ? 1 : 0
+                    return [opacity, 1]
                 },
             },
             {
