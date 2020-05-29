@@ -102,7 +102,7 @@
         <div class="is-flex is-center has-width-100 has-height-100">
             <button class="Home__showreel--close js-showreel-trigger is-absolute has-font-title with-spacing is-relative">Close</button>
             <div class="Home__showreel--video is-flex is-center has-width-100 has-height-100">
-                <span class="has-font-serif is-h2 is-absolute Home__showreel--wording">Paused</span>
+                <span class="js-project-wording has-font-serif is-h2 is-absolute Home__showreel--wording">Paused</span>
                 <?= Video::create($home->showreel['video']) ?>
             </div>
         </div>

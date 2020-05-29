@@ -10,7 +10,7 @@ import ScrollManager from '../utils/ScrollManager'
 import RafManager from '../utils/RafManager'
 
 const easing = 'easeInOutExpo'
-const duration = 1500
+const duration = 1000
 
 class HomeRenderer extends Highway.Renderer {
     onLeaveCompleted() {
@@ -22,6 +22,7 @@ class HomeRenderer extends Highway.Renderer {
 
         this.raf = []
         this.rotate = 0
+        this.isSrOpen = false
 
         this.$rotatingCircle = $view.querySelector('.js-circle-rotate')
 
@@ -29,7 +30,7 @@ class HomeRenderer extends Highway.Renderer {
         this.$srContainer = $view.querySelector('.js-showreel')
         this.$srBackground = $view.querySelector('.js-showreel-background')
         this.$srVideo = $view.querySelector('.js-showreel .js-video')
-        this.isSrOpen = false
+        this.$srWording = $view.querySelector('.js-project-wording')
 
         const videos = $view.querySelectorAll('.js-video')
         Videos.bindAll(videos)
@@ -38,6 +39,7 @@ class HomeRenderer extends Highway.Renderer {
         Images.lazyload()
 
         this.$srTriggers.forEach((trigger) => trigger.addEventListener('click', () => this.toggleShowreel()))
+        this.$srVideo.addEventListener('click', () => this.toggleVideo())
 
         if (store.windowWidth >= breakpoints.tablet) {
             this.raf.push(RafManager.addQueue(this.renderRotatingCircle.bind(this)))
@@ -57,6 +59,7 @@ class HomeRenderer extends Highway.Renderer {
     }
 
     toggleShowreel() {
+        const animations = []
         const timeline = anime.timeline({
             autoplay: false,
             complete: () => {
@@ -64,12 +67,12 @@ class HomeRenderer extends Highway.Renderer {
                     this.$srContainer.classList.remove('ignore-locked', 'is-active')
                     this.isSrOpen = false
                     ScrollManager.unlockBody()
+                    this.$srVideo.pause()
                 } else {
                     this.isSrOpen = true
                 }
             },
         })
-        const animations = []
 
         if (this.isSrOpen) {
             animations.push(
@@ -91,6 +94,7 @@ class HomeRenderer extends Highway.Renderer {
         } else {
             this.$srContainer.classList.add('ignore-locked', 'is-active')
             ScrollManager.lockBody()
+            this.$srVideo.currentTime = 0
 
             Videos.resizeVideo(this.$srVideo)
 
@@ -107,9 +111,9 @@ class HomeRenderer extends Highway.Renderer {
                     easing,
                     opacity: {
                         value: [0, 1],
-                        delay: 150,
                     },
                     translateY: [200, 0],
+                    delay: 50,
                 },
             )
         }
@@ -118,6 +122,16 @@ class HomeRenderer extends Highway.Renderer {
         setTimeout(() => {
             timeline.play()
         }, 100)
+    }
+
+    toggleVideo() {
+        if (this.$srVideo.paused) {
+            this.$srVideo.play()
+            this.$srWording.classList.remove('is-active')
+        } else {
+            this.$srVideo.pause()
+            this.$srWording.classList.add('is-active')
+        }
     }
 }
 

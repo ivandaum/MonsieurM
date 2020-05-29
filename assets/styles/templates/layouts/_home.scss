@@ -180,6 +180,10 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity var(--speed) var(--easing);
+
+            &.is-active {
+                opacity: 1;
+            }
         }
 
         &--video {
