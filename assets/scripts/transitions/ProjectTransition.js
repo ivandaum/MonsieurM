@@ -17,7 +17,9 @@ class ProjectTransition extends Highway.Transition {
 
         const color = title.style.color
         const offset = this.hitbox ? this.hitbox.top : store.windowHeight * 0.55
+
         const top = offset - store.windowHeight * 0.5
+        const opacity = from && ['work', 'project'].indexOf(from.dataset.routerView) !== -1 ? 1 : 0
 
         const timeline = anime.timeline({
             complete: () => {
@@ -39,10 +41,7 @@ class ProjectTransition extends Highway.Transition {
                 easing,
                 translateY: [top, '0'],
                 color: ['#000', color],
-                opacity: () => {
-                    const opacity = from && from.dataset.routerView === 'work' ? 1 : 0
-                    return [opacity, 1]
-                },
+                opacity: [opacity, 1],
             },
             {
                 targets: intro,
@@ -65,7 +64,7 @@ class ProjectTransition extends Highway.Transition {
     }
 
     out({ from, trigger, done }) {
-        if (from.dataset.routerView === 'project') {
+        if (from.dataset.routerView === 'home') {
             return done()
         }
 

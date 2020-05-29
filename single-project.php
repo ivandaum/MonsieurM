@@ -86,6 +86,23 @@
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
+
+        <?php if($project->nextProject): ?>
+            <div class="Project__next is-relative has-width-100 has-height-100 is-flex is-center-y">
+                <div class="container">
+                    <div>
+                        <a data-transition="workToProject" href="<?= $project->nextProject->link ?>" class="has-text-right is-flex is-right-x is-wrap">
+                            <p class="Project__next--wording has-font-title has-color-white is-h3 has-width-100 is-absolute">Next project</p>
+                            <h2 class="is-h1 has-font-serif js-fade-item has-width-100"><?= Text::wrapWord($project->nextProject->title, 'span') ?></h2>
+                        </a>
+                    </div>
+                </div>
+                <div data-project="<?= $project->nextProject->id ?>" class="Project__next--video is-absolute has-width-100 has-height-100">
+                    <?= Video::create($project->nextProject->video) ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
+
 </article>
 <?php get_footer() ?>

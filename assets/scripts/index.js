@@ -38,6 +38,8 @@ const core = new Highway.Core({ renderers, transitions })
     .on('NAVIGATE_END', ({ to }) => {
         document.body.classList = to.page.body.classList
         ScrollManager.update({ view: to.view })
+
+        if (ScrollManager.bodyLocked) ScrollManager.unlockBody()
     })
     .on('NAVIGATE_IN', ({ to }) => {
         Nav.bindActiveLink({ color: to.view.dataset.color })

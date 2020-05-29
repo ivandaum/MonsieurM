@@ -10,10 +10,11 @@
     }
 
     &.appear-in {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         z-index: map-get($zindex, above-section);
+        width: 100%;
 
         .Project__content {
             display: none;
@@ -84,5 +85,36 @@
             margin-bottom: 0.8rem;
             display: block;
         }
+    }
+}
+
+.Project__next {
+    min-height: 100vh;
+
+    h2 {
+        max-width: 80%;
+        @include touch {
+            max-width: 100%;
+        }
+    }
+
+    &--video {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        @include picture-cover;
+    }
+
+    &--wording {
+        margin-top: -5rem;
+        transition: opacity var(--speed) var(--easing);
+
+        @include touch {
+            margin-top: -3rem;
+        }
+    }
+
+    a.is-active &--wording {
+        opacity: 0;
     }
 }
