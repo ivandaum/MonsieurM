@@ -9,7 +9,7 @@
     get_header();
 ?>
 <article class="Project has-width-100" data-router-view="project" data-color="<?= $project->color ?>">
-    <div class="Project__header js-project-header is-relative">
+    <section class="Project__header js-project-header is-relative">
         <div class="section-top container js-project is-padding-bottom">
             <h1 class="is-h1 has-font-serif js-project-title" style="color: <?= $project->color ?>"><?= Text::wrapWord($project->title, 'span') ?></h1>
             <p class="is-h1 has-font-serif js-project-intro" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="Project__background js-project-background is-absolute has-height-100 has-width-100" style="background-color: <?= $project->color_secondary ?>"></div>
-    </div>
+    </section>
 
-    <div class="Project__content">
+    <section class="Project__content">
         <?php if(isset($project->cover['image']['url'])): ?>
         <div class="Project__cover js-project-cover is-flex is-center is-relative" style="background-color: <?= $project->cover['color'] ?>">
             <?= Image::createHD($project->cover['image']) ?>
@@ -102,7 +102,7 @@
                 </div>
             </div>
         <?php endif; ?>
-    </div>
+    </section>
 
 </article>
 <?php get_footer() ?>

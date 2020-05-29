@@ -22,17 +22,19 @@ const Videos = {
     },
 
     resizeVideo: (video) => {
-        const width = video.parentNode.offsetWidth
-        const r = parseFloat(video.dataset.ratio) || RATIO
-        video.width = width
-        video.height = width * r
-    },
+        const parentHeight = video.parentNode.offsetHeight
+        const parentWidth = video.parentNode.offsetWidth
 
-    fitCover: (video) => {
-        const height = video.parentNode.offsetHeight
         const r = parseFloat(video.dataset.ratio) || RATIO
-        video.height = height + 'px'
-        video.width = height * (2 - r) + 'px'
+        const height = parentWidth * r
+
+        if (height <= parentHeight || parentHeight === 0) {
+            video.width = parentWidth
+            video.height = height
+        } else {
+            video.width = parentHeight / r
+            video.height = parentHeight
+        }
     },
 }
 

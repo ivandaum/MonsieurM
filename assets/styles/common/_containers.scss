@@ -27,7 +27,10 @@ body.loading * {
 main.locked {
     height: 100vh;
     overflow: hidden;
-    pointer-events: none;
+
+    section:not(.ignore-locked) {
+        pointer-events: none;
+    }
 }
 
 .container {

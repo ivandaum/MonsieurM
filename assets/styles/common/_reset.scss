@@ -378,8 +378,13 @@ svg {
     width: 1.5rem;
 }
 
-picture,
 video {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+picture {
     position: relative;
     display: block;
     width: 100%;

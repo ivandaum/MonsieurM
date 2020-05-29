@@ -13,7 +13,7 @@
 ?>
 
 <article class="Work js-work has-width-100" data-router-view="work">
-    <div class="container js-scrollable section-top is-padding-bottom">
+    <section class="container js-scrollable section-top is-padding-bottom">
         <h1 class="is-h3 has-font-title js-fade-item is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch"><sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup><?= get_the_title() ?></h1>
         <?php foreach($work->projects as $k => $project): ?>
             <div class="is-block">
@@ -40,9 +40,9 @@
         <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content">
             <div><?= $work->text ?></div>
         </div>
-    </div>
+    </section>
 
-    <div class="Work__project--cover js-cover is-fixed has-width-100 is-flex is-center">
+    <section class="Work__project--cover js-cover is-fixed has-width-100 is-flex is-center">
         <?php foreach($work->projects as $k => $project): ?>
         <?php if($project->video): ?>
             <div data-project="<?= $project->id ?>" class="js-project-video is-absolute has-width-100 has-height-100">
@@ -50,7 +50,7 @@
             </div>
         <?php endif; ?>
         <?php endforeach; ?>
-    </div>
+    </section>
     <?php Template::partial('footer'); ?>
 </article>
 

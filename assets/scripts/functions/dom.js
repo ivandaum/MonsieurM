@@ -1,4 +1,3 @@
-import anime from 'animejs'
 import { range } from './object'
 import store from '../utils/store'
 
@@ -16,27 +15,6 @@ export const getOffsetTop = ($element) => {
     const bodyRect = document.body.getBoundingClientRect()
     const elemRect = $element.getBoundingClientRect()
     return elemRect.top - bodyRect.top
-}
-
-/**
- * NOTE : function is using animejs
- */
-export const scrollTo = ({ y, complete }) => {
-    const easing = 'easeInOutExpo'
-    const duration = 2000
-    const targets = { y: store.scroll }
-    const container = window
-
-    anime({
-        targets,
-        y,
-        duration,
-        easing,
-        update: () => {
-            container.scrollTo(0, targets.y)
-        },
-        complete,
-    })
 }
 
 export const scrolledInViewport = ($target, callback) => {

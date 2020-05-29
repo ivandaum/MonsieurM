@@ -42,10 +42,21 @@
 
         &--galery {
             width: 20%;
-            height: 1em;
+            max-width: 26.2rem;
+            height: 16rem;
             left: 0;
             opacity: 0;
             z-index: map-get($zindex, section);
+
+            @include widescreen-only {
+                max-width: 23rem;
+                height: 14rem;
+            }
+
+            @include desktop-only {
+                max-width: 20rem;
+                height: 12rem;
+            }
 
             @include touch {
                 display: none;
@@ -54,10 +65,12 @@
             picture {
                 position: absolute;
                 padding-top: 0 !important;
-                height: 100%;
                 width: 100%;
+                height: 100%;
                 overflow: hidden;
                 opacity: 0;
+                top: 0;
+                left: 0;
             }
 
             img {

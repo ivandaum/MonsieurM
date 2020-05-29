@@ -1,6 +1,8 @@
-// import { getScrollTop } from '../functions/dom'
-
+import anime from 'animejs'
 import RafManager from '../utils/RafManager'
+
+const easing = 'easeInOutExpo'
+const duration = 2000
 
 export default {
     scroll: 0,
@@ -12,6 +14,7 @@ export default {
         window.addEventListener('resize', this.update.bind(this))
         RafManager.addQueue(this.onScroll.bind(this))
 
+        this.$scroller = document.documentElement
         this.$app = document.body.querySelector('main')
         this.$view = view
         this.update({ view })
@@ -38,11 +41,12 @@ export default {
     },
 
     unlockBody() {
-        this.$view.style.transform = `translateY(0px)`
-        this.$app.classList.remove('locked')
-        this.$app.scrollTo(0, this.scroll)
         this.canScroll = true
         this.bodyLocked = false
+
+        this.$app.classList.remove('locked')
+        this.$view.style.transform = `translateY(0px)`
+        this.$scroller.scrollTo(0, this.scroll)
     },
 
     onScroll() {
@@ -57,8 +61,23 @@ export default {
     },
 
     getScrollTop() {
-        return window.pageYOffset || document.documentElement.scrollTop
+        return window.pageYOffset || this.$scroller.scrollTop
     },
 
     onResize() {},
+
+    scrollTo({ y, complete }) {
+        const targets = { y: this.scroll }
+
+        anime({
+            targets,
+            y,
+            duration,
+            easing,
+            update: () => {
+                this.$scroller.scrollTo(0, targets.y)
+            },
+            complete,
+        })
+    },
 }
