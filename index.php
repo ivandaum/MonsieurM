@@ -23,8 +23,8 @@
         <section class="Home__picture is-relative has-width-100"><?= Image::create($home->picture) ?></section>
     
         <section class="Home__about container is-flex has-width-100">
-            <div class="is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
-                <div class="Home__scrollingCircle is-fixed is-flex is-center">
+            <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
+                <div class="Home__scrollingCircle is-sticky is-flex is-center">
                     <div class="Home__scrollingCircle--rotate js-circle-rotate is-absolute has-height-100 has-width-100"></div>
                     <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.gif') ?>" alt="">
                 </div>

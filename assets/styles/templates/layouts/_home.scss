@@ -24,6 +24,10 @@
                 padding-top: 8rem;
             }
         }
+
+        &--left {
+            margin: -18em 0;
+        }
     }
 
     &__scrollingCircle {
@@ -31,10 +35,8 @@
         height: 18em;
         width: 18em;
         z-index: map-get($zindex, base);
-        bottom: var(--padding-large);
-        left: var(--padding-large);
-        padding: 1.6em;
-
+        padding: 2.5em;
+        top: calc(100vh - 18em - var(--padding-large));
         @include tablet-only {
             font-size: 0.6rem;
         }
