@@ -37,6 +37,7 @@
         z-index: map-get($zindex, base);
         padding: 2.5em;
         top: calc(100vh - 18em - var(--padding-large));
+
         @include tablet-only {
             font-size: 0.6rem;
         }
@@ -204,5 +205,9 @@
             transform-origin: bottom center;
             top: 0;
         }
+    }
+
+    .Footer {
+        height: 100vh;
     }
 }
