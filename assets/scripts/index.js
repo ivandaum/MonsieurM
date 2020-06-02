@@ -34,7 +34,10 @@ const core = new Highway.Core({ renderers, transitions })
         document.body.classList = to.page.body.classList
         ScrollManager.update({ view: to.view })
 
-        if (ScrollManager.bodyLocked) ScrollManager.unlockBody()
+        if (ScrollManager.bodyLocked) {
+            ScrollManager.unlockBody()
+            ScrollManager.snapTo(0)
+        }
 
         store.updateOnNavigation()
     })
