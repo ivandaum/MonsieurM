@@ -15,6 +15,7 @@ export default class Swhoreel {
         this.$container = $view.querySelector('.js-showreel')
         this.$background = $view.querySelector('.js-showreel-background')
         this.$wording = $view.querySelector('.js-project-wording')
+        this.$wordingHTML = $view.querySelector('.js-project-wording span')
         this.$video = $view.querySelector('.js-showreel .js-video')
 
         const $triggers = [this.$trigger, this.$close]
@@ -22,7 +23,7 @@ export default class Swhoreel {
         this.$video.addEventListener('click', () => this.playOrPause())
         this.$video.addEventListener('ended', () => {
             this.$video.currentTime = 0
-            this.$wording.querySelector('span').innerHTML = 'Replay'
+            this.$wordingHTML.innerHTML = 'Replay'
             this.$wording.classList.add('is-active')
         })
     }
@@ -32,7 +33,7 @@ export default class Swhoreel {
             this.$video.play()
             this.$wording.classList.remove('is-active')
         } else {
-            this.$wording.querySelector('span').innerHTML = 'Pause'
+            this.$wordingHTML.innerHTML = 'Pause'
             this.$wording.classList.add('is-active')
             this.$video.pause()
         }
@@ -113,6 +114,7 @@ export default class Swhoreel {
                     this.$container.classList.remove('ignore-locked', 'is-active')
                     this.isOpen = false
                     ScrollManager.unlockBody()
+                    this.$wordingHTML.innerHTML = 'Play'
                 } else {
                     this.isOpen = true
                 }
