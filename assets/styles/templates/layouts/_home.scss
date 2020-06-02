@@ -8,34 +8,23 @@
     }
 
     &__picture {
-        &--circle {
+        picture.is-hidden {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 0;
-            height: 0;
-            z-index: map-get($zindex, above-section);
+            opacity: 0;
         }
 
-        &--circle div {
-            font-size: 1rem;
-            height: 20em;
-            width: 20em;
-            background-color: var(--color-white);
-            transform: scale(0.5);
-            transition: transform var(--speed) var(--easing);
-            opacity: 0.2;
-            border-radius: 50%;
+        &--canvas {
+            width: 100%;
+            height: auto;
+
+            @include touch {
+                display: none;
+            }
         }
 
-        &--doodle {
-            z-index: map-get($zindex, above-section);
-            max-width: 45vw;
-            left: 0;
-            right: 0;
-            margin: auto;
-            top: 18%;
-            transform: translateX(-13%);
-            pointer-events: none;
+        &--circle {
         }
     }
 

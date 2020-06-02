@@ -20,10 +20,10 @@
             <p class="has-color-white is-h1 has-font-serif is-padding-bottom2x"><?= $home->intro ?></p>
         </section>
     
-        <section class="Home__picture is-relative has-width-100 js-picture">
-            <div class="Home__picture--circle is-absolute js-picture-circle is-flex is-center"><div class="is-absolute"></div></div>
-            <img class="Home__picture--doodle is-absolute" src="<?= get_theme_file_uri('/assets/images/doodle.gif') ?>" alt="">
-            <?= Image::create($home->picture) ?>
+        <section class="Home__picture is-relative has-width-100 js-picture" data-gif="<?= get_theme_file_uri('/assets/images/doodle.gif') ?>">
+            <img class="Home__picture--circle is-absolute js-picture-circle is-block" src="<?= get_theme_file_uri('/assets/images/circle.png') ?>">
+            <?= Image::create($home->picture, array(), false) ?>
+            <canvas class="js-picture-canvas Home__picture--canvas"></canvas>
         </section>
     
         <section class="Home__about container is-flex has-width-100">
