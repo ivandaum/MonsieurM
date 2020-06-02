@@ -15,12 +15,12 @@
 <article class="Home has-width-100" data-router-view="home">
     <div class="js-scrollable">
 
-        <section class="Home__introduction section-top container is-padding-center is-hidden-desktop">
+        <section class="Home__introduction section-top container is-padding-center">
             <h1 class="is-h3 has-font-title is-flex is-padding-bottom-2 is-padding-bottom-2-touch"><?= get_the_title() ?></h1>
             <p class="has-color-white is-h1 has-font-serif is-padding-bottom2x"><?= $home->intro ?></p>
         </section>
     
-        <section class="Home__picture is-relative has-width-100 js-picture" data-gif="<?= get_theme_file_uri('/assets/images/doodle.gif') ?>">
+        <section class="Home__picture is-relative has-width-100 has-height-100 js-picture" data-gif="<?= get_theme_file_uri('/assets/images/doodle.gif') ?>">
             <img class="Home__picture--circle is-absolute js-picture-circle is-block" src="<?= get_theme_file_uri('/assets/images/circle.png') ?>">
             <?= Image::create($home->picture, array(), false) ?>
             <canvas class="js-picture-canvas Home__picture--canvas"></canvas>

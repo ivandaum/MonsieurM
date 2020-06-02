@@ -8,6 +8,8 @@
     }
 
     &__picture {
+        overflow: hidden;
+
         picture.is-hidden {
             position: absolute;
             top: 0;
@@ -22,9 +24,6 @@
             @include touch {
                 display: none;
             }
-        }
-
-        &--circle {
         }
     }
 
