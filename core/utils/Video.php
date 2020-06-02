@@ -4,7 +4,7 @@ namespace MonsieurM\Core\Utils;
 
 class Video {
 
-    public static function create($source) {
+    public static function create($source, $muted = true, $loop = true) {
 
         if(!$source) return "";
 
@@ -12,8 +12,18 @@ class Video {
         $mimeType = $source['mime_type'];
         $url = $source['url'];
 
+        $params = 'preload="metadata" playsinline';
+
+        if($muted) {
+            $params .= ' muted';
+        }
+
+        if ($loop) {
+            $params .= ' loop';
+        }
+
         $html = '';
-        $html .= '<video preload="metadata" loop muted playsinline class="js-video" data-ratio="' . $ratio . '">';
+        $html .= '<video "' . $params . '" class="js-video" data-ratio="' . $ratio . '">';
         $html .= '<source src="' . $url . '#t=0.1" type="' . $mimeType. '">';
         $html .= 'Your browser does not support the video tag.</video> ';
 

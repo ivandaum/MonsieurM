@@ -100,11 +100,11 @@
 
     <section class="Home__showreel js-showreel is-fixed container has-text-center">
         <div class="is-flex is-center has-width-100 has-height-100">
-            <button class="Home__showreel--close js-showreel-trigger is-absolute has-font-title with-spacing is-relative">Close</button>
-            <div class="Home__showreel--video is-flex is-center has-width-100 has-height-100">
-                <span class="js-project-wording has-font-serif is-h2 is-absolute Home__showreel--wording">Paused</span>
-                <?= Video::create($home->showreel['video']) ?>
+            <button class="Home__showreel--close js-showreel-close is-absolute has-font-title with-spacing is-relative">Close</button>
+            <div class="js-project-wording has-font-serif is-h2 is-absolute Home__showreel--wording is-active">
+                <span>Play</span>
             </div>
+            <?= Video::create($home->showreel['video'], false, false) ?>
         </div>
         <div class="Home__showreel--background js-showreel-background is-absolute has-height-100 has-width-100"></div>
     </section>

@@ -172,8 +172,9 @@
         &--close {
             top: calc(var(--padding-large) * 0.5);
             cursor: pointer;
-            opacity: 0.2;
             z-index: map-get($zindex, above-section);
+            color: rgba(0, 0, 0, 0.2);
+
             @include touch {
                 top: var(--padding-large);
                 width: 100%;
@@ -184,22 +185,15 @@
             z-index: map-get($zindex, above-section);
             pointer-events: none;
             opacity: 0;
-            transition: opacity var(--speed) var(--easing);
 
-            &.is-active {
+            span {
+                transition: opacity var(--speed) var(--easing);
+                opacity: 0;
+            }
+
+            &.is-active span {
                 opacity: 1;
             }
-        }
-
-        &--video {
-            transform-origin: center center;
-        }
-
-        &--video video {
-            width: auto;
-            cursor: pointer;
-            z-index: map-get($zindex, section);
-            background-color: var(--color-black);
         }
 
         &--background {
@@ -207,6 +201,13 @@
             left: 0;
             transform-origin: bottom center;
             top: 0;
+        }
+
+        video {
+            transform-origin: center center;
+            cursor: pointer;
+            z-index: map-get($zindex, section);
+            background-color: var(--color-white);
         }
     }
 
