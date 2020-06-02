@@ -21,6 +21,11 @@ class ProjectTransition extends Highway.Transition {
         const top = offset - store.windowHeight * 0.5
         const opacity = from && ['work', 'project'].indexOf(from.dataset.routerView) !== -1 ? 1 : 0
 
+        if (from) {
+            const words = from.querySelectorAll('.js-trigger-is-activate span')
+            words.forEach((word) => word.remove())
+        }
+
         const timeline = anime.timeline({
             complete: () => {
                 to.classList.remove('appear-in')
@@ -29,6 +34,7 @@ class ProjectTransition extends Highway.Transition {
                 if (done) done()
 
                 ScrollManager.unlockBody()
+                ScrollManager.snapTo(0)
             },
         })
 
@@ -68,7 +74,7 @@ class ProjectTransition extends Highway.Transition {
             return done()
         }
 
-        trigger.classList.add('is-active')
+        trigger.classList.add('is-active', 'js-trigger-is-activate')
         this.hitbox = trigger.getBoundingClientRect()
 
         const margin = trigger.parentNode.getBoundingClientRect().left
@@ -101,7 +107,6 @@ class ProjectTransition extends Highway.Transition {
             duration,
             easing,
             complete: () => {
-                words.forEach((word) => word.remove())
                 done()
             },
         })

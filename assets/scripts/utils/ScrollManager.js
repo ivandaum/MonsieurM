@@ -10,6 +10,7 @@ export default {
     spinY: 0,
     bodyLocked: false,
     canScroll: true,
+
     init({ view }) {
         window.addEventListener('resize', this.update.bind(this))
         RafManager.addQueue(this.onScroll.bind(this))
@@ -79,5 +80,9 @@ export default {
             },
             complete,
         })
+    },
+
+    snapTo(y) {
+        this.$scroller.scrollTo(0, y)
     },
 }

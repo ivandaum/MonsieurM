@@ -25,8 +25,6 @@ export default class Swhoreel {
             this.$wording.querySelector('span').innerHTML = 'Replay'
             this.$wording.classList.add('is-active')
         })
-
-        this.toggle()
     }
 
     playOrPause() {

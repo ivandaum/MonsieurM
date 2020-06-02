@@ -105,6 +105,11 @@
         @include picture-cover;
     }
 
+    video {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
     &--wording {
         margin-top: -5rem;
         transition: opacity var(--speed) var(--easing);

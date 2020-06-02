@@ -49,12 +49,12 @@ function app() {
     store.init()
     const view = document.querySelector('[data-router-view]:last-of-type')
 
-    const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
-    trans.prototype.in({ to: view })
-
     ScrollManager.init({ view })
     Nav.bindActiveLink({ color: view.dataset.color })
     store.updateOnNavigation()
+
+    const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
+    trans.prototype.in({ to: view })
 }
 
 app()
