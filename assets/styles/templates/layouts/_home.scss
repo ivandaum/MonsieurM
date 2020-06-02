@@ -20,6 +20,7 @@
         &--canvas {
             width: 100%;
             height: auto;
+            background-size: cover;
 
             @include touch {
                 display: none;
