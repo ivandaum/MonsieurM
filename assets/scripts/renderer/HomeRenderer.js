@@ -33,7 +33,7 @@ class HomeRenderer extends Highway.Renderer {
         this.$srWording = $view.querySelector('.js-project-wording')
 
         const videos = $view.querySelectorAll('.js-video')
-        Videos.bindAll(videos)
+        Videos.bindAll($view.querySelectorAll('.js-last-project .js-video'))
         Videos.resizeAll(videos)
 
         Images.lazyload()
@@ -44,6 +44,8 @@ class HomeRenderer extends Highway.Renderer {
         if (store.windowWidth >= breakpoints.tablet) {
             this.raf.push(RafManager.addQueue(this.renderRotatingCircle.bind(this)))
         }
+
+        setTimeout(() => this.toggleShowreel(), 300)
     }
 
     renderRotatingCircle() {

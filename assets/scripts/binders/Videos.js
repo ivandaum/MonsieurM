@@ -29,11 +29,11 @@ const Videos = {
         const height = parentWidth * r
 
         if (height <= parentHeight || parentHeight === 0) {
-            video.width = parentWidth
-            video.height = height
+            video.style.width = parentWidth + 'px'
+            video.style.height = height + 'px'
         } else {
-            video.width = parentHeight / r
-            video.height = parentHeight
+            video.style.width = parentHeight / r + 'px'
+            video.style.height = parentHeight + 'px'
         }
     },
 }

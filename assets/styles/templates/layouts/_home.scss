@@ -97,17 +97,17 @@
             @include phone {
                 font-size: 5.8rem;
             }
+        }
 
-            video,
-            picture {
-                object-fit: cover;
-                top: 0;
-                left: 0;
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                z-index: map-get($zindex, under-section);
-            }
+        video,
+        picture {
+            object-fit: cover;
+            top: 0;
+            left: 0;
+            position: absolute;
+            height: 100% !important;
+            width: 100% !important;
+            z-index: map-get($zindex, under-section);
         }
 
         .icon-new {
@@ -162,10 +162,11 @@
         height: 100vh;
         z-index: map-get($zindex, above-all);
         padding: var(--padding-large);
-        display: none;
+        transform: scaleY(0);
+        transform-origin: bottom center;
 
         &.is-active {
-            display: block;
+            transform: scaleY(1);
         }
 
         &--close {
@@ -198,6 +199,7 @@
             width: auto;
             cursor: pointer;
             z-index: map-get($zindex, section);
+            background-color: var(--color-black);
         }
 
         &--background {
