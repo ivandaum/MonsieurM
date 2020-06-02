@@ -1,11 +1,11 @@
 .js-fade-item,
-.Work .icon-new,
-.Work__project--galery picture {
+.Work .icon-new {
     transition: opacity var(--speed) var(--easing);
 }
 
 .Work__project--galery,
-.Work__project--cover {
+.Work__project--cover,
+.Work__project--galery picture {
     transition: opacity var(--coverSpeed) var(--easing);
 }
 
@@ -47,6 +47,7 @@
             left: 0;
             opacity: 0;
             z-index: map-get($zindex, section);
+            margin-top: -1rem;
 
             @include widescreen-only {
                 max-width: 23rem;

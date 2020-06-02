@@ -84,7 +84,8 @@
         }
 
         &--catchline {
-            max-width: 45rem;
+            max-width: 90rem;
+            line-height: 1.13em;
         }
 
         &--video {
@@ -128,7 +129,7 @@
 
         &--title {
             font-size: 10rem;
-            line-height: 1em;
+            line-height: 0.9em;
             font-weight: map-get($fontWeight, light);
             letter-spacing: -0.37rem;
 

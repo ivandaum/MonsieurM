@@ -47,7 +47,7 @@ class HomeRenderer extends Highway.Renderer {
     }
 
     renderRotatingCircle() {
-        this.rotate += ScrollManager.spinY * 0.3
+        this.rotate += ScrollManager.spinY * 0.15
 
         if (this.rotate < 0) {
             this.rotate = 360

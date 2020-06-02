@@ -37,7 +37,7 @@
             </div>
         <?php endforeach; ?>
 
-        <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content">
+        <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content js-fade-item">
             <div><?= $work->text ?></div>
         </div>
     </section>
