@@ -7,6 +7,38 @@
         background-color: var(--color-grey);
     }
 
+    &__picture {
+        &--circle {
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            z-index: map-get($zindex, above-section);
+        }
+
+        &--circle div {
+            font-size: 1rem;
+            height: 20em;
+            width: 20em;
+            background-color: var(--color-white);
+            transform: scale(0.5);
+            transition: transform var(--speed) var(--easing);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        &--doodle {
+            z-index: map-get($zindex, above-section);
+            max-width: 45vw;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 18%;
+            transform: translateX(-13%);
+            pointer-events: none;
+        }
+    }
+
     &__about {
         z-index: map-get($zindex, under-section);
         font-size: 2rem;

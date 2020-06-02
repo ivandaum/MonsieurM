@@ -15,17 +15,21 @@
 <article class="Home has-width-100" data-router-view="home">
     <div class="js-scrollable">
 
-        <section class="Home__introduction section-top container is-padding-center">
+        <section class="Home__introduction section-top container is-padding-center is-hidden-desktop">
             <h1 class="is-h3 has-font-title is-flex is-padding-bottom-2 is-padding-bottom-2-touch"><?= get_the_title() ?></h1>
             <p class="has-color-white is-h1 has-font-serif is-padding-bottom2x"><?= $home->intro ?></p>
         </section>
     
-        <section class="Home__picture is-relative has-width-100"><?= Image::create($home->picture) ?></section>
+        <section class="Home__picture is-relative has-width-100 js-picture">
+            <div class="Home__picture--circle is-absolute js-picture-circle is-flex is-center"><div class="is-absolute"></div></div>
+            <img class="Home__picture--doodle is-absolute" src="<?= get_theme_file_uri('/assets/images/doodle.gif') ?>" alt="">
+            <?= Image::create($home->picture) ?>
+        </section>
     
         <section class="Home__about container is-flex has-width-100">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
                 <div class="Home__scrollingCircle is-sticky is-flex is-center">
-                    <div class="Home__scrollingCircle--rotate js-circle-rotate is-absolute has-height-100 has-width-100"></div>
+                    <div class="Home__scrollingCircle--rotate js-about-circle is-absolute has-height-100 has-width-100"></div>
                     <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.gif') ?>" alt="">
                 </div>
             </div>
@@ -53,8 +57,7 @@
                 <?php endforeach; ?>
             </div>
         </section>
-    
-    
+
         <section class="Home__last container is-flex">
             <div class="is-column is-<?= 12 - $rightColumn ?> is-3-tablet"></div>
             <div class="is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12">
@@ -76,7 +79,7 @@
                     <?php endif; ?>
                 </div>
                 <?php endif; ?>
-                    </a>
+                </a>
         </section>
     
         <section class="Home__links container is-flex is-center is-h5">

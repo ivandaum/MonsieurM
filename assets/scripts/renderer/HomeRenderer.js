@@ -23,28 +23,44 @@ class HomeRenderer extends Highway.Renderer {
 
         Images.lazyload()
 
-        this.raf = []
-        this.rotate = 0
-
         this.Showreel = new Showreel({ $view })
+        this.raf = []
 
-        this.$rotatingCircle = $view.querySelector('.js-circle-rotate')
+        this.$pic = $view.querySelector('.js-picture')
+        this.$picCircle = $view.querySelector('.js-picture-circle')
+        this.picPosition = [0, 0]
+        this.picPositionEased = [0, 0]
+        this.picTop = this.$pic.getBoundingClientRect().top
+
+        this.$aboutCircle = $view.querySelector('.js-about-circle')
+        this.aboutRotate = 0
 
         if (store.windowWidth >= breakpoints.tablet) {
             this.raf.push(RafManager.addQueue(this.renderRotatingCircle.bind(this)))
+            this.raf.push(RafManager.addQueue(this.renderPicCircle.bind(this)))
+
+            this.$pic.addEventListener('mousemove', (e) => (this.picPosition = [e.x, e.y - this.picTop]))
         }
     }
 
     renderRotatingCircle() {
-        this.rotate += ScrollManager.spinY * 0.15
+        this.aboutRotate += ScrollManager.spinY * 0.15
 
-        if (this.rotate < 0) {
-            this.rotate = 360
-        } else if (this.rotate > 360) {
-            this.rotate = 0
+        if (this.aboutRotate < 0) {
+            this.aboutRotate = 360
+        } else if (this.aboutRotate > 360) {
+            this.aboutRotate = 0
         }
 
-        this.$rotatingCircle.style.transform = `rotate(${this.rotate}deg)`
+        this.$aboutCircle.style.transform = `rotate(${this.aboutRotate}deg)`
+    }
+
+    renderPicCircle() {
+        for (let i = 0; i < this.picPosition.length; i += 1) {
+            this.picPositionEased[i] += (this.picPosition[i] - this.picPositionEased[i]) * 0.1
+        }
+
+        this.$picCircle.style.transform = `translate(${this.picPositionEased[0]}px,${this.picPositionEased[1]}px)`
     }
 }
 
