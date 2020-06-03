@@ -85,8 +85,8 @@ add_action( 'admin_menu', function() {
 
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
-        'page_title'    => __('Informations complémentaire'),
-        'menu_title'    => __('Informations'),
+        'page_title'    => __('Footer'),
+        'menu_title'    => __('Footer'),
         'menu_slug'     => 'theme-general-settings',
         'capability'    => 'edit_posts',
         'redirect'      => false

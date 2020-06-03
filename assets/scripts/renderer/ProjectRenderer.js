@@ -4,9 +4,9 @@ import Videos from '../binders/Videos'
 import RafManager from '../utils/RafManager'
 import store from '../utils/store'
 import FontLoader from '../utils/FontLoader'
-
-import { lerp, range } from '../functions/object'
 import ScrollManager from '../utils/ScrollManager'
+
+// import { lerp, range } from '../functions/object'
 
 class ProjectRenderer extends Highway.Renderer {
     onLeaveCompleted() {
@@ -24,17 +24,16 @@ class ProjectRenderer extends Highway.Renderer {
         Images.lazyload()
 
         FontLoader.load('Canela').then(() => {
-            this.bindCover()
-
-            if (this.coverBox.$el) {
-                this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
-            }
+            // this.bindCover()
+            // if (this.coverBox.$el) {
+            //     this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
+            // }
         })
     }
 
     bindCover() {
         this.coverBox = {
-            $el: this.wrap.querySelector('.js-project-cover'),
+            $el: this.wrap.querySelector('.js-project-cover picture'),
             top: this.$header.offsetHeight - store.windowHeight,
             bottom: this.$header.offsetHeight + store.windowHeight,
             parallax: store.windowHeight * 0.4,
@@ -52,9 +51,10 @@ class ProjectRenderer extends Highway.Renderer {
         const cover = this.coverBox
 
         if (cover.isVisible) {
-            const progress = range(ScrollManager.scroll, cover.top, cover.bottom) * 0.01
-            const y = lerp(-cover.parallax, cover.parallax, progress)
+            // const progress = range(ScrollManager.scroll, cover.top, cover.bottom) * 0.01
+            // const y = lerp(-cover.parallax, cover.parallax, progress)
 
+            const y = ScrollManager.scroll - cover.top - store.windowHeight
             cover.$el.style.transform = `translateY(${y}px)`
         }
     }

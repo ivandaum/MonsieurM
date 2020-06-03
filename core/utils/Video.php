@@ -23,7 +23,7 @@ class Video {
         }
 
         $html = '';
-        $html .= '<video "' . $params . '" class="js-video" data-ratio="' . $ratio . '">';
+        $html .= '<video ' . $params . ' class="js-video" data-ratio="' . $ratio . '">';
         $html .= '<source src="' . $url . '#t=0.1" type="' . $mimeType. '">';
         $html .= 'Your browser does not support the video tag.</video> ';
 

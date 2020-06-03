@@ -17,6 +17,7 @@ export default class MaskPicture {
 
         this.raf = []
         this.ctx = this.$canvas.getContext('2d')
+        this.isFocused = false
 
         this.loadBackground()
         this.loadGif()
@@ -31,6 +32,8 @@ export default class MaskPicture {
         })
 
         this.$container.addEventListener('mousemove', (e) => (this.cursor = [e.x, e.y]))
+        this.$container.addEventListener('mouseenter', () => (this.isFocused = true))
+        this.$container.addEventListener('mouseleave', () => (this.isFocused = false))
 
         if (store.windowWidth >= breakpoints.tablet) {
             this.raf.push(RafManager.addQueue(this.render.bind(this)))
@@ -148,6 +151,7 @@ export default class MaskPicture {
         this.ctx.globalCompositeOperation = 'destination-out'
 
         if (this.circle.canRender) {
+            const size = this.circle.size * 0.5
             const diff = ScrollManager.scroll - this.top
 
             const top = this.gif.top - diff
@@ -162,13 +166,23 @@ export default class MaskPicture {
             } else {
                 this.circle.x = this.cursor[0]
                 this.circle.y = this.cursor[1] + diff
-                this.circle.ratio += (INTIAL_RATIO - this.circle.ratio) * 0.1
+
+                const ratio = this.isFocused ? INTIAL_RATIO : 0
+                const easing = this.isFocused ? 0.1 : 0.3
+                this.circle.ratio += (ratio - this.circle.ratio) * easing
+
+                const topLimit = size * this.circle.ratio
+                const bottomLimit = this.background.height - size * this.circle.ratio
+
+                if (this.circle.y < topLimit) {
+                    this.circle.y = topLimit
+                } else if (this.circle.y > bottomLimit) {
+                    this.circle.y = bottomLimit
+                }
             }
 
             this.circle.xEased += (this.circle.x - this.circle.xEased) * 0.1
             this.circle.yEased += (this.circle.y - this.circle.yEased) * 0.1
-
-            const size = this.circle.size * 0.5
 
             this.ctx.beginPath()
             this.ctx.arc(this.circle.xEased, this.circle.yEased, size * this.circle.ratio, 0, 2 * Math.PI)

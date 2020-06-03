@@ -12,6 +12,7 @@ import DefaultTransition from './transitions/DefaultTransition'
 import ProjectTransition from './transitions/ProjectTransition'
 
 import Nav from './animations/Nav'
+import Footer from './animations/Footer'
 
 const renderers = {
     home: HomeRenderer,
@@ -40,6 +41,7 @@ const core = new Highway.Core({ renderers, transitions })
         }
 
         store.updateOnNavigation()
+        Footer.update()
     })
     .on('NAVIGATE_IN', ({ to }) => {
         Nav.bindActiveLink({ color: to.view.dataset.color })
@@ -53,8 +55,9 @@ function app() {
     const view = document.querySelector('[data-router-view]:last-of-type')
 
     ScrollManager.init({ view })
-    Nav.bindActiveLink({ color: view.dataset.color })
     store.updateOnNavigation()
+    Nav.bindActiveLink({ color: view.dataset.color })
+    Footer.update()
 
     const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
     trans.prototype.in({ to: view })

@@ -10,6 +10,8 @@ export default {
     spinY: 0,
     bodyLocked: false,
     canScroll: true,
+    isScrolling: false,
+    funcOnScroll: [],
 
     init({ view }) {
         window.addEventListener('resize', this.update.bind(this))
@@ -50,6 +52,20 @@ export default {
         this.$scroller.scrollTo(0, this.scroll)
     },
 
+    addOnScroll(func) {
+        this.funcOnScroll.push(func)
+        return this.funcOnScroll.length - 1
+    },
+
+    removeOnScroll(index) {
+        if (this.funcOnScroll[index]) {
+            this.funcOnScroll.splice(index, 1)
+            return true
+        }
+
+        return false
+    },
+
     onScroll() {
         if (!this.canScroll) {
             return false
@@ -59,6 +75,9 @@ export default {
         this.scroll = this.getScrollTop()
 
         this.spinY = this.scroll - this.oldScroll
+        this.isScrolling = this.spinY !== 0
+
+        this.funcOnScroll.map((func) => func())
     },
 
     getScrollTop() {

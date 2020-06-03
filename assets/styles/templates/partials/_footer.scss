@@ -1,6 +1,37 @@
 .Footer {
     background-color: var(--color-white);
     padding: var(--padding-large);
+    height: 100vh;
+    transition: color var(--coverSpeed) var(--easing);
+
+    &__video,
+    &__wording {
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity var(--coverSpeed) var(--easing);
+    }
+
+    &__video {
+        z-index: map-get($zindex, under-section);
+
+        video {
+            height: 100% !important;
+            width: 100% !important;
+            object-fit: cover;
+        }
+    }
+
+    &__wording {
+        font-size: 6.5rem;
+        color: var(--color-white);
+        z-index: map-get($zindex, section);
+    }
+
+    ul {
+        z-index: map-get($zindex, section);
+    }
 
     a {
         @include desktop {
@@ -11,5 +42,15 @@
     button,
     a {
         cursor: pointer;
+        z-index: map-get($zindex, section);
+    }
+}
+
+body.email-is-hover .Footer {
+    color: var(--color-white);
+
+    .Footer__video,
+    .Footer__wording {
+        opacity: 1;
     }
 }

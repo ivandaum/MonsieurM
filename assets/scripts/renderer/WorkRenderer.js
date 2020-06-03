@@ -1,8 +1,9 @@
 import Highway from '@dogstudio/highway'
+import breakpoints from '../constants/breakpoints'
 import store from '../utils/store'
 import Videos from '../binders/Videos'
 import Images from '../binders/Images'
-import breakpoints from '../constants/breakpoints'
+import ScrollManager from '../utils/ScrollManager'
 
 class WorkRenderer extends Highway.Renderer {
     onLeaveCompleted() {
@@ -12,6 +13,8 @@ class WorkRenderer extends Highway.Renderer {
             link.removeEventListener('mouseleave', this.onMouseLeave)
             link.removeEventListener('mousemove', this.browseGalery)
         })
+
+        ScrollManager.removeOnScroll(this.onScrollIndex)
     }
 
     onEnterCompleted() {
@@ -19,8 +22,8 @@ class WorkRenderer extends Highway.Renderer {
         this.galeryIndex = 0
         this.galery = []
 
-        this.bindDom()
         Images.lazyload()
+        this.bindDom()
     }
 
     bindDom() {
@@ -50,10 +53,20 @@ class WorkRenderer extends Highway.Renderer {
             link.addEventListener('mouseleave', () => this.onMouseLeave(id))
             link.addEventListener('mousemove', () => this.browseGalery())
         })
+
+        this.onScrollIndex = ScrollManager.addOnScroll(() => {
+            if (ScrollManager.isScrolling) {
+                this.onMouseLeave()
+            }
+        })
     }
 
     onClick(id) {
         this.isNavigating = true
+
+        if (!this.activeId) {
+            this.onMouseEnter(id)
+        }
 
         const item = this.$items[id]
 
@@ -80,6 +93,8 @@ class WorkRenderer extends Highway.Renderer {
             item.video.style.opacity = 1
             item.video.play()
         }
+
+        this.activeId = id
     }
 
     onMouseLeave(id) {
@@ -90,8 +105,12 @@ class WorkRenderer extends Highway.Renderer {
             item.style.opacity = 1
         })
 
-        const item = this.$items[id]
+        const index = id || this.activeId
+
+        const item = this.$items[index]
         this.$cover.style.opacity = 0
+
+        if (!item) return false
 
         if (item.galery && item.pictures.length) {
             item.galery.style.opacity = 0
@@ -101,6 +120,8 @@ class WorkRenderer extends Highway.Renderer {
             item.video.style.opacity = 0
             item.video.pause()
         }
+
+        this.activeId = null
     }
 
     browseGalery() {

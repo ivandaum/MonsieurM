@@ -39,3 +39,13 @@
 body.single .Navbar a {
     color: var(--color-grey);
 }
+
+body.email-is-hover .Navbar {
+    a {
+        color: var(--color-greyDarker);
+    }
+
+    a.is-active {
+        color: var(--color-white);
+    }
+}
