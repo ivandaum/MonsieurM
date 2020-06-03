@@ -17,6 +17,13 @@
             opacity: 0;
         }
 
+        &--circle {
+            img {
+                opacity: 0.2;
+                animation: rotate 8s infinite linear;
+            }
+        }
+
         &--canvas {
             width: 100%;
             height: auto;

@@ -7,16 +7,12 @@
     }
 }
 
-@keyframes black-to-white {
+@keyframes rotate {
     0% {
-        color: var(--color-black);
-    }
-
-    50% {
-        color: var(--color-white);
+        transform: rotate(0);
     }
 
     100% {
-        color: var(--color-black);
+        transform: rotate(360deg);
     }
 }

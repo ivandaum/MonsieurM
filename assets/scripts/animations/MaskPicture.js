@@ -6,7 +6,7 @@ import store from '../utils/store'
 import ScrollManager from '../utils/ScrollManager'
 import FontLoader from '../utils/FontLoader'
 
-const INTIAL_RATIO = 0.3
+const INTIAL_RATIO = 0.2
 export default class MaskPicture {
     constructor({ $view }) {
         this.$container = $view.querySelector('.js-picture')
@@ -60,24 +60,35 @@ export default class MaskPicture {
 
     loadGif() {
         this.gif = {
-            $el: new Image(),
+            $el: [],
             canRender: false,
             width: 0,
             height: 0,
             top: 0,
             left: 0,
+            loaded: 0,
+            index: 0,
         }
 
-        this.gif.$el.onload = () => {
-            const ratio = this.gif.$el.height / this.gif.$el.width
+        for (let i = 1; i <= 5; i++) {
+            const img = new Image()
+            img.onload = () => this.onGifLoad(img)
+            img.src = this.$container.dataset.gifpath + i + '.png'
+            this.gif.$el.push(img)
+        }
+    }
 
-            this.gif.width = store.windowWidth * 0.45
+    onGifLoad(img) {
+        this.gif.loaded += 1
+
+        if (this.gif.width === 0) {
+            const ratio = img.height / img.width
+
+            this.gif.width = store.windowWidth * 0.33
             this.gif.height = this.gif.width * ratio
-            this.gif.canRender = true
             this.gif.left = store.windowWidth * 0.5 - this.gif.width * 0.5 - store.windowWidth * 0.05 // 5%
+            this.gif.canRender = true
         }
-
-        this.gif.$el.src = this.$container.dataset.gif
     }
 
     loadBackground() {
@@ -101,12 +112,12 @@ export default class MaskPicture {
                 this.background.width = el.width
                 this.background.height = el.height
 
-                const ratio = el.width / el.height
+                const ratio = el.height / el.width
 
                 this.$canvas.width = store.windowWidth
                 this.$canvas.height = store.windowWidth * ratio
 
-                this.gif.top = el.height * 0.18
+                this.gif.top = el.height * 0.2
                 this.$picture.classList.add('is-hidden')
                 this.$canvas.style = `background-image: url(${el.currentSrc})`
             },
@@ -120,7 +131,18 @@ export default class MaskPicture {
         this.ctx.globalCompositeOperation = 'source-over'
 
         if (this.gif.canRender) {
-            this.ctx.drawImage(this.gif.$el, this.gif.left, this.gif.top, this.gif.width, this.gif.height)
+            this.gif.index += 0.15
+            if (this.gif.index > this.gif.$el.length) {
+                this.gif.index = 0
+            }
+
+            this.ctx.drawImage(
+                this.gif.$el[Math.floor(this.gif.index)],
+                this.gif.left,
+                this.gif.top,
+                this.gif.width,
+                this.gif.height,
+            )
         }
 
         this.ctx.globalCompositeOperation = 'destination-out'
