@@ -8,8 +8,6 @@ import FontLoader from '../utils/FontLoader'
 import { lerp, range } from '../functions/object'
 import ScrollManager from '../utils/ScrollManager'
 
-const PARALLAX = [-35, 35]
-
 class ProjectRenderer extends Highway.Renderer {
     onLeaveCompleted() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
@@ -18,7 +16,6 @@ class ProjectRenderer extends Highway.Renderer {
     onEnterCompleted() {
         this.raf = []
         this.$header = this.wrap.querySelector('.js-project-header')
-        this.$cover = this.wrap.querySelector('.js-project-cover')
 
         const videos = this.wrap.querySelectorAll('.js-video')
 
@@ -26,41 +23,39 @@ class ProjectRenderer extends Highway.Renderer {
         Videos.resizeAll(videos)
         Images.lazyload()
 
-        this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
-
         FontLoader.load('Canela').then(() => {
-            if (this.$cover) {
-                this.bindCover()
+            this.bindCover()
+
+            if (this.coverBox.$el) {
+                this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
             }
         })
     }
 
-    getCoverBox() {
+    bindCover() {
         this.coverBox = {
+            $el: this.wrap.querySelector('.js-project-cover'),
             top: this.$header.offsetHeight - store.windowHeight,
             bottom: this.$header.offsetHeight + store.windowHeight,
+            parallax: store.windowHeight * 0.4,
         }
-
-        this.$cover.style.transform = `translateY(${PARALLAX[0]}vh)`
-    }
-
-    bindCover() {
-        this.getCoverBox()
 
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
-            this.coverIsVisible = isIntersecting
+            this.coverBox.isVisible = isIntersecting
         })
 
-        observer.observe(this.$cover)
+        observer.observe(this.coverBox.$el)
     }
 
     renderCover() {
-        if (this.coverIsVisible) {
-            const progress = range(ScrollManager.scroll, this.coverBox.top, this.coverBox.bottom) * 0.01
-            const y = lerp(PARALLAX[0], PARALLAX[1], progress)
+        const cover = this.coverBox
 
-            this.$cover.style.transform = `translateY(${y}vh)`
+        if (cover.isVisible) {
+            const progress = range(ScrollManager.scroll, cover.top, cover.bottom) * 0.01
+            const y = lerp(-cover.parallax, cover.parallax, progress)
+
+            cover.$el.style.transform = `translateY(${y}px)`
         }
     }
 }

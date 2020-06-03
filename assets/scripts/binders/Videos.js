@@ -23,7 +23,7 @@ const Videos = {
 
     resizeVideo: (video) => {
         const parentHeight = video.parentNode.offsetHeight
-        const parentWidth = video.parentNode.offsetWidth
+        const parentWidth = window.getComputedStyle(video.parentNode).width
 
         const r = parseFloat(video.dataset.ratio) || RATIO
         const height = parentWidth * r
