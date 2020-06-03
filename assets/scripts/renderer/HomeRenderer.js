@@ -9,6 +9,7 @@ import ScrollManager from '../utils/ScrollManager'
 import RafManager from '../utils/RafManager'
 
 import Showreel from '../animations/Showreel'
+import MaskPicture from '../animations/MaskPicture'
 
 class HomeRenderer extends Highway.Renderer {
     onLeaveCompleted() {
@@ -23,23 +24,16 @@ class HomeRenderer extends Highway.Renderer {
 
         Images.lazyload()
 
-        this.Showreel = new Showreel({ $view })
         this.raf = []
 
-        this.$pic = $view.querySelector('.js-picture')
-        this.$picCircle = $view.querySelector('.js-picture-circle')
-        this.picPosition = [0, 0]
-        this.picPositionEased = [0, 0]
-        this.picTop = this.$pic.getBoundingClientRect().top
+        this.Showreel = new Showreel({ $view })
+        this.MaskPicture = new MaskPicture({ $view })
 
         this.$aboutCircle = $view.querySelector('.js-about-circle')
         this.aboutRotate = 0
 
         if (store.windowWidth >= breakpoints.tablet) {
             this.raf.push(RafManager.addQueue(this.renderRotatingCircle.bind(this)))
-            this.raf.push(RafManager.addQueue(this.renderPicCircle.bind(this)))
-
-            this.$pic.addEventListener('mousemove', (e) => (this.picPosition = [e.x, e.y - this.picTop]))
         }
     }
 
@@ -53,14 +47,6 @@ class HomeRenderer extends Highway.Renderer {
         }
 
         this.$aboutCircle.style.transform = `rotate(${this.aboutRotate}deg)`
-    }
-
-    renderPicCircle() {
-        for (let i = 0; i < this.picPosition.length; i += 1) {
-            this.picPositionEased[i] += (this.picPosition[i] - this.picPositionEased[i]) * 0.1
-        }
-
-        this.$picCircle.style.transform = `translate(${this.picPositionEased[0]}px,${this.picPositionEased[1]}px)`
     }
 }
 
