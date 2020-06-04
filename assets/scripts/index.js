@@ -8,7 +8,7 @@ import HomeRenderer from './renderer/HomeRenderer'
 import WorkRenderer from './renderer/WorkRenderer'
 import ProjectRenderer from './renderer/ProjectRenderer'
 
-import DefaultTransition from './transitions/DefaultTransition'
+import WorkTransition from './transitions/WorkTransition'
 import HomeTransition from './transitions/HomeTransition'
 import ProjectTransition from './transitions/ProjectTransition'
 
@@ -21,7 +21,7 @@ const renderers = {
     work: WorkRenderer,
 }
 const transitions = {
-    default: DefaultTransition,
+    work: WorkTransition,
     home: HomeTransition,
     project: ProjectTransition,
     contextual: {

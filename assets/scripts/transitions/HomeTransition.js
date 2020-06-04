@@ -1,5 +1,8 @@
 import anime from 'animejs'
 import Highway from '@dogstudio/highway'
+
+import PageTransition from '../transitions/PageTransition'
+
 import ScrollManager from '../utils/ScrollManager'
 import store from '../utils/store'
 import FontLoader from '../utils/FontLoader'
@@ -9,24 +12,23 @@ const duration = 1500
 
 class HomeTransition extends Highway.Transition {
     in({ from, to, done }) {
-        ScrollManager.snapTo(0)
+        ScrollManager.lockBody()
 
         if (from) {
-            from.remove()
-            done()
+            PageTransition.slide({
+                from,
+                to,
+                direction: -1,
+                done,
+            })
         } else {
             FontLoader.load('Canela').then(() => {
-                const animation = this.firstAnimation({ to, done })
-
-                setTimeout(() => {
-                    animation.play()
-                }, 300)
+                this.firstAnimation({ to, done })
             })
         }
     }
 
     firstAnimation({ to, done }) {
-        ScrollManager.lockBody()
         const title = to.querySelector('.js-home-title')
         const titleText = title.querySelector('.js-home-titleText')
         const sentence = to.querySelector('.js-home-sentence')
@@ -40,11 +42,7 @@ class HomeTransition extends Highway.Transition {
             autoplay: false,
             complete: () => {
                 ScrollManager.unlockBody()
-                document.body.classList.remove('not-loaded')
-
-                if (done) {
-                    done()
-                }
+                if (done) done()
             },
         })
 
@@ -81,10 +79,11 @@ class HomeTransition extends Highway.Transition {
 
         animations.map((anime) => timeline.add(anime, duration))
 
-        return timeline
+        timeline.play()
     }
 
     out({ done }) {
+        ScrollManager.lockBody()
         if (done) {
             done()
         }

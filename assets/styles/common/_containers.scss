@@ -46,3 +46,11 @@ main.locked {
     padding-top: 50vh;
     min-height: 100vh;
 }
+
+.appear-in {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: map-get($zindex, above-section);
+    width: 100vw !important;
+}

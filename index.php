@@ -14,7 +14,6 @@
 ?>
 <article class="Home has-width-100" data-router-view="home">
     <div class="js-scrollable">
-
         <section class="Home__introduction section-top container">
             <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-home-title is-flex">
                 <span class="Home__introduction--title js-home-titleText is-flex"><span><?= get_the_title() ?></span></span>

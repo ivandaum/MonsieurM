@@ -48,8 +48,10 @@ export default {
         this.bodyLocked = false
 
         this.$app.classList.remove('locked')
-        this.$view.style.transform = `translateY(0px)`
+        this.$view.style.transform = ``
         this.$scroller.scrollTo(0, this.scroll)
+
+        document.body.classList.remove('not-loaded')
     },
 
     addOnScroll(func) {
@@ -103,5 +105,6 @@ export default {
 
     snapTo(y) {
         this.$scroller.scrollTo(0, y)
+        this.scroll = 0
     },
 }

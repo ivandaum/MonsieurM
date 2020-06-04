@@ -15,6 +15,7 @@
 
     &__video {
         z-index: map-get($zindex, under-section);
+        background: var(--color-black);
 
         video {
             height: 100% !important;

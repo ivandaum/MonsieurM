@@ -31,8 +31,9 @@
             pointer-events: none;
             z-index: map-get($zindex, base);
             background-color: var(--color-white);
-            height: 100vh;
             @include picture-cover;
+            height: 100vh;
+            width: 100vw;
 
             video {
                 transition: opacity calc(var(--coverSpeed) * 0.5) var(--easing);
