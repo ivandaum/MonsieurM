@@ -15,9 +15,13 @@
 <article class="Home has-width-100" data-router-view="home">
     <div class="js-scrollable">
 
-        <section class="Home__introduction section-top container is-padding-center">
-            <h1 class="is-h3 has-font-title is-flex is-padding-bottom-2 is-padding-bottom-2-touch"><?= get_the_title() ?></h1>
-            <p class="has-color-white is-h1 has-font-serif is-padding-bottom2x"><?= $home->intro ?></p>
+        <section class="Home__introduction section-top container">
+            <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-home-title is-flex">
+                <span class="Home__introduction--title js-home-titleText is-flex"><span><?= get_the_title() ?></span></span>
+                <span>☺︎</span>
+            </h1>
+            <p class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom2x js-home-sentence"><?= Text::wrapWord($home->intro, 'span') ?></p>
+            <div class="Home__introduction--background is-absolute has-width-100 has-height-100 js-home-background"></div>
         </section>
     
         <section class="Home__picture is-relative has-width-100 has-height-100 js-picture" data-gifPath="<?= get_theme_file_uri('/assets/images/doodle') ?>">
@@ -100,13 +104,14 @@
                 </div>
             </div>
         </section>
+        
         <?php Template::partial('footer'); ?>
     </div>
 
     <section class="Home__showreel js-showreel is-fixed container has-text-center">
         <div class="is-flex is-center has-width-100 has-height-100">
             <button class="Home__showreel--close js-showreel-close is-absolute has-font-title with-spacing is-relative">Close</button>
-            <div class="js-project-wording has-font-serif is-h2 is-absolute Home__showreel--wording is-active">
+            <div class="js-project-wording has-font-title is-absolute Home__showreel--wording Home__links--title is-active">
                 <span>Play</span>
             </div>
             <?= Video::create($home->showreel['video'], false, false) ?>

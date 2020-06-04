@@ -11,6 +11,6 @@
         var ajaxUrl = "<?= admin_url( 'admin-ajax.php' ) ?>";
     </script>
 </head>
-<body <?= body_class() ?>>
+<body <?= body_class('not-loaded') ?>>
 <?php MonsieurM\Core\Utils\Template::partial('navbar') ?>
 <main data-router-wrapper class="has-width-100 is-relative">

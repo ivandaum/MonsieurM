@@ -5,12 +5,14 @@ use MonsieurM\Core\Utils\Translation;
 
 class Text {
     public static function wrapWord(string $sentence, string $balise) {
-        $s = explode(' ', $sentence);
         $string = '';
+        $sentence = str_replace('<br />', ' [br] ', $sentence);
+        $s = explode(' ', $sentence);
         foreach($s as $i => $w) {
             $string .= "<$balise>$w</$balise> ";
         }
 
+        $string = str_replace('[br]', '<br />', $string);
         return $string;
     }
 

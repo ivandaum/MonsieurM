@@ -1,3 +1,8 @@
+import anime from 'animejs'
+
+const easing = 'easeInOutExpo'
+const duration = 1500
+
 class Nav {
     constructor() {
         this.menuIsOpen = false
@@ -18,6 +23,16 @@ class Nav {
         if (color) {
             this.$items[this.$items.length - 1].style.color = color
         }
+    }
+
+    show() {
+        anime({
+            targets: this.$items,
+            duration,
+            easing,
+            opacity: [0, 1],
+            delay: anime.stagger(50),
+        })
     }
 }
 

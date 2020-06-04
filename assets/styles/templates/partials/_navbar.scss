@@ -16,6 +16,7 @@
 
     a {
         transition: color var(--speed) var(--easing);
+        opacity: 0;
     }
 
     a.is-active {
@@ -42,10 +43,6 @@ body.single .Navbar a {
 
 body.email-is-hover .Navbar {
     a {
-        color: var(--color-greyDarker);
-    }
-
-    a.is-active {
         color: var(--color-white);
     }
 }

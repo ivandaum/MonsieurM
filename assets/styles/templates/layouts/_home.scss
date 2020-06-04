@@ -1,14 +1,34 @@
 .Home {
     background-color: var(--color-grey);
 
-    &__picture,
     &__introduction {
-        z-index: map-get($zindex, section);
-        background-color: var(--color-grey);
+        background-color: var(--color-white);
+
+        h1,
+        p {
+            z-index: map-get($zindex, section);
+        }
+
+        &--title {
+            height: 1em;
+            overflow: hidden;
+            white-space: pre;
+            margin-right: 1rem;
+        }
+
+        &--background {
+            background-color: var(--color-grey);
+            top: 0;
+            left: 0;
+            z-index: map-get($zindex, under-section);
+            transform-origin: bottom center;
+        }
     }
 
     &__picture {
         overflow: hidden;
+        z-index: map-get($zindex, section);
+        background-color: var(--color-grey);
 
         picture.is-hidden {
             position: absolute;
@@ -18,6 +38,8 @@
         }
 
         &--circle {
+            transform: scale(0);
+
             img {
                 opacity: 0.2;
                 animation: rotate 8s infinite linear;
@@ -27,8 +49,9 @@
         &--canvas {
             width: 100%;
             height: auto;
-            background-size: cover;
-
+            background-size: 100% auto;
+            background-position: top center;
+            background-repeat: no-repeat;
             @include touch {
                 display: none;
             }
@@ -240,5 +263,19 @@
             z-index: map-get($zindex, section);
             background-color: var(--color-white);
         }
+    }
+}
+
+body.not-loaded {
+    .Home__introduction--title {
+        width: 0;
+    }
+
+    h1 {
+        transform: translateY(calc(50vh - 1em - var(--padding-large)));
+    }
+
+    .Home__introduction--background {
+        transform: scale(0);
     }
 }

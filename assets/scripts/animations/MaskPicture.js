@@ -4,7 +4,6 @@ import breakpoints from '../constants/breakpoints'
 import RafManager from '../utils/RafManager'
 import store from '../utils/store'
 import ScrollManager from '../utils/ScrollManager'
-import FontLoader from '../utils/FontLoader'
 
 const INTIAL_RATIO = 0.2
 export default class MaskPicture {
@@ -25,11 +24,8 @@ export default class MaskPicture {
 
         this.canRender = false
 
-        this.top = 0
+        this.top = this.$container.getBoundingClientRect().top
         this.cursor = [store.windowWidth * 0.5, 0]
-        FontLoader.load('Canela').then(() => {
-            this.top = this.$container.getBoundingClientRect().top
-        })
 
         this.$container.addEventListener('mousemove', (e) => (this.cursor = [e.x, e.y]))
         this.$container.addEventListener('mouseenter', () => (this.isFocused = true))
@@ -67,7 +63,7 @@ export default class MaskPicture {
             canRender: false,
             width: 0,
             height: 0,
-            top: 0,
+            top: this.$canvas.height * 0.2,
             left: 0,
             loaded: 0,
             index: 0,
@@ -97,9 +93,14 @@ export default class MaskPicture {
     loadBackground() {
         this.background = {
             $el: null,
-            width: 0,
-            height: 0,
+            width: this.$picture.offsetWidth,
+            height: this.$picture.offsetHeight,
         }
+
+        const ratio = this.background.height / this.background.width
+
+        this.$canvas.width = store.windowWidth
+        this.$canvas.height = store.windowWidth * ratio
 
         new Lazyloading({
             load_delay: 0,
@@ -112,15 +113,6 @@ export default class MaskPicture {
                 }
 
                 this.background.$el = el
-                this.background.width = el.width
-                this.background.height = el.height
-
-                const ratio = el.height / el.width
-
-                this.$canvas.width = store.windowWidth
-                this.$canvas.height = store.windowWidth * ratio
-
-                this.gif.top = el.height * 0.2
                 this.$picture.classList.add('is-hidden')
                 this.$canvas.style = `background-image: url(${el.currentSrc})`
             },

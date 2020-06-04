@@ -4,6 +4,7 @@ import ScrollManager from './ScrollManager'
 export default {
     init() {
         this.setGlobalVars()
+        this.updateOnNavigation()
     },
 
     setGlobalVars() {
