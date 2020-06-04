@@ -10,6 +10,13 @@
 }
 
 .Work {
+    &__title {
+        height: 1em;
+        overflow: hidden;
+        white-space: pre;
+        margin-left: 1rem;
+    }
+
     &__project {
         color: var(--color-grey);
         transition: color var(--coverSpeed) var(--easing);

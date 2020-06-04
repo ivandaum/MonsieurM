@@ -95,7 +95,7 @@ const PageTransition = {
                 targets: sentence,
                 duration: duration - offset,
                 easing,
-                translateY: [top + offset, 0],
+                translateY: [top + title.getBoundingClientRect().left, 0],
                 delay: offset,
             })
         }

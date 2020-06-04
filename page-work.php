@@ -14,7 +14,10 @@
 
 <article class="Work has-width-100" data-router-view="work">
     <section class="container js-scrollable section-top is-padding-bottom">
-        <h1 class="is-h3 has-font-title js-fade-item js-title is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch"><sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup><?= get_the_title() ?></h1>
+        <h1 class="is-h3 has-font-title js-fade-item js-title is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch">
+            <sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup>
+            <span class="Work__title js-title-overflow"><span><?= get_the_title() ?></span></span>
+        </h1>
         <div class="js-content">
             <?php foreach($work->projects as $k => $project): ?>
                 <div class="is-block">
