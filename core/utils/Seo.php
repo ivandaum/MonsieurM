@@ -4,13 +4,19 @@ namespace MonsieurM\Core\Utils;
 class Seo {
     public static function title() {
         $title = get_the_title();
-        $name = bloginfo();
-
+        $sitename = self::siteName();
+        
         if (is_front_page()) {
-            return $name;
+            return $sitename;
         }
 
-        return $name . ' - ' . $title;
+        return $title . ' - ' . $sitename;
+
+    }
+
+    public static function image() {
+        global $post;
+        return the_post_thumbnail_url($post->ID);
     }
 
     public static function siteName() {

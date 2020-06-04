@@ -25,7 +25,7 @@
     
         <section class="Home__picture is-relative has-width-100 has-height-100 js-picture" data-gifPath="<?= get_theme_file_uri('/assets/images/doodle') ?>">
             <div class="Home__picture--circle is-absolute js-picture-circle is-flex is-center">
-                <img class="is-absolute is-block has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/circle.png') ?>">
+                <img alt="img-circle-picture" class="is-absolute is-block has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/circle.png') ?>">
             </div>    
             <?= Image::create($home->picture, array(), false) ?>
             <canvas class="js-picture-canvas Home__picture--canvas"></canvas>
@@ -110,8 +110,8 @@
     <section class="Home__showreel js-showreel is-fixed container has-text-center">
         <div class="is-flex is-center has-width-100 has-height-100">
             <button class="Home__showreel--close js-showreel-close is-absolute has-font-title with-spacing is-relative">Close</button>
-            <div class="js-project-wording has-font-title is-absolute Home__showreel--wording Home__links--title is-active">
-                <span>Play</span>
+            <div class="js-project-wording has-font-title is-absolute Home__showreel--wording Home__links--title is-active is-flex is-center">
+                <span class="is-flex is-center">Play</span>
             </div>
             <?= Video::create($home->showreel['video'], false, false) ?>
         </div>

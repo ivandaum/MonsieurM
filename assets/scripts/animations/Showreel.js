@@ -26,6 +26,8 @@ export default class Swhoreel {
             this.$wordingHTML.innerHTML = 'Replay'
             this.$wording.classList.add('is-active')
         })
+
+        this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
     }
 
     playOrPause() {
@@ -52,25 +54,11 @@ export default class Swhoreel {
                 scaleY: [0, 1],
             },
             {
-                targets: [this.$wording, this.$close],
-                duration,
+                targets: [this.$wording, this.$close, this.$video],
+                duration: duration * 0.5,
                 easing,
-                opacity: {
-                    value: [0, 1],
-                    duration: duration * 0.5,
-                    delay: 250,
-                },
-                translateY: [-20, 0],
-            },
-            {
-                targets: this.$video,
-                duration,
-                easing,
-                opacity: {
-                    value: [0, 1],
-                    delay: 50,
-                },
-                translateY: ['10%', 0],
+                opacity: [0, 1],
+                delay: duration * 0.35,
             },
         ]
     }
@@ -80,22 +68,12 @@ export default class Swhoreel {
 
         return [
             {
-                targets: [this.$wording, this.$close],
-                duration,
-                easing,
-                opacity: {
-                    value: [1, 0],
-                    duration: duration * 0.5,
-                },
-                translateY: [0, 50],
-            },
-            {
-                targets: this.$video,
-                duration,
+                targets: [this.$video, this.$wording, this.$close],
+                duration: duration * 0.5,
                 easing,
                 opacity: [1, 0],
-                translateY: [0, '10%'],
             },
+
             {
                 targets: this.$background,
                 duration,

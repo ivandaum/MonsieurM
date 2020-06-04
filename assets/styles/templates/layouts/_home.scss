@@ -241,6 +241,8 @@
             opacity: 0;
 
             span {
+                background-color: rgba(0, 0, 0, 0.4);
+                color: var(--color-white);
                 transition: opacity var(--speed) var(--easing);
                 opacity: 0;
             }
