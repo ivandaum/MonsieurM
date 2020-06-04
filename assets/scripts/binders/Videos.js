@@ -22,6 +22,8 @@ const Videos = {
     },
 
     resizeVideo: (video) => {
+        if (!video) return false
+
         const parentHeight = video.parentNode.offsetHeight
         const parentWidth = video.parentNode.offsetWidth || window.getComputedStyle(video.parentNode).width
 

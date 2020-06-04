@@ -28,6 +28,9 @@ export default class Swhoreel {
         })
 
         this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
+        this.resizeIndex = ScrollManager.addOnResize(() => {
+            this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
+        })
     }
 
     playOrPause() {

@@ -11,6 +11,7 @@ import ScrollManager from '../utils/ScrollManager'
 class ProjectRenderer extends Highway.Renderer {
     onLeaveCompleted() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
+        ScrollManager.removeOnResize(this.resizeIndex)
     }
 
     onEnterCompleted() {
@@ -21,8 +22,9 @@ class ProjectRenderer extends Highway.Renderer {
 
         Videos.bindAll(videos)
         Videos.resizeAll(videos)
-        Images.lazyload()
+        this.resizeIndex = ScrollManager.addOnResize(() => Videos.resizeAll(videos))
 
+        Images.lazyload()
         FontLoader.load('Canela').then(() => {
             // this.bindCover()
             // if (this.coverBox.$el) {

@@ -41,6 +41,14 @@ export default class MaskPicture {
         })
 
         observer.observe(this.$container)
+
+        this.resizeIndex = ScrollManager.addOnResize(() => this.onResize())
+    }
+
+    onResize() {
+        this.loadBackground()
+        this.loadGif()
+        this.loadCircle()
     }
 
     loadCircle() {

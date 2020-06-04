@@ -15,13 +15,18 @@ class HomeRenderer extends Highway.Renderer {
     onLeaveCompleted() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
         this.MaskPicture.raf.map((raf) => RafManager.removeQueue(raf))
+        ScrollManager.removeOnResize(this.Showreel.resizeIndex)
+        ScrollManager.removeOnResize(this.MaskPicture.resizeIndex)
     }
 
     onEnterCompleted() {
         const $view = this.wrap
 
+        const videos = $view.querySelectorAll('.js-video')
         Videos.bindAll($view.querySelectorAll('.js-last-project .js-video'))
-        Videos.resizeAll($view.querySelectorAll('.js-video'))
+        Videos.resizeAll(videos)
+
+        ScrollManager.addOnResize(() => Videos.resizeAll(videos))
 
         Images.lazyload()
 

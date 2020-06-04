@@ -15,6 +15,7 @@ class WorkRenderer extends Highway.Renderer {
         })
 
         ScrollManager.removeOnScroll(this.onScrollIndex)
+        ScrollManager.removeOnResize(this.resizeIndex)
     }
 
     onEnterCompleted() {
@@ -24,6 +25,10 @@ class WorkRenderer extends Highway.Renderer {
 
         Images.lazyload()
         this.bindDom()
+
+        const videos = this.$items.map((item) => item.video)
+        Videos.resizeAll(videos)
+        this.resizeIndex = ScrollManager.addOnResize(() => Videos.resizeAll(videos))
     }
 
     bindDom() {
@@ -42,10 +47,6 @@ class WorkRenderer extends Highway.Renderer {
                 video: $view.querySelector(`.js-project-video${dataName} .js-video`),
                 pictures: $view.querySelectorAll(`.js-project-galery${dataName} picture`),
                 ribbon: link.querySelector('.js-ribbon'),
-            }
-
-            if (this.$items[id].video) {
-                Videos.resizeVideo(this.$items[id].video)
             }
 
             link.addEventListener('click', () => this.onClick(id))

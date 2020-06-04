@@ -58,7 +58,9 @@ function app() {
     const view = document.querySelector('[data-router-view]:last-of-type')
 
     store.init()
+
     ScrollManager.init({ view })
+    ScrollManager.addOnResize(() => store.setGlobalVars())
 
     Nav.bindActiveLink({ color: view.dataset.color })
     setTimeout(() => Nav.show(), 1500)

@@ -12,9 +12,10 @@ export default {
     canScroll: true,
     isScrolling: false,
     funcOnScroll: [],
+    funcOnResize: [],
 
     init({ view }) {
-        window.addEventListener('resize', this.update.bind(this))
+        window.addEventListener('resize', this.onResize.bind(this))
         RafManager.addQueue(this.onScroll.bind(this))
 
         this.$scroller = document.documentElement
@@ -54,6 +55,24 @@ export default {
         document.body.classList.remove('not-loaded')
     },
 
+    addOnResize(func) {
+        this.funcOnResize.push(func)
+        return this.funcOnResize.length - 1
+    },
+
+    removeOnResize(index) {
+        if (this.funcOnResize[index]) {
+            this.funcOnResize.splice(index, 1)
+            return true
+        }
+
+        return false
+    },
+
+    onResize() {
+        this.funcOnResize.map((func) => func())
+    },
+
     addOnScroll(func) {
         this.funcOnScroll.push(func)
         return this.funcOnScroll.length - 1
@@ -85,8 +104,6 @@ export default {
     getScrollTop() {
         return window.pageYOffset || this.$scroller.scrollTop
     },
-
-    onResize() {},
 
     scrollTo({ y, complete }) {
         const targets = { y: this.scroll }
