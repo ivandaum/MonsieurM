@@ -13,40 +13,41 @@
 ?>
 
 <article class="Work has-width-100" data-router-view="work">
-    <section class="container js-scrollable section-top is-padding-bottom">
-        <h1 class="is-h3 has-font-title js-fade-item js-title is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch">
-            <sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup>
-            <span class="Work__title js-title-overflow"><span><?= get_the_title() ?></span></span>
-        </h1>
-        <div class="js-content">
-            <?php foreach($work->projects as $k => $project): ?>
-                <div class="is-block">
-                    <h3 class="has-width-100 has-text-right is-relative is-flex is-center-y is-right-x is-h1 has-font-serif">
-                        <div data-project="<?= $project->id ?>" class="Work__project--galery js-project-galery is-flex is-center-y is-absolute has-height-100">
-                        <?php if($project->galery): ?>
-                            <?php foreach($project->galery as $image): ?>
-                                <?= Image::createThumbnail($image) ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                        </div>
-                        <a data-project="<?= $project->id ?>" data-transition="workToProject" class="Work__project js-project-link is-relative" href="<?= $project->link ?>">
-                            <div data-project="<?= $project->id ?>" class="Work__project--title is-relative js-fade-item">
-                                <?php if($project->has_ribbon): ?>
-                                <i class="js-ribbon icon-new is-absolute"></i>
-                                <?php endif; ?>
-                                <?= Text::wrapWord($project->title, 'span') ?>
+    <div class="js-scrollable">
+        <section class="container section-top is-padding-bottom">
+            <h1 class="is-h3 has-font-title js-fade-item js-title is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch">
+                <sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup>
+                <span class="Work__title js-title-overflow"><span><?= get_the_title() ?></span></span>
+            </h1>
+            <div class="js-content">
+                <?php foreach($work->projects as $k => $project): ?>
+                    <div class="is-block">
+                        <h3 class="has-width-100 has-text-right is-relative is-flex is-center-y is-right-x is-h1 has-font-serif">
+                            <div data-project="<?= $project->id ?>" class="Work__project--galery js-project-galery is-flex is-center-y is-absolute has-height-100">
+                            <?php if($project->galery): ?>
+                                <?php foreach($project->galery as $image): ?>
+                                    <?= Image::createThumbnail($image) ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             </div>
-                        </a>
-                    </h3>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content js-fade-item">
-            <div><?= $work->text ?></div>
-        </div>
-
+                            <a data-project="<?= $project->id ?>" data-transition="workToProject" class="Work__project js-project-link is-relative" href="<?= $project->link ?>">
+                                <div data-project="<?= $project->id ?>" class="Work__project--title is-relative js-fade-item">
+                                    <?php if($project->has_ribbon): ?>
+                                    <i class="js-ribbon icon-new is-absolute"></i>
+                                    <?php endif; ?>
+                                    <?= Text::wrapWord($project->title, 'span') ?>
+                                </div>
+                            </a>
+                        </h3>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content js-fade-item">
+                <div><?= $work->text ?></div>
+            </div>
+        </section>
         <?php Template::partial('footer'); ?>
-    </section>
+    </div>
     
     <section class="Work__project--cover js-cover is-fixed is-flex is-center">
         <?php foreach($work->projects as $k => $project): ?>
