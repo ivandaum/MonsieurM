@@ -15,12 +15,12 @@
 <article class="Home has-width-100" data-router-view="home">
     <div class="js-scrollable">
         <section class="Home__introduction section-top container">
-            <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-home-title is-flex">
-                <span class="Home__introduction--title js-home-titleText is-flex"><span><?= get_the_title() ?></span></span>
+            <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title is-flex">
+                <span class="Home__introduction--title js-title-overflow is-flex"><span><?= get_the_title() ?></span></span>
                 <span>☺︎</span>
             </h1>
-            <p class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom2x js-home-sentence"><?= Text::wrapWord($home->intro, 'span') ?></p>
-            <div class="Home__introduction--background is-absolute has-width-100 has-height-100 js-home-background"></div>
+            <p class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom2x js-content"><?= Text::wrapWord($home->intro, 'span') ?></p>
+            <div class="Home__introduction--background is-absolute has-width-100 has-height-100 js-background"></div>
         </section>
     
         <section class="Home__picture is-relative has-width-100 has-height-100 js-picture" data-gifPath="<?= get_theme_file_uri('/assets/images/doodle') ?>">

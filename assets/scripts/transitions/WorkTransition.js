@@ -1,5 +1,4 @@
 import Highway from '@dogstudio/highway'
-import anime from 'animejs'
 
 import PageTransition from '../transitions/PageTransition'
 
@@ -19,28 +18,14 @@ class WorkTransition extends Highway.Transition {
             })
         } else {
             FontLoader.load('Canela').then(() => {
-                this.firstAnimation({ to, done })
+                PageTransition.show({ to, done })
             })
         }
     }
 
-    firstAnimation({ to, done }) {
-        const timeline = anime.timeline({
-            autoplay: false,
-            complete: () => {
-                ScrollManager.unlockBody()
-                if (done) done()
-            },
-        })
-        console.log(to)
-        timeline.play()
-    }
-
     out({ done }) {
         ScrollManager.lockBody()
-        if (done) {
-            done()
-        }
+        if (done) done()
     }
 }
 
