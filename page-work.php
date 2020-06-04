@@ -44,8 +44,9 @@
         <div class="Work__other is-flex is-center-y is-right-x has-text-right has-wp-content js-fade-item">
             <div><?= $work->text ?></div>
         </div>
+
+        <?php Template::partial('footer'); ?>
     </section>
-    <?php Template::partial('footer'); ?>
     
     <section class="Work__project--cover js-cover is-fixed is-flex is-center">
         <?php foreach($work->projects as $k => $project): ?>
