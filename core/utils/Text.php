@@ -12,7 +12,7 @@ class Text {
             $string .= "<$balise>$w</$balise> ";
         }
 
-        $string = str_replace('[br]', '<br />', $string);
+        $string = str_replace('<span>[br]</span>', '<br />', $string);
         return $string;
     }
 

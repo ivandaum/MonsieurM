@@ -13,7 +13,7 @@ class WorkTransition extends Highway.Transition {
             PageTransition.slide({
                 from,
                 to,
-                direction: 1,
+                direction: from.dataset.routerView === 'project' ? -1 : 1,
                 done,
             })
         } else {

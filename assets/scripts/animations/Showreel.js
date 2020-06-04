@@ -115,6 +115,7 @@ export default class Swhoreel {
                     this.isOpen = false
                     ScrollManager.unlockBody()
                     this.$wordingHTML.innerHTML = 'Play'
+                    this.$wording.classList.add('is-active')
                 } else {
                     this.isOpen = true
                 }
