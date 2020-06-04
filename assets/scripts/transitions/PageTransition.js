@@ -42,7 +42,7 @@ const PageTransition = {
             },
         ]
 
-        animations.map((anime) => timeline.add(anime, duration))
+        animations.map((anime) => timeline.add(anime, 0))
     },
 
     show({ to, done }) {
