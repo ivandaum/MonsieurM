@@ -110,8 +110,7 @@ const PageTransition = {
         }
 
         animations.map((anime) => timeline.add(anime, overflowed ? duration : 0))
-
-        timeline.play()
+        setTimeout(() => timeline.play(), 1000)
     },
 }
 

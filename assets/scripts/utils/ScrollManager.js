@@ -1,5 +1,7 @@
 import anime from 'animejs'
 import RafManager from '../utils/RafManager'
+import breakpoints from '../constants/breakpoints'
+import store from '../utils/store'
 
 const easing = 'easeInOutExpo'
 const duration = 2000
@@ -21,6 +23,11 @@ export default {
         this.$scroller = document.documentElement
         this.$app = document.body.querySelector('main')
         this.$view = view
+
+        if (store.windowWidth < breakpoints.desktop) {
+            this.$scroller = document.querySelector('.scroller')
+        }
+
         this.update({ view })
     },
 

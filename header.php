@@ -25,4 +25,5 @@
 </head>
 <body <?= body_class('not-loaded') ?>>
 <?php MonsieurM\Core\Utils\Template::partial('navbar') ?>
+<div class="scroller">
 <main data-router-wrapper class="has-width-100 is-relative">

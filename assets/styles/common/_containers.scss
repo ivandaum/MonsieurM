@@ -17,11 +17,22 @@ body {
     width: 100vw;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    @include touch {
+        overflow-y: hidden;
+    }
 }
 
 body.loading,
 body.loading * {
     cursor: wait !important;
+}
+
+.scroller {
+    @include touch {
+        height: 100vh;
+        overflow-y: scroll;
+    }
 }
 
 main.locked {
