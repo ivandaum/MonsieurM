@@ -179,28 +179,48 @@
         padding-top: 20vh;
 
         &--title {
-            font-size: 10rem;
-            line-height: 0.9em;
-            font-weight: map-get($fontWeight, light);
-            letter-spacing: -0.37rem;
-
-            @include tablet-only {
-                font-size: 7rem;
+            strong,
+            span::after {
+                display: block;
+                font-weight: map-get($fontWeight, light);
+                transition: transform calc(var(--speed) * 3) var(--easing);
             }
 
-            @include phone-only {
-                font-size: 5rem;
-                letter-spacing: -0.17rem;
+            span {
+                overflow: hidden;
+                height: 0.9em;
             }
 
-            @include phone-s-only {
-                font-size: 3.5rem;
-                letter-spacing: -0.17rem;
+            span::after {
+                content: attr(data-content);
+                position: absolute;
+                transform: translateX(-100%);
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 100%;
             }
 
-            @include phone-xs-only {
-                font-size: 3rem;
-                letter-spacing: -0.17rem;
+            &:hover {
+                strong {
+                    transform: translateX(100%);
+                }
+                span::after {
+                    transform: translateX(0);
+                }
+            }
+
+            span:last-of-type::after {
+                transform: translateX(100%);
+            }
+
+            &:hover span:last-of-type {
+                &::after {
+                    transform: translateX(0%);
+                }
+                strong {
+                    transform: translateX(-100%);
+                }
             }
         }
 

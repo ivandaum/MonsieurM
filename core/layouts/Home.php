@@ -31,4 +31,14 @@ class Home {
 
         return $last;
     }
+
+    // '→'
+
+    public function formatLargeLink(string $sentence) {
+        $words = explode(' ', $sentence);
+        $lw = array_pop($words);
+        $words = implode(' ', $words);
+
+        return "<span class='is-relative' data-content='$words'><strong>$words</strong></span><br />→ <span class='is-relative' data-content='$lw'><strong>$lw</strong></span>";
+    }
 }

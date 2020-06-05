@@ -91,14 +91,14 @@
             <div class="has-width-100">
                 <div class="is-flex is-right-x">
                     <a href="<?= $home->selected['page'] ?>" class="is-margin-bottom-10 is-margin-bottom-5-touch is-block has-text-right">
-                        <span class="is-block"><?= $home->selected['wording'] ?></span>
-                        <span class="Home__links--title has-font-title is-padding-top-1-touch"><?= Text::addBeforeLastWord($home->selected['title'], '→') ?></span>
+                        <p class="is-block"><?= $home->selected['wording'] ?></p>
+                        <p class="Home__links--title has-font-large-title is-padding-top-1-touch is-relative"><?= $home->formatLargeLink($home->selected['title']) ?></p>
                     </a>
                 </div>
                 <div class="is-flex is-right-x">
                     <button class="js-showreel-trigger is-margin-bottom-10 is-margin-bottom-5-touch is-block has-text-right">
-                        <span class="is-block"><?= $home->showreel['wording'] ?></span>
-                        <span class="Home__links--title has-font-title is-padding-top-1-touch"><?= Text::addBeforeLastWord($home->showreel['title'], '→') ?></span>
+                        <p class="is-block"><?= $home->showreel['wording'] ?></p>
+                        <p class="Home__links--title has-font-large-title is-padding-top-1-touch is-relative"><?= $home->formatLargeLink($home->showreel['title']) ?></p>
                     </button>
                 </div>
             </div>
@@ -110,7 +110,7 @@
     <section class="Home__showreel js-showreel is-fixed container has-text-center">
         <div class="is-flex is-center has-width-100 has-height-100">
             <button class="Home__showreel--close js-showreel-close is-absolute has-font-title with-spacing is-relative">Close</button>
-            <div class="js-project-wording has-font-title is-absolute Home__showreel--wording Home__links--title is-active is-flex is-center">
+            <div class="js-project-wording has-font-large-title  is-absolute Home__showreel--wording is-active is-flex is-center">
                 <span class="is-flex is-center">Play</span>
             </div>
             <?= Video::create($home->showreel['video'], false, false) ?>

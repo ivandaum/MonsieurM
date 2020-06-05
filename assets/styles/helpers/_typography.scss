@@ -46,6 +46,34 @@
     }
 }
 
+.has-font-large-title {
+    @include font-title;
+
+    font-size: 10rem;
+    line-height: 0.9em;
+    font-weight: map-get($fontWeight, light);
+    letter-spacing: -0.37rem;
+
+    @include tablet-only {
+        font-size: 7rem;
+    }
+
+    @include phone-only {
+        font-size: 5rem;
+        letter-spacing: -0.17rem;
+    }
+
+    @include phone-s-only {
+        font-size: 3.5rem;
+        letter-spacing: -0.17rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 3rem;
+        letter-spacing: -0.17rem;
+    }
+}
+
 .has-color-white {
     color: var(--color-white);
 }
