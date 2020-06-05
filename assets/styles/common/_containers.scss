@@ -34,6 +34,10 @@ body.loading * {
         overflow-y: scroll;
     }
 }
+.js-scrollable {
+    position: relative;
+    z-index: map-get($zindex, section);
+}
 
 main.locked {
     height: 100vh;
