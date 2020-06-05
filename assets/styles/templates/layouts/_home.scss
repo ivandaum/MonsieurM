@@ -194,7 +194,7 @@
             span::after {
                 content: attr(data-content);
                 position: absolute;
-                transform: translateX(-100%);
+                transform: translateX(100%);
                 top: 0;
                 right: 0;
                 height: 100%;
@@ -203,7 +203,7 @@
 
             &:hover {
                 strong {
-                    transform: translateX(100%);
+                    transform: translateX(-100%);
                 }
                 span::after {
                     transform: translateX(0);
@@ -211,7 +211,7 @@
             }
 
             span:last-of-type::after {
-                transform: translateX(100%);
+                transform: translateX(-100%);
             }
 
             &:hover span:last-of-type {
@@ -219,7 +219,7 @@
                     transform: translateX(0%);
                 }
                 strong {
-                    transform: translateX(-100%);
+                    transform: translateX(100%);
                 }
             }
         }
