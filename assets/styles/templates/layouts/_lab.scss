@@ -4,7 +4,7 @@
 
     &__introduction {
         h1,
-        p {
+        .js-content {
             z-index: map-get($zindex, section);
         }
 
@@ -29,11 +29,11 @@
 
     &__row {
         @include tablet {
-            &:nth-of-type(2n + 3) {
+            &:nth-of-type(2n) {
                 justify-content: center;
             }
 
-            &:nth-of-type(3n + 3) {
+            &:nth-of-type(3n) {
                 justify-content: flex-end;
             }
         }

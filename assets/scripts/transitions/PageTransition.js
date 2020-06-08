@@ -48,7 +48,7 @@ const PageTransition = {
     show({ to, done, colorWhite }) {
         const animations = []
         const offset = 50
-        const color = () => [colorWhite ? '#000' : '#fff', '#fff']
+        const color = () => ['#000', colorWhite ? '#fff' : '#000']
 
         const title = to.querySelector('.js-title')
 

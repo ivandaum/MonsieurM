@@ -149,7 +149,7 @@
                             "library": "all",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": ""
+                            "mime_types": "mp4"
                         },
                         {
                             "key": "field_5ede02678710b",
@@ -208,5 +208,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1591608188
+    "modified": 1591611947
 }

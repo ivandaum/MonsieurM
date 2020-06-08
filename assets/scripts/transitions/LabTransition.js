@@ -18,9 +18,7 @@ class LabTransition extends Highway.Transition {
             })
         } else {
             FontLoader.load('Canela').then(() => {
-                // PageTransition.show({ to, done, colorWhite: true })
-                ScrollManager.unlockBody()
-                if (done) done()
+                PageTransition.show({ to, done, colorWhite: true })
             })
         }
     }
