@@ -45,3 +45,13 @@
         }
     }
 }
+
+body.not-loaded .Lab {
+    h1 {
+        transform: translateY(calc(50vh - 1em - var(--padding-large)));
+    }
+
+    .js-content {
+        transform: translateY(100vh);
+    }
+}
