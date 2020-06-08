@@ -2,7 +2,7 @@ import Lazyloading from '../vendor/Lazyloading'
 
 import RafManager from '../utils/RafManager'
 import store from '../utils/store'
-import ScrollManager from '../utils/ScrollManager'
+// import ScrollManager from '../utils/ScrollManager'
 import ResizeManager from '../utils/ResizeManager'
 
 const INTIAL_RATIO = 0.2
@@ -26,16 +26,15 @@ export default class MaskPicture {
         this.$container.addEventListener('mouseenter', () => (this.isFocused = true))
         this.$container.addEventListener('mouseleave', () => (this.isFocused = false))
 
-        this.onResize()
         this.raf.push(RafManager.addQueue(this.render.bind(this)))
 
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
             this.canRender = isIntersecting
         })
-
         observer.observe(this.$container)
 
+        this.onResize()
         this.resizeIndex = ResizeManager.addQueue(() => this.onResize())
     }
 
@@ -73,7 +72,7 @@ export default class MaskPicture {
             canRender: false,
             width: 0,
             height: 0,
-            top: this.$canvas.offsetHeight * 0.2,
+            top: this.background.height * 0.2,
             left: 0,
             index: 0,
         }
@@ -113,7 +112,7 @@ export default class MaskPicture {
         if (!this.canRender) return false
 
         this.ctx.clearRect(0, 0, this.background.width, this.background.height)
-        this.ctx.globalCompositeOperation = 'source-over'
+        // this.ctx.globalCompositeOperation = 'source-over'
 
         if (this.gif.canRender) {
             this.gif.index += 0.15
