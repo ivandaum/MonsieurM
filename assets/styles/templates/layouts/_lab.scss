@@ -40,6 +40,8 @@
     }
 
     &__media {
-        width: 50%;
+        @include tablet {
+            width: 50%;
+        }
     }
 }
