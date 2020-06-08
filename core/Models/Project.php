@@ -4,6 +4,7 @@ namespace MonsieurM\Core\Models;
 use MonsieurM\Core\Models\Taxonomy;
 use MonsieurM\Core\Utils\Translation;
 use MonsieurM\Core\Utils\Text;
+use MonsieurM\Constants\Page as PageConstants;
 
 class Project {
     const slug = 'project';
@@ -50,19 +51,29 @@ class Project {
     }
 
     public static function getNextPost(int $id) {
-        $query = new \WP_Query(array(
-            'post_type' => self::slug,
-            'posts_per_page' => -1,
-            'status' => 'publish',
-            'fields' => 'ids',
-        ));
+        $projects = get_field('work__projects', PageConstants::workId);
+        $ids = array();
+        if ($projects && count($projects)) {
+            $ids = array_map(function($a) {
+                return $a['id'];
+            }, $projects);
+        } else {
+            $query = new \WP_Query(array(
+                'post_type' => self::slug,
+                'posts_per_page' => -1,
+                'status' => 'publish',
+                'fields' => 'ids',
+            ));
+
+            $ids = $query->posts;
+        }
 
         $next = null;
-        foreach($query->posts as $k => $pId) {
-            if ($pId === $id && isset($query->posts[$k + 1])) {
-                return $query->posts[$k + 1];
+        foreach($ids as $k => $pId) {
+            if ($pId === $id && isset($ids[$k + 1])) {
+                return $ids[$k + 1];
             } else if ($pId === $id) {
-                return  $query->posts[0];
+                return  $ids[0];
             }
         }
 
