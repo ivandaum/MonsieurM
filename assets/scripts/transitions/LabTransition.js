@@ -13,7 +13,7 @@ class LabTransition extends Highway.Transition {
             PageTransition.slide({
                 from,
                 to,
-                direction: from.dataset.routerView === 'project' ? -1 : 1,
+                direction: from.dataset.routerView === 'home' ? 1 : -1,
                 done,
             })
         } else {
