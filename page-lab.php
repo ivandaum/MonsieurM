@@ -18,7 +18,7 @@
             <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
                 <?= $lab->title ?>
             </h1>
-            <div class="js-content is-relative">
+            <div class="Lab__introduction--sentence js-content is-relative">
                 <p class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom-3 is-padding-bottom-3-touch"><?= $lab->sentence ?></p>
                 <p class="has-color-white is-relative is-h6 is-uppercase is-padding-bottom2x"><?= $lab->keywords ?></p>
             </div>

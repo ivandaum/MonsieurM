@@ -4,8 +4,13 @@
 
     &__introduction {
         h1,
-        .js-content {
+        &--sentence {
             z-index: map-get($zindex, section);
+        }
+
+        &--sentence {
+            margin: auto;
+            max-width: map-get($breakpoints, desktop);
         }
 
         &--title {
@@ -49,9 +54,14 @@
 body.not-loaded .Lab {
     h1 {
         transform: translateY(calc(50vh - 1em - var(--padding-large)));
+        color: var(--color-black);
     }
 
-    .js-content {
+    &__introduction--sentence {
         transform: translateY(100vh);
+    }
+
+    &__introduction--background {
+        transform: scaleY(0);
     }
 }
