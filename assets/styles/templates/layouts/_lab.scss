@@ -1,0 +1,45 @@
+.Lab {
+    background-color: var(--color-white);
+    color: var(--color-white);
+
+    &__introduction {
+        h1,
+        p {
+            z-index: map-get($zindex, section);
+        }
+
+        &--title {
+            height: 1em;
+            overflow: hidden;
+            white-space: pre;
+        }
+
+        &--background {
+            background-color: var(--color-black);
+            top: 0;
+            left: 0;
+            z-index: map-get($zindex, under-section);
+            transform-origin: bottom center;
+        }
+    }
+
+    &__content {
+        background-color: var(--color-black);
+    }
+
+    &__row {
+        @include tablet {
+            &:nth-of-type(2n + 3) {
+                justify-content: center;
+            }
+
+            &:nth-of-type(3n + 3) {
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    &__media {
+        width: 50%;
+    }
+}

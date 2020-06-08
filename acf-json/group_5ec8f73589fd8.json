@@ -94,7 +94,7 @@
         ]
     ],
     "menu_order": 0,
-    "position": "normal",
+    "position": "acf_after_title",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -113,5 +113,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1590396944
+    "modified": 1591608210
 }

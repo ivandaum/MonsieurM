@@ -45,9 +45,10 @@ const PageTransition = {
         animations.map((anime) => timeline.add(anime, 0))
     },
 
-    show({ to, done }) {
+    show({ to, done, colorWhite }) {
         const animations = []
         const offset = 50
+        const color = () => [colorWhite ? '#000' : '#fff', '#fff']
 
         const title = to.querySelector('.js-title')
 
@@ -86,6 +87,7 @@ const PageTransition = {
                 targets: title,
                 duration,
                 easing,
+                color,
                 translateY: [top, 0],
             })
         }

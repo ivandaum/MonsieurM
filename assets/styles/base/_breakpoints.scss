@@ -68,6 +68,13 @@
     }
 }
 
+// from 678 up (computers)
+@mixin tablet {
+    @media all and (min-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+
 // from 999px down (tablet & phone)
 @mixin phone {
     @media all and (max-width: map-get($breakpoints, tablet) - 1px) {

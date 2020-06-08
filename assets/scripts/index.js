@@ -7,10 +7,12 @@ import store from './utils/store'
 import HomeRenderer from './renderer/HomeRenderer'
 import WorkRenderer from './renderer/WorkRenderer'
 import ProjectRenderer from './renderer/ProjectRenderer'
+import LabRenderer from './renderer/LabRenderer'
 
 import WorkTransition from './transitions/WorkTransition'
 import HomeTransition from './transitions/HomeTransition'
 import ProjectTransition from './transitions/ProjectTransition'
+import LabTransition from './transitions/LabTransition'
 
 import Nav from './animations/Nav'
 import Footer from './animations/Footer'
@@ -18,12 +20,14 @@ import Footer from './animations/Footer'
 const renderers = {
     home: HomeRenderer,
     project: ProjectRenderer,
+    lab: LabRenderer,
     work: WorkRenderer,
 }
 const transitions = {
     work: WorkTransition,
     home: HomeTransition,
     project: ProjectTransition,
+    lab: LabTransition,
     contextual: {
         workToProject: ProjectTransition,
     },

@@ -14,6 +14,13 @@
         font-size: 1.2rem;
     }
 
+    ul {
+        justify-content: space-between;
+        padding: 0 var(--padding-large);
+        z-index: map-get($zindex, header);
+        height: 0;
+    }
+
     a {
         transition: color var(--speed) var(--easing);
         opacity: 0;
@@ -23,26 +30,20 @@
         pointer-events: none;
         color: var(--color-blackFaded);
     }
-
-    li {
-        z-index: map-get($zindex, header);
-    }
-
-    li:first-child {
-        left: var(--padding-large);
-    }
-
-    li:last-child {
-        right: var(--padding-large);
-    }
 }
 
 body.single .Navbar a {
     color: var(--color-grey);
 }
 
-body.email-is-hover .Navbar {
-    a {
+body.email-is-hover .Navbar a {
+    color: var(--color-white);
+}
+
+body.page-template-page-lab .Navbar a {
+    color: var(--color-greyDarker);
+
+    &.is-active {
         color: var(--color-white);
     }
 }

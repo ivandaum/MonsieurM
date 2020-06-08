@@ -28,13 +28,13 @@ const Videos = {
         const parentWidth = video.parentNode.offsetWidth || window.getComputedStyle(video.parentNode).width
 
         const r = parseFloat(video.dataset.ratio) || RATIO
-        const height = parentWidth * r
+        const height = Math.floor(parentWidth * r)
 
         if (height <= parentHeight || parentHeight === 0) {
             video.style.width = parentWidth + 'px'
             video.style.height = height + 'px'
         } else {
-            video.style.width = parentHeight / r + 'px'
+            video.style.width = Math.floor(parentHeight / r) + 'px'
             video.style.height = parentHeight + 'px'
         }
     },
