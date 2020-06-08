@@ -15,7 +15,7 @@
     </div>
 
     <?php if($footer->video): ?>
-        <div class="Footer__video is-fixed has-width-100 has-height-100">
+        <div class="Footer__video is-absolute has-width-100 has-height-100">
             <?= Video::create($footer->video) ?>
         </div>
     <?php endif; ?>

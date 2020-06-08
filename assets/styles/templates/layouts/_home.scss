@@ -30,15 +30,18 @@
         z-index: map-get($zindex, section);
         background-color: var(--color-grey);
 
+        picture {
+            position: relative;
+            z-index: map-get($zindex, section);
+        }
+
         picture.is-hidden {
-            position: absolute;
-            top: 0;
-            left: 0;
             opacity: 0;
         }
 
         &--circle {
             transform: scale(0);
+            z-index: map-get($zindex, above-section);
 
             img {
                 opacity: 0.2;
@@ -48,17 +51,18 @@
 
         &--canvas {
             width: 100%;
-            height: auto;
+            height: 0;
+            top: 0;
+            left: 0;
             background-size: 100% auto;
             background-position: top center;
             background-repeat: no-repeat;
-            @include touch {
-                display: none;
-            }
+            z-index: map-get($zindex, section) + 1;
         }
     }
 
     &__about {
+        background-color: var(--color-grey);
         z-index: map-get($zindex, under-section);
         font-size: 2rem;
         line-height: 1.65em;
@@ -231,7 +235,7 @@
     }
 
     &__showreel {
-        bottom: 0;
+        top: 0;
         left: 0;
         height: 100vh;
         z-index: map-get($zindex, above-all);

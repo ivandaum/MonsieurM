@@ -13,7 +13,7 @@
     get_header();
 ?>
 <article class="Home has-width-100" data-router-view="home">
-    <div class="js-scrollable">
+    <div class="js-view has-width-100">
         <section class="Home__introduction section-top container">
             <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title is-flex">
                 <span class="Home__introduction--title js-title-overflow is-flex"><span><?= get_the_title() ?></span></span>
@@ -28,7 +28,7 @@
                 <img alt="img-circle-picture" class="is-absolute is-block has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/circle.png') ?>">
             </div>    
             <?= Image::create($home->picture, array(), false) ?>
-            <canvas class="js-picture-canvas Home__picture--canvas"></canvas>
+            <canvas class="js-picture-canvas Home__picture--canvas is-absolute"></canvas>
         </section>
     
         <section class="Home__about container is-flex has-width-100">
@@ -107,7 +107,7 @@
         <?php Template::partial('footer'); ?>
     </div>
 
-    <section class="Home__showreel js-showreel is-fixed container has-text-center">
+    <section class="Home__showreel js-showreel is-absolute container has-text-center">
         <div class="is-flex is-center has-width-100 has-height-100">
             <button class="Home__showreel--close js-showreel-close is-absolute has-font-title with-spacing is-relative">Close</button>
             <div class="js-project-wording has-font-large-title  is-absolute Home__showreel--wording is-active is-flex is-center">

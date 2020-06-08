@@ -4,8 +4,10 @@ import Videos from '../binders/Videos'
 import Images from '../binders/Images'
 
 import breakpoints from '../constants/breakpoints'
+
 import store from '../utils/store'
 import ScrollManager from '../utils/ScrollManager'
+import ResizeManager from '../utils/ResizeManager'
 import RafManager from '../utils/RafManager'
 
 import Showreel from '../animations/Showreel'
@@ -14,9 +16,9 @@ import MaskPicture from '../animations/MaskPicture'
 class HomeRenderer extends Highway.Renderer {
     onLeaveCompleted() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
+        ResizeManager.removeQueue(this.Showreel.resizeIndex)
         this.MaskPicture.raf.map((raf) => RafManager.removeQueue(raf))
-        ScrollManager.removeOnResize(this.Showreel.resizeIndex)
-        ScrollManager.removeOnResize(this.MaskPicture.resizeIndex)
+        ResizeManager.removeQueue(this.MaskPicture.resizeIndex)
     }
 
     onEnterCompleted() {
@@ -26,7 +28,7 @@ class HomeRenderer extends Highway.Renderer {
         Videos.bindAll($view.querySelectorAll('.js-last-project .js-video'))
         Videos.resizeAll(videos)
 
-        ScrollManager.addOnResize(() => Videos.resizeAll(videos))
+        ResizeManager.addQueue(() => Videos.resizeAll(videos))
 
         Images.lazyload()
 

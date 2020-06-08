@@ -1,14 +1,8 @@
 import Highway from '@dogstudio/highway'
-
 import PageTransition from '../transitions/PageTransition'
-
-import FontLoader from '../utils/FontLoader'
-import ScrollManager from '../utils/ScrollManager'
 
 class LabTransition extends Highway.Transition {
     in({ from, to, done }) {
-        ScrollManager.lockBody()
-
         if (from) {
             PageTransition.slide({
                 from,
@@ -17,14 +11,11 @@ class LabTransition extends Highway.Transition {
                 done,
             })
         } else {
-            FontLoader.load('Canela').then(() => {
-                PageTransition.show({ to, done, colorWhite: true })
-            })
+            PageTransition.show({ to, done, colorTransition: ['#000', '#fff'] })
         }
     }
 
     out({ done }) {
-        ScrollManager.lockBody()
         if (done) done()
     }
 }

@@ -5,13 +5,14 @@ import RafManager from '../utils/RafManager'
 import store from '../utils/store'
 import FontLoader from '../utils/FontLoader'
 import ScrollManager from '../utils/ScrollManager'
+import ResizeManager from '../utils/ResizeManager'
 
 // import { lerp, range } from '../functions/object'
 
 class ProjectRenderer extends Highway.Renderer {
     onLeaveCompleted() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
-        ScrollManager.removeOnResize(this.resizeIndex)
+        ResizeManager.removeQueue(this.resizeIndex)
     }
 
     onEnterCompleted() {
@@ -22,10 +23,10 @@ class ProjectRenderer extends Highway.Renderer {
 
         Videos.bindAll(videos)
         Videos.resizeAll(videos)
-        this.resizeIndex = ScrollManager.addOnResize(() => Videos.resizeAll(videos))
+        this.resizeIndex = ResizeManager.addQueue(() => Videos.resizeAll(videos))
 
         Images.lazyload()
-        FontLoader.load('Canela').then(() => {
+        FontLoader.default(() => {
             // this.bindCover()
             // if (this.coverBox.$el) {
             //     this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))

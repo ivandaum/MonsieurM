@@ -1,10 +1,11 @@
 import anime from 'animejs'
 import RafManager from '../utils/RafManager'
-import breakpoints from '../constants/breakpoints'
+// import breakpoints from '../constants/breakpoints'
 import store from '../utils/store'
+import ResizeManager from '../utils/ResizeManager'
 
 const easing = 'easeInOutExpo'
-const duration = 2000
+const duration = 1000
 
 export default {
     scroll: 0,
@@ -14,78 +15,74 @@ export default {
     canScroll: true,
     isScrolling: false,
     funcOnScroll: [],
-    funcOnResize: [],
 
-    init({ view }) {
-        window.addEventListener('resize', this.onResize.bind(this))
-        RafManager.addQueue(this.onScroll.bind(this))
-
-        this.$scroller = document.documentElement
+    init() {
+        this.$scroller = document.querySelector('.scroller')
+        this.$height = document.querySelector('.js-scroller-height')
         this.$app = document.body.querySelector('main')
-        this.$view = view
 
-        if (store.windowWidth < breakpoints.desktop) {
-            this.$scroller = document.querySelector('.scroller')
-        }
-
-        this.update({ view })
+        RafManager.addQueue(this.onScroll.bind(this))
+        ResizeManager.addQueue(() => this.setHeight())
     },
 
-    update({ view }) {
-        if (view) {
-            this.$view = view.querySelector('.js-scrollable') || view
-        }
-
+    update({ $view }) {
         this.canScroll = true
+        this.$view = $view.classList.contains('js-view') ? $view : $view.querySelector('.js-view')
+        this.unlock()
     },
 
-    lockBody() {
+    setHeight() {
+        if (this.$view) {
+            this.$height.style.height = `${this.$view.offsetHeight - store.windowHeight}px`
+        }
+    },
+
+    lock() {
         if (this.bodyLocked) {
             return false
         }
 
+        this.$height.style.height = '0px'
         this.bodyLocked = true
         this.canScroll = false
-
-        this.$app.classList.add('locked')
-        this.$view.style.transform = `translateY(${-this.scroll}px)`
     },
 
-    unlockBody() {
+    unlock() {
         this.canScroll = true
         this.bodyLocked = false
-
-        this.$app.classList.remove('locked')
-        this.$view.style.transform = ``
-        this.$scroller.scrollTo(0, this.scroll)
-
+        this.setHeight()
         document.body.classList.remove('not-loaded')
     },
 
-    addOnResize(func) {
-        this.funcOnResize.push(func)
-        return this.funcOnResize.length - 1
-    },
-
-    removeOnResize(index) {
-        if (this.funcOnResize[index]) {
-            this.funcOnResize.splice(index, 1)
-            return true
+    onScroll() {
+        if (!this.canScroll || !this.$view) {
+            return false
         }
 
-        return false
+        this.oldScroll = this.scroll
+        this.scroll += (this.getScrollTop() - this.scroll) * 0.2
+        this.spinY = this.scroll - this.oldScroll
+        this.isScrolling = this.spinY !== 0
+
+        if (this.$view) {
+            this.$view.style.transform = `translateY(${-this.scroll}px)`
+        }
+
+        // this.funcOnScroll.map((func) => func())
     },
 
-    onResize() {
-        this.funcOnResize.map((func) => func())
+    getScrollTop() {
+        return window.pageYOffset || this.$scroller.scrollTop
     },
 
-    addOnScroll(func) {
+    /** On scroll events */
+
+    addQueue(func) {
         this.funcOnScroll.push(func)
         return this.funcOnScroll.length - 1
     },
 
-    removeOnScroll(index) {
+    removeQueue(index) {
         if (this.funcOnScroll[index]) {
             this.funcOnScroll.splice(index, 1)
             return true
@@ -94,23 +91,7 @@ export default {
         return false
     },
 
-    onScroll() {
-        if (!this.canScroll) {
-            return false
-        }
-
-        this.oldScroll = this.scroll
-        this.scroll = this.getScrollTop()
-
-        this.spinY = this.scroll - this.oldScroll
-        this.isScrolling = this.spinY !== 0
-
-        this.funcOnScroll.map((func) => func())
-    },
-
-    getScrollTop() {
-        return window.pageYOffset || this.$scroller.scrollTop
-    },
+    /** DOM functions */
 
     scrollTo({ y, complete }) {
         const targets = { y: this.scroll }

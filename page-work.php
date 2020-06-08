@@ -13,7 +13,7 @@
 ?>
 
 <article class="Work has-width-100" data-router-view="work">
-    <div class="js-scrollable">
+    <div class="js-view has-width-100">
         <section class="container section-top is-padding-bottom">
             <h1 class="is-h3 has-font-title js-fade-item js-title is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch">
                 <sup class="has-font-text is-padding-right-1 is-padding-right-1-touch">2015 - <?= $work->currentYear ?></sup>
