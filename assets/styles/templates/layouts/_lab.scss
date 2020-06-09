@@ -30,6 +30,10 @@
         }
     }
 
+    &__content {
+        padding-top: 5vh;
+    }
+
     &__row {
         @include tablet {
             &:nth-of-type(2n) {

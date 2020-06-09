@@ -1,14 +1,25 @@
 import Highway from '@dogstudio/highway'
 import anime from 'animejs'
 
+import PageTransition from './PageTransition'
+
 import store from '../utils/store'
-// import ScrollManager from '../utils/ScrollManager'
+import events from '../constants/events'
 
 const easing = 'easeInOutExpo'
 const duration = 1500
 
 class ProjectTransition extends Highway.Transition {
-    in({ from, to, done }) {
+    in({ from, to, done, trigger }) {
+        if (trigger === events.POPSTATE) {
+            return PageTransition.slide({
+                from,
+                to,
+                direction: 1,
+                done,
+            })
+        }
+
         to.classList.add('appear-in')
 
         const title = to.querySelector('.js-project-title')
@@ -67,7 +78,7 @@ class ProjectTransition extends Highway.Transition {
     }
 
     out({ from, trigger, done }) {
-        if (from.dataset.routerView === 'home') {
+        if (from.dataset.routerView === 'home' || trigger === events.POPSTATE) {
             return done()
         }
 

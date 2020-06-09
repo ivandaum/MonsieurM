@@ -5,7 +5,7 @@ const Images = {
         Images.lazy = new Lazyloading({
             load_delay: 0,
             elements_selector: 'img:not(.ignore-lazy)',
-            use_native: true,
+            use_native: false,
             callback_loaded: (el) => Images.onLoad(el),
             callback_error: (el) => {
                 console.log('Error loading : ', el)

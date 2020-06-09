@@ -33,7 +33,7 @@
                     <?php if($entry['acf_fc_layout'] === 'image'): ?>
                         <?= Image::create($entry['source']) ?>
                     <?php elseif($entry['acf_fc_layout'] === 'video'): ?>
-                        <?= Video::create($entry['source']); ?>
+                        <div><?= Video::create($entry['source']); ?></div>
                     <?php endif; ?>
                     <p class="is-padding-top-2 is-padding-top-2-touch"><?= $entry['text'] ?></p>
                 </div>

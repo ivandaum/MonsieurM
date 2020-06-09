@@ -7,14 +7,18 @@ const duration = 1500
 
 const PageTransition = {
     slide: ({ from, to, direction, done }) => {
-        to.classList.add('appear-in')
+        if (to) {
+            to.classList.add('appear-in')
+        }
 
         const timeline = anime.timeline({
             complete: () => {
                 ScrollManager.snapTo(0)
 
-                to.style = ''
-                to.classList.remove('appear-in')
+                if (to) {
+                    to.style = ''
+                    to.classList.remove('appear-in')
+                }
 
                 if (from) {
                     from.remove()

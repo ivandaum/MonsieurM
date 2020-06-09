@@ -3,11 +3,10 @@ import Images from '../binders/Images'
 import Videos from '../binders/Videos'
 import RafManager from '../utils/RafManager'
 import store from '../utils/store'
-import FontLoader from '../utils/FontLoader'
 import ScrollManager from '../utils/ScrollManager'
 import ResizeManager from '../utils/ResizeManager'
 
-// import { lerp, range } from '../functions/object'
+import { lerp, range } from '../functions/object'
 
 class ProjectRenderer extends Highway.Renderer {
     onLeave() {
@@ -26,39 +25,46 @@ class ProjectRenderer extends Highway.Renderer {
         this.resizeIndex = ResizeManager.addQueue(() => Videos.resizeAll(videos))
 
         Images.lazyload()
-        FontLoader.default(() => {
-            // this.bindCover()
-            // if (this.coverBox.$el) {
-            //     this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
-            // }
-        })
+        this.bindCover()
     }
 
     bindCover() {
-        this.coverBox = {
-            $el: this.wrap.querySelector('.js-project-cover picture'),
+        const $el = this.wrap.querySelector('.js-project-cover')
+        if (!$el) {
+            return false
+        }
+
+        const $img = $el.querySelector('.js-project-cover picture')
+        if (!$img) {
+            return false
+        }
+
+        this.cover = {
+            $el,
+            $img,
+            heigth: $el.offsetHeight,
             top: this.$header.offsetHeight - store.windowHeight,
-            bottom: this.$header.offsetHeight + store.windowHeight,
-            parallax: store.windowHeight * 0.4,
+            bottom: this.$header.offsetHeight + $el.offsetHeight,
+            canRender: false,
+            PARALLAX_COVER: store.windowHeight * 0.4,
         }
 
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
-            this.coverBox.isVisible = isIntersecting
+            this.cover.canRender = isIntersecting
         })
 
-        observer.observe(this.coverBox.$el)
+        observer.observe(this.cover.$el)
+
+        this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
     }
 
     renderCover() {
-        const cover = this.coverBox
+        if (this.cover.canRender) {
+            const progress = range(ScrollManager.scrollEased, this.cover.top, this.cover.bottom) * 0.01
+            const y = lerp(-this.cover.PARALLAX_COVER, this.cover.PARALLAX_COVER, progress)
 
-        if (cover.isVisible) {
-            // const progress = range(ScrollManager.scroll, cover.top, cover.bottom) * 0.01
-            // const y = lerp(-cover.parallax, cover.parallax, progress)
-
-            const y = ScrollManager.scroll - cover.top - store.windowHeight
-            cover.$el.style.transform = `translate3d(0, ${y}px, 0)`
+            this.cover.$img.style.transform = `translate3d(0, ${y}px, 0)`
         }
     }
 }

@@ -49,7 +49,7 @@
         <?php Template::partial('footer'); ?>
     </div>
     
-    <section class="Work__project--cover js-cover is-fixed is-flex is-center">
+    <section class="Work__project--cover js-cover is-absolute is-flex is-center">
         <?php foreach($work->projects as $k => $project): ?>
         <?php if($project->video): ?>
             <div data-project="<?= $project->id ?>" class="js-project-video is-absolute has-width-100 has-height-100">

@@ -89,9 +89,7 @@ export default class Swhoreel {
     }
 
     toggle() {
-        if (this.isOpen) {
-            document.body.classList.remove('showreel-open')
-        } else {
+        if (!this.isOpen) {
             document.body.classList.add('showreel-open')
         }
 
@@ -104,6 +102,7 @@ export default class Swhoreel {
                     ScrollManager.unlock()
                     this.$wordingHTML.innerHTML = 'Play'
                     this.$wording.classList.add('is-active')
+                    document.body.classList.remove('showreel-open')
                 } else {
                     this.isOpen = true
                 }
