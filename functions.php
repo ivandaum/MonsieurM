@@ -21,7 +21,6 @@ register_nav_menus([
     'footer' => 'Footer',
 ]);
 
-
 remove_image_size('1536x1536');
 remove_image_size('2048x2048');
 add_image_size( '1x1', 1, 1 );
@@ -31,10 +30,6 @@ add_image_size( 'tablet', 768, 0 );
 add_image_size( 'desktop', 1024, 0 );
 add_image_size( 'widescreen', 1600, 0 );
 add_image_size( 'max', 2048, 0 );
-
-add_action( 'after_wp_tiny_mce', function() {
-    printf( '<script type="text/javascript" src="%s"></script>',  get_theme_file_uri('/assets/admin/textarea.js'));
-});
 
 add_filter('jpeg_quality', function($arg) {
     return 100;
@@ -57,17 +52,20 @@ function dump($var) {
     exit();
 }
 
-// REMOVE WP EMOJI
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
-
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
-
-add_action('get_header', 'remove_admin_login_header');
-function remove_admin_login_header() {
-	remove_action('wp_head', '_admin_bar_bump_cb');
-}
+add_action( 'wp_enqueue_scripts', function() {
+    wp_dequeue_style( 'wp-block-library' );
+});
+add_action('get_header', function() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+});
+add_action( 'wp_print_styles',     function() {
+    wp_deregister_style( 'amethyst-dashicons-style' ); 
+    wp_deregister_style( 'dashicons' ); 
+}, 100 );
 
 add_action( 'admin_menu', function() {
     remove_menu_page( 'index.php' );                 //Dashboard
