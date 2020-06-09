@@ -14,7 +14,7 @@ import Showreel from '../animations/Showreel'
 import MaskPicture from '../animations/MaskPicture'
 
 class HomeRenderer extends Highway.Renderer {
-    onLeaveCompleted() {
+    onLeave() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
         this.MaskPicture.raf.map((raf) => RafManager.removeQueue(raf))
 

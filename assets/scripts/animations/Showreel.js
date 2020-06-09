@@ -89,6 +89,12 @@ export default class Swhoreel {
     }
 
     toggle() {
+        if (this.isOpen) {
+            document.body.classList.remove('showreel-open')
+        } else {
+            document.body.classList.add('showreel-open')
+        }
+
         const timeline = anime.timeline({
             autoplay: false,
             complete: () => {

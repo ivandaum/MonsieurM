@@ -70,9 +70,8 @@ export default {
 
         if (this.$view) {
             this.$view.style.transform = `translateY(${-this.scrollEased}px)`
+            this.funcOnScroll.map((func) => func())
         }
-
-        // this.funcOnScroll.map((func) => func())
     },
 
     getScrollTop() {

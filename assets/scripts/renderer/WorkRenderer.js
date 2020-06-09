@@ -9,7 +9,7 @@ import ResizeManager from '../utils/ResizeManager'
 import store from '../utils/store'
 
 class WorkRenderer extends Highway.Renderer {
-    onLeaveCompleted() {
+    onLeave() {
         this.$links.forEach((link) => {
             link.removeEventListener('click', this.onClick)
             link.removeEventListener('mouseenter', this.onMouseEnter)

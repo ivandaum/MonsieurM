@@ -10,7 +10,7 @@ import ResizeManager from '../utils/ResizeManager'
 // import { lerp, range } from '../functions/object'
 
 class ProjectRenderer extends Highway.Renderer {
-    onLeaveCompleted() {
+    onLeave() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
         ResizeManager.removeQueue(this.resizeIndex)
     }

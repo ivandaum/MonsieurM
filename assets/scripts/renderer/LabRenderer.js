@@ -7,7 +7,7 @@ import ResizeManager from '../utils/ResizeManager'
 // import ScrollManager from '../utils/ScrollManager'
 
 class LabRenderer extends Highway.Renderer {
-    onLeaveCompleted() {
+    onLeave() {
         ResizeManager.removeQueue(this.resizeIndex)
     }
 
