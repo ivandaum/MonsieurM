@@ -419,11 +419,13 @@ picture {
         transition: opacity var(--speed) var(--speed) linear;
     }
 
-    &.loaded .background {
+    &.loaded .background,
+    &.error .background {
         opacity: 0;
     }
 
-    img.loaded {
+    img.loaded,
+    img.error {
         opacity: 1;
         animation: fade-in var(--speed) linear;
     }
