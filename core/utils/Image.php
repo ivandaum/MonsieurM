@@ -84,8 +84,8 @@ class Image {
             $html .= '<source type="' . self::$mimeType . '" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '"></source>';
         }
 
-        $html .= '<img class="' . $className . '" src="" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
-        $html .= '<div class="background" style="background-image: url('. $sources['10']['src'] .')"></div>';
+        $html .= '<img class="' . $className . '" src="' . $last['src'] . '" alt="' . self::$title . '" />';
+        $html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $sources['10']['src'] .')"></div>';
         $html .= '</picture>';
         return $html;
     }
