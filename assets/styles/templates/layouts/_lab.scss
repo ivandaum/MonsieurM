@@ -51,12 +51,12 @@
 
 body.not-loaded .Lab {
     h1 {
-        transform: translateY(calc(50vh - 1em - var(--padding-large)));
+        transform: translate3d(0, calc(50vh - 1em - var(--padding-large)), 0);
         color: var(--color-black);
     }
 
     &__introduction--sentence {
-        transform: translateY(100vh);
+        transform: translate3d(0, 100vh, 0);
     }
 
     &__introduction--background {

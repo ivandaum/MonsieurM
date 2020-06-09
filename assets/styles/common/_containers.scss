@@ -23,10 +23,15 @@ body.loading * {
     cursor: wait !important;
 }
 
+body.locked {
+    pointer-events: none !important;
+}
+
 .scroller {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    will-change: transform;
 }
 
 main {

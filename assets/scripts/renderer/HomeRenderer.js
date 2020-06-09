@@ -76,7 +76,7 @@ class HomeRenderer extends Highway.Renderer {
         this.circle.rotation = this.circle.rotation > 360 ? 0 : this.circle.rotation
 
         this.circle.$rotating.style.transform = `rotate(${this.circle.rotation}deg)`
-        this.circle.$el.style.transform = `translateY(${this.circle.y}px)`
+        this.circle.$el.style.transform = `translate3d(0, ${this.circle.y}px, 0)`
     }
 }
 

@@ -298,7 +298,7 @@ body.not-loaded .Home {
     }
 
     h1 {
-        transform: translateY(calc(50vh - 1em - var(--padding-large)));
+        transform: translate3d(0, calc(50vh - 1em - var(--padding-large)), 0);
     }
 
     .Home__introduction--background {

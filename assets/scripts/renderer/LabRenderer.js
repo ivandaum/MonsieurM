@@ -47,7 +47,7 @@ class LabRenderer extends Highway.Renderer {
     renderHeader() {
         if (!this.header.canRender) return false
         const y = ScrollManager.scrollEased * 0.3
-        this.header.$el.style.transform = `translateY(${y}px)`
+        this.header.$el.style.transform = `translate3d(0, ${y}px, 0)`
 
         const opacity = 1 - (ScrollManager.scrollEased - store.windowHeight * 0.25) / this.header.height
         this.header.$el.style.opacity = opacity

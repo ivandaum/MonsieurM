@@ -51,8 +51,10 @@ export default {
         this.canScroll = false
         this.$scroller.scrollTo(0, 0)
 
+        document.body.classList.add('locked')
+
         if (!this.isDesktop) {
-            this.$view.style.transform = `translateY(${-this.scroll}px)`
+            this.$view.style.transform = `translate3d(0, ${-this.scroll}px, 0)`
         }
     },
 
@@ -60,10 +62,10 @@ export default {
         this.canScroll = true
         this.bodyLocked = false
         this.setHeight()
-        document.body.classList.remove('not-loaded')
+        document.body.classList.remove('not-loaded', 'locked')
 
         if (!this.isDesktop) {
-            this.$view.style.transform = `translateY(0px)`
+            this.$view.style.transform = `translate3d(0, 0, 0)`
         }
 
         this.snapTo(this.scroll)
@@ -81,7 +83,7 @@ export default {
         this.isScrolling = this.spinY !== 0
 
         if (this.$view && this.isDesktop) {
-            this.$view.style.transform = `translateY(${-this.scrollEased}px)`
+            this.$view.style.transform = `translate3d(0, ${-Math.round(this.scrollEased)}px, 0)`
             this.funcOnScroll.map((func) => func())
         }
     },

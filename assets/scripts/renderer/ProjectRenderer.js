@@ -58,7 +58,7 @@ class ProjectRenderer extends Highway.Renderer {
             // const y = lerp(-cover.parallax, cover.parallax, progress)
 
             const y = ScrollManager.scroll - cover.top - store.windowHeight
-            cover.$el.style.transform = `translateY(${y}px)`
+            cover.$el.style.transform = `translate3d(0, ${y}px, 0)`
         }
     }
 }

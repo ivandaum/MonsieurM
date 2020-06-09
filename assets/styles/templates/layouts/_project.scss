@@ -124,7 +124,7 @@
 body.not-loaded .Project {
     .js-project-intro,
     h1 {
-        transform: translateY(100vh);
+        transform: translate3d(0, 100vh, 0);
     }
 
     .Project__background {
