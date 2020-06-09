@@ -43,14 +43,14 @@ class ProjectTransition extends Highway.Transition {
                 translateY: [top, '0'],
                 color: ['#000', color],
                 opacity: [opacity, 1],
-                translateZ: 0,
+                translateZ: 1,
             },
             {
                 targets: intro,
                 duration,
                 easing,
                 translateY: [top + 100, 0],
-                translateZ: 0,
+                translateZ: 1,
                 opacity: {
                     value: [0, 1],
                 },

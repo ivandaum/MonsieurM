@@ -47,7 +47,7 @@ export default class Swhoreel {
 
     open() {
         this.$video.currentTime = 0
-        this.$container.classList.add('ignore-locked', 'is-active')
+        this.$container.classList.add('is-active')
         ScrollManager.lock()
 
         return [
@@ -99,7 +99,7 @@ export default class Swhoreel {
             autoplay: false,
             complete: () => {
                 if (this.isOpen) {
-                    this.$container.classList.remove('ignore-locked', 'is-active')
+                    this.$container.classList.remove('is-active')
                     this.isOpen = false
                     ScrollManager.unlock()
                     this.$wordingHTML.innerHTML = 'Play'

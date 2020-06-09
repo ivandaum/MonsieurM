@@ -23,7 +23,7 @@ body.loading * {
     cursor: wait !important;
 }
 
-body.locked {
+body.locked section:not(.ignore-locked) {
     pointer-events: none !important;
 }
 
@@ -50,10 +50,6 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-}
-
-main.locked section:not(.ignore-locked) {
-    pointer-events: none;
 }
 
 .container {

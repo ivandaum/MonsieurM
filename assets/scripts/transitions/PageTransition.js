@@ -31,12 +31,14 @@ const PageTransition = {
                 duration,
                 easing,
                 translateX: [0, store.windowWidth * -direction],
+                translateZ: 1,
             },
             {
                 targets: to,
                 duration,
                 easing,
                 translateX: [store.windowWidth * direction, 0],
+                translateZ: 1,
             },
         ]
 
@@ -82,7 +84,7 @@ const PageTransition = {
                 easing,
                 color,
                 translateY: [top, 0],
-                translateZ: 0,
+                translateZ: 1,
             })
         }
 
@@ -92,7 +94,7 @@ const PageTransition = {
                 duration: duration - offset,
                 easing,
                 translateY: [top + left, 0],
-                translateZ: 0,
+                translateZ: 1,
                 delay: offset,
             })
         }

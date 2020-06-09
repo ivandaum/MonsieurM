@@ -106,7 +106,7 @@
         <?php Template::partial('footer'); ?>
     </div>
 
-    <section class="Home__showreel js-showreel is-absolute container has-text-center">
+    <section class="Home__showreel ignore-locked js-showreel is-absolute container has-text-center">
         <div class="is-flex is-center has-width-100 has-height-100">
             <button class="Home__showreel--close js-showreel-close is-absolute has-font-title with-spacing is-relative">Close</button>
             <div class="js-project-wording has-font-large-title  is-absolute Home__showreel--wording is-active is-flex is-center">
