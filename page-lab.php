@@ -14,12 +14,14 @@
 
 <article class="Lab js-view has-width-100" data-router-view="lab">
     <section class="Lab__introduction section-top container has-text-center">
-        <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
-            <?= $lab->title ?>
-        </h1>
-        <div class="Lab__introduction--sentence js-content is-relative">
-            <p class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom-3 is-padding-bottom-3-touch"><?= $lab->sentence ?></p>
-            <p class="has-color-white is-relative is-h6 is-uppercase is-padding-bottom2x"><?= $lab->keywords ?></p>
+        <div class="Lab__introduction--header js-lab-header is-relative">
+            <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
+                <?= $lab->title ?>
+            </h1>
+            <div class="Lab__introduction--sentence js-content is-relative">
+                <p class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom-3 is-padding-bottom-3-touch"><?= $lab->sentence ?></p>
+                <p class="has-color-white is-relative is-h6 is-uppercase is-padding-bottom2x"><?= $lab->keywords ?></p>
+            </div>
         </div>
         <div class="Lab__introduction--background is-absolute has-width-100 has-height-100 js-background"></div>
     </section>
