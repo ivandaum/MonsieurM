@@ -188,7 +188,7 @@ export default class MaskPicture {
 
             const imgX = this.circle.xEased - size
             const imgY = this.circle.yEased - size
-            this.$circle.style.transform = `translate(${imgX}px,${imgY}px) scale(${this.circle.ratio})`
+            this.$circle.style.transform = `translate3d(${imgX}px,${imgY}px, 0) scale(${this.circle.ratio})`
         }
     }
 }
