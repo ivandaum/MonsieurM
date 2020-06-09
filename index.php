@@ -14,7 +14,7 @@
 ?>
 <article class="Home has-width-100" data-router-view="home">
     <div class="js-view has-width-100">
-        <section class="Home__introduction section-top container">
+        <section class="Home__introduction js-introduction section-top container">
             <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title is-flex">
                 <span class="Home__introduction--title js-title-overflow is-flex"><span><?= get_the_title() ?></span></span>
                 <span>☺︎</span>
@@ -31,10 +31,10 @@
             <canvas class="js-picture-canvas Home__picture--canvas is-absolute"></canvas>
         </section>
     
-        <section class="Home__about container is-flex has-width-100">
+        <section class="Home__about js-about container is-flex has-width-100">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
-                <div class="Home__scrollingCircle is-sticky is-flex is-center">
-                    <div class="Home__scrollingCircle--rotate js-about-circle is-absolute has-height-100 has-width-100"></div>
+                <div class="Home__scrollingCircle js-about-circle is-absolute is-flex is-center">
+                    <div class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute has-height-100 has-width-100"></div>
                     <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.gif') ?>" alt="">
                 </div>
             </div>

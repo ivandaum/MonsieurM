@@ -3,9 +3,9 @@ import Videos from '../binders/Videos'
 const CLASS_EMAIL_HOVER = 'email-is-hover'
 export default {
     isHover: false,
-    update({ view }) {
+    update({ $view }) {
         this.isHover = false
-        this.$el = view.querySelector('.js-footer')
+        this.$el = $view.querySelector('.js-footer')
 
         if (this.$el) {
             this.$video = this.$el.querySelector('.js-video')

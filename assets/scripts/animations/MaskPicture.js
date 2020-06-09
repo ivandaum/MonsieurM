@@ -2,7 +2,7 @@ import Lazyloading from '../vendor/Lazyloading'
 
 import RafManager from '../utils/RafManager'
 import store from '../utils/store'
-// import ScrollManager from '../utils/ScrollManager'
+import ScrollManager from '../utils/ScrollManager'
 import ResizeManager from '../utils/ResizeManager'
 
 const INTIAL_RATIO = 0.2
@@ -19,7 +19,10 @@ export default class MaskPicture {
         this.ctx = this.$canvas.getContext('2d')
         this.isFocused = false
         this.canRender = false
-        this.top = this.$container.getBoundingClientRect().top
+
+        this.initalTop = 0
+        this.top = this.initalTop
+
         this.cursor = [store.windowWidth * 0.5, 0]
 
         this.$container.addEventListener('mousemove', (e) => (this.cursor = [e.x, e.y]))
@@ -31,11 +34,18 @@ export default class MaskPicture {
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
             this.canRender = isIntersecting
+
+            if (this.initalTop === 0 && isIntersecting) {
+                this.initalTop = this.$container.offsetTop
+            }
         })
         observer.observe(this.$container)
 
         this.onResize()
-        this.resizeIndex = ResizeManager.addQueue(() => this.onResize())
+        this.resizeIndex = ResizeManager.addQueue(() => {
+            this.initalTop = this.$container.offsetTop
+            this.onResize()
+        })
     }
 
     onResize() {
@@ -53,6 +63,9 @@ export default class MaskPicture {
 
         this.$canvas.style.width = this.background.width + 'px'
         this.$canvas.style.height = this.background.height + 'px'
+
+        this.$canvas.width = this.background.width
+        this.$canvas.height = this.background.height
 
         new Lazyloading({
             load_delay: 0,
@@ -111,8 +124,11 @@ export default class MaskPicture {
     render() {
         if (!this.canRender) return false
 
+        this.top = this.initalTop - ScrollManager.scroll
+        const cursor = [this.cursor[0], this.cursor[1] - this.top]
+
         this.ctx.clearRect(0, 0, this.background.width, this.background.height)
-        // this.ctx.globalCompositeOperation = 'source-over'
+        this.ctx.globalCompositeOperation = 'source-over'
 
         if (this.gif.canRender) {
             this.gif.index += 0.15
@@ -130,50 +146,49 @@ export default class MaskPicture {
             )
         }
 
-        // this.ctx.globalCompositeOperation = 'destination-out'
+        this.ctx.globalCompositeOperation = 'destination-out'
 
-        // if (this.circle.canRender) {
-        //     const size = this.circle.size * 0.5
-        //     const diff = ScrollManager.scroll - this.top
+        if (this.circle.canRender) {
+            const size = this.circle.size * 0.5
 
-        //     const top = this.gif.top - diff
-        //     const left = this.gif.left
-        //     const bottom = top + this.gif.height
-        //     const right = left + this.gif.width
+            const top = this.gif.top
+            const left = this.gif.left
+            const bottom = top + this.gif.height
+            const right = left + this.gif.width
 
-        //     if (this.cursor[0] > left && this.cursor[0] < right && this.cursor[1] > top && this.cursor[1] < bottom) {
-        //         this.circle.x = this.gif.left + this.gif.width * 0.5
-        //         this.circle.y = this.gif.top + this.gif.height * 0.5
-        //         this.circle.ratio += (1 - this.circle.ratio) * 0.1
-        //     } else {
-        //         this.circle.x = this.cursor[0]
-        //         this.circle.y = this.cursor[1] + diff
+            if (cursor[0] > left && cursor[0] < right && cursor[1] > top && cursor[1] < bottom) {
+                this.circle.x = this.gif.left + this.gif.width * 0.5
+                this.circle.y = this.gif.top + this.gif.height * 0.5
+                this.circle.ratio += (1 - this.circle.ratio) * 0.1
+            } else {
+                this.circle.x = cursor[0]
+                this.circle.y = cursor[1]
 
-        //         const ratio = this.isFocused ? INTIAL_RATIO : 0
-        //         const easing = this.isFocused ? 0.1 : 0.3
-        //         this.circle.ratio += (ratio - this.circle.ratio) * easing
+                const ratio = this.isFocused ? INTIAL_RATIO : 0
+                const easing = this.isFocused ? 0.1 : 0.3
+                this.circle.ratio += (ratio - this.circle.ratio) * easing
 
-        //         const topLimit = size * this.circle.ratio
-        //         const bottomLimit = this.background.height - size * this.circle.ratio
+                const topLimit = size * this.circle.ratio
+                const bottomLimit = this.background.height - size * this.circle.ratio
 
-        //         if (this.circle.y < topLimit) {
-        //             this.circle.y = topLimit
-        //         } else if (this.circle.y > bottomLimit) {
-        //             this.circle.y = bottomLimit
-        //         }
-        //     }
+                if (this.circle.y < topLimit) {
+                    this.circle.y = topLimit
+                } else if (this.circle.y > bottomLimit) {
+                    this.circle.y = bottomLimit
+                }
+            }
 
-        //     this.circle.xEased += (this.circle.x - this.circle.xEased) * 0.1
-        //     this.circle.yEased += (this.circle.y - this.circle.yEased) * 0.1
+            this.circle.xEased += (this.circle.x - this.circle.xEased) * 0.1
+            this.circle.yEased += (this.circle.y - this.circle.yEased) * 0.1
 
-        //     this.ctx.beginPath()
-        //     this.ctx.arc(this.circle.xEased, this.circle.yEased, size * this.circle.ratio, 0, 2 * Math.PI)
-        //     this.ctx.fill()
-        //     this.ctx.closePath()
+            this.ctx.beginPath()
+            this.ctx.arc(this.circle.xEased, this.circle.yEased, size * this.circle.ratio, 0, 2 * Math.PI)
+            this.ctx.fill()
+            this.ctx.closePath()
 
-        //     const imgX = this.circle.xEased - size
-        //     const imgY = this.circle.yEased - size
-        //     this.$circle.style.transform = `translate(${imgX}px,${imgY}px) scale(${this.circle.ratio})`
-        // }
+            const imgX = this.circle.xEased - size
+            const imgY = this.circle.yEased - size
+            this.$circle.style.transform = `translate(${imgX}px,${imgY}px) scale(${this.circle.ratio})`
+        }
     }
 }

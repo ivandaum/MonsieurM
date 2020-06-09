@@ -9,6 +9,7 @@ const duration = 1000
 
 export default {
     scroll: 0,
+    scrollEased: 0,
     oldScroll: 0,
     spinY: 0,
     bodyLocked: false,
@@ -62,12 +63,13 @@ export default {
         }
 
         this.oldScroll = this.scroll
-        this.scroll += (this.getScrollTop() - this.scroll) * 0.4
+        this.scroll = this.getScrollTop()
+        this.scrollEased += (this.scroll - this.scrollEased) * 0.35
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 
         if (this.$view) {
-            this.$view.style.transform = `translateY(${-this.scroll}px)`
+            this.$view.style.transform = `translateY(${-this.scrollEased}px)`
         }
 
         // this.funcOnScroll.map((func) => func())
@@ -113,5 +115,6 @@ export default {
     snapTo(y) {
         this.$scroller.scrollTo(0, y)
         this.scroll = y
+        this.scrollEased = y
     },
 }

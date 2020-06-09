@@ -46,7 +46,7 @@ const core = new Highway.Core({ renderers, transitions })
         document.body.classList = to.page.body.classList
 
         store.updateOnNavigation()
-        Footer.update({ view: to.view })
+        Footer.update({ $view: to.view })
 
         ScrollManager.unlock()
         ScrollManager.snapTo(0)
@@ -60,23 +60,23 @@ const core = new Highway.Core({ renderers, transitions })
     })
 
 function app() {
-    const view = document.querySelector('[data-router-view]:last-of-type')
+    const $view = document.querySelector('[data-router-view]:last-of-type')
 
     store.init()
     ScrollManager.init()
-    Footer.update({ view })
+    Footer.update({ $view })
     ResizeManager.init()
     ResizeManager.addQueue(() => store.setGlobalVars())
 
-    Nav.bindActiveLink({ color: view.dataset.color })
+    Nav.bindActiveLink({ color: $view.dataset.color })
     setTimeout(() => Nav.show(), 100)
 
     const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
 
     FontLoader.default(() => {
         trans.prototype.in({
-            to: view,
-            done: () => ScrollManager.update({ $view: view }),
+            to: $view,
+            done: () => ScrollManager.update({ $view }),
         })
     })
 }
