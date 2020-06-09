@@ -64,7 +64,7 @@ export default {
 
         this.oldScroll = this.scroll
         this.scroll = this.getScrollTop()
-        this.scrollEased += (this.scroll - this.scrollEased) * 0.35
+        this.scrollEased += (this.scroll - this.scrollEased) * 0.3
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 

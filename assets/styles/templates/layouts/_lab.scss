@@ -1,8 +1,9 @@
 .Lab {
-    background-color: var(--color-white);
-    color: var(--color-white);
+    background-color: var(--color-black);
+    color: var(--color-grey);
 
     &__introduction {
+        background-color: var(--color-white);
         &--header {
             z-index: map-get($zindex, section);
         }
@@ -10,6 +11,7 @@
         &--sentence {
             margin: auto;
             max-width: map-get($breakpoints, desktop);
+            color: var(--color-grey);
         }
 
         &--title {
@@ -25,10 +27,6 @@
             z-index: map-get($zindex, under-section);
             transform-origin: bottom center;
         }
-    }
-
-    &__content {
-        background-color: var(--color-black);
     }
 
     &__row {
