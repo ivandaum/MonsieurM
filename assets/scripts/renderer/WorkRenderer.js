@@ -1,12 +1,15 @@
 import Highway from '@dogstudio/highway'
 import breakpoints from '../constants/breakpoints'
-import store from '../utils/store'
+
 import Videos from '../binders/Videos'
 import Images from '../binders/Images'
+
 import ScrollManager from '../utils/ScrollManager'
+import ResizeManager from '../utils/ResizeManager'
+import store from '../utils/store'
 
 class WorkRenderer extends Highway.Renderer {
-    onLeaveCompleted() {
+    onLeave() {
         this.$links.forEach((link) => {
             link.removeEventListener('click', this.onClick)
             link.removeEventListener('mouseenter', this.onMouseEnter)
@@ -14,8 +17,8 @@ class WorkRenderer extends Highway.Renderer {
             link.removeEventListener('mousemove', this.browseGalery)
         })
 
-        ScrollManager.removeOnScroll(this.onScrollIndex)
-        ScrollManager.removeOnResize(this.resizeIndex)
+        ScrollManager.removeQueue(this.onScrollIndex)
+        ResizeManager.removeQueue(this.resizeIndex)
     }
 
     onEnterCompleted() {
@@ -28,7 +31,7 @@ class WorkRenderer extends Highway.Renderer {
 
         const videos = this.$items.map((item) => item.video)
         Videos.resizeAll(videos)
-        this.resizeIndex = ScrollManager.addOnResize(() => Videos.resizeAll(videos))
+        this.resizeIndex = ResizeManager.addQueue(() => Videos.resizeAll(videos))
     }
 
     bindDom() {
@@ -55,7 +58,7 @@ class WorkRenderer extends Highway.Renderer {
             link.addEventListener('mousemove', () => this.browseGalery())
         })
 
-        this.onScrollIndex = ScrollManager.addOnScroll(() => {
+        this.onScrollIndex = ScrollManager.addQueue(() => {
             if (ScrollManager.isScrolling) {
                 this.onMouseLeave()
             }

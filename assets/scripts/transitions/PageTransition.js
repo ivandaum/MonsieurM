@@ -16,8 +16,6 @@ const PageTransition = {
                 to.style = ''
                 to.classList.remove('appear-in')
 
-                ScrollManager.unlockBody()
-
                 if (from) {
                     from.remove()
                 }
@@ -45,28 +43,23 @@ const PageTransition = {
         animations.map((anime) => timeline.add(anime, 0))
     },
 
-    show({ to, done, colorWhite }) {
+    show({ to, done, colorTransition, delay }) {
         const animations = []
         const offset = 50
-        const color = () => ['#000', colorWhite ? '#fff' : '#000']
+        const color = colorTransition || null
+        const left = parseInt(window.getComputedStyle(document.querySelector('.container')).paddingLeft)
 
         const title = to.querySelector('.js-title')
-
         const overflowed = title.querySelector('.js-title-overflow')
         const overflowedSpan = overflowed ? overflowed.querySelector('span') : null
-
         const sentence = to.querySelector('.js-content')
         const background = to.querySelector('.js-background')
 
-        let top = store.windowHeight * 0.5 - title.getBoundingClientRect().left
-        if (overflowedSpan) {
-            top -= overflowedSpan.offsetHeight
-        }
+        let top = store.windowHeight * 0.5 - title.offsetHeight - left
 
         const timeline = anime.timeline({
             autoplay: false,
             complete: () => {
-                ScrollManager.unlockBody()
                 if (done) done()
             },
         })
@@ -97,7 +90,7 @@ const PageTransition = {
                 targets: sentence,
                 duration: duration - offset,
                 easing,
-                translateY: [top + title.getBoundingClientRect().left, 0],
+                translateY: [top + left, 0],
                 delay: offset,
             })
         }
@@ -112,7 +105,10 @@ const PageTransition = {
         }
 
         animations.map((anime) => timeline.add(anime, overflowed ? duration : 0))
-        setTimeout(() => timeline.play(), 1000)
+
+        setTimeout(() => {
+            timeline.play()
+        }, delay || 0)
     },
 }
 

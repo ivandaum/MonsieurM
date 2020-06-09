@@ -1,6 +1,9 @@
 .Navbar {
-    padding: var(--padding-large) 0;
+    padding: 0;
     font-size: 1.6rem;
+    z-index: map-get($zindex, header);
+    transition: opacity var(--speed) var(--easing);
+    top: var(--padding-large);
 
     @include tablet-only {
         font-size: 1.5rem;
@@ -17,7 +20,6 @@
     ul {
         justify-content: space-between;
         padding: 0 var(--padding-large);
-        z-index: map-get($zindex, header);
         height: 0;
     }
 
@@ -38,6 +40,11 @@ body.single .Navbar a {
 
 body.email-is-hover .Navbar a {
     color: var(--color-white);
+}
+
+body.showreel-open .Navbar {
+    opacity: 0;
+    pointer-events: none;
 }
 
 body.page-template-page-lab .Navbar a {

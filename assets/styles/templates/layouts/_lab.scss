@@ -3,8 +3,7 @@
     color: var(--color-white);
 
     &__introduction {
-        h1,
-        &--sentence {
+        &--header {
             z-index: map-get($zindex, section);
         }
 
@@ -45,6 +44,7 @@
     }
 
     &__media {
+        width: 100%;
         @include tablet {
             width: 50%;
         }

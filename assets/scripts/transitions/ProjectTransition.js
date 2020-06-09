@@ -2,7 +2,7 @@ import Highway from '@dogstudio/highway'
 import anime from 'animejs'
 
 import store from '../utils/store'
-import ScrollManager from '../utils/ScrollManager'
+// import ScrollManager from '../utils/ScrollManager'
 
 const easing = 'easeInOutExpo'
 const duration = 1500
@@ -32,13 +32,8 @@ class ProjectTransition extends Highway.Transition {
 
                 if (from) from.remove()
                 if (done) done()
-
-                ScrollManager.unlockBody()
-                ScrollManager.snapTo(0)
             },
         })
-
-        ScrollManager.lockBody()
 
         const animations = [
             {
@@ -96,8 +91,6 @@ class ProjectTransition extends Highway.Transition {
             const x = r.left - margin - offset[0]
             translatesX.push(-x)
         })
-
-        ScrollManager.lockBody()
 
         anime({
             targets: words,

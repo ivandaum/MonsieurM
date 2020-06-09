@@ -120,3 +120,14 @@
         opacity: 0;
     }
 }
+
+body.not-loaded .Project {
+    .js-project-intro,
+    h1 {
+        transform: translateY(100vh);
+    }
+
+    .Project__background {
+        transform: scaleY(0);
+    }
+}

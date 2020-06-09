@@ -8,7 +8,7 @@
 
     get_header();
 ?>
-<article class="Project has-width-100" data-router-view="project" data-color="<?= $project->color ?>">
+<article class="Project has-width-100 js-view" data-router-view="project" data-color="<?= $project->color ?>">
     <section class="Project__header js-project-header is-relative">
         <div class="section-top container js-project is-padding-bottom">
             <h1 class="is-h1 has-font-serif js-project-title" style="color: <?= $project->color ?>"><?= Text::wrapWord($project->title, 'span') ?></h1>

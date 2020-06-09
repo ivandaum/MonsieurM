@@ -1,7 +1,7 @@
 .Footer {
+    transition: color var(--coverSpeed) var(--easing);
     padding: var(--padding-large);
     height: 100vh;
-    transition: color var(--coverSpeed) var(--easing);
 
     &__video,
     &__wording {

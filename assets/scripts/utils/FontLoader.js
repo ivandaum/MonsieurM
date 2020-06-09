@@ -1,4 +1,8 @@
 export default {
+    default(complete) {
+        this.load('Canela').then(() => complete())
+    },
+
     load(fontName) {
         this.CUSTOM_FONT = fontName
         return this.loadFont()

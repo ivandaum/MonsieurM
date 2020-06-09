@@ -1,6 +1,7 @@
 import anime from 'animejs'
 
 import ScrollManager from '../utils/ScrollManager'
+import ResizeManager from '../utils/ResizeManager'
 
 const easing = 'easeInOutExpo'
 const duration = 1000
@@ -28,7 +29,7 @@ export default class Swhoreel {
         })
 
         this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
-        this.resizeIndex = ScrollManager.addOnResize(() => {
+        this.resizeIndex = ResizeManager.addQueue(() => {
             this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
         })
     }
@@ -47,7 +48,7 @@ export default class Swhoreel {
     open() {
         this.$video.currentTime = 0
         this.$container.classList.add('ignore-locked', 'is-active')
-        ScrollManager.lockBody()
+        ScrollManager.lock()
 
         return [
             {
@@ -88,13 +89,19 @@ export default class Swhoreel {
     }
 
     toggle() {
+        if (this.isOpen) {
+            document.body.classList.remove('showreel-open')
+        } else {
+            document.body.classList.add('showreel-open')
+        }
+
         const timeline = anime.timeline({
             autoplay: false,
             complete: () => {
                 if (this.isOpen) {
                     this.$container.classList.remove('ignore-locked', 'is-active')
                     this.isOpen = false
-                    ScrollManager.unlockBody()
+                    ScrollManager.unlock()
                     this.$wordingHTML.innerHTML = 'Play'
                     this.$wording.classList.add('is-active')
                 } else {

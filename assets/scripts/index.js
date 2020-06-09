@@ -1,8 +1,11 @@
 import '../styles/index.scss'
 
 import Highway from '@dogstudio/highway'
-import ScrollManager from './utils/ScrollManager'
 import store from './utils/store'
+
+import ScrollManager from './utils/ScrollManager'
+import ResizeManager from './utils/ResizeManager'
+import FontLoader from './utils/FontLoader'
 
 import HomeRenderer from './renderer/HomeRenderer'
 import WorkRenderer from './renderer/WorkRenderer'
@@ -36,20 +39,18 @@ const transitions = {
 const core = new Highway.Core({ renderers, transitions })
     .on('NAVIGATE_OUT', () => {
         document.body.classList.add('loading')
+        ScrollManager.lock()
     })
     .on('NAVIGATE_END', ({ to }) => {
         to.page.body.classList.remove('not-loaded')
         document.body.classList = to.page.body.classList
 
-        ScrollManager.update({ view: to.view })
-
-        if (ScrollManager.bodyLocked) {
-            ScrollManager.unlockBody()
-            ScrollManager.snapTo(0)
-        }
-
         store.updateOnNavigation()
-        Footer.update({ view: to.view })
+        Footer.update({ $view: to.view })
+
+        ScrollManager.unlock()
+        ScrollManager.snapTo(0)
+        ScrollManager.update({ $view: to.view })
     })
     .on('NAVIGATE_IN', ({ to }) => {
         Nav.bindActiveLink({ color: to.view.dataset.color })
@@ -59,19 +60,25 @@ const core = new Highway.Core({ renderers, transitions })
     })
 
 function app() {
-    const view = document.querySelector('[data-router-view]:last-of-type')
+    const $view = document.querySelector('[data-router-view]:last-of-type')
 
     store.init()
+    ScrollManager.init()
+    Footer.update({ $view })
+    ResizeManager.init()
+    ResizeManager.addQueue(() => store.setGlobalVars())
 
-    ScrollManager.init({ view })
-    ScrollManager.addOnResize(() => store.setGlobalVars())
-
-    Nav.bindActiveLink({ color: view.dataset.color })
-    setTimeout(() => Nav.show(), 1500)
-    Footer.update({ view })
+    Nav.bindActiveLink({ color: $view.dataset.color })
+    setTimeout(() => Nav.show(), 100)
 
     const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
-    trans.prototype.in({ to: view })
+
+    FontLoader.default(() => {
+        trans.prototype.in({
+            to: $view,
+            done: () => ScrollManager.update({ $view }),
+        })
+    })
 }
 
 app()
