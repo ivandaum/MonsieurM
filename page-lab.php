@@ -15,7 +15,7 @@
 <article class="Lab js-view has-width-100" data-router-view="lab">
     <section class="Lab__introduction section-top container has-text-center">
         <div class="Lab__introduction--header js-lab-header is-relative">
-            <h1 class="has-color-white  is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
+            <h1 class="has-color-white is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
                 <?= $lab->title ?>
             </h1>
             <div class="Lab__introduction--sentence js-content is-relative">
@@ -23,7 +23,7 @@
                 <p class="is-relative is-h6 is-uppercase is-padding-bottom2x"><?= $lab->keywords ?></p>
             </div>
         </div>
-        <div class="Lab__introduction--background is-absolute has-width-100 has-height-100 js-background"></div>
+        <div class="Lab__introduction--background is-absolute has-width-100 js-background"></div>
     </section>
 
     <section class="Lab__content container">

@@ -26,6 +26,7 @@
             left: 0;
             z-index: map-get($zindex, under-section);
             transform-origin: bottom center;
+            height: 110%;
         }
     }
 
