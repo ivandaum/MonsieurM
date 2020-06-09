@@ -84,6 +84,25 @@
                         <div class="is-column is-4 is-6-tablet has-wp-content"><?= Text::cleanWpEditor(apply_filters('the_content', $row['content'])) ?></div>
                     </div>
                 <?php endif; ?>
+
+                <?php if($row['layout'] === 'quote'): ?>
+                    <div class="Project__row--quote has-width-100 container is-relative has-text-center <?= $row['className'] ?>" style="background-color: <?= $row['background'] ?>; color: <?= $row['color'] ?>">
+                        <?php if($row['intro']): ?>
+                        <div class="has-width-100 is-flex is-margin-bottom-6 is-margin-bottom-4-touch">
+                            <div class="is-column is-4 is-4-tablet"></div>
+                            <div class="is-column is-4 is-4-tablet">
+                                <?= $row['intro'] ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <?php foreach($row['quotes'] as $quote): ?>
+                            <blockquote class="is-block has-width-100 is-padding-bottom-3 is-padding-bottom-3-touch">
+                                <p class="has-font-serif is-h1-5 is-padding-bottom-1-touch">"<?= $quote['text'] ?>"</p>
+                                <footer>— <?= $quote['legend'] ?></footer>
+                            </blockquote>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endforeach; ?>
 

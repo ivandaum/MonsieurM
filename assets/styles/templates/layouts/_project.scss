@@ -60,19 +60,28 @@
     }
 
     &--text {
-        padding: 20rem var(--padding-large);
-
-        @include touch {
-            padding-top: var(--padding);
-            padding-bottom: var(--padding);
-        }
-
         strong {
             @include font-title;
             margin-top: 3.2rem;
             margin-bottom: 0.8rem;
             display: block;
         }
+    }
+
+    &--quote,
+    &--text {
+        color: var(--color-grey-light);
+        padding: 20rem var(--padding-large);
+
+        @include touch {
+            padding-top: var(--padding);
+            padding-bottom: var(--padding);
+        }
+    }
+
+    &--quote {
+        font-size: 1.6rem;
+        line-height: 1.2em;
     }
 }
 

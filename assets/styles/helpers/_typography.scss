@@ -136,6 +136,31 @@
     }
 }
 
+.is-h1-5 {
+    font-size: 6rem;
+    line-height: 1.2em;
+
+    @include desktop-only {
+        font-size: 5rem;
+    }
+
+    @include tablet-only {
+        font-size: 4.5rem;
+    }
+
+    @include phone-only {
+        font-size: 4rem;
+    }
+
+    @include phone-s-only {
+        font-size: 4rem;
+    }
+
+    @include phone-xs-only {
+        font-size: 3rem;
+    }
+}
+
 .is-h2 {
     font-size: 4.1rem;
     line-height: 1.19em;

@@ -60,6 +60,16 @@ class SingleProject {
                 ));
             }
 
+            else if ($layout === 'quote') {
+                $row = array_merge($row, array(
+                    'layout' => $layout,
+                    'quotes' => $entry['content']['quotes'],
+                    'intro' => $entry['content']['intro'],
+                    'background' => $this->getIfExists($entry['color'], 'background'),
+                    'color' => $this->getIfExists($entry['color'], 'text')
+                ));
+            }
+
             $r[] = $row;
         }
 
