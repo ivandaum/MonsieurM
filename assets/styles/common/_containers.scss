@@ -30,23 +30,26 @@ body.loading * {
 }
 
 main {
-    overflow: hidden;
     width: 100vw;
+
     @include desktop {
+        overflow: hidden;
         heigth: 100vh;
+        position: sticky;
+        top: 0;
     }
 }
 
 .js-view {
+    z-index: map-get($zindex, section);
     position: absolute;
     top: 0;
     left: 0;
-    z-index: map-get($zindex, section);
 }
 
-// main.locked section:not(.ignore-locked) {
-//     pointer-events: none;
-// }
+main.locked section:not(.ignore-locked) {
+    pointer-events: none;
+}
 
 .container {
     width: 100%;

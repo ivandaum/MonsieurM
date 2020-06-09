@@ -16,6 +16,7 @@ export default {
     canScroll: true,
     isScrolling: false,
     funcOnScroll: [],
+    isDesktop: true,
 
     init() {
         this.$scroller = document.querySelector('.scroller')
@@ -33,6 +34,8 @@ export default {
     },
 
     setHeight() {
+        this.isDesktop = store.windowWidth > breakpoints.desktop
+
         if (this.$view) {
             this.$height.style.height = `${this.$view.offsetHeight - store.windowHeight}px`
         }
@@ -47,6 +50,10 @@ export default {
         this.bodyLocked = true
         this.canScroll = false
         this.$scroller.scrollTo(0, 0)
+
+        if (!this.isDesktop) {
+            this.$view.style.transform = `translateY(${-this.scroll}px)`
+        }
     },
 
     unlock() {
@@ -54,6 +61,11 @@ export default {
         this.bodyLocked = false
         this.setHeight()
         document.body.classList.remove('not-loaded')
+
+        if (!this.isDesktop) {
+            this.$view.style.transform = `translateY(0px)`
+        }
+
         this.snapTo(this.scroll)
     },
 
@@ -68,7 +80,7 @@ export default {
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 
-        if (this.$view && store.windowWidth > breakpoints.desktop) {
+        if (this.$view && this.isDesktop) {
             this.$view.style.transform = `translateY(${-this.scrollEased}px)`
             this.funcOnScroll.map((func) => func())
         }
