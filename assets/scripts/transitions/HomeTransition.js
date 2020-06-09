@@ -11,8 +11,7 @@ class HomeTransition extends Highway.Transition {
                 done,
             })
         } else {
-            // PageTransition.show({ to, done })
-            done()
+            PageTransition.show({ to, done })
         }
     }
 

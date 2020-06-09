@@ -45,6 +45,7 @@ export default {
         this.$height.style.height = '0px'
         this.bodyLocked = true
         this.canScroll = false
+        this.$scroller.scrollTo(0, 0)
     },
 
     unlock() {
@@ -52,6 +53,7 @@ export default {
         this.bodyLocked = false
         this.setHeight()
         document.body.classList.remove('not-loaded')
+        this.snapTo(this.scroll)
     },
 
     onScroll() {
@@ -60,7 +62,7 @@ export default {
         }
 
         this.oldScroll = this.scroll
-        this.scroll += (this.getScrollTop() - this.scroll) * 0.2
+        this.scroll += (this.getScrollTop() - this.scroll) * 0.4
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 
@@ -110,6 +112,6 @@ export default {
 
     snapTo(y) {
         this.$scroller.scrollTo(0, y)
-        this.scroll = 0
+        this.scroll = y
     },
 }
