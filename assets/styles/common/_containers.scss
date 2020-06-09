@@ -16,9 +16,6 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-
-    @include touch {
-    }
 }
 
 body.loading,
@@ -33,9 +30,11 @@ body.loading * {
 }
 
 main {
-    height: 100vh;
     overflow: hidden;
     width: 100vw;
+    @include desktop {
+        heigth: 100vh;
+    }
 }
 
 .js-view {

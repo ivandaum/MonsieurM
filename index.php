@@ -82,7 +82,6 @@
                     <?php elseif ($home->last['project']->cover): ?>
                         <?= Image::create($home->last['project']->cover) ?>
                     <?php endif; ?>
-                </div>
                 <?php endif; ?>
                 </a>
         </section>

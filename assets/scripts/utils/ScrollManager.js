@@ -1,6 +1,6 @@
 import anime from 'animejs'
 import RafManager from '../utils/RafManager'
-// import breakpoints from '../constants/breakpoints'
+import breakpoints from '../constants/breakpoints'
 import store from '../utils/store'
 import ResizeManager from '../utils/ResizeManager'
 
@@ -68,7 +68,7 @@ export default {
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 
-        if (this.$view) {
+        if (this.$view && store.windowWidth > breakpoints.desktop) {
             this.$view.style.transform = `translateY(${-this.scrollEased}px)`
             this.funcOnScroll.map((func) => func())
         }
