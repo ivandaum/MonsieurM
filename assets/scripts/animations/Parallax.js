@@ -10,7 +10,7 @@ export default {
         obj.$el.style.transform = `translate3d(0, ${y}px, 0)`
 
         if (obj.$spans) {
-            const opacity = 1 - (ScrollManager.scrollEased - store.windowHeight * 0.25) / obj.height
+            const opacity = 1 - (ScrollManager.scrollEased - store.windowHeight * 0.3) / obj.height
             for (let i = 0; i < obj.$spans.length; i++) {
                 obj.$spans[i].style.opacity = parseFloat(Number(opacity).toFixed(2))
             }
