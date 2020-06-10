@@ -27,7 +27,7 @@ class Text {
         }
 
         foreach($matchs[0] as $k => $v) {
-            $string = str_replace("[$k]", $v . " ", $string);
+            $string = str_replace("[$k]", $v, $string);
         }
 
         $string = str_replace('[br]', '<br />', $string);
