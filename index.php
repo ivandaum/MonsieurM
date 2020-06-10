@@ -20,7 +20,9 @@
                     <span class="Home__introduction--title js-title-overflow is-flex"><span><?= get_the_title() ?></span></span>
                     <span>☺︎</span>
                 </h1>
-                <div class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom2x js-content"><?= Text::wrapWord($home->intro, 'span') ?></div>
+                <div class="has-color-white is-relative is-h1 has-font-serif is-padding-bottom2x js-content">
+                    <div class="is-column is-10 is-10-tablet is-12-phone"><?= Text::wrapWord($home->intro, 'span') ?></div>
+                </div>
             </div>
             <div class="Home__introduction--background is-absolute has-width-100 has-height-100 js-background"></div>
         </section>
