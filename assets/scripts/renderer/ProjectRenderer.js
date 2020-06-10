@@ -1,12 +1,13 @@
 import Highway from '@dogstudio/highway'
+
 import Images from '../binders/Images'
 import Videos from '../binders/Videos'
-import RafManager from '../utils/RafManager'
+
 import store from '../utils/store'
-import ScrollManager from '../utils/ScrollManager'
+import RafManager from '../utils/RafManager'
 import ResizeManager from '../utils/ResizeManager'
 
-import { lerp, range } from '../functions/object'
+import Parallax from '../animations/Parallax'
 
 class ProjectRenderer extends Highway.Renderer {
     onLeave() {
@@ -42,11 +43,10 @@ class ProjectRenderer extends Highway.Renderer {
         this.cover = {
             $el,
             $img,
-            heigth: $el.offsetHeight,
             top: this.$header.offsetHeight - store.windowHeight,
             bottom: this.$header.offsetHeight + $el.offsetHeight,
             canRender: false,
-            PARALLAX_COVER: store.windowHeight * 0.4,
+            parallax: store.windowHeight * 0.4,
         }
 
         const observer = new IntersectionObserver((changes) => {
@@ -56,16 +56,7 @@ class ProjectRenderer extends Highway.Renderer {
 
         observer.observe(this.cover.$el)
 
-        this.raf.push(RafManager.addQueue(this.renderCover.bind(this)))
-    }
-
-    renderCover() {
-        if (this.cover.canRender) {
-            const progress = range(ScrollManager.scrollEased, this.cover.top, this.cover.bottom) * 0.01
-            const y = lerp(-this.cover.PARALLAX_COVER, this.cover.PARALLAX_COVER, progress)
-
-            this.cover.$img.style.transform = `translate3d(0, ${y}px, 0)`
-        }
+        this.raf.push(RafManager.addQueue(() => Parallax.block(this.cover)))
     }
 }
 

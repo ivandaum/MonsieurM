@@ -36,7 +36,7 @@ class Image {
         $sources = array();
         if (empty($relations)) {
             $relations = array(
-                '1999' => 'full',
+                '2500' => 'full',
                 '1599' => 'max',
                 '1279' => 'widescreen',
                 '999' => 'desktop',

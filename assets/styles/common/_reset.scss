@@ -353,7 +353,6 @@ h6 {
     padding: 0;
     font-size: inherit;
     font-weight: inherit;
-    will-change: transform;
 }
 
 input {
@@ -389,6 +388,7 @@ video {
     width: 100%;
     margin: 0;
     height: 0;
+    background: var(--color-grey);
 }
 picture {
     position: relative;

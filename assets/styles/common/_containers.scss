@@ -31,7 +31,6 @@ body.locked section:not(.ignore-locked) {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    will-change: transform;
 }
 
 main {
@@ -50,6 +49,7 @@ main {
     position: absolute;
     top: 0;
     left: 0;
+    will-change: transform;
 }
 
 .container {
@@ -68,4 +68,8 @@ main {
 
 .appear-in {
     z-index: map-get($zindex, above-section);
+}
+
+.js-fadein {
+    transition: opacity calc(var(--speed) * 2) var(--easing);
 }

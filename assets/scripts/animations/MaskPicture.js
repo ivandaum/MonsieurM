@@ -1,9 +1,9 @@
-import Lazyloading from '../vendor/Lazyloading'
-
 import RafManager from '../utils/RafManager'
 import store from '../utils/store'
 import ScrollManager from '../utils/ScrollManager'
 import ResizeManager from '../utils/ResizeManager'
+
+import Lazyloading from '../vendor/Lazyloading'
 
 const INTIAL_RATIO = 0.2
 

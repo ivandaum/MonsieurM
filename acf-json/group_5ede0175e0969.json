@@ -25,7 +25,7 @@
             "key": "field_5ede018787104",
             "label": "Phrase",
             "name": "lab__sentence",
-            "type": "text",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -35,10 +35,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5ede01a787105",
@@ -208,5 +208,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1591611947
+    "modified": 1591785916
 }

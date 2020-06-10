@@ -4,8 +4,12 @@
 
     &__introduction {
         background-color: var(--color-white);
+
         &--header {
             z-index: map-get($zindex, section);
+            span {
+                will-change: opacity;
+            }
         }
 
         &--sentence {
@@ -31,7 +35,7 @@
     }
 
     &__content {
-        padding-top: 20vh;
+        padding-bottom: 25rem;
     }
 
     &__row {

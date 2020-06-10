@@ -53,6 +53,7 @@ export default {
 
         document.body.classList.add('locked')
 
+        this.$view.style.transform = `translate3d(0, ${-this.scroll}px, 0)`
         if (!this.isDesktop) {
             this.$view.style.transform = `translate3d(0, ${-this.scroll}px, 0)`
         }
@@ -82,9 +83,10 @@ export default {
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 
+        this.funcOnScroll.map((func) => func())
+
         if (this.$view && this.isDesktop) {
             this.$view.style.transform = `translate3d(0, ${-Math.round(this.scrollEased)}px, 0)`
-            this.funcOnScroll.map((func) => func())
         }
     },
 

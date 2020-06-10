@@ -10,6 +10,7 @@
         pointer-events: none;
         opacity: 0;
         transition: opacity var(--coverSpeed) var(--easing);
+        will-change: opacity;
     }
 
     &__video {

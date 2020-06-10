@@ -16,11 +16,11 @@
     <section class="Lab__introduction section-top container has-text-center">
         <div class="Lab__introduction--header js-lab-header is-relative">
             <h1 class="has-color-white is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
-                <?= $lab->title ?>
+                <span><?= $lab->title ?></span>
             </h1>
             <div class="Lab__introduction--sentence js-content is-relative">
-                <p class="is-relative is-h1 has-font-serif is-padding-bottom-3 is-padding-bottom-3-touch"><?= $lab->sentence ?></p>
-                <p class="is-relative is-h6 is-uppercase is-padding-bottom2x"><?= $lab->keywords ?></p>
+                <div class="is-relative is-h1 has-font-serif is-padding-bottom-3 is-padding-bottom-3-touch"><?= Text::wrapWord($lab->sentence, 'span') ?></div>
+                <p class="is-relative is-h6 is-uppercase is-padding-bottom2x"><span><?= $lab->keywords ?></span></p>
             </div>
         </div>
         <div class="Lab__introduction--background is-absolute has-width-100 js-background"></div>

@@ -6,7 +6,7 @@
             "key": "field_5ec8ffb61f6e0",
             "label": "Texte d'introduction",
             "name": "home__intro",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,10 +16,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 3,
-            "new_lines": "br"
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5ecd4a917e0c6",
@@ -566,5 +566,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1591608233
+    "modified": 1591784812
 }

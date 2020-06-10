@@ -12,12 +12,12 @@ import RafManager from '../utils/RafManager'
 
 import Showreel from '../animations/Showreel'
 import MaskPicture from '../animations/MaskPicture'
+import Parallax from '../animations/Parallax'
 
 class HomeRenderer extends Highway.Renderer {
     onLeave() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
         this.MaskPicture.raf.map((raf) => RafManager.removeQueue(raf))
-
         ResizeManager.removeQueue(this.Showreel.resizeIndex)
         ResizeManager.removeQueue(this.MaskPicture.resizeIndex)
         ResizeManager.removeQueue(this.circleResizeIndex)
@@ -35,14 +35,14 @@ class HomeRenderer extends Highway.Renderer {
 
         Images.lazyload()
 
-        if (store.windowWidth >= breakpoints.tablet) {
-            this.raf.push(RafManager.addQueue(this.renderCircle.bind(this)))
-        }
-
         this.Showreel = new Showreel({ $view })
         this.MaskPicture = new MaskPicture({ $view })
+
         this.bindCircle()
+        this.bindHeader()
+
         this.circleResizeIndex = ResizeManager.addQueue(() => this.bindCircle())
+        this.circleResizeIndex = ResizeManager.addQueue(() => this.bindHeader())
     }
 
     bindCircle() {
@@ -65,6 +65,30 @@ class HomeRenderer extends Highway.Renderer {
             }
         })
         observer.observe(this.$about)
+
+        if (store.windowWidth >= breakpoints.tablet) {
+            this.raf.push(RafManager.addQueue(this.renderCircle.bind(this)))
+        }
+    }
+
+    bindHeader() {
+        const $el = this.wrap.querySelector('.js-introduction-header')
+
+        this.header = {
+            $el,
+            $strongs: $el.querySelectorAll('strong'),
+            $spans: $el.querySelectorAll('span'),
+            canRender: false,
+            height: $el.offsetHeight,
+        }
+
+        const observer = new IntersectionObserver((changes) => {
+            const [{ isIntersecting }] = changes
+            this.header.canRender = isIntersecting
+        })
+        observer.observe($el)
+
+        this.raf.push(RafManager.addQueue(() => Parallax.header(this.header)))
     }
 
     renderCircle() {

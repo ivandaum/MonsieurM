@@ -3,10 +3,15 @@
 
     &__introduction {
         background-color: var(--color-white);
+        padding-bottom: 10rem;
 
-        h1,
-        p {
+        .js-introduction-header {
             z-index: map-get($zindex, section);
+            will-change: transform;
+
+            span {
+                will-change: opacity;
+            }
         }
 
         &--title {
@@ -27,7 +32,7 @@
 
     &__picture {
         overflow: hidden;
-        z-index: map-get($zindex, section);
+        z-index: map-get($zindex, under-section);
         background-color: var(--color-grey);
 
         picture {
@@ -63,13 +68,17 @@
 
     &__about {
         background-color: var(--color-grey);
-        z-index: map-get($zindex, under-section);
+        z-index: map-get($zindex, under-section) - 1;
         font-size: 2rem;
         line-height: 1.65em;
 
         @include touch {
             font-size: 1.8rem;
         }
+
+        // &--left {
+        //     margin: -18em 0;
+        // }
 
         &--right {
             padding-bottom: 30rem;
@@ -87,7 +96,7 @@
         width: 18em;
         z-index: map-get($zindex, base);
         padding: 2.5em;
-        top: 0;
+        // top: calc(100vh - 18em - var(--padding-large));
 
         @include tablet-only {
             font-size: 0.6rem;
