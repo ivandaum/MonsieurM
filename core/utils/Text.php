@@ -22,7 +22,7 @@ class Text {
             if (!preg_match('/(\[.*?\])/', $w, $match)) {
                 $string .= "<$balise>$w</$balise> ";
             } else {
-                $string .= "$w";
+                $string .= "$w ";
             }
         }
 
