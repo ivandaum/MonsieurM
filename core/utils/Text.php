@@ -7,8 +7,8 @@ class Text {
     public static function wrapWord(string $sentence, string $balise) {
         $string = '';
         $sentence = str_replace('<br />', ' [br] ', $sentence);
-        $sentence = str_replace('<p>', '', $sentence);
-        $sentence = str_replace('</p>', '', $sentence);
+        $sentence = str_replace('<p>', '[p] ', $sentence);
+        $sentence = str_replace('</p>', ' [pp]', $sentence);
 
         preg_match_all('/<strong>(.*?)<\/strong>/', $sentence, $matchs);
 
@@ -31,6 +31,8 @@ class Text {
         }
 
         $string = str_replace('[br]', '<br />', $string);
+        $string = str_replace('[p]', '<p>', $string);
+        $string = str_replace('[pp]', '</p>', $string);
 
         return $string;
     }
