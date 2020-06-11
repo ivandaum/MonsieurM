@@ -12,16 +12,16 @@ class Image {
         '1279' => 'widescreen',
         '999' => 'widescreen',
         '769' => 'widescreen',
-        '360' => 'widescreen',
-        '319' => 'desktop',
-        '160' => 'tablet',
-        '10' => 'phone-s',
+        '360' => 'medium_large',
+        '319' => 'medium_large',
+        '160' => 'medium',
+        '10' => 'thumbnail',
         '1' => '1x1',
     )) {
         return self::create($image, $relations);
     }
 
-    public static function createThumbnail($image, $relations = array('359' => 'tablet', '160' => 'phone', '10' => 'phone-s', '1' => '1x1')) {
+    public static function createThumbnail($image, $relations = array('359' => 'medium_large', '160' => 'medium', '10' => 'thumbnail', '1' => '1x1')) {
         return self::create($image, $relations);
     }
 
@@ -39,13 +39,23 @@ class Image {
                 '2500' => 'full',
                 '1599' => 'max',
                 '1279' => 'widescreen',
-                '999' => 'desktop',
-                '769' => 'tablet',
-                '360' => 'tablet',
-                '319' => 'phone',
-                '160' => 'phone',
-                '10' => 'phone-s',
+                '999' => 'large',
+                '769' => 'medium_large',
+                '360' => 'medium_large',
+                '319' => 'medium',
+                '160' => 'medium',
+                '10' => 'thumbnail',
                 '1' => '1x1',
+                // '2500' => 'full',
+                // '1599' => 'max',
+                // '1279' => 'widescreen',
+                // '999' => 'desktop',
+                // '769' => 'tablet',
+                // '360' => 'tablet',
+                // '319' => 'phone',
+                // '160' => 'phone',
+                // '10' => 'thumbnail',
+                // '1' => '1x1',
             );
         }
 

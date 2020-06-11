@@ -21,15 +21,18 @@ register_nav_menus([
     'footer' => 'Footer',
 ]);
 
-remove_image_size('1536x1536');
-remove_image_size('2048x2048');
+// add_image_size( 'phone-s', 150, 0 );
+// add_image_size( 'phone', 360, 0 );
+// add_image_size( 'tablet', 768, 0 );
+// add_image_size( 'desktop', 1024, 0 );
 add_image_size( '1x1', 1, 1 );
-add_image_size( 'phone-s', 150, 0 );
-add_image_size( 'phone', 360, 0 );
-add_image_size( 'tablet', 768, 0 );
-add_image_size( 'desktop', 1024, 0 );
 add_image_size( 'widescreen', 1600, 0 );
 add_image_size( 'max', 2048, 0 );
+
+add_action('init', function() {
+    remove_image_size('1536x1536');
+    remove_image_size('2048x2048');
+});
 
 add_filter('jpeg_quality', function($arg) {
     return 100;
