@@ -25,7 +25,7 @@ export default class MaskPicture {
 
         this.cursor = [store.windowWidth * 0.5, 0]
 
-        this.$container.addEventListener('mousemove', (e) => (this.cursor = [e.x, e.y]))
+        window.addEventListener('mousemove', (e) => (this.cursor = [e.x, e.y]))
         this.$container.addEventListener('mouseenter', () => (this.isFocused = true))
         this.$container.addEventListener('mouseleave', () => (this.isFocused = false))
 

@@ -87,7 +87,6 @@ class HomeRenderer extends Highway.Renderer {
             this.header.canRender = isIntersecting
         })
         observer.observe($el)
-
         this.raf.push(RafManager.addQueue(() => Parallax.header(this.header)))
     }
 

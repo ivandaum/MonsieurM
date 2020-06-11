@@ -16,8 +16,9 @@ class LabRenderer extends Highway.Renderer {
 
     onEnterCompleted() {
         this.raf = []
-        const $view = this.wrap
-        const videos = $view.querySelectorAll('.js-video')
+        this.medias = []
+
+        const videos = this.wrap.querySelectorAll('.js-video')
         Videos.bindAll(videos)
         Videos.resizeAll(videos)
         this.resizeIndex = ResizeManager.addQueue(() => Videos.resizeAll(videos))
@@ -27,8 +28,7 @@ class LabRenderer extends Highway.Renderer {
     }
 
     bindHeader() {
-        const $view = this.wrap
-        const $el = $view.querySelector('.js-lab-header')
+        const $el = this.wrap.querySelector('.js-lab-header')
 
         this.header = {
             $el,

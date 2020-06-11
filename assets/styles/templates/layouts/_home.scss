@@ -37,11 +37,13 @@
 
         picture {
             position: relative;
-            z-index: map-get($zindex, section);
+            z-index: map-get($zindex, section) + 1;
+            transition: opacity calc(var(--speed) * 4) var(--easing);
         }
 
         picture.is-hidden {
             opacity: 0;
+            pointer-events: none;
         }
 
         &--circle {
@@ -62,7 +64,7 @@
             background-size: 100% auto;
             background-position: top center;
             background-repeat: no-repeat;
-            z-index: map-get($zindex, section) + 1;
+            z-index: map-get($zindex, section);
         }
     }
 

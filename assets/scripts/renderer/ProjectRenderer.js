@@ -40,13 +40,15 @@ class ProjectRenderer extends Highway.Renderer {
             return false
         }
 
+        const parallax = store.windowHeight * 0.4
+
         this.cover = {
             $el,
             $img,
             top: this.$header.offsetHeight - store.windowHeight,
             bottom: this.$header.offsetHeight + $el.offsetHeight,
             canRender: false,
-            parallax: store.windowHeight * 0.4,
+            parallax: [-parallax, parallax],
         }
 
         const observer = new IntersectionObserver((changes) => {

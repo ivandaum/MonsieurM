@@ -52,6 +52,7 @@
 
     &__media {
         width: 100%;
+
         @include tablet {
             width: 50%;
         }

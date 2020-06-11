@@ -28,7 +28,7 @@
 
     <section class="Lab__content container">
         <?php foreach($lab->content as $entry): ?>
-            <div class="Lab__row is-padding-bottom-10 is-padding-bottom-8-touch is-flex">
+            <div class="Lab__row is-padding-bottom-10 is-padding-bottom-8-touch is-flex js-lab-media">
                 <div class="Lab__media">
                     <?php if($entry['acf_fc_layout'] === 'image'): ?>
                         <?= Image::create($entry['source']) ?>
