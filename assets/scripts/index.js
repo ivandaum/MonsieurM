@@ -69,7 +69,7 @@ function app() {
     ResizeManager.addQueue(() => store.setGlobalVars())
 
     Nav.bindActiveLink({ color: $view.dataset.color })
-    setTimeout(() => Nav.show(), 100)
+    setTimeout(() => Nav.show(), 500)
 
     const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
 

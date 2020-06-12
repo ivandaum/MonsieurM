@@ -9,12 +9,13 @@ export default {
         if (!obj.canRender) return false
         const heigth = store.windowHeight * 0.5
         const y = Math.round(ScrollManager.scrollEased * 0.2)
+        const offset = obj.offset || [0, 0]
         obj.$el.style.transform = `translate3d(0, ${y}px, 0)`
 
         if (obj.$spans) {
             for (let i = 0; i < obj.$spans.length; i++) {
-                const top = obj.$spans[i].offsetTop
-                const bottom = top + heigth
+                const top = obj.$spans[i].offsetTop + offset[0]
+                const bottom = top + heigth + offset[1]
                 const opacity = 1 - range(ScrollManager.scrollEased, top, bottom) * 0.01
                 obj.$spans[i].style.opacity = Math.min(1, Math.max(0, parseFloat(Number(opacity).toFixed(2))))
             }

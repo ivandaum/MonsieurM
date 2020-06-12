@@ -3,6 +3,7 @@ import Highway from '@dogstudio/highway'
 import Videos from '../binders/Videos'
 import Images from '../binders/Images'
 
+import store from '../utils/store'
 import ResizeManager from '../utils/ResizeManager'
 import RafManager from '../utils/RafManager'
 
@@ -36,6 +37,7 @@ class LabRenderer extends Highway.Renderer {
             $spans: $el.querySelectorAll('span'),
             canRender: false,
             height: $el.offsetHeight,
+            offset: [0, -store.windowHeight * 0.25],
         }
 
         const observer = new IntersectionObserver((changes) => {

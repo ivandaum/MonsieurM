@@ -31,7 +31,7 @@ class Nav {
             duration,
             easing,
             opacity: [0, 1],
-            delay: anime.stagger(50),
+            delay: anime.stagger(250),
         })
     }
 }
