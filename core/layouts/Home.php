@@ -14,6 +14,7 @@ class Home {
         $this->last = $this->getLastProject();
         $this->selected = get_field('home__selected', $post->ID);
         $this->showreel = get_field('home__showreel', $post->ID);
+
     }
 
 

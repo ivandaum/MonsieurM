@@ -6,7 +6,7 @@ import ResizeManager from '../utils/ResizeManager'
 const easing = 'easeInOutExpo'
 const duration = 1000
 
-export default class Swhoreel {
+export default class Showreel {
     constructor({ $view }) {
         this.isOpen = false
 
@@ -21,17 +21,20 @@ export default class Swhoreel {
 
         const $triggers = [this.$trigger, this.$close]
         $triggers.forEach((trigger) => trigger.addEventListener('click', () => this.toggle()))
-        this.$video.addEventListener('click', () => this.playOrPause())
-        this.$video.addEventListener('ended', () => {
-            this.$video.currentTime = 0
-            this.$wordingHTML.innerHTML = 'Replay'
-            this.$wording.classList.add('is-active')
-        })
 
-        this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
-        this.resizeIndex = ResizeManager.addQueue(() => {
+        if (this.$video) {
+            this.$video.addEventListener('click', () => this.playOrPause())
+            this.$video.addEventListener('ended', () => {
+                this.$video.currentTime = 0
+                this.$wordingHTML.innerHTML = 'Replay'
+                this.$wording.classList.add('is-active')
+            })
+
             this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
-        })
+            this.resizeIndex = ResizeManager.addQueue(() => {
+                this.$wordingHTML.style = `width: ${this.$video.offsetWidth}px; height: ${this.$video.offsetHeight}px`
+            })
+        }
     }
 
     playOrPause() {

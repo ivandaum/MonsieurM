@@ -38,6 +38,10 @@ add_filter('jpeg_quality', function($arg) {
     return 100;
 });
 
+add_filter('png_quality', function($arg) {
+    return 100;
+});
+
 add_filter('upload_mimes', function($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
 	return $mimes;

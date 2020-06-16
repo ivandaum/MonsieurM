@@ -81,9 +81,9 @@
                         <span class="is-h6 has-font-title has-width-100 is-block is-padding-top-2 is-padding-top-2-touch">→ See case study</span>
                     </div>
                     
-                    <?php if ($home->last['project']->video): ?>
+                    <?php if (isset($home->last['project']->video)): ?>
                         <?= Video::create($home->last['project']->video) ?>
-                    <?php elseif ($home->last['project']->cover): ?>
+                    <?php elseif (isset($home->last['project']->cover)): ?>
                         <?= Image::create($home->last['project']->cover) ?>
                     <?php endif; ?>
                 <?php endif; ?>
