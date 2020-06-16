@@ -12,7 +12,7 @@
     get_header();
 ?>
 
-<article class="Work has-width-100" data-router-view="work">
+<article class="Work has-width-100" data-router-view="work" data-loader="#000">
     <div class="js-view has-width-100">
         <section class="container section-top is-padding-bottom">
             <h1 class="is-h3 has-font-title js-fade-item js-title is-flex is-left-y is-right-x is-padding-bottom-2 is-padding-bottom-2-touch">

@@ -7,7 +7,9 @@ class Nav {
     constructor() {
         this.menuIsOpen = false
         this.$container = document.querySelector('.js-navbar')
+        this.$loader = document.querySelector('.js-navbar-loader')
         this.$items = this.$container.querySelectorAll('.js-navbar-item')
+        this.loaderInterval = null
     }
 
     bindActiveLink({ color }) {
@@ -33,6 +35,28 @@ class Nav {
             opacity: [0, 1],
             delay: anime.stagger(250),
         })
+    }
+
+    updateLoader({ color, firstLoading }) {
+        if (!firstLoading) {
+            this.$loader.classList.add('is-loading')
+        }
+
+        if (color) {
+            this.$loader.style.backgroundColor = color
+        }
+    }
+
+    hideLoader({ color }) {
+        if (color) {
+            setTimeout(() => (this.$loader.style.backgroundColor = color), 500)
+        }
+
+        this.$loader.classList.remove('is-loading')
+        this.$loader.classList.add('is-over-loading')
+        setTimeout(() => {
+            this.$loader.classList.remove('is-over-loading')
+        }, 1000)
     }
 }
 

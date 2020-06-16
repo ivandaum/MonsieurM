@@ -11,6 +11,7 @@ import HomeRenderer from './renderer/HomeRenderer'
 import WorkRenderer from './renderer/WorkRenderer'
 import ProjectRenderer from './renderer/ProjectRenderer'
 import LabRenderer from './renderer/LabRenderer'
+import ArchiveRenderer from './renderer/ArchiveRenderer'
 
 import WorkTransition from './transitions/WorkTransition'
 import HomeTransition from './transitions/HomeTransition'
@@ -25,12 +26,14 @@ const renderers = {
     project: ProjectRenderer,
     lab: LabRenderer,
     work: WorkRenderer,
+    archive: ArchiveRenderer,
 }
 const transitions = {
     work: WorkTransition,
     home: HomeTransition,
     project: ProjectTransition,
     lab: LabTransition,
+    archive: LabTransition,
     contextual: {
         workToProject: ProjectTransition,
     },
@@ -40,6 +43,7 @@ const core = new Highway.Core({ renderers, transitions })
     .on('NAVIGATE_OUT', () => {
         document.body.classList.add('loading')
         ScrollManager.lock()
+        Nav.updateLoader({})
     })
     .on('NAVIGATE_END', ({ to }) => {
         to.page.body.classList.remove('not-loaded')
@@ -52,9 +56,7 @@ const core = new Highway.Core({ renderers, transitions })
         ScrollManager.snapTo(0)
         ScrollManager.update({ $view: to.view })
     })
-    .on('NAVIGATE_IN', ({ to }) => {
-        Nav.bindActiveLink({ color: to.view.dataset.color })
-    })
+    .on('NAVIGATE_IN', () => {})
     .on('NAVIGATE_ERROR', ({ location }) => {
         window.location.href = location.href
     })
@@ -69,6 +71,8 @@ function app() {
     ResizeManager.addQueue(() => store.setGlobalVars())
 
     Nav.bindActiveLink({ color: $view.dataset.color })
+    Nav.updateLoader({ color: $view.dataset.loader, firstLoading: true })
+
     setTimeout(() => Nav.show(), 500)
 
     const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default

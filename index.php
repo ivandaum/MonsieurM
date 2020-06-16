@@ -12,7 +12,7 @@
 
     get_header();
 ?>
-<article class="Home has-width-100" data-router-view="home">
+<article class="Home has-width-100" data-router-view="home" data-loader="#fff">
     <div class="js-view has-width-100">
         <section class="Home__introduction js-introduction section-top container">
             <div class="js-introduction-header is-relative">

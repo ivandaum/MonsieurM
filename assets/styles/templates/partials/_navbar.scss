@@ -34,8 +34,24 @@
     }
 }
 
-body.single .Navbar a {
-    color: var(--color-grey);
+.Navbar__Loading {
+    background: var(--color-white);
+    height: 0.8rem;
+    top: 0;
+    left: 0;
+    z-index: map-get($zindex, above-all);
+    right: 100%;
+
+    &.is-loading {
+        transition: right 5s var(--easing);
+        right: 50%;
+    }
+
+    &.is-over-loading {
+        right: 0;
+        left: 100%;
+        transition: background var(--speed) ease-in-out, right 0.5s var(--easing), left 0.5s 0.5s var(--easing);
+    }
 }
 
 body.email-is-hover .Navbar a {
@@ -47,6 +63,7 @@ body.showreel-open .Navbar {
     pointer-events: none;
 }
 
+body.single .Navbar a,
 body.page-template-page-lab .Navbar a {
     color: var(--color-greyDarker);
 

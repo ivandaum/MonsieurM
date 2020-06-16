@@ -1,6 +1,8 @@
 import Highway from '@dogstudio/highway'
 import anime from 'animejs'
 
+import Nav from '../animations/Nav'
+
 import PageTransition from './PageTransition'
 
 import store from '../utils/store'
@@ -35,7 +37,10 @@ class ProjectTransition extends Highway.Transition {
         if (from) {
             const words = from.querySelectorAll('.js-trigger-is-activate span')
             words.forEach((word) => word.remove())
+            Nav.hideLoader({ color })
         }
+
+        Nav.bindActiveLink({ color })
 
         const timeline = anime.timeline({
             complete: () => {

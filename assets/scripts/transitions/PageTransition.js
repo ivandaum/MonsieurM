@@ -1,4 +1,5 @@
 import anime from 'animejs'
+import Nav from '../animations/Nav'
 import ScrollManager from '../utils/ScrollManager'
 import store from '../utils/store'
 
@@ -9,6 +10,8 @@ const PageTransition = {
     slide: ({ from, to, direction, done }) => {
         if (to) {
             to.classList.add('appear-in')
+            Nav.bindActiveLink({ color: to.dataset.color })
+            Nav.hideLoader({ color: to.dataset.loader })
         }
 
         const timeline = anime.timeline({

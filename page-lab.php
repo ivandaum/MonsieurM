@@ -12,7 +12,7 @@
     get_header();
 ?>
 
-<article class="Lab js-view has-width-100" data-router-view="lab">
+<article class="Lab js-view has-width-100" data-router-view="lab" data-loader="#fff">
     <section class="Lab__introduction section-top container has-text-center">
         <div class="Lab__introduction--header js-lab-header is-relative">
             <h1 class="has-color-white is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title">
