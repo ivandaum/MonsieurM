@@ -45,6 +45,9 @@
     &.is-loading {
         transition: right 5s var(--easing);
         right: 50%;
+        @include touch {
+            right: 80%;
+        }
     }
 
     &.is-over-loading {
