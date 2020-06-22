@@ -19,7 +19,7 @@ export default {
     isDesktop: true,
 
     init({ $view }) {
-        this.$scroller = breakpoints.isDesktop() ? document.querySelector('.scroller') : window
+        this.$scroller = document.querySelector('.scroller')
         this.$height = document.querySelector('.js-scroller-height')
         this.$app = document.body.querySelector('main')
         this.$view = $view
