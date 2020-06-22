@@ -7,6 +7,7 @@ import { lerp, range } from '../functions/object'
 export default {
     header(obj) {
         if (!obj.canRender) return false
+
         const heigth = store.windowHeight * 0.5
         const y = Math.round(ScrollManager.scrollEased * 0.2)
         const offset = obj.offset || [0, 0]

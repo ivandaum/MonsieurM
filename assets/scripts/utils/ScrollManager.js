@@ -26,6 +26,8 @@ export default {
 
         RafManager.addQueue(this.onScroll.bind(this))
         ResizeManager.addQueue(() => this.setHeight())
+
+        this.lock()
     },
 
     update({ $view }) {
@@ -84,7 +86,7 @@ export default {
     },
 
     getScrollTop() {
-        return window.pageYOffset || this.$scroller.scrollTop
+        return window.pageYOffset || this.$scroller.scrollTop || 0
     },
 
     /** On scroll events */
