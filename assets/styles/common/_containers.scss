@@ -18,6 +18,15 @@ body {
 
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
+
+    @include touch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: auto;
+    }
 }
 
 body.loading,
@@ -32,9 +41,17 @@ body.locked section:not(.ignore-locked) {
 .scroller {
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
-
     overflow-y: scroll;
     overflow-x: hidden;
+
+    @include touch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: auto;
+    }
 }
 
 body.locked .scroller {

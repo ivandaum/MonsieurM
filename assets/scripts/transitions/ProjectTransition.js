@@ -34,9 +34,6 @@ class ProjectTransition extends Highway.Transition {
         const top = offset - store.windowHeight * 0.5
         const opacity = from && ['work', 'project'].indexOf(from.dataset.routerView) !== -1 ? 1 : 0
 
-        console.log(offset, top)
-        console.log(window.innerHeight, store.windowHeight)
-
         if (from) {
             const words = from.querySelectorAll('.js-trigger-is-activate span')
             words.forEach((word) => word.remove())
