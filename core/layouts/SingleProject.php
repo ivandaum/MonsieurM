@@ -25,10 +25,15 @@ class SingleProject {
             return $r;
         }
 
+        $firstVideoFlag = false;
         foreach($content as $k => $entry) {
             $layout = $entry['acf_fc_layout'];
-
             $row = array('className' => '');
+            
+            if ($layout === 'video' && !$firstVideoFlag) {
+                $row['className'] .= ' is-first-video';
+                $firstVideoFlag = true;
+            }
 
             if ($layout === 'image' || $layout === 'video') {
 

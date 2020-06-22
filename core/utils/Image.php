@@ -10,8 +10,8 @@ class Image {
         '1999' => 'full',
         '1599' => 'max',
         '769' => 'widescreen',
-        '319' => 'medium_large',
-        '160' => 'medium',
+        '319' => 'large',
+        '160' => 'medium_large',
         '10' => 'thumbnail',
         '1' => '1x1',
     )) {

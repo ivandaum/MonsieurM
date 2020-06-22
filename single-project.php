@@ -39,7 +39,7 @@
         <?php endif; ?>
 
         <?php foreach($project->content as $k => $row): ?>
-            <div class="Project__row is-flex is-center is-relative">
+            <div class="Project__row is-flex is-center is-relative" data-layout="<?= $row['layout'] ?>">
 
                 <?php if($row['layout'] === 'image'): ?>
                     <div

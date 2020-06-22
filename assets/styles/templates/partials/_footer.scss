@@ -11,6 +11,10 @@
         opacity: 0;
         transition: opacity var(--coverSpeed) var(--easing);
         will-change: opacity;
+
+        @include touch {
+            display: none;
+        }
     }
 
     &__video {

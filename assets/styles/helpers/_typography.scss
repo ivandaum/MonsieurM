@@ -115,8 +115,16 @@
     font-size: 12rem;
     line-height: 1em;
 
+    @include widescreen-small-only {
+        font-size: 11rem;
+    }
+
     @include desktop-only {
         font-size: 9.4rem;
+    }
+
+    @include desktop-small-only {
+        font-size: 9rem;
     }
 
     @include tablet-only {

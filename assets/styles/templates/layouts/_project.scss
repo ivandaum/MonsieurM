@@ -35,6 +35,10 @@
     @include picture-cover;
 }
 
+.Project__row--media.is-first-video video {
+    margin: var(--padding-large) auto;
+}
+
 .Project__row {
     background: var(--color-white);
     z-index: map-get($zindex, section);

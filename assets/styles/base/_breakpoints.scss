@@ -44,6 +44,17 @@
     }
 }
 
+@mixin desktop-small-only {
+    @media all and (min-width: map-get($breakpoints, desktop)) and (max-width: 1100px) {
+        @content;
+    }
+}
+
+@mixin widescreen-small-only {
+    @media all and (min-width: map-get($breakpoints, widescreen)) and (max-width: 1380px) {
+        @content;
+    }
+}
 /*
 * DEVICE BREAKPOINTS
 */
