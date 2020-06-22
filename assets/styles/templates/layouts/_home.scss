@@ -39,6 +39,7 @@
             position: relative;
             z-index: map-get($zindex, section) + 1;
             transition: opacity calc(var(--speed) * 4) var(--easing);
+            background: transparent;
         }
 
         picture.is-hidden {
