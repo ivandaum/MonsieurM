@@ -30,10 +30,11 @@ body.loading * {
 body.locked {
     @include touch {
         overflow: hidden;
-        height: 100vh;
+        height: 100%;
         width: 100vw;
     }
 }
+
 body.locked section:not(.ignore-locked) {
     pointer-events: none !important;
 }

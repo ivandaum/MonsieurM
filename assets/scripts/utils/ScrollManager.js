@@ -60,10 +60,13 @@ export default {
     unlock() {
         this.canScroll = true
         this.bodyLocked = false
+
         this.setHeight()
         document.body.classList.remove('not-loaded', 'locked')
 
-        this.$view.style.transform = `translate3d(0, 0, 0)`
+        if (!breakpoints.isDesktop()) {
+            this.$view.style.transform = `translate3d(0, 0, 0)`
+        }
         this.snapTo(this.scroll)
     },
 

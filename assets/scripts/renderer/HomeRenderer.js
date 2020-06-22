@@ -74,20 +74,22 @@ class HomeRenderer extends Highway.Renderer {
     bindHeader() {
         const $el = this.wrap.querySelector('.js-introduction-header')
 
-        this.header = {
-            $el,
-            $strongs: $el.querySelectorAll('strong'),
-            $spans: $el.querySelectorAll('span'),
-            canRender: false,
-            height: $el.offsetHeight,
-        }
+        if ($el) {
+            this.header = {
+                $el,
+                $strongs: $el.querySelectorAll('strong'),
+                $spans: $el.querySelectorAll('span'),
+                canRender: false,
+                height: $el.offsetHeight,
+            }
 
-        const observer = new IntersectionObserver((changes) => {
-            const [{ isIntersecting }] = changes
-            this.header.canRender = isIntersecting
-        })
-        observer.observe($el)
-        this.raf.push(RafManager.addQueue(() => Parallax.header(this.header)))
+            const observer = new IntersectionObserver((changes) => {
+                const [{ isIntersecting }] = changes
+                this.header.canRender = isIntersecting
+            })
+            observer.observe($el)
+            this.raf.push(RafManager.addQueue(() => Parallax.header(this.header)))
+        }
     }
 
     renderCircle() {

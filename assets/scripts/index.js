@@ -84,10 +84,10 @@ function app() {
         })
     })
 
-    const style = 'background:black; padding:5px; color:white;'
+    const style = 'background-color:black; padding:5px; color:white;'
     console.log('%cCode by Ivan Daum', style)
-    console.log('%chttps://ivandaum.fr', style)
-    console.log('%chttps://twitter.com/ivandaum', style)
+    console.log('%c→ https://ivandaum.fr', style)
+    console.log('%c→ https://twitter.com/ivandaum', style)
 }
 
 app()
