@@ -31,7 +31,7 @@
 }
 
 .Project__cover {
-    height: 100vh;
+    height: vh(100);
     @include picture-cover;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .Project__next {
-    min-height: 100vh;
+    min-height: vh(100);
 
     &--video {
         height: auto;
@@ -92,7 +92,7 @@
     &--video {
         top: 0;
         left: 0;
-        height: 100vh;
+        height: vh(100);
         @include picture-cover;
     }
 
@@ -119,6 +119,7 @@ body.not-loaded .Project {
     .js-project-intro,
     h1 {
         transform: translate3d(0, 100vh, 0);
+        transform: translate3d(0, vh(100), 0);
     }
 
     .Project__background {

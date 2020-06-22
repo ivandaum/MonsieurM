@@ -34,7 +34,7 @@
             z-index: map-get($zindex, base);
             background-color: var(--color-white);
             @include picture-cover;
-            height: 100vh;
+            height: vh(100);
             width: 100vw;
 
             video {
@@ -106,7 +106,7 @@
     &__other {
         font-size: 2rem;
         line-height: 1.4em;
-        padding-top: 30vh;
+        padding-top: vh(30);
 
         @include tablet-only {
             font-size: 1.8rem;
@@ -136,7 +136,7 @@ body.not-loaded .Work {
     }
 
     h1 {
-        transform: translate3d(0, calc(50vh - 1em - var(--padding-large)), 0);
+        transform: translate3d(0, calc(vh(50) - 1em - var(--padding-large)), 0);
     }
 
     .js-content {

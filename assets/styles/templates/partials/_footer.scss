@@ -2,6 +2,7 @@
     transition: color var(--coverSpeed) var(--easing);
     padding: var(--padding-large);
     height: 100vh;
+    height: vh(100);
 
     &__video,
     &__wording {

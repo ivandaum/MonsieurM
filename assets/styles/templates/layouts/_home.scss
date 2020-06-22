@@ -190,7 +190,7 @@
         line-height: 1.65em;
         background-color: var(--color-white);
         min-height: 100vh;
-        padding-top: 30vh;
+        padding-top: vh(30);
 
         &--title {
             strong,
@@ -248,6 +248,7 @@
         top: 0;
         left: 0;
         height: 100vh;
+        height: vh(100);
         z-index: map-get($zindex, above-all);
         padding: var(--padding-large);
         transform: scaleY(0);
@@ -314,7 +315,7 @@ body.not-loaded .Home {
     }
 
     h1 {
-        transform: translate3d(0, calc(50vh - 1em - var(--padding-large)), 0);
+        transform: translate3d(0, calc(vh(50) - 1em - var(--padding-large)), 0);
     }
 
     .Home__introduction--background {

@@ -70,3 +70,7 @@
     font-family: var(--font-serif);
     font-weight: map-get($fontWeight, light);
 }
+
+@function vh($vh: 100) {
+    @return calc(var(--vh) * #{$vh});
+}

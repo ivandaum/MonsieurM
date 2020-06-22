@@ -35,7 +35,7 @@ body,
 .scroller {
     height: 100vh;
     height: -webkit-fill-available;
-    height: calc(var(--vh) * 100);
+    height: vh(100);
 }
 
 body.locked .scroller {
@@ -75,8 +75,8 @@ main {
 }
 
 .section-top {
-    padding-top: 50vh;
-    min-height: 100vh;
+    padding-top: vh(50);
+    min-height: vh(100);
 }
 
 .appear-in {
