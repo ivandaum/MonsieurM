@@ -280,3 +280,12 @@
         font-size: 1rem;
     }
 }
+
+.is-project-title {
+    max-width: 80%;
+    white-space: nowrap;
+
+    @include touch {
+        max-width: 100%;
+    }
+}

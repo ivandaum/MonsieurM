@@ -30,7 +30,7 @@
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </div>
-                            <a data-project="<?= $project->id ?>" data-transition="workToProject" class="Work__project js-project-link is-relative" href="<?= $project->link ?>">
+                            <a data-project="<?= $project->id ?>" data-transition="workToProject" class="Work__project is-project-title js-project-link is-relative" href="<?= $project->link ?>">
                                 <div data-project="<?= $project->id ?>" class="Work__project--title is-relative js-fade-item">
                                     <?php if($project->has_ribbon): ?>
                                     <i class="js-ribbon icon-new is-absolute"></i>

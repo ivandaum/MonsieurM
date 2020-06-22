@@ -20,12 +20,6 @@
     &__project {
         color: var(--color-grey);
         transition: color var(--coverSpeed) var(--easing);
-        max-width: 80%;
-        white-space: nowrap;
-
-        @include touch {
-            max-width: 100%;
-        }
 
         &--title {
             width: 100%;
