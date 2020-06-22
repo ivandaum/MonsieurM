@@ -13,9 +13,13 @@ body {
     position: relative;
     color: var(--color-black);
     @include font-text;
-    height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    overflow-x: hidden;
+
+    @include desktop {
+        overflow-y: hidden;
+        height: 100vh;
+    }
 }
 
 body.loading,
@@ -23,14 +27,23 @@ body.loading * {
     cursor: wait !important;
 }
 
+body.locked {
+    @include touch {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+    }
+}
 body.locked section:not(.ignore-locked) {
     pointer-events: none !important;
 }
 
 .scroller {
-    height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    @include desktop {
+        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
 }
 
 main {
@@ -46,9 +59,11 @@ main {
 
 .js-view {
     z-index: map-get($zindex, section);
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include desktop {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
 
 .container {
@@ -67,6 +82,10 @@ main {
 
 .appear-in {
     z-index: map-get($zindex, above-section);
+    @include touch {
+        top: 0;
+        position: fixed;
+    }
 }
 
 .js-fadein {

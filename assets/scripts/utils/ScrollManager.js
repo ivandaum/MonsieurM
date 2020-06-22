@@ -18,10 +18,11 @@ export default {
     funcOnScroll: [],
     isDesktop: true,
 
-    init() {
-        this.$scroller = document.querySelector('.scroller')
+    init({ $view }) {
+        this.$scroller = breakpoints.isDesktop() ? document.querySelector('.scroller') : window
         this.$height = document.querySelector('.js-scroller-height')
         this.$app = document.body.querySelector('main')
+        this.$view = $view
 
         RafManager.addQueue(this.onScroll.bind(this))
         ResizeManager.addQueue(() => this.setHeight())
@@ -34,8 +35,6 @@ export default {
     },
 
     setHeight() {
-        this.isDesktop = store.windowWidth > breakpoints.desktop
-
         if (this.$view) {
             this.$height.style.height = `${this.$view.offsetHeight - store.windowHeight}px`
         }
@@ -49,14 +48,11 @@ export default {
         this.$height.style.height = '0px'
         this.bodyLocked = true
         this.canScroll = false
-        this.$scroller.scrollTo(0, 0)
-
-        document.body.classList.add('locked')
 
         this.$view.style.transform = `translate3d(0, ${-this.scroll}px, 0)`
-        if (!this.isDesktop) {
-            this.$view.style.transform = `translate3d(0, ${-this.scroll}px, 0)`
-        }
+
+        this.$scroller.scrollTo(0, 0)
+        document.body.classList.add('locked')
     },
 
     unlock() {
@@ -65,10 +61,7 @@ export default {
         this.setHeight()
         document.body.classList.remove('not-loaded', 'locked')
 
-        if (!this.isDesktop) {
-            this.$view.style.transform = `translate3d(0, 0, 0)`
-        }
-
+        this.$view.style.transform = `translate3d(0, 0, 0)`
         this.snapTo(this.scroll)
     },
 
@@ -85,7 +78,7 @@ export default {
 
         this.funcOnScroll.map((func) => func())
 
-        if (this.$view && this.isDesktop) {
+        if (this.$view && breakpoints.isDesktop()) {
             this.$view.style.transform = `translate3d(0, ${-Math.round(this.scrollEased)}px, 0)`
         }
     },
@@ -128,8 +121,8 @@ export default {
     },
 
     snapTo(y) {
-        this.$scroller.scrollTo(0, y)
         this.scroll = y
         this.scrollEased = y
+        this.$scroller.scrollTo(0, y)
     },
 }

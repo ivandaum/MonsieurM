@@ -65,7 +65,7 @@ function app() {
     const $view = document.querySelector('[data-router-view]:last-of-type')
 
     store.init()
-    ScrollManager.init()
+    ScrollManager.init({ $view })
     Footer.update({ $view })
     ResizeManager.init()
     ResizeManager.addQueue(() => store.setGlobalVars())

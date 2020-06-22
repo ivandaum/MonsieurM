@@ -251,7 +251,9 @@
         padding: var(--padding-large);
         transform: scaleY(0);
         transform-origin: bottom center;
-
+        @include touch {
+            position: fixed;
+        }
         &.is-active {
             transform: scaleY(1);
         }

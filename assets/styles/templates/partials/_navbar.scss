@@ -5,6 +5,10 @@
     transition: opacity var(--speed) var(--easing);
     top: var(--padding-large);
 
+    @include touch {
+        position: fixed;
+    }
+
     @include tablet-only {
         font-size: 1.5rem;
     }
@@ -41,6 +45,10 @@
     left: 0;
     z-index: map-get($zindex, above-all);
     right: 100%;
+
+    @include touch {
+        position: fixed;
+    }
 
     &.is-loading {
         transition: right 3s var(--easing);
