@@ -28,14 +28,24 @@ const Videos = {
         const parentWidth = video.parentNode.offsetWidth || window.getComputedStyle(video.parentNode).width
 
         const r = parseFloat(video.dataset.ratio) || RATIO
-        const height = Math.floor(parentWidth * r)
+        let height = Math.floor(parentWidth * r)
 
-        if (height <= parentHeight || parentHeight === 0) {
+        const fitHeight = video.classList.contains('fit-height')
+
+        if (!fitHeight) {
             video.style.width = parentWidth + 'px'
             video.style.height = height + 'px'
         } else {
-            video.style.width = Math.floor(parentHeight / r) + 'px'
-            video.style.height = parentHeight + 'px'
+            let width = Math.floor(parentHeight / r)
+            height = parentHeight
+
+            if (width > parentWidth) {
+                height = parentHeight * (parentWidth / width)
+                width = parentWidth
+            }
+
+            video.style.width = width + 'px'
+            video.style.height = height + 'px'
         }
     },
 }

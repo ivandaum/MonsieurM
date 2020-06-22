@@ -72,3 +72,9 @@ main {
 .js-fadein {
     transition: opacity calc(var(--speed) * 2) var(--easing);
 }
+
+.js-scroller-height {
+    @include touch {
+        display: none;
+    }
+}

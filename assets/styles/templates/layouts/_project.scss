@@ -4,6 +4,8 @@
 
     h1 {
         max-width: 80%;
+        white-space: nowrap;
+
         @include touch {
             max-width: 100%;
         }

@@ -390,12 +390,15 @@ video {
     height: 0;
     background: var(--color-grey);
 }
+
 picture {
     position: relative;
     display: block;
     width: 100%;
     height: auto;
     margin: 0;
+    transition: background var(--speed) var(--easing);
+    background: rgba(0, 0, 0, 0.2);
 
     img {
         display: block;
@@ -409,18 +412,18 @@ picture {
         opacity: 0;
     }
 
-    .background {
-        left: 0;
-        top: 0;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        transition: opacity var(--speed) var(--speed) linear;
-    }
+    // .background {
+    //     left: 0;
+    //     top: 0;
+    //     background-repeat: no-repeat;
+    //     background-position: center center;
+    //     background-size: cover;
+    //     transition: opacity var(--speed) var(--speed) linear;
+    // }
 
-    &.loaded .background,
-    &.error .background {
-        opacity: 0;
+    &.loaded,
+    &.error {
+        background: rgba(0, 0, 0, 0);
     }
 
     img.loaded,

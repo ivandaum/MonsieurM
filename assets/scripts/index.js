@@ -88,10 +88,6 @@ function app() {
     console.log('%cCode by Ivan Daum', style)
     console.log('%chttps://ivandaum.fr', style)
     console.log('%chttps://twitter.com/ivandaum', style)
-
-    // console.log('%c', 'padding:5px; background: #000; color: #fff')
-    // console.log('%chttps://ivandaum.fr', 'padding:5px; background: #000; color: #fff')
-    // console.log('%chttps://twitter.com/ivandaum', 'padding:5px; background: #000; color: #fff')
 }
 
 app()

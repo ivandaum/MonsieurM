@@ -158,6 +158,7 @@
 
             @include phone {
                 font-size: 5.8rem;
+                padding-top: 125%;
             }
         }
 
@@ -187,7 +188,8 @@
     &__links {
         line-height: 1.65em;
         background-color: var(--color-white);
-        padding-top: 20vh;
+        min-height: 100vh;
+        padding-top: 30vh;
 
         &--title {
             strong,

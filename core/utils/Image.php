@@ -41,16 +41,6 @@ class Image {
                 '160' => 'medium',
                 '10' => 'thumbnail',
                 '1' => '1x1',
-                // '2500' => 'full',
-                // '1599' => 'max',
-                // '1279' => 'widescreen',
-                // '999' => 'desktop',
-                // '769' => 'tablet',
-                // '360' => 'tablet',
-                // '319' => 'phone',
-                // '160' => 'phone',
-                // '10' => 'thumbnail',
-                // '1' => '1x1',
             );
         }
 
@@ -90,7 +80,7 @@ class Image {
         }
 
         $html .= '<img class="' . $className . '" src="' . $last['src'] . '" alt="' . self::$title . '" />';
-        $html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $sources['10']['src'] .')"></div>';
+        //$html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $sources['10']['src'] .')"></div>';
         $html .= '</picture>';
         return $html;
     }

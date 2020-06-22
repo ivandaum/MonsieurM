@@ -116,7 +116,7 @@
             <div class="js-project-wording has-font-large-title  is-absolute Home__showreel--wording is-active is-flex is-center">
                 <span class="is-flex is-center">Play</span>
             </div>
-            <?= Video::create($home->showreel['video'], false, false) ?>
+            <?= Video::create($home->showreel['video'], false, false, true) ?>
         </div>
         <div class="Home__showreel--background js-showreel-background is-absolute has-height-100 has-width-100"></div>
     </section>

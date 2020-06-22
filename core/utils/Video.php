@@ -4,7 +4,7 @@ namespace MonsieurM\Core\Utils;
 
 class Video {
 
-    public static function create($source, $muted = true, $loop = true) {
+    public static function create($source, $muted = true, $loop = true, $fitHeight = false) {
 
         if(!$source) return "";
 
@@ -22,8 +22,12 @@ class Video {
             $params .= ' loop';
         }
 
+        $className = '';
+        if($fitHeight) {
+            $className .= 'fit-height';
+        }
         $html = '';
-        $html .= '<video ' . $params . ' class="js-video" data-ratio="' . $ratio . '">';
+        $html .= '<video ' . $params . ' class="js-video ' . $className . '" data-ratio="' . $ratio . '">';
         $html .= '<source src="' . $url . '" type="' . $mimeType. '">';
         $html .= 'Your browser does not support the video tag.</video> ';
 
