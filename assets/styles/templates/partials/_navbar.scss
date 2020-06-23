@@ -27,14 +27,21 @@
         height: 0;
     }
 
-    a {
-        transition: color var(--speed) var(--easing);
+    li {
         opacity: 0;
+    }
+
+    a {
+        transition: color var(--speed) var(--easing), opacity var(--speed) var(--easing);
     }
 
     a.is-active {
         pointer-events: none;
         color: var(--color-blackFaded);
+    }
+
+    a:not(.is-active):hover {
+        opacity: 0.6;
     }
 }
 
@@ -45,9 +52,11 @@
     left: 0;
     z-index: map-get($zindex, above-all);
     right: 100%;
+    mix-blend-mode: difference;
 
     @include touch {
         position: fixed;
+        height: 0.4rem;
     }
 
     &.is-loading {
@@ -75,11 +84,14 @@ body.showreel-open .Navbar {
     pointer-events: none;
 }
 
-body.single .Navbar a,
-body.page-template-page-lab .Navbar a {
-    color: var(--color-greyDarker);
+body[data-page='lab'] .Navbar a {
+    color: var(--color-white);
 
     &.is-active {
-        color: var(--color-white);
+        color: var(--color-greyDarker);
     }
+}
+
+body[data-page='project'] .Navbar a {
+    color: var(--color-greyNavOnProject);
 }

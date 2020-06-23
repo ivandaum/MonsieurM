@@ -56,7 +56,10 @@ const core = new Highway.Core({ renderers, transitions })
         ScrollManager.snapTo(0)
         ScrollManager.update({ $view: to.view })
     })
-    .on('NAVIGATE_IN', () => {})
+    .on('NAVIGATE_IN', ({ to }) => {
+        const page = to.view.dataset.routerView
+        document.body.dataset.page = page
+    })
     .on('NAVIGATE_ERROR', ({ location }) => {
         window.location.href = location.href
     })
@@ -89,6 +92,9 @@ function app() {
             done: () => ScrollManager.update({ $view }),
         })
     })
+
+    const page = $view.dataset.routerView
+    document.body.dataset.page = page
 
     const style = 'background-color:black; padding:5px; color:white;'
     console.log('%cCode by Ivan Daum', style)

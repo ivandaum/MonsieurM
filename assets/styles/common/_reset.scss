@@ -397,8 +397,12 @@ picture {
     width: 100%;
     height: auto;
     margin: 0;
-    transition: background var(--speed) var(--easing);
-    background: rgba(255, 255, 255, 0.5);
+
+    .background {
+        top: 0;
+        left: 0;
+        transition: opacity calc(var(--speed) * 2) var(--easing);
+    }
 
     img {
         display: block;
@@ -414,7 +418,9 @@ picture {
 
     &.loaded,
     &.error {
-        background: rgba(255, 255, 255, 0);
+        .background {
+            opacity: 0;
+        }
     }
 
     img.loaded,

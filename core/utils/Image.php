@@ -65,7 +65,7 @@ class Image {
 
     public static function generateSrcset($sources = array(), $lazy) {
         $ref = array_slice($sources, 0, 1)[0];
-        $last = array_slice($sources, -1, 2)[0];
+        $last = array_slice($sources, -1, 1)[0];
 
         $html = '<picture style="padding-top:'. ($ref['height'] / $ref['width'] * 100) . '%;">';
         
@@ -80,7 +80,7 @@ class Image {
         }
 
         $html .= '<img class="' . $className . '" src="' . $last['src'] . '" alt="' . self::$title . '" />';
-        //$html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $sources['10']['src'] .')"></div>';
+        $html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $last['src'] .')"></div>';
         $html .= '</picture>';
         return $html;
     }

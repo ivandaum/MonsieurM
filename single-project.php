@@ -12,7 +12,7 @@
     <section class="Project__header js-project-header is-relative">
         <div class="section-top container js-project is-padding-bottom">
             <h1 class="is-h1 has-font-serif js-project-title is-project-title" style="color: <?= $project->color ?>"><?= Text::wrapWord($project->title, 'span') ?></h1>
-            <p class="is-h1 has-font-serif js-project-intro" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
+            <p class="is-h1 has-font-serif js-project-intro is-column is-10 is-10-tablet is-12-phone" style="color: <?= $project->color_intro ?>"><?= $project->catchline ?></p>
         </div>
     
         <div class="Project__introduction container is-flex is-wrap is-padding-top" style="color: <?= $project->color_details ?>">

@@ -29,7 +29,7 @@ class Nav {
 
     show() {
         anime({
-            targets: this.$items,
+            targets: this.$container.querySelectorAll('li'),
             duration,
             easing,
             opacity: [0, 1],
