@@ -45,14 +45,13 @@
     }
 }
 
-.Navbar__Loading {
+.Navbar__loading {
     background: var(--color-white);
     height: 0.8rem;
     top: 0;
     left: 0;
     z-index: map-get($zindex, above-all);
     right: 100%;
-    mix-blend-mode: difference;
 
     @include touch {
         position: fixed;
@@ -94,4 +93,8 @@ body[data-page='lab'] .Navbar a {
 
 body[data-page='project'] .Navbar a {
     color: var(--color-greyNavOnProject);
+}
+
+body.home .Navbar__loading {
+    mix-blend-mode: difference;
 }

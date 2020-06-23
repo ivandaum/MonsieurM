@@ -39,7 +39,10 @@
             position: relative;
             z-index: map-get($zindex, section) + 1;
             transition: opacity calc(var(--speed) * 4) var(--easing);
-            background: transparent;
+        }
+
+        picture .background {
+            display: none;
         }
 
         picture.is-hidden {
@@ -71,17 +74,13 @@
 
     &__about {
         background-color: var(--color-grey);
-        z-index: map-get($zindex, under-section) - 1;
+        z-index: map-get($zindex, base);
         font-size: 2rem;
         line-height: 1.65em;
 
         @include touch {
             font-size: 1.8rem;
         }
-
-        // &--left {
-        //     margin: -18em 0;
-        // }
 
         &--right {
             padding-bottom: 30rem;
@@ -97,8 +96,9 @@
         font-size: 1rem;
         height: 18em;
         width: 18em;
-        z-index: map-get($zindex, base);
+        z-index: map-get($zindex, above-section);
         padding: 2.5em;
+        pointer-events: none;
         // top: calc(100vh - 18em - var(--padding-large));
 
         @include tablet-only {
@@ -110,8 +110,13 @@
         }
 
         &--rotate {
-            background: url(../../assets/images/worldwide.png) center center no-repeat;
-            background-size: cover;
+            font-size: 1rem;
+            height: 18em;
+            width: 18em;
+
+            @include tablet-only {
+                font-size: 0.6rem;
+            }
         }
     }
 

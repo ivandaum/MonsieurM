@@ -6,7 +6,7 @@
 
 ?>
 
-<div class="Navbar__Loading is-absolute js-navbar-loader"></div>
+<div class="Navbar__loading is-absolute js-navbar-loader"></div>
 
 <nav class="Navbar js-navbar is-absolute has-width-100 is-h5">
     <ul class="is-flex has-width-100 is-absolute">

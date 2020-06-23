@@ -10,5 +10,6 @@ export default {
     tablet: 768,
     phone: 545,
     phoneS: 360,
-    isDesktop: () => store.windowWidth > desktop,
+    isDesktop: () => store.windowWidth >= desktop,
+    isTouch: () => store.windowWidth < desktop,
 }

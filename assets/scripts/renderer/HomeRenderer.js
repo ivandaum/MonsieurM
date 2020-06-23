@@ -46,10 +46,10 @@ class HomeRenderer extends Highway.Renderer {
     }
 
     bindCircle() {
-        const $el = this.$about.querySelector('.js-about-circle')
+        const $el = document.querySelector('.js-about-circle')
         this.circle = {
             $el,
-            $rotating: this.$about.querySelector('.js-about-circleRotating'),
+            $rotating: document.querySelector('.js-about-circleRotating'),
             rotation: 0,
             y: 0,
             top: 0,
@@ -96,11 +96,12 @@ class HomeRenderer extends Highway.Renderer {
         if (!this.circle.canRender) return false
 
         this.circle.y = ScrollManager.scrollEased - this.circle.top + this.circle.offset
+
         this.circle.rotation += ScrollManager.spinY * 0.15
         this.circle.rotation = this.circle.rotation < 0 ? 360 : this.circle.rotation
         this.circle.rotation = this.circle.rotation > 360 ? 0 : this.circle.rotation
 
-        this.circle.$rotating.style.transform = `rotate(${this.circle.rotation}deg)`
+        this.circle.$rotating.style.transform = `translateZ(0) rotate(${this.circle.rotation}deg)`
         this.circle.$el.style.transform = `translate3d(0, ${this.circle.y}px, 0)`
     }
 }

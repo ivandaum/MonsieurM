@@ -37,8 +37,8 @@
     
         <section class="Home__about js-about container is-flex has-width-100">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
-                <div class="Home__scrollingCircle js-about-circle is-absolute is-flex is-center">
-                    <div class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute has-height-100 has-width-100"></div>
+                <div class="Home__scrollingCircle js-about-circle is-flex is-center">
+                    <img class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.png') ?>">
                     <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.webp') ?>" alt="">
                 </div>
             </div>

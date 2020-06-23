@@ -78,6 +78,11 @@ export default {
         this.oldScroll = this.scroll
         this.scroll = this.getScrollTop()
         this.scrollEased += (this.scroll - this.scrollEased) * 0.3
+
+        if (breakpoints.isTouch()) {
+            this.scrollEased = this.scroll
+        }
+
         this.spinY = this.scroll - this.oldScroll
         this.isScrolling = this.spinY !== 0
 
