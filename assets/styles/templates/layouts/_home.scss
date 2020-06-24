@@ -99,7 +99,6 @@
         z-index: map-get($zindex, above-section);
         padding: 2.5em;
         pointer-events: none;
-        // top: calc(100vh - 18em - var(--padding-large));
 
         @include tablet-only {
             font-size: 0.6rem;

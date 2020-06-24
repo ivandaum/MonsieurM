@@ -1,3 +1,4 @@
+// import store from '../utils/store'
 import Lazyloading from '../vendor/Lazyloading'
 
 const Images = {
@@ -6,6 +7,7 @@ const Images = {
             load_delay: 1000,
             elements_selector: 'img:not(.ignore-lazy)',
             use_native: false,
+            // threshold: store.windowHeight,
             callback_loaded: (el) => Images.onLoad(el),
             callback_error: (el) => {
                 console.log('Error loading : ', el)

@@ -75,7 +75,7 @@ class Image {
         }
 
         foreach($sources as $size => $image) {
-            // $html .= '<source type="image/webp" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '.webp"></source>';
+            $html .= '<source type="image/webp" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '.webp"></source>';
             $html .= '<source type="' . self::$mimeType . '" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '"></source>';
         }
 
