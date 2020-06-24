@@ -1,7 +1,9 @@
 import Highway from '@dogstudio/highway'
 
 class PageRenderer extends Highway.Renderer {
-    onLeave() {}
+    onLeave() {
+        Images.lazy.destroy()
+    }
 
     onEnterCompleted() {}
 }

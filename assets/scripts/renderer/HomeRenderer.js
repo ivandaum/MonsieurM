@@ -21,6 +21,8 @@ class HomeRenderer extends Highway.Renderer {
         ResizeManager.removeQueue(this.Showreel.resizeIndex)
         ResizeManager.removeQueue(this.MaskPicture.resizeIndex)
         ResizeManager.removeQueue(this.circleResizeIndex)
+
+        Images.lazy.destroy()
     }
 
     onEnterCompleted() {

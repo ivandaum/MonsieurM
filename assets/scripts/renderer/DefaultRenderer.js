@@ -4,7 +4,9 @@ import Images from '../binders/Images'
 
 class DefaultRenderer extends Highway.Renderer {
     onLeaveCompleted() {}
-
+    onLeave() {
+        Images.lazy.destroy()
+    }
     onEnterCompleted() {
         const $view = this.wrap
 

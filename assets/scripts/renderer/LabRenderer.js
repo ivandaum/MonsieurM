@@ -13,6 +13,7 @@ class LabRenderer extends Highway.Renderer {
     onLeave() {
         this.raf.map((raf) => RafManager.removeQueue(raf))
         ResizeManager.removeQueue(this.resizeIndex)
+        Images.lazy.destroy()
     }
 
     onEnterCompleted() {

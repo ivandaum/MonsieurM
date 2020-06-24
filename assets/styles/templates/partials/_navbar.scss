@@ -60,10 +60,10 @@
 
     &.is-loading {
         transition: right 3s var(--easing);
-        right: 50%;
+        right: 30%;
 
         @include touch {
-            right: 30%;
+            right: 10%;
         }
     }
 

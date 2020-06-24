@@ -19,6 +19,7 @@ class WorkRenderer extends Highway.Renderer {
 
         ScrollManager.removeQueue(this.onScrollIndex)
         ResizeManager.removeQueue(this.resizeIndex)
+        Images.lazy.destroy()
     }
 
     onEnterCompleted() {
