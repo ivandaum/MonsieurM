@@ -47,7 +47,7 @@ class Image {
         foreach ($relations as $breakpoint => $imageName) {
             if($imageName === 'full') {
                 $sources[$breakpoint] = array(
-                    'src' => str_replace('-scaled.', '.', $image['url']),
+                    'src' => $image['url'],
                     'width' => $image['width'],
                     'height' => $image['height'],
                 );
@@ -58,6 +58,8 @@ class Image {
                     'height' => $image['sizes'][$imageName . '-height'],
                 );
             }
+
+            $sources[$breakpoint]['src'] = str_replace('-scaled', '', $sources[$breakpoint]['src']);
         }
 
         return self::generateSrcset($sources, $lazy);
