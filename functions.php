@@ -28,7 +28,6 @@ register_nav_menus([
 add_image_size( '1x1', 1, 1 );
 add_image_size( 'widescreen', 1600, 0 );
 add_image_size( 'max', 2048, 0 );
-
 add_action('init', function() {
     remove_image_size('1536x1536');
     remove_image_size('2048x2048');
@@ -38,9 +37,6 @@ add_filter('jpeg_quality', function($arg) {
     return 100;
 });
 
-add_filter('png_quality', function($arg) {
-    return 100;
-});
 
 add_filter('upload_mimes', function($mimes) {
 	$mimes['svg'] = 'image/svg+xml';

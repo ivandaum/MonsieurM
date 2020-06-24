@@ -33,7 +33,7 @@ class Image {
         $sources = array();
         if (empty($relations)) {
             $relations = array(
-                '2500' => 'full',
+                '2499' => 'full',
                 '1599' => 'max',
                 '1279' => 'widescreen',
                 '999' => 'large',
@@ -47,7 +47,7 @@ class Image {
         foreach ($relations as $breakpoint => $imageName) {
             if($imageName === 'full') {
                 $sources[$breakpoint] = array(
-                    'src' => $image['url'],
+                    'src' => str_replace('-scaled.', '.', $image['url']),
                     'width' => $image['width'],
                     'height' => $image['height'],
                 );
