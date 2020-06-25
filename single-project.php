@@ -110,7 +110,7 @@
             <div class="Project__next is-relative has-width-100 has-height-100 is-flex is-center-y">
                 <div class="container">
                     <div>
-                        <a data-transition="workToProject" href="<?= $project->nextProject->link ?>" class="has-text-right is-flex is-right-x is-wrap">
+                        <a data-transition="workToProject" href="<?= $project->nextProject->link ?>" class="has-text-right is-flex is-right-x is-wrap" data-color="<?= $project->nextProject->color ?>">
                             <p class="Project__next--wording has-font-title has-color-white is-h3 has-width-100 is-absolute">Next project</p>
                             <h2 class="is-h1 has-font-serif js-fade-item has-width-100 is-project-title"><?= Text::wrapWord($project->nextProject->title, 'span') ?></h2>
                         </a>

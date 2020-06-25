@@ -90,6 +90,9 @@ class ProjectTransition extends Highway.Transition {
         trigger.classList.add('is-active', 'js-trigger-is-activate')
         this.hitbox = trigger.getBoundingClientRect()
 
+        if (trigger.dataset.color) {
+            Nav.updateLoader({ color: trigger.dataset.color })
+        }
         const margin = trigger.parentNode.getBoundingClientRect().left
         const words = trigger.querySelectorAll('.js-fade-item span')
         const translatesX = []
