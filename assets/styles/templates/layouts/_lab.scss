@@ -57,6 +57,10 @@
             width: 50%;
         }
     }
+
+    &__media picture {
+        background: #2b2b2b;
+    }
 }
 
 body.not-loaded .Lab {

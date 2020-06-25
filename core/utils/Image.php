@@ -85,7 +85,7 @@ class Image {
         }
 
         $html .= '<img class="' . $className . '" src="' . $last['src'] . '" alt="' . self::$title . '" />';
-        $html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $last['src'] .')"></div>';
+        //$html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $last['src'] .')"></div>';
         $html .= '</picture>';
         return $html;
     }

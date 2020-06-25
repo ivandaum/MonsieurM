@@ -398,11 +398,11 @@ picture {
     height: auto;
     margin: 0;
 
-    .background {
-        top: 0;
-        left: 0;
-        transition: opacity calc(var(--speed) * 2) var(--easing);
-    }
+    // .background {
+    //     top: 0;
+    //     left: 0;
+    //     transition: opacity calc(var(--speed) * 2) var(--easing);
+    // }
 
     img {
         display: block;
@@ -416,12 +416,12 @@ picture {
         opacity: 0;
     }
 
-    &.loaded,
-    &.error {
-        .background {
-            opacity: 0;
-        }
-    }
+    // &.loaded,
+    // &.error {
+    //     .background {
+    //         opacity: 0;
+    //     }
+    // }
 
     img.loaded,
     img.error {
