@@ -83,6 +83,9 @@ class Image {
 
         $index = 0;
         foreach($sources as $size => $image) {
+
+            if ($isze === '1') continue;
+
             $entries = array();
             $next = array_slice($sources, $index-1, 1);
             $next = $index > 0 && count($next) ? $next[0] : null;
