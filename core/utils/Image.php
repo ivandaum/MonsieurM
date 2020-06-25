@@ -10,9 +10,8 @@ class Image {
         '1600' => 'full',
         '1024' => 'max',
         '767' => 'widescreen',
-        '359' => 'large',
-        '160' => 'medium_large',
-        '10' => 'medium',
+        '160' => 'large',
+        '10' => 'medium_large',
         '1' => '1x1',
     )) {
         return self::create($image, $relations);
@@ -44,7 +43,7 @@ class Image {
                 '768' => 'large', // 1024px
                 '359' => 'medium_large', // 768px
                 '160' => 'medium', // 360x
-                '2' => 'thumbnail', // 150px
+                '10' => 'thumbnail', // 150px
                 '1' => '1x1', // 1x1
             );
         }
