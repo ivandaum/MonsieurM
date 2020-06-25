@@ -4,7 +4,7 @@
 ?>
 
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html style="--vh:1vh;" <?php language_attributes(); ?>>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
         var ajaxUrl = "<?= admin_url( 'admin-ajax.php' ) ?>";
     </script>
 </head>
-<body <?= body_class('locked', 'not-loaded') ?>>
+<body <?= body_class('locked not-loaded') ?>>
 <?php MonsieurM\Core\Utils\Template::partial('navbar') ?>
     <div class="scroller is-relative has-width-100">
 <main data-router-wrapper>

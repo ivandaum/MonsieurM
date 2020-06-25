@@ -5,6 +5,10 @@
         background-color: var(--color-white);
         padding-bottom: 10rem;
 
+        h1 {
+            z-index: map-get($zindex, above-section);
+        }
+
         .js-introduction-header {
             z-index: map-get($zindex, section);
             will-change: transform;
@@ -319,7 +323,7 @@ body.not-loaded .Home {
     }
 
     h1 {
-        transform: translate3d(0, calc(vh(50) - 1em - var(--padding-large)), 0);
+        transform: translate3d(0, calc(#{vh(50)} - 1em - var(--padding-large)), 0);
     }
 
     .Home__introduction--background {

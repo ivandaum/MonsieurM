@@ -10,6 +10,10 @@
 }
 
 .Work {
+    h1 {
+        z-index: map-get($zindex, above-section);
+    }
+
     &__title {
         height: 1em;
         overflow: hidden;
@@ -136,7 +140,7 @@ body.not-loaded .Work {
     }
 
     h1 {
-        transform: translate3d(0, calc(vh(50) - 1em - var(--padding-large)), 0);
+        transform: translate3d(0, calc(#{vh(50)} - 1em - var(--padding-large)), 0);
     }
 
     .js-content {

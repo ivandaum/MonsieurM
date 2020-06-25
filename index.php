@@ -38,8 +38,8 @@
         <section class="Home__about js-about container is-flex has-width-100">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
                 <div class="Home__scrollingCircle js-about-circle is-flex is-center">
-                    <img class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.png') ?>">
-                    <img class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.webp') ?>" alt="">
+                    <img alt="worldwide.png" class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.png') ?>">
+                    <img alt="world.gif" class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.webp') ?>" alt="">
                 </div>
             </div>
             <div class="Home__about--right is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12 is-flex is-wrap">

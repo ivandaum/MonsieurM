@@ -106,7 +106,7 @@ class Image {
             $index++;
 
             foreach($entries as $entry) {
-                $html .= "<source type='$entry[0]' media='$entry[1]' data-srcset='$entry[2]'></source>";
+                $html .= "<source srcset='' type='$entry[0]' media='$entry[1]' data-srcset='$entry[2]' />";
             }
         }
 

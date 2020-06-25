@@ -63,7 +63,7 @@ const PageTransition = {
         const sentence = to.querySelector('.js-content')
         const background = to.querySelector('.js-background')
 
-        let top = store.windowHeight * 0.5 - title.offsetHeight - left
+        const top = title.getBoundingClientRect().top - store.windowHeight * 0.5
 
         const timeline = anime.timeline({
             autoplay: false,

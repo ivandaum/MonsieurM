@@ -65,7 +65,7 @@
 
 body.not-loaded .Lab {
     h1 {
-        transform: translate3d(0, calc(vh(50) - 1em - var(--padding-large)), 0);
+        transform: translate3d(0, calc(#{vh(50)} - 1em - var(--padding-large)), 0);
         color: var(--color-black);
     }
 
