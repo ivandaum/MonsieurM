@@ -7,12 +7,11 @@ class Image {
     public static $title;
 
     public static function createHD($image, $relations = array(
-        '2047' => 'full', // original
-        '1599' => 'max', // 2048px
-        '1024' => 'widescreen', // 1600px
-        '767' => 'large', // 1024px
-        '359' => 'medium_large', // 768px
-        '160' => 'medium', // 360x
+        '1599' => 'full', // 2048px
+        '1024' => 'max', // 1600px
+        '767' => 'widescreen', // 1024px
+        '359' => 'large', // 768px
+        '160' => 'medium_large', // 360x
         '10' => 'thumbnail', // 150px
         '1' => '1x1', // 1x1
     )) {
