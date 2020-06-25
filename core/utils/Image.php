@@ -7,18 +7,24 @@ class Image {
     public static $title;
 
     public static function createHD($image, $relations = array(
-        '1999' => 'full',
-        '1599' => 'max',
-        '769' => 'widescreen',
-        '319' => 'large',
-        '160' => 'medium_large',
-        '10' => 'thumbnail',
-        '1' => '1x1',
+        '2047' => 'full', // original
+        '1599' => 'max', // 2048px
+        '1024' => 'widescreen', // 1600px
+        '767' => 'large', // 1024px
+        '359' => 'medium_large', // 768px
+        '160' => 'medium', // 360x
+        '10' => 'thumbnail', // 150px
+        '1' => '1x1', // 1x1
     )) {
         return self::create($image, $relations);
     }
 
-    public static function createThumbnail($image, $relations = array('359' => 'medium_large', '160' => 'medium', '10' => 'thumbnail', '1' => '1x1')) {
+    public static function createThumbnail($image, $relations = array(
+        '359' => 'medium_large',
+        '160' => 'medium',
+        '10' => 'thumbnail',
+        '1' => '1x1'
+    )) {
         return self::create($image, $relations);
     }
 
@@ -33,14 +39,14 @@ class Image {
         $sources = array();
         if (empty($relations)) {
             $relations = array(
-                '2499' => 'full',
-                '1599' => 'max',
-                '1279' => 'widescreen',
-                '999' => 'large',
-                '360' => 'medium_large',
-                '160' => 'medium',
-                '10' => 'thumbnail',
-                '1' => '1x1',
+                '2047' => 'full', // original
+                '1599' => 'max', // 2048px
+                '1024' => 'widescreen', // 1600px
+                '767' => 'large', // 1024px
+                '359' => 'medium_large', // 768px
+                '160' => 'medium', // 360x
+                '10' => 'thumbnail', // 150px
+                '1' => '1x1', // 1x1
             );
         }
 
