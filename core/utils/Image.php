@@ -7,13 +7,13 @@ class Image {
     public static $title;
 
     public static function createHD($image, $relations = array(
-        '1599' => 'full', // 2048px
-        '1024' => 'max', // 1600px
-        '767' => 'widescreen', // 1024px
-        '359' => 'large', // 768px
-        '160' => 'medium_large', // 360x
-        '10' => 'thumbnail', // 150px
-        '1' => '1x1', // 1x1
+        '1600' => 'full',
+        '1024' => 'max',
+        '767' => 'widescreen',
+        '359' => 'large',
+        '160' => 'medium_large',
+        '10' => 'medium',
+        '1' => '1x1',
     )) {
         return self::create($image, $relations);
     }
@@ -38,10 +38,10 @@ class Image {
         $sources = array();
         if (empty($relations)) {
             $relations = array(
-                '2047' => 'full', // original
-                '1599' => 'max', // 2048px
+                '2048' => 'full', // original
+                '1600' => 'max', // 2048px
                 '1024' => 'widescreen', // 1600px
-                '767' => 'large', // 1024px
+                '768' => 'large', // 1024px
                 '359' => 'medium_large', // 768px
                 '160' => 'medium', // 360x
                 '10' => 'thumbnail', // 150px
@@ -81,16 +81,34 @@ class Image {
             $className .= 'ignore-lazy';
         }
 
+        $index = 0;
         foreach($sources as $size => $image) {
+            $entries = array();
+            $next = array_slice($sources, $index-1, 1);
+            $next = $index > 0 && count($next) ? $next[0] : null;
+
             if (self::$mimeType !== 'image/gif') {
-                $html .= '<source type="image/webp" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '.webp"></source>';
+                if ($next) {
+                    $base = "(min-width: {$size}px) and ";
+                    $media = $base . '(-webkit-min-device-pixel-ratio: 1.5),';
+                    $media .= $base . '(-moz-min-device-pixel-ratio: 1.5),';
+                    $media .= $base . '(-o-device-pixel-ratio: 3/2),';
+                    $media .= $base . '(device-pixel-ratio: 1.5)';
+
+                    $entries[] = array('image/webp', $media, $next['src'].'.webp');
+                }
+                $entries[] = array('image/webp', "(min-width: {$size}px)", $image['src'].'.webp');
             }
         
-            $html .= '<source type="' . self::$mimeType . '" media="(min-width: ' . $size . 'px)" data-srcset="' . $image['src'] . '"></source>';
+            $entries[] = array(self::$mimeType, "(min-width: {$size}px)", $image['src']);
+            $index++;
+
+            foreach($entries as $entry) {
+                $html .= "<source type='$entry[0]' media='$entry[1]' data-srcset='$entry[2]'></source>";
+            }
         }
 
         $html .= '<img class="' . $className . '" src="' . $last['src'] . '" alt="' . self::$title . '" />';
-        //$html .= '<div class="background has-width-100 has-height-100 is-absolute" style="background-image: url('. $last['src'] .')"></div>';
         $html .= '</picture>';
         return $html;
     }
