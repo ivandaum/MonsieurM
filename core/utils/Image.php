@@ -44,7 +44,7 @@ class Image {
                 '768' => 'large', // 1024px
                 '359' => 'medium_large', // 768px
                 '160' => 'medium', // 360x
-                '10' => 'thumbnail', // 150px
+                '2' => 'thumbnail', // 150px
                 '1' => '1x1', // 1x1
             );
         }
@@ -84,7 +84,7 @@ class Image {
         $index = 0;
         foreach($sources as $size => $image) {
 
-            if ($size === '1') continue;
+            if ($size === 1) continue;
 
             $entries = array();
             $next = array_slice($sources, $index-1, 1);
