@@ -12,7 +12,7 @@ class Video {
         $mimeType = $source['mime_type'];
         $url = $source['url'];
 
-        $params = 'preload="metadata"';
+        $params = 'preload="none"';
 
         if($muted) {
             $params .= ' muted playsinline';
@@ -28,7 +28,7 @@ class Video {
         }
         $html = '';
         $html .= '<video ' . $params . ' class="js-video ' . $className . '" data-ratio="' . $ratio . '">';
-        $html .= '<source src="' . $url . '#t=1" type="' . $mimeType. '">';
+        $html .= '<source src="' . $url . '" type="' . $mimeType. '">';
         $html .= 'Your browser does not support the video tag.</video> ';
 
         return $html;
