@@ -67,16 +67,17 @@ export default class MaskPicture {
         this.$canvas.width = this.background.width
         this.$canvas.height = this.background.height
 
-        new Lazyloading({
-            load_delay: 0,
-            elements_selector: '.js-picture img',
-            use_native: false,
-            callback_loaded: (el) => {
-                this.background.$el = el
-                this.$picture.classList.add('is-hidden')
-                this.$canvas.style.backgroundImage = `url(${el.currentSrc})`
-            },
-        })
+        setTimeout(
+            () =>
+                Lazyloading.load(document.querySelector('.js-picture picture img'), {
+                    callback_loaded: (el) => {
+                        this.background.$el = el
+                        this.$picture.classList.add('is-hidden')
+                        this.$canvas.style.backgroundImage = `url(${el.currentSrc})`
+                    },
+                }),
+            500,
+        )
     }
 
     loadGif() {
@@ -85,7 +86,7 @@ export default class MaskPicture {
             canRender: false,
             width: 0,
             height: 0,
-            top: this.background.height * 0.2,
+            top: this.background.height * 0.21,
             left: 0,
             index: 0,
         }
@@ -96,9 +97,9 @@ export default class MaskPicture {
                 if (this.gif.width === 0) {
                     const ratio = img.height / img.width
 
-                    this.gif.width = this.background.width * 0.33
+                    this.gif.width = this.background.width * 0.45
                     this.gif.height = this.gif.width * ratio
-                    this.gif.left = this.background.width * 0.5 - this.gif.width * 0.5 - this.background.width * 0.05 // 5%
+                    this.gif.left = this.background.width * 0.5 - this.gif.width * 0.5
                     this.gif.canRender = true
                 }
             }
@@ -110,7 +111,7 @@ export default class MaskPicture {
     loadCircle() {
         this.circle = {
             canRender: true,
-            size: this.background.width * 0.4,
+            size: this.background.width * 0.5,
             ratio: INTIAL_RATIO,
             x: 0,
             y: 0,
@@ -157,8 +158,8 @@ export default class MaskPicture {
             const right = left + this.gif.width
 
             if (cursor[0] > left && cursor[0] < right && cursor[1] > top && cursor[1] < bottom) {
-                this.circle.x = this.gif.left + this.gif.width * 0.5
-                this.circle.y = this.gif.top + this.gif.height * 0.5
+                this.circle.x = this.gif.left + this.gif.width * 0.45
+                this.circle.y = this.gif.top + this.gif.height * 0.54
                 this.circle.ratio += (1 - this.circle.ratio) * 0.1
             } else {
                 this.circle.x = cursor[0]
