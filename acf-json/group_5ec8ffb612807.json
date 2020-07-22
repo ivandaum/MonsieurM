@@ -383,6 +383,25 @@
                     "multiple": 0,
                     "return_format": "id",
                     "ui": 1
+                },
+                {
+                    "key": "field_5f183fe674a57",
+                    "label": "Vidéo de présentation",
+                    "name": "video",
+                    "type": "file",
+                    "instructions": "Laissez vide pour que la vidéo du projet soit affichée à la place.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
                 }
             ]
         },
@@ -566,5 +585,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1591784812
+    "modified": 1595424785
 }
