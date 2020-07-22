@@ -80,7 +80,7 @@
                         <span class="is-h6 has-font-title has-width-100 is-block is-padding-top-2 is-padding-top-2-touch">→ See case study</span>
                     </div>
                     
-                    <?php if (isset($home->last['video']) && isset($home->last['video']->url)): ?>
+                    <?php if (isset($home->last['video']) && isset($home->last['video']['url'])): ?>
                         <?= Video::create($home->last['video']) ?>
                     <?php elseif (isset($home->last['project']->video)): ?>
                         <?= Video::create($home->last['project']->video) ?>
