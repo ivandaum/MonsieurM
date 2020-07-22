@@ -28,13 +28,13 @@
         </section>
     
         <section class="Home__picture is-relative has-width-100 has-height-100 js-picture" data-gifPath="<?= get_theme_file_uri('/assets/images/doodle') ?>">
+            <h2 class="Home__about--title is-absolute has-width-100 is-uppercase has-text-center has-font-serif js-about-title with-spacing has-color-white"><?= $home->about['title'] ?></h2>
             <div class="Home__picture--circle is-absolute js-picture-circle is-flex is-center">
                 <img alt="img-circle-picture" class="is-absolute is-block has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/circle.png') ?>">
             </div>
             <?= Image::create($home->picture, array(), false) ?>
             <canvas class="js-picture-canvas Home__picture--canvas is-absolute"></canvas>
         </section>
-    
         <section class="Home__about js-about container is-flex has-width-100">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
                 <div class="Home__scrollingCircle js-about-circle is-flex is-center">
@@ -44,8 +44,7 @@
             </div>
             <div class="Home__about--right is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12 is-flex is-wrap">
                 <div class="is-padding-bottom2x is-padding-top2x is-column is-9 js-fadein">
-                    <h2 class="has-font-title with-spacing has-color-white is-h6"><?= $home->about['title'] ?></h2>
-                    <p class="has-font-serif has-color-white is-h2 is-padding-top-5 is-padding-top-5-touch"><?= $home->about['intro'] ?></p>
+                    <p class="has-font-serif has-color-white is-h2"><?= $home->about['intro'] ?></p>
                     <div class="is-padding-top-3 is-padding-top-3-touch"><?= $home->about['text'] ?></div>
                 </div>
     
@@ -53,7 +52,7 @@
                     <h2 class="with-spacing has-font-title has-color-white is-h6"><?= $home->skills['title'] ?></h2>
                     <div class="is-padding-top-5 is-padding-top-3-touch"><?= $home->skills['text'] ?></div>
                 </div>
-    
+
                 <?php foreach($home->list as $list): ?>
                     <div class="is-h4 is-padding-top-8-touch is-column js-fadein is-<?= 12 / count($home->list) ?> is-<?= 12 / count($home->list) ?>-tablet is-12-phone">
                         <h2 class="with-spacing has-font-title has-color-white is-h6"><?= $list['title']['text'] ?> <span class="has-font-text"><?= $list['title']['number'] ?></span></h2>

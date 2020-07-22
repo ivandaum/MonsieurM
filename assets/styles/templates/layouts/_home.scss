@@ -86,12 +86,18 @@
             font-size: 1.8rem;
         }
 
+        &--title {
+            font-size: 29vw;
+            z-index: map-get($zindex, above-section);
+            bottom: 5rem;
+            line-height: 0.7em;
+        }
+
         &--right {
             padding-bottom: 30rem;
 
             @include phone {
                 padding-bottom: 8rem;
-                padding-top: 8rem;
             }
         }
     }

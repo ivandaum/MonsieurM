@@ -97,7 +97,7 @@ export default class MaskPicture {
                 if (this.gif.width === 0) {
                     const ratio = img.height / img.width
 
-                    this.gif.width = this.background.width * 0.45
+                    this.gif.width = this.background.width * 0.43
                     this.gif.height = this.gif.width * ratio
                     this.gif.left = this.background.width * 0.5 - this.gif.width * 0.5
                     this.gif.canRender = true
@@ -158,8 +158,8 @@ export default class MaskPicture {
             const right = left + this.gif.width
 
             if (cursor[0] > left && cursor[0] < right && cursor[1] > top && cursor[1] < bottom) {
-                this.circle.x = this.gif.left + this.gif.width * 0.45
-                this.circle.y = this.gif.top + this.gif.height * 0.54
+                this.circle.x = this.gif.left + this.gif.width * 0.48
+                this.circle.y = this.gif.top + this.gif.height * 0.6
                 this.circle.ratio += (1 - this.circle.ratio) * 0.1
             } else {
                 this.circle.x = cursor[0]

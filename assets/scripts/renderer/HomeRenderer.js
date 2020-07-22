@@ -42,6 +42,7 @@ class HomeRenderer extends Highway.Renderer {
 
         this.bindCircle()
         this.bindHeader()
+        this.bindAboutTitle()
 
         this.circleResizeIndex = ResizeManager.addQueue(() => this.bindCircle())
         this.circleResizeIndex = ResizeManager.addQueue(() => this.bindHeader())
@@ -91,6 +92,28 @@ class HomeRenderer extends Highway.Renderer {
             })
             observer.observe($el)
             this.raf.push(RafManager.addQueue(() => Parallax.header(this.header)))
+        }
+    }
+
+    bindAboutTitle() {
+        const $el = this.wrap.querySelector('.js-about-title')
+
+        if ($el) {
+            const top = $el.getBoundingClientRect().top
+            this.aboutTitle = {
+                $el,
+                top: top - store.windowHeight,
+                bottom: top + store.windowHeight,
+                canRender: false,
+                parallax: [0, 300],
+            }
+
+            const observer = new IntersectionObserver((changes) => {
+                const [{ isIntersecting }] = changes
+                this.aboutTitle.canRender = isIntersecting
+            })
+            observer.observe($el)
+            this.raf.push(RafManager.addQueue(() => Parallax.block(this.aboutTitle)))
         }
     }
 
