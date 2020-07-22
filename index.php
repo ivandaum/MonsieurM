@@ -38,14 +38,14 @@
         <section class="Home__about js-about container is-flex has-width-100">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
                 <div class="Home__scrollingCircle js-about-circle is-flex is-center">
-                    <img alt="worldwide.png" class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.png') ?>">
+                    <img alt="worldwide.png" class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.svg') ?>">
                     <img alt="world.gif" class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.webp') ?>" alt="">
                 </div>
             </div>
             <div class="Home__about--right is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12 is-flex is-wrap">
                 <div class="is-padding-bottom2x is-padding-top2x is-column is-9 js-fadein">
                     <p class="has-font-serif has-color-white is-h2"><?= $home->about['intro'] ?></p>
-                    <div class="is-padding-top-3 is-padding-top-3-touch"><?= $home->about['text'] ?></div>
+                    <div class="is-padding-top-3 is-padding-top-3-touch Home__about--firtText"><?= $home->about['text'] ?></div>
                 </div>
     
                 <div class="Home__skills is-padding-bottom2x is-column is-12 js-fadein">
