@@ -104,7 +104,7 @@ class HomeRenderer extends Highway.Renderer {
                 $el,
                 top: top - store.windowHeight,
                 bottom: top + store.windowHeight,
-                canRender: false,
+                canRender: true,
                 parallax: [0, 300],
             }
 
@@ -112,7 +112,8 @@ class HomeRenderer extends Highway.Renderer {
                 const [{ isIntersecting }] = changes
                 this.aboutTitle.canRender = isIntersecting
             })
-            observer.observe($el)
+
+            observer.observe(this.wrap.querySelector('.js-picture'))
             this.raf.push(RafManager.addQueue(() => Parallax.block(this.aboutTitle)))
         }
     }
@@ -122,7 +123,7 @@ class HomeRenderer extends Highway.Renderer {
 
         this.circle.y = ScrollManager.scrollEased - this.circle.top + this.circle.offset
 
-        this.circle.rotation += ScrollManager.spinY * 0.15
+        this.circle.rotation += ScrollManager.spinY * 0.1
         this.circle.rotation = this.circle.rotation < 0 ? 360 : this.circle.rotation
         this.circle.rotation = this.circle.rotation > 360 ? 0 : this.circle.rotation
 

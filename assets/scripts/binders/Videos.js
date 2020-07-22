@@ -12,9 +12,9 @@ const Videos = {
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
             if (isIntersecting) {
-                video.play()
+                // video.play()
             } else {
-                video.pause()
+                // video.pause()
             }
         })
 
