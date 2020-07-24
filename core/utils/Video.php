@@ -12,7 +12,7 @@ class Video {
         $mimeType = $source['mime_type'];
         $url = $source['url'];
 
-        $params = 'preload="metadata"';
+        $params = 'preload="none"';
 
         if($muted) {
             $params .= ' muted playsinline';
