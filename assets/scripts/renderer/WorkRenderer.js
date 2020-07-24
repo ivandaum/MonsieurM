@@ -132,7 +132,7 @@ class WorkRenderer extends Highway.Renderer {
     browseGalery() {
         if (!this.galery.length) return false
 
-        this.galeryIndex += 0.05
+        this.galeryIndex += 0.08
         if (this.galeryIndex >= this.galery.length) this.galeryIndex = 0
 
         this.galery.forEach((img, i) => {
