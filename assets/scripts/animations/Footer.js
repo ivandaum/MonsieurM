@@ -1,18 +1,17 @@
 import Videos from '../binders/Videos'
 
 const CLASS_EMAIL_HOVER = 'email-is-hover'
+
 export default {
     isHover: false,
     update({ $view }) {
         this.isHover = false
         this.$el = $view.querySelector('.js-footer')
-
         if (this.$el) {
             this.$video = this.$el.querySelector('.js-video')
             this.$email = this.$el.querySelector('a')
 
             Videos.resizeVideo(this.$video)
-
             this.$email.addEventListener('mouseenter', this.toggleVideo.bind(this))
             this.$email.addEventListener('mouseleave', this.toggleVideo.bind(this))
         }

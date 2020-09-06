@@ -64,3 +64,47 @@ body.email-is-hover .Footer {
 body.page-template-page-lab .Footer {
     background: var(--color-black);
 }
+
+.mailto {
+    background: var(--color-white);
+    color: var(--color-black);
+    padding: 0.5em 1.3em;
+    white-space: nowrap;
+    font-size: 1.3rem;
+    border-radius: 3em;
+    top: -5rem;
+    pointer-events: none;
+    opacity: 0;
+    animation: mailto-alert-out var(--speed) linear;
+
+    &::after {
+        font-size: inherit;
+        content: '';
+        position: absolute;
+        left: 1.2em;
+        height: 1em;
+        width: 1em;
+        bottom: -0.8em;
+        background: url('../images/bottom-bulle.png') no-repeat center center;
+        background-size: contain;
+    }
+}
+
+.Footer a.is-hover .mailto--hover {
+    animation: mailto-alert-in var(--speed) linear;
+    opacity: 1;
+    transform: translate(7rem, 0);
+}
+
+.Footer a.is-click {
+    .mailto--hover {
+        animation: mailto-alert-out var(--speed) linear;
+        opacity: 0;
+    }
+
+    .mailto--click {
+        animation: mailto-alert-in var(--speed) linear;
+        opacity: 1;
+        transform: translate(7rem, 0);
+    }
+}

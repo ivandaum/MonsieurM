@@ -16,3 +16,27 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes mailto-alert-in {
+    0% {
+        opacity: 0;
+        transform: translate(7rem, 0.5rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(7rem, 0);
+    }
+}
+
+@keyframes mailto-alert-out {
+    0% {
+        opacity: 1;
+        transform: translate(7rem, 0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(8rem, 0);
+    }
+}

@@ -1,5 +1,9 @@
 // import normalize from 'normalize-wheel'
 import ScrollManager from './ScrollManager'
+import { copyToClipboard } from './../functions/dom'
+
+const CLASS_MAILTO_HOVER = 'is-hover'
+const CLASS_MAILTO_CLICK = 'is-click'
 
 export default {
     init() {
@@ -21,5 +25,25 @@ export default {
     updateOnNavigation() {
         const $scrollToTop = document.querySelector('.js-scroll-top')
         if ($scrollToTop) $scrollToTop.addEventListener('click', () => ScrollManager.scrollTo({ y: 0 }))
+
+        this.bindMailTo()
+    },
+
+    bindMailTo() {
+        const links = document.querySelectorAll('a[href*="mailto:"]')
+
+        links.forEach((link) => {
+            link.addEventListener('mouseenter', () => link.classList.add(CLASS_MAILTO_HOVER))
+            link.addEventListener('mouseleave', () => link.classList.remove(CLASS_MAILTO_HOVER))
+            link.addEventListener('click', (e) => {
+                e.preventDefault()
+                link.classList.remove(CLASS_MAILTO_HOVER)
+                link.classList.add(CLASS_MAILTO_CLICK)
+                copyToClipboard(link.href.replace('mailto:', ''))
+                setTimeout(() => {
+                    link.classList.remove(CLASS_MAILTO_CLICK)
+                }, 2000)
+            })
+        })
     },
 }
