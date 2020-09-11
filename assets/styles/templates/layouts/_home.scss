@@ -140,7 +140,7 @@
         &--email {
             @extend %label;
             font-size: 1.6rem;
-            background: var(--color-white);
+            background: var(--color-grey);
             color: var(--color-black);
             border: 0.1rem solid var(--color-black);
             z-index: map-get($zindex, under-header);
