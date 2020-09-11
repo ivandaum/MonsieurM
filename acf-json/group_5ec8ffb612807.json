@@ -46,6 +46,80 @@
             "mime_types": ""
         },
         {
+            "key": "field_5f5b446a503be",
+            "label": "Globe",
+            "name": "home__globe",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_5f5b4586503bf",
+                    "label": "Phrase au hover du globe",
+                    "name": "text",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5f5b46273476e",
+                    "label": "Gif du globe",
+                    "name": "gif",
+                    "type": "file",
+                    "instructions": "De préférence un webp (plus léger)",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "gif, webp"
+                },
+                {
+                    "key": "field_5f5b45a3503c0",
+                    "label": "Vidéo de fond",
+                    "name": "video",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
+        },
+        {
             "key": "field_5ecd4b8b7e0c7",
             "label": "À propos",
             "name": "home__about",
@@ -585,5 +659,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1595424785
+    "modified": 1599817286
 }

@@ -6,10 +6,13 @@
 
     &__video,
     &__wording {
-        bottom: 0;
+        top: 0;
         left: 0;
         pointer-events: none;
         opacity: 0;
+        width: 100vw;
+        height: vh(100);
+
         transition: opacity var(--coverSpeed) var(--easing);
         will-change: opacity;
 
@@ -26,11 +29,16 @@
             height: 100% !important;
             width: 100% !important;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
 
     &__wording {
         font-size: 6.5rem;
+        line-height: 6.5rem;
+        text-align: center;
         color: var(--color-white);
         z-index: map-get($zindex, section);
     }
@@ -52,59 +60,17 @@
     }
 }
 
-body.email-is-hover .Footer {
-    color: var(--color-white);
-
-    .Footer__video,
-    .Footer__wording {
+.js-mailto.email-is-hover {
+    .js-mailto-video,
+    .js-mailto-wording {
         opacity: 1;
     }
+}
+
+body.email-is-hover .Footer {
+    color: var(--color-white);
 }
 
 body.page-template-page-lab .Footer {
     background: var(--color-black);
-}
-
-.mailto {
-    background: var(--color-white);
-    color: var(--color-black);
-    padding: 0.5em 1.3em;
-    white-space: nowrap;
-    font-size: 1.3rem;
-    border-radius: 3em;
-    top: -5rem;
-    pointer-events: none;
-    opacity: 0;
-    animation: mailto-alert-out var(--speed) linear;
-
-    &::after {
-        font-size: inherit;
-        content: '';
-        position: absolute;
-        left: 1.2em;
-        height: 1em;
-        width: 1em;
-        bottom: -0.8em;
-        background: url('../images/bottom-bulle.png') no-repeat center center;
-        background-size: contain;
-    }
-}
-
-.Footer a.is-hover .mailto--hover {
-    animation: mailto-alert-in var(--speed) linear;
-    opacity: 1;
-    transform: translate(7rem, 0);
-}
-
-.Footer a.is-click {
-    .mailto--hover {
-        animation: mailto-alert-out var(--speed) linear;
-        opacity: 0;
-    }
-
-    .mailto--click {
-        animation: mailto-alert-in var(--speed) linear;
-        opacity: 1;
-        transform: translate(7rem, 0);
-    }
 }

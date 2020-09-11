@@ -14,7 +14,7 @@
 ?>
 <article class="Home has-width-100" data-router-view="home" data-loader="#fff">
     <div class="js-view has-width-100">
-        <section class="Home__introduction js-introduction section-top container">
+        <!-- <section class="Home__introduction js-introduction section-top container">
             <div class="js-introduction-header is-relative">
                 <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title is-flex">
                     <span class="Home__introduction--title js-title-overflow is-flex"><span><?= get_the_title() ?></span></span>
@@ -34,20 +34,21 @@
             </div>
             <?= Image::create($home->picture, array(), false) ?>
             <canvas class="js-picture-canvas Home__picture--canvas is-absolute"></canvas>
-        </section>
-        <section class="Home__about js-about container is-flex has-width-100">
+        </section> -->
+        <section class="Home__about js-about container is-flex has-width-100 js-mailto">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
-                <div class="Home__scrollingCircle js-about-circle is-flex is-center">
+                <a data-router-disabled="true"  href="mailto:<?= $home->email ?>" class="Home__scrollingCircle is-relative js-about-circle is-flex is-center js-mailto-trigger">
+                    <p class="Home__about--email is-absolute is-flex is-center mailto"><?= $home->email ?></p>
                     <img alt="worldwide.png" class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.svg') ?>">
-                    <img alt="world.gif" class="has-width-100 has-height-100" src="<?= get_theme_file_uri('/assets/images/anim-world.webp') ?>" alt="">
-                </div>
+                    <img alt="world.gif" class="has-width-100 has-height-100" src="<?= $home->globe['gif']['url'] ?>" alt="">
+                </a>
             </div>
             <div class="Home__about--right is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12 is-flex is-wrap">
                 <div class="is-padding-bottom2x is-padding-top2x is-column is-9 js-fadein">
                     <p class="has-font-serif has-color-white is-h2"><?= $home->about['intro'] ?></p>
                     <div class="is-padding-top-3 is-padding-top-3-touch Home__about--firtText"><?= $home->about['text'] ?></div>
                 </div>
-    
+
                 <div class="Home__skills is-padding-bottom2x is-column is-12 js-fadein">
                     <h2 class="with-spacing has-font-title has-color-white is-h6"><?= $home->skills['title'] ?></h2>
                     <div class="is-padding-top-5 is-padding-top-3-touch"><?= $home->skills['text'] ?></div>
@@ -64,6 +65,16 @@
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <div class="Footer__wording js-mailto-wording container is-fixed is-flex is-center has-font-serif">
+                <?= $home->globe['text'] ?>
+            </div>
+
+            <?php if($home->globe['video']): ?>
+                <div class="Footer__video js-mailto-video is-fixed">
+                    <?= Video::create($home->globe['video']) ?>
+                </div>
+            <?php endif; ?>
         </section>
 
         <section class="Home__last container is-flex">

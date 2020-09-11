@@ -1,0 +1,38 @@
+%label {
+    padding: 0.5em 1rem;
+    white-space: nowrap;
+    font-size: 1.3rem;
+    border-radius: 3em;
+    pointer-events: none;
+}
+
+.Label {
+    &__mailto {
+        @extend %label;
+        background: var(--color-white);
+        color: var(--color-black);
+        opacity: 0;
+        animation: label-mailto-out var(--speed) linear;
+        z-index: map-get($zindex, under-header);
+        top: 0;
+        left: 0;
+        transform-origin: center center;
+
+        &::after {
+            font-size: inherit;
+            content: '';
+            position: absolute;
+            left: 1.2em;
+            height: 1em;
+            width: 1em;
+            bottom: -0.8em;
+            background: url('../images/bottom-bulle.png') no-repeat center center;
+            background-size: contain;
+        }
+    }
+
+    &__mailto.is-active {
+        animation: label-mailto-in var(--speed) linear;
+        opacity: 1;
+    }
+}

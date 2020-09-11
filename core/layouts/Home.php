@@ -8,13 +8,14 @@ class Home {
         global $post;
         $this->intro = get_field('home__intro', $post->ID);
         $this->picture = get_field('home__picture', $post->ID);
+        $this->globe = get_field('home__globe', $post->ID);
         $this->about = get_field('home__about', $post->ID);
         $this->skills = get_field('home__skills', $post->ID);
         $this->list = get_field('home__list', $post->ID);
         $this->last = $this->getLastProject();
         $this->selected = get_field('home__selected', $post->ID);
         $this->showreel = get_field('home__showreel', $post->ID);
-
+        $this->email = get_field('config__email', 'options');
     }
 
 

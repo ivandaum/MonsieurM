@@ -19,7 +19,7 @@ import ProjectTransition from './transitions/ProjectTransition'
 import LabTransition from './transitions/LabTransition'
 
 import Nav from './animations/Nav'
-import Footer from './animations/Footer'
+import Mailto from './animations/Mailto'
 
 const renderers = {
     home: HomeRenderer,
@@ -50,7 +50,7 @@ const core = new Highway.Core({ renderers, transitions })
         document.body.classList = to.page.body.classList
 
         store.updateOnNavigation()
-        Footer.update({ $view: to.view })
+        Mailto.update({ $view: to.view })
 
         ScrollManager.unlock()
         ScrollManager.snapTo(0)
@@ -69,7 +69,7 @@ function app() {
 
     store.init()
     ScrollManager.init({ $view })
-    Footer.update({ $view })
+    Mailto.update({ $view })
     ResizeManager.init()
     ResizeManager.addQueue(() => store.setGlobalVars())
 
@@ -78,13 +78,15 @@ function app() {
 
     setTimeout(() => Nav.show(), 500)
 
-    const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
+    // const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
 
     FontLoader.default(() => {
-        trans.prototype.in({
-            to: $view,
-            done: () => ScrollManager.update({ $view }),
-        })
+        // trans.prototype.in({
+        //     to: $view,
+        //     done: () => ScrollManager.update({ $view }),
+        // })
+        console.log(core)
+        ScrollManager.update({ $view })
     })
 
     const page = $view.dataset.routerView

@@ -12,6 +12,11 @@ export default class MaskPicture {
         this.$container = $view.querySelector('.js-picture')
         this.$canvas = $view.querySelector('.js-picture-canvas')
         this.$picture = $view.querySelector('.js-picture picture')
+
+        if (!this.$picture) {
+            return false
+        }
+
         this.$img = this.$picture.querySelector('img')
         this.$circle = $view.querySelector('.js-picture-circle')
 

@@ -17,26 +17,26 @@
     }
 }
 
-@keyframes mailto-alert-in {
+@keyframes label-mailto-in {
     0% {
         opacity: 0;
-        transform: translate(7rem, 0.5rem);
+        margin-top: 0.5rem;
     }
 
     100% {
         opacity: 1;
-        transform: translate(7rem, 0);
+        margin-top: 0;
     }
 }
 
-@keyframes mailto-alert-out {
+@keyframes label-mailto-out {
     0% {
         opacity: 1;
-        transform: translate(7rem, 0);
+        margin-top: 0;
     }
 
     100% {
         opacity: 0;
-        transform: translate(8rem, 0);
+        margin-top: -0.5rem;
     }
 }
