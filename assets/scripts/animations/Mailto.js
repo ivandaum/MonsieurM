@@ -93,7 +93,7 @@ export default {
         }
     },
 
-    onLeave(link) {
+    onLeave() {
         this.labels.hover.classList.remove('is-active')
     },
 

@@ -1,6 +1,6 @@
 export default {
     default(complete) {
-        this.load('Canela').then(() => complete())
+        this.load('Canela').then(() => setTimeout(() => complete(), 500))
     },
 
     load(fontName) {

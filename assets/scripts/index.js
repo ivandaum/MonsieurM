@@ -78,15 +78,13 @@ function app() {
 
     setTimeout(() => Nav.show(), 500)
 
-    // const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
+    const trans = core.Helpers.transitions[core.properties.slug] || core.Helpers.transitions.default
 
     FontLoader.default(() => {
-        // trans.prototype.in({
-        //     to: $view,
-        //     done: () => ScrollManager.update({ $view }),
-        // })
-        console.log(core)
-        ScrollManager.update({ $view })
+        trans.prototype.in({
+            to: $view,
+            done: () => ScrollManager.update({ $view }),
+        })
     })
 
     const page = $view.dataset.routerView

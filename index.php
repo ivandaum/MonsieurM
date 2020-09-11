@@ -14,7 +14,7 @@
 ?>
 <article class="Home has-width-100" data-router-view="home" data-loader="#fff">
     <div class="js-view has-width-100">
-        <!-- <section class="Home__introduction js-introduction section-top container">
+        <section class="Home__introduction js-introduction section-top container">
             <div class="js-introduction-header is-relative">
                 <h1 class="is-h3 has-font-title is-relative is-padding-bottom-2 is-padding-bottom-2-touch js-title is-flex">
                     <span class="Home__introduction--title js-title-overflow is-flex"><span><?= get_the_title() ?></span></span>
@@ -34,7 +34,7 @@
             </div>
             <?= Image::create($home->picture, array(), false) ?>
             <canvas class="js-picture-canvas Home__picture--canvas is-absolute"></canvas>
-        </section> -->
+        </section>
         <section class="Home__about js-about container is-flex has-width-100 js-mailto">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
                 <div class="Home__scrollingCircle is-relative js-about-circle is-flex is-center js-mailto-trigger">
