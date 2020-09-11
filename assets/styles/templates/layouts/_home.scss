@@ -104,14 +104,6 @@
         &--firtText {
             letter-spacing: -0.02rem;
         }
-
-        &--email {
-            @extend %label;
-            font-size: 1.4rem;
-            background: var(--color-white);
-            color: var(--color-black);
-            border: 0.1rem solid var(--color-black);
-        }
     }
 
     &__scrollingCircle {
@@ -127,6 +119,43 @@
 
         @include phone {
             display: none !important;
+        }
+
+        &::after {
+            content: '';
+            background: var(--color-grey);
+            height: 22.5em;
+            width: 22.5em;
+            position: absolute;
+            border-radius: 50%;
+            z-index: map-get($zindex, section);
+            transform: scale(0.9);
+            transition: transform calc(var(--speed) * 2);
+        }
+
+        img {
+            z-index: map-get($zindex, above-section);
+        }
+
+        &--email {
+            @extend %label;
+            font-size: 1.6rem;
+            background: var(--color-white);
+            color: var(--color-black);
+            border: 0.1rem solid var(--color-black);
+            z-index: map-get($zindex, under-header);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity calc(var(--speed) * 0.5) var(--easing), transform var(--speed) var(--easing);
+        }
+
+        &:hover::after {
+            transform: scale(1);
+        }
+
+        &:hover &--email {
+            opacity: 1;
+            transform: scale(1);
         }
 
         &--rotate {

@@ -4,6 +4,7 @@ import ScrollManager from '../utils/ScrollManager'
 import RafManager from '../utils/RafManager'
 
 const CLASS_EMAIL_HOVER = 'email-is-hover'
+const CLASS_MAILTO_INVERTED = 'mailto-color-inverted'
 
 export default {
     labels: {
@@ -24,8 +25,8 @@ export default {
                 e.preventDefault()
                 this.onClick(link)
             })
-            link.addEventListener('mouseenter', (e) => this.onEnter(e))
-            link.addEventListener('mouseleave', (e) => this.onLeave(e))
+            link.addEventListener('mouseenter', () => this.onEnter(link))
+            link.addEventListener('mouseleave', () => this.onLeave(link))
         })
 
         $elements.forEach((el) => {
@@ -81,12 +82,18 @@ export default {
         }, 1000)
     },
 
-    onEnter(e) {
-        this.setLabelPosition(e.target)
+    onEnter(link) {
+        this.setLabelPosition(link)
         this.labels.hover.classList.add('is-active')
+
+        if (link.dataset.mailtoInverted) {
+            document.body.classList.add(CLASS_MAILTO_INVERTED)
+        } else {
+            document.body.classList.remove(CLASS_MAILTO_INVERTED)
+        }
     },
 
-    onLeave() {
+    onLeave(link) {
         this.labels.hover.classList.remove('is-active')
     },
 

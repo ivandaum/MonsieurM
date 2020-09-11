@@ -3,12 +3,12 @@
     white-space: nowrap;
     font-size: 1.3rem;
     border-radius: 3em;
-    pointer-events: none;
 }
 
 .Label {
     &__mailto {
         @extend %label;
+        pointer-events: none;
         background: var(--color-white);
         color: var(--color-black);
         opacity: 0;
@@ -27,12 +27,32 @@
             width: 1em;
             bottom: -0.8em;
             background: url('../images/bottom-bulle.png') no-repeat center center;
-            background-size: contain;
+            background-size: 100% auto;
+        }
+
+        @include touch {
+            background: var(--color-black);
+            color: var(--color-white);
+
+            &::after {
+                background: url('../images/bottom-bulle-black.png') no-repeat center center;
+                background-size: 100% auto;
+            }
         }
     }
 
     &__mailto.is-active {
         animation: label-mailto-in var(--speed) linear;
         opacity: 1;
+    }
+}
+
+body.mailto-color-inverted .Label__mailto {
+    background: var(--color-black);
+    color: var(--color-white);
+    border: 0.1rem solid var(--color-white);
+    &::after {
+        background: url('../images/bottom-bulle-black.png') no-repeat center center;
+        background-size: 100% auto;
     }
 }

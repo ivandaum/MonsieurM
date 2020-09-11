@@ -37,11 +37,11 @@
         </section> -->
         <section class="Home__about js-about container is-flex has-width-100 js-mailto">
             <div class="Home__about--left is-column is-<?= 12 - $rightColumn ?> is-3-tablet">
-                <a data-router-disabled="true"  href="mailto:<?= $home->email ?>" class="Home__scrollingCircle is-relative js-about-circle is-flex is-center js-mailto-trigger">
-                    <p class="Home__about--email is-absolute is-flex is-center mailto"><?= $home->email ?></p>
-                    <img alt="worldwide.png" class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.svg') ?>">
+                <div class="Home__scrollingCircle is-relative js-about-circle is-flex is-center js-mailto-trigger">
+                    <a data-mailto-inverted="true" data-router-disabled="true"  href="mailto:<?= $home->email ?>" class="Home__scrollingCircle--email is-absolute is-flex is-center"><?= $home->email ?></a>
                     <img alt="world.gif" class="has-width-100 has-height-100" src="<?= $home->globe['gif']['url'] ?>" alt="">
-                </a>
+                    <img alt="worldwide.png" class="Home__scrollingCircle--rotate js-about-circleRotating is-absolute" src="<?= get_theme_file_uri('/assets/images/worldwide.svg') ?>">
+                </div>
             </div>
             <div class="Home__about--right is-column is-<?= $rightColumn ?> is-9-tablet is-phone-12 is-flex is-wrap">
                 <div class="is-padding-bottom2x is-padding-top2x is-column is-9 js-fadein">
