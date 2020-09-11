@@ -17,6 +17,7 @@
         top: 0;
         left: 0;
         transform-origin: center center;
+        transform: translate3d(-100vw, -100vh, 1px);
 
         &::after {
             font-size: inherit;

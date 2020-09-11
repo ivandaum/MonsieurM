@@ -82,8 +82,10 @@
     }
 }
 
-body.email-is-hover .Navbar a {
-    color: var(--color-white);
+@include desktop {
+    body.email-is-hover .Navbar a {
+        color: var(--color-white);
+    }
 }
 
 body.showreel-open .Navbar {

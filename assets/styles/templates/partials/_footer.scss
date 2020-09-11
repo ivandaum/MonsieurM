@@ -67,10 +67,12 @@
     }
 }
 
-body.email-is-hover .Footer {
-    color: var(--color-white);
-}
+@include desktop {
+    body.email-is-hover .Footer {
+        color: var(--color-white);
+    }
 
-body.page-template-page-lab .Footer {
-    background: var(--color-black);
+    body.page-template-page-lab .Footer {
+        background: var(--color-black);
+    }
 }
