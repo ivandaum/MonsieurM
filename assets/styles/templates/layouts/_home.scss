@@ -57,10 +57,12 @@
         &--circle {
             transform: scale(0);
             z-index: map-get($zindex, above-section);
+            will-change: transform;
 
             img {
                 opacity: 0.2;
                 animation: rotate 8s infinite linear;
+                will-change: transform;
             }
         }
 
