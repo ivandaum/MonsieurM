@@ -122,6 +122,7 @@ export default class MaskPicture {
             y: 0,
             xEased: 0,
             yEased: 0,
+            rotate: 0,
         }
 
         this.$circle.style = `width: ${this.circle.size}px; height: ${this.circle.size}px;`
@@ -194,7 +195,10 @@ export default class MaskPicture {
 
             const imgX = this.circle.xEased - size
             const imgY = this.circle.yEased - size
-            this.$circle.style.transform = `translate3d(${imgX}px,${imgY}px, 0) scale(${this.circle.ratio})`
+
+            this.circle.rotate += 1
+            if (this.circle.rotate > 360) this.circle.rotate = 0
+            this.$circle.style.transform = `translate3d(${imgX}px,${imgY}px, 0) scale(${this.circle.ratio}) rotate(${this.circle.rotate}deg)`
         }
     }
 }

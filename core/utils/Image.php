@@ -110,7 +110,7 @@ class Image {
             }
         }
 
-        $html .= '<img class="' . $className . '" src="' . $last['src'] . '" alt="' . self::$title . '" />';
+        $html .= '<img class="' . $className . '" src="" alt="' . self::$title . '" />';
         $html .= '</picture>';
         return $html;
     }
