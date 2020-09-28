@@ -27,7 +27,7 @@ class Video {
             $className .= 'fit-height';
         }
         $html = '';
-        $html .= '<video ' . $params . ' class="js-video ' . $className . '" data-ratio="' . $ratio . '">';
+        $html .= '<video data-src="' . $url . '" ' . $params . ' class="js-video ' . $className . '" data-ratio="' . $ratio . '">';
         $html .= '<source src="' . $url . '#t=1" type="' . $mimeType. '">';
         $html .= 'Your browser does not support the video tag.</video> ';
 

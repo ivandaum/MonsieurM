@@ -11,7 +11,13 @@ const Videos = {
     bindVideo: (video) => {
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
-            isIntersecting ? video.play() : video.pause()
+            if (isIntersecting) {
+                video.src = video.dataset.src
+                video.play()
+            } else {
+                video.src = ''
+                video.pause()
+            }
         })
         observer.observe(video)
     },
