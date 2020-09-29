@@ -9,13 +9,14 @@ const Videos = {
     },
 
     bindVideo: (video) => {
+        // video.addEventListener('loadeddata', () => (video.readyState >= 3 ? (video.dataset.src = '') : null))
         const observer = new IntersectionObserver((changes) => {
             const [{ isIntersecting }] = changes
             if (isIntersecting) {
-                video.src = video.dataset.src
+                // if (video.dataset.src) video.src = video.dataset.src
                 video.play()
             } else {
-                video.src = ''
+                // if (video.dataset.src) video.src = ''
                 video.pause()
             }
         })
