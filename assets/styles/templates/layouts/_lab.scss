@@ -58,8 +58,9 @@
         }
     }
 
-    &__media picture {
-        background: #2b2b2b;
+    &__media picture,
+    &__media video {
+        background: var(--color-greyLabMedia);
     }
 }
 
