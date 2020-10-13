@@ -19,6 +19,8 @@
     <meta property="og:site_name" content="<?= Seo::siteName() ?>" />
     <meta property="og:description" content="<?= Seo::siteDescription() ?>" />
     <meta property="og:image" content="<?= Seo::image() ?>" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="<?= get_theme_file_uri('/assets/images/monsieurm-card.jpg') ?> ?>" />
     <?php do_action('wp_head'); ?>
     <script type="text/javascript">
         var ajaxUrl = "<?= admin_url( 'admin-ajax.php' ) ?>";
