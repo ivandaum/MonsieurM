@@ -45,7 +45,7 @@ const core = new Highway.Core({ renderers, transitions })
         ScrollManager.lock()
         Nav.updateLoader({})
     })
-    .on('NAVIGATE_END', ({ to }) => {
+    .on('NAVIGATE_END', ({ to, location }) => {
         to.page.body.classList.remove('not-loaded')
         document.body.classList = to.page.body.classList
 
