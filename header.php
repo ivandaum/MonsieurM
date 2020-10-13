@@ -18,12 +18,21 @@
 	<meta property="og:url" content="<?= Url::getCurrent() ?>" />
     <meta property="og:site_name" content="<?= Seo::siteName() ?>" />
     <meta property="og:description" content="<?= Seo::siteDescription() ?>" />
-    <meta property="og:image" content="<?= Seo::image() ?>" />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content="<?= get_theme_file_uri('/assets/images/monsieurm-card.jpg') ?> ?>" />
+    <meta property="twitter:image" content="<?= get_theme_file_uri('/assets/images/monsieurm-card.jpg') ?>" />
+    <meta property="og:image" content="<?= Seo::image() ?>" />
     <?php do_action('wp_head'); ?>
     <script type="text/javascript">
         var ajaxUrl = "<?= admin_url( 'admin-ajax.php' ) ?>";
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://googletagmanager.com/gtag/js?id=UA-180472781-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-180472781-1');
     </script>
 </head>
 <body <?= body_class('locked not-loaded') ?>>

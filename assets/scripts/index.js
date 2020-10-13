@@ -55,6 +55,15 @@ const core = new Highway.Core({ renderers, transitions })
         ScrollManager.unlock()
         ScrollManager.snapTo(0)
         ScrollManager.update({ $view: to.view })
+
+        if (typeof gtag !== 'undefined') {
+            // eslint-disable-next-line
+            gtag('config', 'UA-180472781-1', {
+                page_path: location.pathname,
+                page_title: to.page.title,
+                page_location: location.href,
+            })
+        }
     })
     .on('NAVIGATE_IN', ({ to }) => {
         const page = to.view.dataset.routerView
