@@ -16,7 +16,7 @@ class Seo {
 
     public static function image() {
         global $post;
-        return the_post_thumbnail_url($post->ID);
+        return get_theme_file_uri('/assets/images/share-img-monsieurm-1200x630.jpg');
     }
 
     public static function siteName() {
